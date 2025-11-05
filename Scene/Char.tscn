@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=4 uid="uid://bh6yn6keepnkn"]
+
+[sub_resource type="Animation" id="Animation_ys6n0"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_0cw8i"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2bjo3"]
+_data = {
+&"Down": SubResource("Animation_ys6n0"),
+&"Run": SubResource("Animation_0cw8i")
+}
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_wul5m"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABWAAAAUklGRk4AAABXRUJQVlA4TEIAAAAvH8AHEBcwY6M2OfMfcAgFjSQ1p+MlnJp/ijOCAzDam4CI/qtt24ahZ6e8getR9tKgDOogsy9EOSoMouBFlM0/TwE=")
+size_override = Vector2(32, 32)
+
+[node name="Char" type="CharacterBody2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_2bjo3")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_wul5m")
+hframes = 2
+vframes = 2
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"layer_section": true,
+"output_section": true,
+"pending_changes": {},
+"slice_section": true
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://Art/Aseprite/Test.aseprite",
+"source_uid": 5698138561266054967
+}
+metadata/_aseprite_wizard_source_file_hash_ = "aaec48288b8d354c482f56690c58e7e5"
