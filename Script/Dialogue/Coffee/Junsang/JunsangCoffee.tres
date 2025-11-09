@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://duopn5oi6cr2u"]
+
+[ext_resource type="Script" uid="uid://ctdfa312wdjdt" path="res://Script/Dialogue/Coffee/A_common/CoffeeOrder.gd" id="1_k6ttt"]
+[ext_resource type="Resource" uid="uid://bq647mmb0j2yc" path="res://Script/Dialogue/Coffee/Junsang/JsOrder1.tres" id="2_mba8v"]
+[ext_resource type="Resource" uid="uid://dpt64l1qum3fg" path="res://Script/Dialogue/Coffee/Junsang/JsOrder2.tres" id="3_8mfs4"]
+[ext_resource type="Resource" uid="uid://jmpqejad8nsa" path="res://Script/Dialogue/Coffee/Junsang/JsOrder3.tres" id="4_u4nge"]
+[ext_resource type="Script" uid="uid://7x4fuvo5th7i" path="res://Script/Dialogue/Coffee/A_common/Coffee.gd" id="5_awosc"]
+
+[resource]
+script = ExtResource("5_awosc")
+orders = Array[ExtResource("1_k6ttt")]([ExtResource("2_mba8v"), ExtResource("3_8mfs4"), ExtResource("4_u4nge")])

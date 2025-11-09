@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dpt64l1qum3fg"]
+
+[ext_resource type="Script" uid="uid://ctdfa312wdjdt" path="res://Script/Dialogue/Coffee/A_common/CoffeeOrder.gd" id="1_k40sx"]
+
+[resource]
+script = ExtResource("1_k40sx")
+dialog = "I want 65948985-65948981, 52849832798-52849832796, 239472389473298-239472389473296 !!!!"
+coffee = 4
+cream = 2
+sugar = 2
