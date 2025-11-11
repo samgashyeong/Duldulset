@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://hbiun5frit0t"]
+
+[ext_resource type="Script" uid="uid://ctdfa312wdjdt" path="res://Script/Dialogue/Coffee/A_common/CoffeeOrder.gd" id="1_1n3yx"]
+
+[resource]
+script = ExtResource("1_1n3yx")
+dialog = "You know my usual."
+cream = 1
+sugar = 7

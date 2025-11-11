@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bm6rb53eq8kb7"]
+
+[ext_resource type="Script" uid="uid://ctdfa312wdjdt" path="res://Script/Dialogue/Coffee/A_common/CoffeeOrder.gd" id="1_imhp6"]
+
+[resource]
+script = ExtResource("1_imhp6")
+dialog = "How many times do I have to tell you I don't eat sugar?"
+coffee = 2
+cream = 4
