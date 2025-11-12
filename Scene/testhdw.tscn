@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://di67ht6cqc1eu"]
+
+[node name="Testhdw" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": true,
+"pending_changes": {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://Art/Aseprite/Dongwoo.aseprite",
+"source_uid": 3125234214115428218
+}
+}
