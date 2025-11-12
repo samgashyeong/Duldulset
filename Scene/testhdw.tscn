@@ -1,8 +1,11 @@
-[gd_scene format=3 uid="uid://di67ht6cqc1eu"]
+[gd_scene load_steps=2 format=3 uid="uid://di67ht6cqc1eu"]
+
+[ext_resource type="Texture2D" uid="uid://bo7sywhavsfg4" path="res://Art/free-office-pixel-art/water-cooler.png" id="1_jfr4x"]
 
 [node name="Testhdw" type="CharacterBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jfr4x")
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": false,
 "layer_section": true,
