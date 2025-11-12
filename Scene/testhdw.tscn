@@ -1,10 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://di67ht6cqc1eu"]
 
-[ext_resource type="Texture2D" uid="uid://bo7sywhavsfg4" path="res://Art/free-office-pixel-art/water-cooler.png" id="1_jfr4x"]
+[ext_resource type="Texture2D" uid="uid://b3sccqj6l42w6" path="res://addons/dialogic/Example Assets/backgrounds/BubbleEnd.png" id="1_jfr4x"]
 
 [node name="Testhdw" type="CharacterBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(593, 348)
+scale = Vector2(5.3, 4.16176)
 texture = ExtResource("1_jfr4x")
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": false,
