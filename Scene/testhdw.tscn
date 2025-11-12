@@ -6,7 +6,9 @@
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": false,
 "layer_section": true,
-"pending_changes": {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
 "convert_fps_field": 60.0,
 "convert_ms_field": 16.0,
 "convert_to_fps": false,
@@ -18,10 +20,11 @@ metadata/_aseprite_wizard_interface_config_ = {
 "o_folder": "",
 "o_name": "",
 "only_visible": true,
-"player": "",
+"player": "AnimationPlayer",
 "scale": "1.0",
 "slice": "",
 "source": "res://Art/Aseprite/Dongwoo.aseprite",
 "source_uid": 3125234214115428218
 }
-}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
