@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://bh6yn6keepnkn"]
+[gd_scene load_steps=9 format=4 uid="uid://bh6yn6keepnkn"]
 
 [sub_resource type="Animation" id="Animation_ys6n0"]
-length = 0.2
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -10,14 +10,14 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1]
+"values": [1, 2, 3, 0, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_0cw8i"]
-length = 0.2
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -26,21 +26,89 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 2]
+"values": [6, 7, 8, 6, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_2bjo3"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [11, 12, 11, 11, 13]
+}
+
+[sub_resource type="Animation" id="Animation_wul5m"]
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 14, 14, 16]
+}
+
+[sub_resource type="Animation" id="Animation_f3q3b"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ha8ro"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2bjo3"]
 _data = {
-&"Down": SubResource("Animation_ys6n0"),
-&"Run": SubResource("Animation_0cw8i")
+&"move_left": SubResource("Animation_wul5m"),
+&"move_right": SubResource("Animation_2bjo3"),
+&"sit": SubResource("Animation_f3q3b"),
+&"sit_back": SubResource("Animation_ha8ro"),
+&"walk_back": SubResource("Animation_0cw8i"),
+&"walk_front": SubResource("Animation_ys6n0")
 }
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_wul5m"]
-_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABWAAAAUklGRk4AAABXRUJQVlA4TEIAAAAvH8AHEBcwY6M2OfMfcAgFjSQ1p+MlnJp/ijOCAzDam4CI/qtt24ahZ6e8getR9tKgDOogsy9EOSoMouBFlM0/TwE=")
-size_override = Vector2(32, 32)
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_dpdid"]
+_data = PackedByteArray("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")
+size_override = Vector2(160, 128)
 
 [node name="Char" type="CharacterBody2D"]
 
@@ -52,9 +120,9 @@ libraries = {
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = SubResource("PortableCompressedTexture2D_wul5m")
-hframes = 2
-vframes = 2
+texture = SubResource("PortableCompressedTexture2D_dpdid")
+hframes = 5
+vframes = 4
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": true,
 "layer_section": true,
@@ -77,7 +145,7 @@ metadata/_aseprite_wizard_config_ = {
 "player": "AnimationPlayer",
 "scale": "1.0",
 "slice": "",
-"source": "res://Art/Aseprite/Test.aseprite",
-"source_uid": 5698138561266054967
+"source": "res://Art/Aseprite/Dongwoo.aseprite",
+"source_uid": 3125234214115428218
 }
-metadata/_aseprite_wizard_source_file_hash_ = "aaec48288b8d354c482f56690c58e7e5"
+metadata/_aseprite_wizard_source_file_hash_ = "f2d41c4d47b87fb9a1bd9a1eded9db7b"
