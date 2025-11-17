@@ -1,5 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://bh6yn6keepnkn"]
+[gd_scene load_steps=9 format=3 uid="uid://bh6yn6keepnkn"]
 
+<<<<<<< HEAD
+=======
+[ext_resource type="Texture2D" uid="uid://c2tomfxd8tqav" path="res://Art/Aseprite/Junsang.png" id="1_0cw8i"]
+
+>>>>>>> main
 [sub_resource type="Animation" id="Animation_wul5m"]
 length = 0.5
 loop_mode = 1
@@ -106,10 +111,6 @@ _data = {
 &"walk_front": SubResource("Animation_ys6n0")
 }
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_dpdid"]
-_data = PackedByteArray("AAADAAUAAAABAAAAoAAAAIAAAADoBQAAUklGRuAFAABXRUJQVlA4TNMFAAAvn8AfEJfBOJJsJW/fx93dMiH/ODhxdYc02Ea2reR8/0jmkYY0SJmUQA2kX9lGsp3mSzJzyhBy/6H7cAuUiUFAUOT/aEHAf3VM0Qc8EgpRAQTAgAcQEpYGIhFiPBNAJseEA5yHQsC0yd6iXYnZwu8t2hcp6rmvGHdU/gq0v6a5iHFxig1HT7OYyeMj0NMsseENu7PwfCcClikla1V3F5fDQjM5p6n1z20cL6Bua1vctnpsJ50HtUqddHBPnGMRR2kJ4bv/mxMg84FR8zOi/xDcNnIkqaYvD8CaS3+Ql+WwbK5b0lkq169hSGHL5ALmYMvkmplhWDoXy+dimVwCxhjvjTGL5TKrlTEm3Ldcrmfj/XTfUrl+zn1ffy6TS/DJIEvlImEtlusm7WaJXEcAN44ufBzguDQunHt6CqhxjAUslMtNrH+Ga3teru0Z5jgvF65oVu+Kq+mqk/d+Lu+92gXHE20j2AlXWfcRZl1h7W31Tv9RPxHcSXH3HZxITgYk2bAXaF2H0x3mXfciondnzL3adU2fDNcilV1XddxXapcwJoO84Fx9v/Au6rtKhKau6/q+67r8AJ3rEt59LOPW7f3xHVwWKH9+Jynmq9Z18UHfV3nRDoVwzbpuSUchTue2TdevYdBeJA3DryZdwNylZQMtumAOltnsY4Mzd6kjP+Zq0QUn2GpYoy5jjPfGGH3NusxqZYwJ9y1Xz+HF6nmp+jn3zk/RwqVVl08GWapIzmJ1k3aT7wLvoU3XEcCNowsfBzjmueJp04VzT0/OjdPEArJccY27pqPL2ilb2VVpr+05ttWU49qqwxUqGhuyapdzKFwux4Wbdeuz+dnCadz5WUVH8H4u7/3pJkqUtTbPtY1gcy44ZrkVriPMusJa25N/lKsnJ4I7EW1ycu5grizXAZKivTgdwW1n9oY8t026FxGt+yAZc692XdMnw7VIZddVHfeV2iWMySAvOFffV3V1Xdf39fea8Mqo2X6P+rlRokmvfO6AyqV7rjv4T/ncgcil2+vjd9ip+nAhIgXKn/dq18UHfV/l3zdwvi4os7eGPTMNuNSwWy0bzt+lPMPwK7dhpmquUg2gPZnwABoi1jAg5+iSWJTwcl26byykrFB9l3Lv/NA2z6rvqgQvECatnqtAGHVKljfGG4OcgStTFqF85bw3qxVS25XfamW8L5NmsdAzUtuV3/PKzBzlJcoHbyq7tO9UTQAfzdm6ElXN/7tp9VzlktxuCPCpG8lfzDkHHM7VdYAAyzxHAioZgGNO3yLb+CZaOpM1pXGJ3iXyZox2/pb5RJ+e4mIBWTZrnWP885C9trV/pzQurCVy5ffwZ8Q5a1Fk7ZRV5kZtbvykyLlwaRpddtvzKu83m/Tnlkrh5t6x9XPe5+Q9UD179tmwNeOXGh3B+yhrp7z3mXmPKu/RvmMtFo8yvM/7EimXK9HnXFfI4bUvXH4HeLI2CcgMdEHcg6YCH3bAVN5c0yfDdfZiESrsVcsVL6UrlucmjMkgKhgbRV33+PjI208KdjcNl58UbYjXrpyIovh6rWDH11oU9AL1vaoNunYhwrXLdQV1ZNspY6OMrlOsrm3fdbyarj3ZrnHkkq7bo033c9H3gFKm6Ad71vKaPTuF61LWkUu3mLYPFyJSKdmxi+8r4FK33AN6V+tnZvSu5g/oXY03qBuabZgGiO7Tu1pt7hujdDXb/A+21tV2Rp1pN8EYb4yP9la5Wm61Mt7HaVxN9xwCoICr3XeUGeMbz0cDFHC1XgFXqx0A5xwFXA3PmzEE39SuZnv4E/prLSoX1rZ7fRqdtnCcazWAAk0n/hA0ebdT92XExsf7Zep//HRhoxp+R7M00V9da9v91/W5RDjX8m0PcZAf9H3j0U+jWPsydvXt/l/49JbHx8euy+/TJd00Y7u9jo6mdXzabRcOoV2uKzKNU7tGYz+dV3TdPjf207mcrn2r7djzWtbs+aFwreUycjV77eL7CrgaSgAA")
-size_override = Vector2(160, 128)
-
 [node name="Char" type="CharacterBody2D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -120,7 +121,7 @@ libraries = {
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = SubResource("PortableCompressedTexture2D_dpdid")
+texture = ExtResource("1_0cw8i")
 hframes = 5
 vframes = 4
 metadata/_aseprite_wizard_interface_config_ = {
