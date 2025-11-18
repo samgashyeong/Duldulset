@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://uliqrroc6k4u"]
+
+[ext_resource type="Texture2D" uid="uid://bij253o7rea0h" path="res://Art/Aseprite/CofffeeFill.png" id="1_aws6g"]
+[ext_resource type="Script" uid="uid://cpepqa88oynkv" path="res://Script/testChar.gd" id="2_aws6g"]
+
+[node name="Text" type="Node"]
+
+[node name="CofffeeFill" type="Sprite2D" parent="."]
+position = Vector2(337.4063, 369.40622)
+scale = Vector2(0.8949213, 0.8949226)
+texture = ExtResource("1_aws6g")
+script = ExtResource("2_aws6g")

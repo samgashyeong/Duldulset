@@ -1,3 +1,40 @@
-[gd_scene format=3 uid="uid://c3c6vwfb7e5yl"]
+[gd_scene load_steps=4 format=3 uid="uid://c3c6vwfb7e5yl"]
 
-[node name="BubbleText" type="Node"]
+[ext_resource type="Script" uid="uid://h58anfi7y2ib" path="res://Script/BubbleSystem/Bubble.gd" id="1_qrjt5"]
+[ext_resource type="Texture2D" uid="uid://cx6h7gamvj1e" path="res://Art/Aseprite/Bubble.png" id="1_rsxnc"]
+[ext_resource type="FontFile" uid="uid://b5ck22eskijli" path="res://Font/neodgm (1).ttf" id="2_qrjt5"]
+
+[node name="MarginContainer" type="MarginContainer"]
+offset_top = -136.795
+offset_right = 126.0
+offset_bottom = 0.20500183
+script = ExtResource("1_qrjt5")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_rsxnc")
+region_rect = Rect2(0, 0, 192, 96)
+patch_margin_left = 50
+patch_margin_top = 50
+patch_margin_right = 50
+patch_margin_bottom = 50
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 55
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_qrjt5")
+theme_override_font_sizes/font_size = 32
+text = "d"
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
