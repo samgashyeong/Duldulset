@@ -71,6 +71,7 @@ position = Vector2(-250, 399)
 scale = Vector2(1.5, 0.4)
 
 [node name="Cup1" parent="." instance=ExtResource("2_ph46f")]
+visible = false
 position = Vector2(590, 534)
 scale = Vector2(1.5, 0.8)
 
@@ -104,10 +105,17 @@ libraries = {
 speed_scale = 3.0
 
 [node name="FadeOverlay" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+scale = Vector2(5, 5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
 color = Color(0, 0, 0, 0)
 metadata/_edit_use_anchors_ = true
+
+[node name="Cup3" parent="." instance=ExtResource("2_ph46f")]
+position = Vector2(593, 340)
+scale = Vector2(3.5, 3.5)
+
+[node name="Cup4" parent="." instance=ExtResource("4_hiccx")]
+visible = false
+position = Vector2(593, 340)
+scale = Vector2(3.5, 3.5)

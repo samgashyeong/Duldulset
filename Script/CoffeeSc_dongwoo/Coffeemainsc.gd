@@ -22,8 +22,10 @@ var current_water_follower: Node = null
 var is_waterbottle_unlocked = false 
 
 # 씬 노드 
-@onready var cup1: Node2D = $Cup1
-@onready var cup2: Node2D = $Cup2
+@onready var cup1: Node2D = $Cup3
+@onready var cup2: Node2D = $Cup4
+#@onready var cup3: Node2D = $Cup3
+#@onready var cup4: Node2D = $Cup4
 @onready var water_bottle_node: Waterbottle = $Waterbottle
 @onready var fade_player: AnimationPlayer = $FadePlayer
 @onready var scene_transition_timer: Timer = $SceneTransitionTimer
@@ -94,10 +96,10 @@ func _on_started_pouring():
 		scene_transition_timer.start()
 
 func _on_scene_transition_timer_timeout():
-	if fade_player and fade_player.has_animation("FadeOut2"):
+	if fade_player and fade_player.has_animation("FadeOut"):
 		fade_player.animation_finished.connect(_on_fade_animation_finished)
 		print("시작합")
-		fade_player.play("FadeOut2")
+		fade_player.play("FadeOut")
 
 func _on_fade_animation_finished(_anim_name):
 	get_tree().change_scene_to_file(BACKTO_SCENE_PATH)
@@ -124,7 +126,9 @@ func _on_sugar_placed(spawn_position: Vector2):
 func _on_requested_coffeebean_spawn(button_position: Vector2):
 	_unlock_waterbottle() 
 	
-	var num_to_spawn = randi_range(1, BEAN_COUNT)
+	# 갯수 조정
+	# var num_to_spawn = randi_range(1, BEAN_COUNT)
+	var num_to_spawn = 10
 	
 	for i in range(num_to_spawn):
 		var bean = COFFEEBEAN_SCENE.instantiate()
