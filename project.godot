@@ -11,10 +11,16 @@ config_version=5
 [application]
 
 config/name="Duldulset"
-run/main_scene="uid://di67ht6cqc1eu"
+run/main_scene="uid://vymo7le3sf6s"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+
+[layer_names]
+
+2d_render/layer_1="coffeethings"
+2d_render/layer_2="cup"
+2d_render/layer_3="desk"

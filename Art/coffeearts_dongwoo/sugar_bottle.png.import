@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buqnmhc7iexfy"
-path="res://.godot/imported/Chunja.png-95b9d0d2ee1aac82bf7c79ceeadd0d74.ctex"
+uid="uid://b3imkhr7nivuv"
+path="res://.godot/imported/sugar_bottle.png-d0eb8b24fb4cfd3bc004d85ef8e8cbc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Aseprite/Chunja.png"
-dest_files=["res://.godot/imported/Chunja.png-95b9d0d2ee1aac82bf7c79ceeadd0d74.ctex"]
+source_file="res://Art/coffeearts_dongwoo/sugar_bottle.png"
+dest_files=["res://.godot/imported/sugar_bottle.png-d0eb8b24fb4cfd3bc004d85ef8e8cbc2.ctex"]
 
 [params]
 

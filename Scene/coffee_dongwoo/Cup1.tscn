@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv0gric11yy58"]
+
+[ext_resource type="Texture2D" uid="uid://slguxkb8mj0i" path="res://Art/coffeearts_dongwoo/cup1.png" id="1_7n48v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7n48v"]
+size = Vector2(190, 5)
+
+[node name="Cup1" type="StaticBody2D"]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(35.2, -115.1)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_7n48v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.79999, -6.10001)
+shape = SubResource("RectangleShape2D_7n48v")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-471.8, -457.1)
+polygon = PackedVector2Array(346, 229, 349, 309, 366, 373, 404, 452, 320, 300)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2(-471.8, -457.1)
+polygon = PackedVector2Array(540, 446, 565, 406, 591, 318, 599, 229, 666, 323)

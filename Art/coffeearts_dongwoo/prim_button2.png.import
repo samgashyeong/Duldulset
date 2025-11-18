@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buqnmhc7iexfy"
-path="res://.godot/imported/Chunja.png-95b9d0d2ee1aac82bf7c79ceeadd0d74.ctex"
+uid="uid://ps1xbspatsus"
+path="res://.godot/imported/prim_button2.png-054779c091eee9eef3238a34ef80443e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Aseprite/Chunja.png"
-dest_files=["res://.godot/imported/Chunja.png-95b9d0d2ee1aac82bf7c79ceeadd0d74.ctex"]
+source_file="res://Art/coffeearts_dongwoo/prim_button2.png"
+dest_files=["res://.godot/imported/prim_button2.png-054779c091eee9eef3238a34ef80443e.ctex"]
 
 [params]
 
