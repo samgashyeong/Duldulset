@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlmi8tkxwggp1"]
+
+[ext_resource type="Texture2D" uid="uid://e2dc485jip2h" path="res://Art/free-office-pixel-art/boss.png" id="1_eguqj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_do0ca"]
+size = Vector2(51.5, 48.5)
+
+[node name="TrashFile" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_eguqj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6.25, 5.25)
+shape = SubResource("RectangleShape2D_do0ca")
