@@ -1,67 +1,84 @@
 extends Control
 
-
 @onready var label = $MarginContainer/Label
 @onready var timer = $Timer
+@onready var angryTimer = $AngryTimer
 
-const MAX_WIDTH = 500 # If the text gets wider than this (256 pixels)
+const MAX_WIDTH = 500 
 
-var text = "" # Stores the entire message we need to display.
-var letter_index = 0 # Keeps track of which letter we're currently on when typing.
+var text_buffer = "" 
+var letter_index = 0 
+var letterTime = 0.03
+signal finishDisplay()
+var dialogueResource : Coffee
 
-var letterTime = 0.03 # How fast the text types out (0.03 seconds per letter).
-signal finishDisplay() # This signal fires off when the whole message is done typing.
+var currentMethod : Type.StaffMethod
 
-
-func textToDisPlay(string : String):
-	text = string
-	label.text = string # Load the whole text first so Godot can figure out how big it needs to be.
-
-	# Wait for the Control node's size to update after setting the text. (A bit unreliable for size checking!)
-	await resized 
+var angryTime = 5.0
+func _ready():
 	
-	print(size.x) # Debugging: Check the current width.
+	label.text = ""
+
+func textToDisPlay(type : Type.StaffMethod, coffee : int = 0, cream : int = 0, sugar : int = 0):
+	var string
+	currentMethod = type
+	match type:
+		Type.StaffMethod.ORDER:
+			string = "!!"
+		Type.StaffMethod.START0:
+			string = dialogueResource.orders[0].dialog
+		Type.StaffMethod.START1:
+			string = dialogueResource.orders[1].dialog
+		Type.StaffMethod.START2:
+			string = dialogueResource.orders[2].dialog
+		Type.StaffMethod.CHECK:
+			string = "Drinking..."
 	
-	# Try to set the bubble's minimum width, either to the calculated size or MAX_WIDTH.
-	custom_minimum_size.x = min(MAX_WIDTH, size.x) 
+	timer.stop()
+	text_buffer = string
+	letter_index = 0
 	
-	print(custom_minimum_size.x) # Debugging: Check the final minimum width chosen.
+	label.text = string 
+	
+	await get_tree().process_frame 
+	
+	custom_minimum_size.x = min(MAX_WIDTH, size.x)
 	
 	if size.x > MAX_WIDTH:
-		# If the text is super long (wider than our limit), turn on word wrapping!
-		label.autowrap_mode = TextServer.AUTOWRAP_WORD 
-		
-		# Wait a couple of times to make sure the height recalculates after wrapping. (A common, but clumsy, trick.)
-		await resized 
-		await resized
-		
-		# Now that we have the final height, lock the bubble's minimum height.
+		label.autowrap_mode = TextServer.AUTOWRAP_WORD
+		await get_tree().process_frame 
 		custom_minimum_size.y = size.y
-		
-	# Center the bubble horizontally (This positioning logic is questionable!)
-	global_position.x = size.x/2 
-	# Position the bubble a little below its own calculated height.
-	global_position.y = size.y + 24 
 	
-	label.text ="" # Clear the label so we can start the typing effect.
-	displayLetter() # Start the typing
+	label.text = "" 
 	
+	displayLetter()
+	
+
+func setDialogueSource(resource):
+	dialogueResource = resource
 	
 func displayLetter():
-	# Add the next single letter to the screen.
-	label.text += text[letter_index]
+	if text_buffer.length() == 0:
+		return
+
+	label.text += text_buffer[letter_index]
+	letter_index += 1
 	
-	letter_index+=1
-	
-	# Check if we've typed the very last letter.
-	if letter_index >= text.length():
-		finishDisplay.emit() # we're done
+	if letter_index >= text_buffer.length():
+		finishDisplay.emit()
+		if(currentMethod == Type.StaffMethod.START0 or 
+		currentMethod == Type.StaffMethod.START1 or 
+		currentMethod == Type.StaffMethod.START2) : 
+			angryTimer.start(angryTime)
+		elif(currentMethod ==Type.StaffMethod.CHECK):
+			print("checking coffee..")
 		return
 		
-	# Start the timer to call this function again for the next letter.
 	timer.start(letterTime)
 
-
 func _on_timer_timeout() -> void:
-	# When the timer runs out, type the next letter
 	displayLetter()
+
+
+func _on_angry_timer_timeout() -> void:
+	print("timeout")

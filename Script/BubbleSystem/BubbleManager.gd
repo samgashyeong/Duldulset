@@ -1,40 +1,48 @@
+# BubbleManager.gd
 extends Node
 
-
 @onready var bubbleText = preload("res://Scene/BubbleText/BubbleText.tscn")
-@onready var coffeeDialog = preload("res://Script/Dialogue/Special/Coffee/Chunja/ChunjaCoffee.tres")
-
-var dialogLine : Array[String] = []
-var currentLine = 0
-
-var textBox
-var textBoxPosition
-
-var isDialogActive = false
-var canAdvanceLine = false
 
 
-func startDialog(position : Vector2, line : Array[String]):
-	if isDialogActive:
-		return
+func startDialog(position : Vector2, staff : Type.StaffName) -> Control:
 	
-	dialogLine = line
-	textBoxPosition = position
-	showTextBox()
+	var dialogue_resource = staffNameCheck(staff)
 	
+	var new_textBox = bubbleText.instantiate()
+	get_tree().root.add_child(new_textBox)
+	new_textBox.setDialogueSource(dialogue_resource)
+	new_textBox.global_position = position - Vector2(-90, 160) 
 	
-	
-func showTextBox():
-	textBox = bubbleText.instantiate()
-	
-	textBox.finishDisplay.connect(onTextBoxFinishedDisplay)
-	get_tree().root.add_child(textBox)
-	
-	textBox.global_position = textBoxPosition
-	textBox.textToDisPlay("애국가 동해물가 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세")
-	canAdvanceLine = false
+	return new_textBox
 	
 	
-func onTextBoxFinishedDisplay():
-	canAdvanceLine = true
-	
+func staffNameCheck(staff : Type.StaffName) -> Resource:
+	var resource_path = ""
+	match staff:
+		Type.StaffName.JUNSANG:
+			resource_path = "res://Script/Dialogue/Special/Coffee/Junsang/JunsangCoffee.tres"
+			
+		Type.StaffName.SANGIN:
+			resource_path = "res://Script/Dialogue/Special/Coffee/Sangin/SanginCoffee.tres"
+			
+		Type.StaffName.MINSEO:
+			resource_path = "res://Script/Dialogue/Special/Coffee/Minseo/MinseoCoffee.tres"
+			
+		Type.StaffName.DONGWOO:
+			resource_path = "res://Script/Dialogue/Special/Coffee/Dongwoo/DongwooCoffee.tres"
+			
+		Type.StaffName.YOUNGHEE:
+			resource_path = "res://Script/Dialogue/Special/Coffee/Younghee/YoungheeCoffee.tres"
+			
+		Type.StaffName.OKSOON:
+			resource_path = "res://Script/Dialogue/Special/Coffee/Oksoon/OksoonCoffee.tres"
+			
+		Type.StaffName.CHUNJA:
+			resource_path = "res://Script/Dialogue/Special/Coffee/Chunja/ChunjaCoffee.tres"
+			
+		_:
+			push_error("Error: 정의되지 않은 StaffName입니다.", Type.StaffName)
+			return null
+			
+	var loaded_resource = load(resource_path)
+	return loaded_resource
