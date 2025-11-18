@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnuj6n5mjhgar"]
+
+[ext_resource type="Theme" uid="uid://bi54ign8ggomc" path="res://Themes/Classic95/Classic95.tres" id="1_gbyj5"]
+[ext_resource type="FontFile" uid="uid://cxmgvk3el5fll" path="res://Themes/Classic95/microsoft_sans_serif.ttf" id="2_5jqmp"]
+[ext_resource type="Texture2D" uid="uid://cwbh3h2qc47ug" path="res://Art/free-office-pixel-art/coffee-maker.png" id="3_x831y"]
+
+[node name="Window" type="Window"]
+oversampling_override = 1.0
+title = "TypingReport"
+initial_position = 1
+size = Vector2i(720, 480)
+theme = ExtResource("1_gbyj5")
+theme_override_fonts/title_font = ExtResource("2_5jqmp")
+
+[node name="WallPaper" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.4862745, 0.4862745, 1)
+
+[node name="LineEdit" type="LineEdit" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -111.0
+grow_horizontal = 2
+grow_vertical = 0
+caret_blink = true
+
+[node name="CoffeeMaker" type="Sprite2D" parent="."]
+position = Vector2(540, 290)
+texture = ExtResource("3_x831y")

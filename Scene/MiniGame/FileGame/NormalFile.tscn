@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b65m2ysybfbe"]
+
+[ext_resource type="Texture2D" uid="uid://pc5w2qjpym6f" path="res://Art/free-office-pixel-art/Chair.png" id="1_eveek"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iftlw"]
+size = Vector2(14, 18)
+
+[node name="NormalFile" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_eveek")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iftlw")
