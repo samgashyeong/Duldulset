@@ -10,7 +10,7 @@ collision_layer = 4
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(559, 486)
+position = Vector2(569, 496)
 shape = SubResource("RectangleShape2D_ssc43")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -28,6 +28,7 @@ var is_waterbottle_unlocked = false
 #@onready var cup4: Node2D = $Cup4
 @onready var water_bottle_node: Waterbottle = $Waterbottle
 @onready var fade_player: AnimationPlayer = $FadePlayer
+@onready var fade_overlay: ColorRect = $FadeOverlay
 @onready var scene_transition_timer: Timer = $SceneTransitionTimer
 
 
@@ -98,8 +99,9 @@ func _on_started_pouring():
 func _on_scene_transition_timer_timeout():
 	if fade_player and fade_player.has_animation("FadeOut"):
 		fade_player.animation_finished.connect(_on_fade_animation_finished)
-		print("시작합")
+		fade_overlay.visible = true
 		fade_player.play("FadeOut")
+		print("시작합")
 
 func _on_fade_animation_finished(_anim_name):
 	get_tree().change_scene_to_file(BACKTO_SCENE_PATH)
