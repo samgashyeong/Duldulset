@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c88opv2evv1sd"]
+
+[ext_resource type="Script" uid="uid://dxteyqr7tlbcr" path="res://Script/CoffeeSc_dongwoo/PrimButton.gd" id="1_5xjdv"]
+[ext_resource type="Texture2D" uid="uid://ps1xbspatsus" path="res://Art/coffeearts_dongwoo/prim_button2.png" id="1_yxavh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yxavh"]
+radius = 92.2659
+
+[node name="PrimButton" type="Area2D"]
+script = ExtResource("1_5xjdv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.60001, -1.60001)
+shape = SubResource("CircleShape2D_yxavh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.59998, -0.599976)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_yxavh")

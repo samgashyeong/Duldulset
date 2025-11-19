@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnuj6n5mjhgar"]
+
+[ext_resource type="Theme" uid="uid://bi54ign8ggomc" path="res://Themes/Classic95/Classic95.tres" id="1_aabss"]
+[ext_resource type="Texture2D" uid="uid://cwbh3h2qc47ug" path="res://Art/free-office-pixel-art/coffee-maker.png" id="2_cgm41"]
+
+[node name="TypingReport" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 720.0
+offset_bottom = 480.0
+theme = ExtResource("1_aabss")
+
+[node name="BackGroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.4862745, 0.4862745, 1)
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -111.0
+grow_horizontal = 2
+grow_vertical = 0
+caret_blink = true
+
+[node name="CoffeeMaker" type="Sprite2D" parent="."]
+position = Vector2(540, 290)
+texture = ExtResource("2_cgm41")
