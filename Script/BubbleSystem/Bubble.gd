@@ -3,6 +3,7 @@ extends Control
 @onready var label = $MarginContainer/Label
 @onready var timer = $Timer
 @onready var angryTimer = $AngryTimer
+@onready var progressbar = $HBoxContainer/ProgressBar
 
 const MAX_WIDTH = 500 
 
@@ -16,7 +17,6 @@ var currentMethod : Type.StaffMethod
 
 var angryTime = 5.0
 func _ready():
-	
 	label.text = ""
 
 func textToDisPlay(type : Type.StaffMethod, coffee : int = 0, cream : int = 0, sugar : int = 0):
@@ -50,7 +50,7 @@ func textToDisPlay(type : Type.StaffMethod, coffee : int = 0, cream : int = 0, s
 		custom_minimum_size.y = size.y
 	
 	label.text = "" 
-	
+
 	displayLetter()
 	
 
