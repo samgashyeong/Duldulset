@@ -3,10 +3,14 @@
 importer="texture"
 type="CompressedTexture2D"
 <<<<<<< HEAD
+<<<<<<< HEAD
 uid="uid://e5pvk7lwreix"
 =======
 uid="uid://cytsldtg16hl8"
 >>>>>>> main
+=======
+uid="uid://cytsldtg16hl8"
+>>>>>>> 36a320a7f5acd7562478e06633456f64026cda4d
 path="res://.godot/imported/SangIn.png-268a7c3fc21d6e11ecc9d99124e98a96.ctex"
 metadata={
 "vram_texture": false
@@ -23,10 +27,15 @@ compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 >>>>>>> main
+=======
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+>>>>>>> 36a320a7f5acd7562478e06633456f64026cda4d
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -35,12 +44,18 @@ mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 36a320a7f5acd7562478e06633456f64026cda4d
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
 process/channel_remap/alpha=3
+<<<<<<< HEAD
 >>>>>>> main
+=======
+>>>>>>> 36a320a7f5acd7562478e06633456f64026cda4d
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
