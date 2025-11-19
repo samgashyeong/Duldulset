@@ -2,31 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://bamu8ovq5838n"
-=======
-uid="uid://ylqhxd8jsrqc"
->>>>>>> main
-path="res://.godot/imported/Younghee.png-dd43ba44ad61909d7d4063bef54d836a.ctex"
+uid="uid://3vs8h3cbocun"
+path="res://.godot/imported/TA.png-dcfba50998dab07642b8e5fbc34045d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Aseprite/Younghee.png"
-dest_files=["res://.godot/imported/Younghee.png-dd43ba44ad61909d7d4063bef54d836a.ctex"]
+source_file="res://Art/Aseprite/TA.png"
+dest_files=["res://.godot/imported/TA.png-dcfba50998dab07642b8e5fbc34045d0.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
-<<<<<<< HEAD
-=======
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
->>>>>>> main
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -34,13 +27,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-<<<<<<< HEAD
-=======
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
 process/channel_remap/alpha=3
->>>>>>> main
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
