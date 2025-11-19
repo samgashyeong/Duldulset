@@ -2,22 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvk40wipu7jgn"
-path="res://.godot/imported/Dongwoo.png-9306c6b7addd53374aff87022b1900e4.ctex"
+uid="uid://bij253o7rea0h"
+path="res://.godot/imported/CofffeeFill.png-db93bd1efc1dde372cb6338b4ad5c822.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Aseprite/Dongwoo.png"
-dest_files=["res://.godot/imported/Dongwoo.png-9306c6b7addd53374aff87022b1900e4.ctex"]
+source_file="res://Art/Aseprite/CofffeeFill.png"
+dest_files=["res://.godot/imported/CofffeeFill.png-db93bd1efc1dde372cb6338b4ad5c822.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
