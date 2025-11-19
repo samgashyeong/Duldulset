@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8s30oi7ylhs0"]
+
+[ext_resource type="Texture2D" uid="uid://c1wj2ckge1rtt" path="res://Art/free-office-pixel-art/stamping-table.png" id="1_s0x03"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2swsc"]
+size = Vector2(46, 26)
+
+[node name="DocumentTable" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_s0x03")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_2swsc")
