@@ -1,6 +1,6 @@
 extends Resource
-
-const CoffeeOrder = preload("res://Script/Dialogue/Coffee/A_common/CoffeeOrder.gd")
+class_name Coffee
+const CoffeeOrder = preload("res://Script/Dialogue/Special/Coffee/A_common/CoffeeOrder.gd")
 
 
 @export var orders : Array[CoffeeOrder]

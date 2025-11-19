@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://db20wj0egmtb8"]
+
+[ext_resource type="Theme" uid="uid://bi54ign8ggomc" path="res://Themes/Classic95/Classic95.tres" id="1_y3t8l"]
+[ext_resource type="PackedScene" uid="uid://b65m2ysybfbe" path="res://Scene/MiniGames/FileGame/NormalFile.tscn" id="2_00ki1"]
+[ext_resource type="Script" uid="uid://bejwj5ygd0th3" path="res://Scene/MiniGames/FileGame/file_sorting.gd" id="2_0loph"]
+[ext_resource type="PackedScene" uid="uid://b6vtks2myf3fg" path="res://Scene/MiniGames/FileGame/TrashCan.tscn" id="3_0loph"]
+[ext_resource type="PackedScene" uid="uid://dlmi8tkxwggp1" path="res://Scene/MiniGames/FileGame/TrashFile.tscn" id="4_aya38"]
+[ext_resource type="Script" uid="uid://bycjriafsnvk2" path="res://Scene/MiniGames/FileGame/file_icon.gd" id="6_aya38"]
+
+[node name="FileSorting" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -2.0
+offset_right = 720.0
+offset_bottom = 478.0
+theme = ExtResource("1_y3t8l")
+script = ExtResource("2_0loph")
+
+[node name="BackGroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.4862745, 0.4862745, 1)
+
+[node name="Files" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="NormalFile" parent="Files" instance=ExtResource("2_00ki1")]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 58.0
+offset_right = 53.0
+offset_bottom = 58.0
+
+[node name="NormalFile2" parent="Files" instance=ExtResource("2_00ki1")]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 182.0
+offset_right = 60.0
+offset_bottom = 182.0
+
+[node name="NormalFile3" parent="Files" instance=ExtResource("2_00ki1")]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 182.0
+offset_right = 166.0
+offset_bottom = 182.0
+
+[node name="TrashCan" parent="Files" instance=ExtResource("3_0loph")]
+layout_mode = 0
+offset_left = 635.0
+offset_top = 39.0
+offset_right = 651.0
+offset_bottom = 55.0
+
+[node name="TrashFile" parent="Files" instance=ExtResource("4_aya38")]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 317.0
+offset_right = 100.0
+offset_bottom = 317.0
+script = ExtResource("6_aya38")
+is_trash = true
+
+[node name="TrashFile2" parent="Files" instance=ExtResource("4_aya38")]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 355.0
+offset_right = 271.0
+offset_bottom = 355.0
+script = ExtResource("6_aya38")
+is_trash = true
