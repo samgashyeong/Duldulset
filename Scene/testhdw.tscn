@@ -31,5 +31,3 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://Art/Aseprite/Dongwoo.aseprite",
 "source_uid": 3125234214115428218
 }
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
