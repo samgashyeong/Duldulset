@@ -107,8 +107,8 @@ speed_scale = 3.0
 
 [node name="FadeOverlay" type="ColorRect" parent="."]
 visible = false
-z_index = 1
-anchors_preset = -1
+z_index = 2
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 300.0
@@ -127,5 +127,6 @@ scale = Vector2(3.5, 3.5)
 
 [node name="Cup4" parent="." instance=ExtResource("4_hiccx")]
 visible = false
+z_index = 1
 position = Vector2(593, 340)
 scale = Vector2(3.5, 3.5)
