@@ -1,17 +1,10 @@
-; Engine configuration file.
-; It's best edited using the editor UI and not directly,
-; since the parameters that go here are not all obvious.
-;
-; Format:
-;   [section] ; section goes between []
-;   param=value ; assign values to parameters
-
 config_version=5
 
 [application]
 
 config/name="Duldulset"
-config/features=PackedStringArray("4.5", "Forward Plus")
+run/main_scene="uid://vymo7le3sf6s"
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -42,6 +35,12 @@ layout/default_style="res://Dialogue/Coffee/Junsang/New_File.tres"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/dialogic/plugin.cfg")
+
+[layer_names]
+
+2d_render/layer_1="coffeethings"
+2d_render/layer_2="cup"
+2d_render/layer_3="desk"
 
 [input]
 
