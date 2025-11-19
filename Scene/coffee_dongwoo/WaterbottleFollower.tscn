@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://lx56nfi72m4s"]
+
+[ext_resource type="Script" uid="uid://cu86l005by5mg" path="res://Script/CoffeeSc_dongwoo/WaterbottleFollower.gd" id="1_kiflp"]
+[ext_resource type="Texture2D" uid="uid://dsu55kvj87db6" path="res://Art/coffeearts_dongwoo/coffeeport.png" id="2_odgan"]
+
+[node name="WaterbottleFollower" type="Area2D"]
+script = ExtResource("1_kiflp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_odgan")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+
+[node name="Spout" type="Marker2D" parent="."]
+position = Vector2(-91, -43)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://csij41wyveg6w"]
+
+[ext_resource type="Texture2D" uid="uid://c3myoqifsdxrg" path="res://Art/coffeearts_dongwoo/prim.png" id="1_85do7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h5q2h"]
+radius = 30.0
+height = 66.0
+
+[node name="Prim" type="RigidBody2D"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.39999, -1.39999)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_h5q2h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.39996, -5.39996)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_85do7")
