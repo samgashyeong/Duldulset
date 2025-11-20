@@ -1,4 +1,4 @@
-# BubbleManager.gd
+#202322158 이준상
 extends Node
 
 @onready var bubbleText = preload("res://Scene/BubbleText/BubbleText.tscn")
@@ -11,7 +11,8 @@ func startDialog(position : Vector2, staff : Type.StaffName) -> Control:
 	var new_textBox = bubbleText.instantiate()
 	get_tree().root.add_child(new_textBox)
 	new_textBox.setDialogueSource(dialogue_resource)
-	new_textBox.global_position = position - Vector2(-90, 160) 
+	# NPC 왼쪽 아래를 기준으로 말풍선 위치 설정
+	new_textBox.global_position = position + Vector2(-20, -80) 
 	
 	return new_textBox
 	
