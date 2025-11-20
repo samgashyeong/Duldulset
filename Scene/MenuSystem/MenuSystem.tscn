@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://b1qujni1rhei"]
+[gd_scene load_steps=2 format=3 uid="uid://b1qujni1rhei"]
 
-[node name="MenuSystem" type="Node"]
+[ext_resource type="Script" uid="uid://c5o8jomm61m5w" path="res://Scene/MenuSystem/MenuSystem.gd" id="1_fgtlj"]
+
+[node name="MenuSystem" type="VBoxContainer"]
+script = ExtResource("1_fgtlj")
