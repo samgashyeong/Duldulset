@@ -28,3 +28,12 @@ func play_appear_animation():
 		modulate.a = 0.0
 		anim_player.stop()
 		anim_player.play("new_animation")
+		
+
+func play_disappear_animation():
+	var anim_player = $AnimationPlayer
+	
+	modulate.a = 1.0
+	anim_player.stop()
+	anim_player.play("fade_out")
+	
