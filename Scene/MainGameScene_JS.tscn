@@ -1,14 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://dllv1auirju8l"]
+[gd_scene load_steps=18 format=3 uid="uid://dllv1auirju8l"]
 
 [ext_resource type="PackedScene" uid="uid://eyo8pltp05s2" path="res://Scene/Map/Map.tscn" id="1_4r26o"]
 [ext_resource type="PackedScene" uid="uid://27onlytfom1e" path="res://Scene/Player.tscn" id="2_bf7hg"]
 [ext_resource type="PackedScene" uid="uid://cd1ivnpxv6vve" path="res://Scene/System/GameSystem.tscn" id="3_iot3m"]
 [ext_resource type="PackedScene" uid="uid://b1qujni1rhei" path="res://Scene/MenuSystem/MenuSystem.tscn" id="4_bf7hg"]
+[ext_resource type="Script" uid="uid://dlviai14vay8p" path="res://Scene/UiManager.gd" id="4_nlk1e"]
 [ext_resource type="Texture2D" uid="uid://57q7bwhwesrj" path="res://Art/Aseprite/HP_Died2.png" id="5_ipvtj"]
 [ext_resource type="Texture2D" uid="uid://cjsuft28t0rt8" path="res://Art/Aseprite/HP1.png" id="6_54jh8"]
 [ext_resource type="FontFile" uid="uid://b5ck22eskijli" path="res://Font/neodgm (1).ttf" id="7_54jh8"]
+[ext_resource type="Texture2D" uid="uid://76881n8w6hjb" path="res://Art/Aseprite/Stamina_Empty.png" id="8_66i0l"]
 [ext_resource type="Texture2D" uid="uid://d2hdkrmtaqxut" path="res://Art/Pixel Art Buttons.png" id="8_l6q8h"]
 [ext_resource type="PackedScene" uid="uid://b2qmpffqrabvr" path="res://Scene/NoteSystem/NoteScene.tscn" id="9_obk2e"]
+[ext_resource type="Texture2D" uid="uid://btdj2ogxguxhw" path="res://Art/Aseprite/Stamina_Full.png" id="9_v1gi4"]
+[ext_resource type="PackedScene" uid="uid://3ks6ev6b6or1" path="res://Scene/ClockSystem/ClockSystem.tscn" id="10_60fvc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_obk2e"]
 atlas = ExtResource("8_l6q8h")
@@ -34,10 +38,7 @@ position = Vector2(0, -1)
 [node name="GameSystem" parent="." instance=ExtResource("3_iot3m")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+script = ExtResource("4_nlk1e")
 
 [node name="MenuSystem" parent="CanvasLayer" instance=ExtResource("4_bf7hg")]
 offset_left = -76.40997
@@ -55,28 +56,36 @@ offset_right = -5.8099976
 offset_bottom = 45.0
 grow_horizontal = 0
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/VBoxContainer"]
+[node name="HP" type="TextureProgressBar" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 value = 100.0
 fill_mode = 1
 texture_under = ExtResource("5_ipvtj")
 texture_progress = ExtResource("6_54jh8")
 
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+[node name="Stamina" type="TextureProgressBar" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+value = 100.0
+fill_mode = 1
+texture_under = ExtResource("8_66i0l")
+texture_progress = ExtResource("9_v1gi4")
+
+[node name="Point" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_54jh8")
 text = "0 Point"
 horizontal_alignment = 2
 
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+[node name="NoteButton" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 texture_normal = SubResource("AtlasTexture_obk2e")
 texture_pressed = SubResource("AtlasTexture_60fvc")
 texture_hover = SubResource("AtlasTexture_nlk1e")
 
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/TextureButton"]
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/NoteButton"]
 layout_mode = 0
 offset_left = 18.0
 offset_top = 6.0
@@ -85,10 +94,13 @@ offset_bottom = 46.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_54jh8")
 theme_override_font_sizes/font_size = 15
-text = "no
+text = "No
 te"
 
 [node name="NoteScene" parent="CanvasLayer" instance=ExtResource("9_obk2e")]
 buttonGroup = SubResource("ButtonGroup_60fvc")
 
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/TextureButton" to="CanvasLayer/NoteScene" method="pop_up"]
+[node name="ClockSystem" parent="CanvasLayer" instance=ExtResource("10_60fvc")]
+mouse_filter = 2
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/NoteButton" to="CanvasLayer/NoteScene" method="pop_up"]

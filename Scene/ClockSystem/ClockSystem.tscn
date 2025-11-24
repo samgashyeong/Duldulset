@@ -1,0 +1,170 @@
+[gd_scene load_steps=10 format=3 uid="uid://3ks6ev6b6or1"]
+
+[ext_resource type="Script" uid="uid://ewfa0o08ram8" path="res://Scene/ClockSystem/texture_rect.gd" id="1_wff62"]
+[ext_resource type="Texture2D" uid="uid://c0ipheb61bblt" path="res://Art/Aseprite/Clock.png" id="2_vxryi"]
+[ext_resource type="FontFile" uid="uid://b5ck22eskijli" path="res://Font/neodgm (1).ttf" id="3_vxryi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d37m"]
+atlas = ExtResource("2_vxryi")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="Animation" id="Animation_5d37m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../TimeoutText:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../TimeoutText:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["10"]
+}
+
+[sub_resource type="Animation" id="Animation_vxryi"]
+resource_name = "change_clock"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(0.23325811, 1),
+"update": 0,
+"values": [Vector2(5, 40), Vector2(-64.695, 40)]
+}
+
+[sub_resource type="Animation" id="Animation_f7ncv"]
+resource_name = "change_clock_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.03333333, 0.93333334),
+"transitions": PackedFloat32Array(0.27739242, 0.23325792),
+"update": 0,
+"values": [Vector2(-67.28, 40), Vector2(5, 40)]
+}
+
+[sub_resource type="Animation" id="Animation_jdo1x"]
+resource_name = "timeWillGone"
+length = 12.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TimeoutText:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.93333334, 1.7666667, 2.7, 3.69, 4.7, 5.75, 6.67, 7.73, 8.69, 9.75, 10.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0", "Time to go home!"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../TimeoutText:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06666666, 0.36666667, 0.6666667, 0.93333334, 1.24, 1.54, 1.8533334, 2.17, 2.47, 2.7833333, 3.13, 3.43, 3.7433333, 4.16, 4.46, 4.773333, 5.13, 5.4300003, 5.7433333, 6.11, 6.4100003, 6.7233334, 7.13, 7.4300003, 7.7433333, 8.1, 8.400001, 8.713334, 9.16, 9.46, 9.773334, 10.15, 10.45, 10.763333, 11.18, 11.4800005),
+"transitions": PackedFloat32Array(0.24148414, 1, 0.25000006, 0.24148414, 1, 0.25000006, 0.24148414, 1, 0.25000006, 0.24148414, 1, 0.25000006, 0.24148414, 1, 0.25000006, 0.24148414, 1, 0.25000006, 0.24148414, 1, 0.25000006, 0.24148414, 1, 0.25000006, 0.24148414, 1, 0.25000006, 0.24148414, 1, 0.25000006, 0.24148414, 1, 0.25000006, 0.24148414, 1, 0.25000006),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0), Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f7ncv"]
+_data = {
+&"RESET": SubResource("Animation_5d37m"),
+&"change_clock": SubResource("Animation_vxryi"),
+&"change_clock_2": SubResource("Animation_f7ncv"),
+&"timeWillGone": SubResource("Animation_jdo1x")
+}
+
+[node name="ClockSystem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 56.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("3_vxryi")
+text = "9:00 AM"
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 45.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+script = ExtResource("1_wff62")
+clock_atlas = SubResource("AtlasTexture_5d37m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer"]
+libraries = {
+&"": SubResource("AnimationLibrary_f7ncv")
+}
+
+[node name="TimeoutText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(28.5, 34.5)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_vxryi")
+theme_override_font_sizes/font_size = 50
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
