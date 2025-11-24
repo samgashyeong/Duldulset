@@ -38,7 +38,12 @@ func check_running():
 
 func get_input():
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	velocity = direction * speed
+	
+	if direction.x != 0 and direction.y !=0:
+		direction.x = 0
+		direction.y = 0
+	
+	velocity = direction * speed 
 
 func _physics_process(delta: float) -> void:
 	check_running()
@@ -47,6 +52,8 @@ func _physics_process(delta: float) -> void:
 		if stamina > 0:
 			speed = run_speed
 			stamina = max(stamina - stamina_unit * delta, 0)
+		else:
+			speed = base_speed
 	else:
 		speed = base_speed
 		stamina = min(stamina + stamina_unit * delta, max_stamina)
