@@ -13,8 +13,8 @@ const SUGAR_FOLLOWER_SCENE = preload("res://Scene/coffee_dongwoo/SugarFollower.t
 
 # 물병
 const WaterbottleClass: Script = preload("res://Script/CoffeeSc_dongwoo/Waterbottle.gd")
-const WATERBOTTLE_FOLLOWER_SCENE = preload("res://Scene/coffee_dongwoo/WaterbottleFollower.tscn") # ⚠️ 경로 확인!
-const BACKTO_SCENE_PATH = "res://Scene/coffee_dongwoo/Backto.tscn" # ⚠️ 경로 확인!
+const WATERBOTTLE_FOLLOWER_SCENE = preload("res://Scene/coffee_dongwoo/WaterbottleFollower.tscn") 
+const BACKTO_SCENE_PATH = "res://Scene/coffee_dongwoo/Backto.tscn" 
 
 # 상태 추적 변수 
 var current_sugar_follower: Node = null
@@ -109,7 +109,7 @@ func _on_fade_animation_finished(_anim_name):
 # 설탕 생성 
 func _on_requested_sugar_spawn():
 	_unlock_waterbottle() 
-	
+	print("현재 설탕 개수: ", GameData.sugar_count)
 	if is_instance_valid(current_sugar_follower) or is_instance_valid(current_water_follower):
 		return 
 	var follower = SUGAR_FOLLOWER_SCENE.instantiate()
@@ -131,6 +131,7 @@ func _on_requested_coffeebean_spawn(button_position: Vector2):
 	# 갯수 조정
 	# var num_to_spawn = randi_range(1, BEAN_COUNT)
 	var num_to_spawn = 10
+	print("현재 커피 개수: ", GameData.coffee_count)
 	
 	for i in range(num_to_spawn):
 		var bean = COFFEEBEAN_SCENE.instantiate()
@@ -140,12 +141,15 @@ func _on_requested_coffeebean_spawn(button_position: Vector2):
 		bean.global_position = Vector2(spawn_x, spawn_y)
 		if bean is RigidBody2D:
 			bean.rotation = randf_range(0, TAU) 
+			#흩날리는 느낌
+			bean.apply_central_impulse(Vector2(randf_range(-100, 100), randf_range(-50, 50)))
 
 # 프림 생성 
 func _on_requested_prim_spawn(button_position: Vector2):
 	_unlock_waterbottle() 
 	
 	var num_to_spawn = randi_range(1, PRIM_COUNT)
+	print("현재 프림 개수: ", GameData.prim_count)
 	
 	for i in range(num_to_spawn):
 		var prim = PRIM_SCENE.instantiate() 

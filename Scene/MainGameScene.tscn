@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ciffji1jteld0"]
+[gd_scene load_steps=5 format=3 uid="uid://ciffji1jteld0"]
 
 [ext_resource type="PackedScene" uid="uid://eyo8pltp05s2" path="res://Scene/Map/Map.tscn" id="1_xbayr"]
 [ext_resource type="PackedScene" uid="uid://27onlytfom1e" path="res://Scene/Player.tscn" id="2_vqyqj"]
 [ext_resource type="PackedScene" uid="uid://cd1ivnpxv6vve" path="res://Scene/System/GameSystem.tscn" id="3_0pb3a"]
+[ext_resource type="Script" uid="uid://dt0trvr0xugoo" path="res://Script/GsmeSystem.gd" id="4_2nj8a"]
 
 [node name="MainGameScene" type="Node2D"]
 
@@ -11,3 +12,4 @@
 [node name="Giiyoung" parent="." instance=ExtResource("2_vqyqj")]
 
 [node name="GameSystem" parent="." instance=ExtResource("3_0pb3a")]
+script = ExtResource("4_2nj8a")

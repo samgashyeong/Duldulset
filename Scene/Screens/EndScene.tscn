@@ -1,0 +1,140 @@
+[gd_scene load_steps=13 format=3 uid="uid://dc2goivkw0wk5"]
+
+[ext_resource type="Texture2D" uid="uid://crl1x7dabpueb" path="res://Art/Forscreens/background_duldulset.jpg" id="1_x8rbn"]
+[ext_resource type="Texture2D" uid="uid://dvk40wipu7jgn" path="res://Art/Aseprite/Dongwoo.png" id="2_rgymo"]
+[ext_resource type="Texture2D" uid="uid://c2tomfxd8tqav" path="res://Art/Aseprite/Junsang.png" id="3_cwhxj"]
+[ext_resource type="Texture2D" uid="uid://cxu4cycnn7gc0" path="res://Art/Aseprite/Minseo.png" id="4_q0cbu"]
+[ext_resource type="Texture2D" uid="uid://cytsldtg16hl8" path="res://Art/Aseprite/SangIn.png" id="5_s3rgy"]
+[ext_resource type="Texture2D" uid="uid://duexhnwsv7gf5" path="res://Art/Forscreens/endlabel3.PNG" id="6_1delf"]
+[ext_resource type="FontFile" uid="uid://b5ck22eskijli" path="res://Font/neodgm (1).ttf" id="7_02oab"]
+[ext_resource type="Texture2D" uid="uid://b77rbhil6lb3p" path="res://Art/Forscreens/Buttonlabel.PNG" id="8_kxfos"]
+[ext_resource type="Script" uid="uid://be5ke2emhujbr" path="res://Script/Screensc/Retrybutton.gd" id="9_dapls"]
+[ext_resource type="Script" uid="uid://dhvk43yssoflb" path="res://Script/Screensc/Exitbutton.gd" id="10_i4j4c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dapls"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i4j4c"]
+
+[node name="Startscene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1796.0
+offset_bottom = 1215.0
+texture = ExtResource("1_x8rbn")
+
+[node name="Charact1" type="Sprite2D" parent="."]
+position = Vector2(498, 202)
+scale = Vector2(10.486, 9)
+texture = ExtResource("2_rgymo")
+hframes = 26
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"layer_section": false,
+"pending_changes": {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "",
+"source_uid": -1
+},
+"slice_section": true
+}
+
+[node name="Charact2" type="Sprite2D" parent="."]
+position = Vector2(763, 219)
+texture = ExtResource("3_cwhxj")
+hframes = 26
+
+[node name="Charact3" type="Sprite2D" parent="."]
+position = Vector2(1031, 201)
+scale = Vector2(11, 9)
+texture = ExtResource("4_q0cbu")
+hframes = 26
+
+[node name="Charact4" type="Sprite2D" parent="."]
+position = Vector2(1290, 204)
+scale = Vector2(11, 9)
+texture = ExtResource("5_s3rgy")
+hframes = 26
+
+[node name="Gamelabel" type="Sprite2D" parent="."]
+position = Vector2(928, 395.00003)
+scale = Vector2(19.378422, 12.716679)
+texture = ExtResource("6_1delf")
+
+[node name="Gamename" type="Label" parent="Gamelabel"]
+modulate = Color(0.072842635, 0.072842635, 0.072842635, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -86.59116
+offset_top = -2.0445619
+offset_right = 66.408844
+offset_bottom = 15.955437
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+theme_override_fonts/font = ExtResource("7_02oab")
+theme_override_font_sizes/font_size = 16
+text = "You Survived!"
+horizontal_alignment = 1
+
+[node name="Startbutton" type="Sprite2D" parent="."]
+position = Vector2(910, 718)
+scale = Vector2(19.325, 7.4050016)
+texture = ExtResource("8_kxfos")
+
+[node name="Button" type="Button" parent="Startbutton"]
+anchors_preset = -1
+anchor_left = -0.193
+anchor_top = 0.73600006
+anchor_right = -0.193
+anchor_bottom = 0.73600006
+offset_left = -8.890599
+offset_top = -28.663334
+offset_right = 27.12492
+offset_bottom = -7.663334
+theme_override_colors/font_color = Color(0.21216318, 0.65129745, 0.78069, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dapls")
+text = "Retry"
+script = ExtResource("9_dapls")
+
+[node name="Exitbutton" type="Sprite2D" parent="."]
+position = Vector2(917.00006, 1024)
+scale = Vector2(19.337496, 7.4050016)
+texture = ExtResource("8_kxfos")
+
+[node name="Button" type="Button" parent="Exitbutton"]
+anchors_preset = -1
+anchor_left = -0.193
+anchor_top = 0.73600006
+anchor_right = -0.193
+anchor_bottom = 0.73600006
+offset_left = -7.5870495
+offset_top = -28.393248
+offset_right = 22.41295
+offset_bottom = -7.3932476
+theme_override_colors/font_color = Color(0.22745098, 0.654902, 0.7764706, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i4j4c")
+text = "Exit
+"
+script = ExtResource("10_i4j4c")
+
+[connection signal="pressed" from="Startbutton/Button" to="Startbutton/Button" method="_on_pressed"]
+[connection signal="pressed" from="Exitbutton/Button" to="Exitbutton/Button" method="_on_pressed"]

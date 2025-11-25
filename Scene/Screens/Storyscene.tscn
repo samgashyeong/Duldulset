@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://kxdq3voiul8q"]
+
+[ext_resource type="Script" uid="uid://cmlaafv5ow8x5" path="res://Script/Screensc/Storysc.gd" id="1_qvpm7"]
+[ext_resource type="Texture2D" uid="uid://bk85fdqb73ja6" path="res://Art/Forscreens/Public Bus.png" id="1_wajwy"]
+[ext_resource type="Script" uid="uid://cb0dcu26w1gcd" path="res://Script/Screensc/Scrollingbackg.gd" id="2_sku3c"]
+[ext_resource type="Texture2D" uid="uid://cuv834phv4oo" path="res://Art/Forscreens/backgrounddforstory.webp" id="3_qvpm7"]
+[ext_resource type="FontFile" uid="uid://b5ck22eskijli" path="res://Font/neodgm (1).ttf" id="5_0cpj8"]
+
+[node name="Storyscene" type="Node2D"]
+script = ExtResource("1_qvpm7")
+
+[node name="Bus" type="TextureRect" parent="."]
+offset_left = 16.0
+offset_top = 751.0
+offset_right = 397.0
+offset_bottom = 1068.0
+texture = ExtResource("1_wajwy")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_sku3c")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1800, 0)
+
+[node name="Background" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_right = 1800.0
+offset_bottom = 1200.0
+texture = ExtResource("3_qvpm7")
+
+[node name="UI_Layer" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" type="ColorRect" parent="UI_Layer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -223.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.29411766, 0.29411766, 0.29411766, 0.5882353)
+
+[node name="StoryText" type="Label" parent="UI_Layer/DialogueBox"]
+layout_mode = 0
+offset_right = 1726.0
+offset_bottom = 231.0
+theme_override_fonts/font = ExtResource("5_0cpj8")
+theme_override_font_sizes/font_size = 28
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Nextbutton" type="Button" parent="UI_Layer/DialogueBox"]
+layout_mode = 0
+offset_left = 1729.0
+offset_top = 2.0
+offset_right = 1799.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("5_0cpj8")
+theme_override_font_sizes/font_size = 40
+text = ">>"
