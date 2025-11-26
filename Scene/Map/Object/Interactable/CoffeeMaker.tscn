@@ -1,15 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://dos2l68aadxwy"]
+[gd_scene load_steps=4 format=3 uid="uid://dos2l68aadxwy"]
 
+[ext_resource type="Script" uid="uid://bo26n1q0tv3m0" path="res://Script/CoffeeMaker.gd" id="1_bxnc3"]
 [ext_resource type="Texture2D" uid="uid://cwbh3h2qc47ug" path="res://Art/free-office-pixel-art/coffee-maker.png" id="1_cpk8n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpk8n"]
 size = Vector2(62, 43)
 
-[node name="Coffee Maker" type="Area2D"]
+[node name="CoffeeMaker" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("1_bxnc3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_cpk8n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2.5)
+scale = Vector2(0.95, 0.95)
 shape = SubResource("RectangleShape2D_cpk8n")
+
+[node name="Usable Area" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Usable Area"]
+position = Vector2(0, -2.5)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_cpk8n")
+
+[connection signal="body_entered" from="Usable Area" to="." method="_on_usable_area_body_entered"]
+[connection signal="body_exited" from="Usable Area" to="." method="_on_usable_area_body_exited"]

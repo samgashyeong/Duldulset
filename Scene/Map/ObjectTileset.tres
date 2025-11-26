@@ -1,9 +1,9 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://c1gtcncmoqlf0"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://c4ywn4k3ihqxu"]
 
-[ext_resource type="Texture2D" uid="uid://1yblo2g37x7e" path="res://Art/Super_Retro_World_Interior_pack_week42/atlas_32x.png" id="1_kclx2"]
+[ext_resource type="Texture2D" uid="uid://1yblo2g37x7e" path="res://Art/Super_Retro_World_Interior_pack_week42/atlas_32x.png" id="1_gx1ua"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_odniq"]
-texture = ExtResource("1_kclx2")
+texture = ExtResource("1_gx1ua")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -130,6 +130,7 @@ texture_region_size = Vector2i(32, 32)
 23:4/0 = 0
 24:4/0 = 0
 25:4/0 = 0
+25:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 26:4/0 = 0
 0:5/0 = 0
 1:5/0 = 0
@@ -245,7 +246,6 @@ texture_region_size = Vector2i(32, 32)
 3:9/0 = 0
 4:9/0 = 0
 5:9/0 = 0
-6:9/next_alternative_id = 3
 6:9/0 = 0
 7:9/0 = 0
 8:9/0 = 0
@@ -275,7 +275,6 @@ texture_region_size = Vector2i(32, 32)
 4:10/0 = 0
 5:10/0 = 0
 6:10/0 = 0
-6:10/0/custom_data_0 = true
 7:10/0 = 0
 8:10/0 = 0
 9:10/0 = 0
@@ -447,6 +446,6 @@ texture_region_size = Vector2i(32, 32)
 
 [resource]
 tile_size = Vector2i(32, 32)
-custom_data_layer_0/name = "walkable"
-custom_data_layer_0/type = 1
+physics_layer_0/collision_layer = 8
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_odniq")

@@ -1,9 +1,9 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://c1gtcncmoqlf0"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://b6w7mpifw3e3k"]
 
-[ext_resource type="Texture2D" uid="uid://1yblo2g37x7e" path="res://Art/Super_Retro_World_Interior_pack_week42/atlas_32x.png" id="1_kclx2"]
+[ext_resource type="Texture2D" uid="uid://1yblo2g37x7e" path="res://Art/Super_Retro_World_Interior_pack_week42/atlas_32x.png" id="1_0unm8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_odniq"]
-texture = ExtResource("1_kclx2")
+texture = ExtResource("1_0unm8")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -245,7 +245,6 @@ texture_region_size = Vector2i(32, 32)
 3:9/0 = 0
 4:9/0 = 0
 5:9/0 = 0
-6:9/next_alternative_id = 3
 6:9/0 = 0
 7:9/0 = 0
 8:9/0 = 0
@@ -275,7 +274,6 @@ texture_region_size = Vector2i(32, 32)
 4:10/0 = 0
 5:10/0 = 0
 6:10/0 = 0
-6:10/0/custom_data_0 = true
 7:10/0 = 0
 8:10/0 = 0
 9:10/0 = 0
@@ -299,8 +297,11 @@ texture_region_size = Vector2i(32, 32)
 27:10/0 = 0
 0:11/0 = 0
 1:11/0 = 0
+1:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(5.976083, 7.995549, 16, 7.9979916, 16, 16, 5.991064, 16)
 2:11/0 = 0
+2:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 8.000214, 16, 8.009651, 16, 16, -16, 16)
 3:11/0 = 0
+3:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 8.007022, -5.9960938, 8.003906, -5.9697037, 16, -16, 16)
 4:11/0 = 0
 5:11/0 = 0
 6:11/0 = 0
@@ -354,10 +355,12 @@ texture_region_size = Vector2i(32, 32)
 26:12/0 = 0
 27:12/0 = 0
 0:13/0 = 0
+0:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(6.180664, -16, 16, -16, 16, 16, 6.0440197, 16)
 1:13/0 = 0
 2:13/0 = 0
 3:13/0 = 0
 4:13/0 = 0
+4:13/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -6.044018, -16, -6.142296, 16, -16, 16)
 5:13/0 = 0
 6:13/0 = 0
 7:13/0 = 0
@@ -386,10 +389,12 @@ texture_region_size = Vector2i(32, 32)
 30:13/0 = 0
 31:13/0 = 0
 0:14/0 = 0
+0:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(6.011503, -16, 16, -16, 16, 3.9836483, 5.98206, 3.995344)
 1:14/0 = 0
 2:14/0 = 0
 3:14/0 = 0
 4:14/0 = 0
+4:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -5.9906826, -16, -5.999298, 4.0102262, -16, 4.0060053)
 5:14/0 = 0
 6:14/0 = 0
 7:14/0 = 0
@@ -419,6 +424,7 @@ texture_region_size = Vector2i(32, 32)
 0:15/0 = 0
 1:15/0 = 0
 2:15/0 = 0
+2:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 4.0219116, -16, 4.0219116)
 3:15/0 = 0
 4:15/0 = 0
 5:15/0 = 0
@@ -447,6 +453,6 @@ texture_region_size = Vector2i(32, 32)
 
 [resource]
 tile_size = Vector2i(32, 32)
-custom_data_layer_0/name = "walkable"
-custom_data_layer_0/type = 1
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_odniq")
