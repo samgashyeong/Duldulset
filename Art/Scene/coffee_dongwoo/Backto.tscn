@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c66nkobknd5t1"]
+
+[ext_resource type="PackedScene" uid="uid://dv0gric11yy58" path="res://Scene/coffee_dongwoo/Cup1.tscn" id="1_pb65v"]
+
+[node name="Backto" type="Node2D"]
+
+[node name="Cup1" parent="." instance=ExtResource("1_pb65v")]
+position = Vector2(108, 45)

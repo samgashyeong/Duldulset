@@ -1,0 +1,171 @@
+[gd_scene load_steps=16 format=3 uid="uid://csytlpttkcbt8"]
+
+[ext_resource type="Texture2D" uid="uid://ylqhxd8jsrqc" path="res://Art/Aseprite/Younghee.png" id="1_x0nye"]
+[ext_resource type="Texture2D" uid="uid://cxu4cycnn7gc0" path="res://Art/Aseprite/Minseo.png" id="2_6ybb5"]
+[ext_resource type="Texture2D" uid="uid://bdriihpl10bhk" path="res://Art/Aseprite/Oksoon.png" id="3_oyr3d"]
+[ext_resource type="Texture2D" uid="uid://cytsldtg16hl8" path="res://Art/Aseprite/SangIn.png" id="4_tslsm"]
+[ext_resource type="Texture2D" uid="uid://bjgw1171arlyl" path="res://Art/Forscreens/woodtexture2.PNG" id="5_pm7u4"]
+[ext_resource type="FontFile" uid="uid://b5ck22eskijli" path="res://Font/neodgm (1).ttf" id="6_484tg"]
+[ext_resource type="Texture2D" uid="uid://ckcy856yhfxba" path="res://Art/Forscreens/nextlabel.PNG" id="7_d5nsq"]
+[ext_resource type="Texture2D" uid="uid://q70xx8urham4" path="res://Art/Forscreens/buttonbackg3.PNG" id="8_cbtj6"]
+[ext_resource type="Script" uid="uid://qtp8ioljlysa" path="res://Script/Screensc/Nextbutton.gd" id="9_tslsm"]
+[ext_resource type="Script" uid="uid://dhvk43yssoflb" path="res://Script/Screensc/Exitbutton.gd" id="10_xwypa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60sqx"]
+atlas = ExtResource("1_x0nye")
+region = Rect2(0, 0, 31, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjm6q"]
+atlas = ExtResource("2_6ybb5")
+region = Rect2(0, 0, 33, 37.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovtfa"]
+atlas = ExtResource("3_oyr3d")
+region = Rect2(0, 0, 31, 33.329964)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi1q4"]
+atlas = ExtResource("4_tslsm")
+region = Rect2(0.21100616, -0.27833414, 32.323254, 32.861977)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nw221"]
+
+[node name="Nextstagescene2" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchor_bottom = 0.20400001
+offset_bottom = -244.80002
+
+[node name="Charaicon1" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 554.0
+offset_top = 16.0
+offset_right = 874.0
+offset_bottom = 373.0
+texture = SubResource("AtlasTexture_60sqx")
+
+[node name="Charaicon2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 81.0
+offset_right = 656.0
+offset_bottom = 424.0
+texture = SubResource("AtlasTexture_jjm6q")
+
+[node name="Charaicon3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1163.0
+offset_top = 84.0
+offset_right = 1483.0
+offset_bottom = 404.0
+texture = SubResource("AtlasTexture_ovtfa")
+
+[node name="Charaicon4" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 981.0
+offset_top = 41.0
+offset_right = 1283.0
+offset_bottom = 350.0
+texture = SubResource("AtlasTexture_hi1q4")
+
+[node name="Textlabel" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 387.0
+offset_right = 1457.0
+offset_bottom = 1069.0
+texture = ExtResource("5_pm7u4")
+
+[node name="Label" type="Label" parent="Textlabel"]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 44.0
+offset_right = 1150.0
+offset_bottom = 397.0
+theme_override_colors/font_color = Color(0.021079812, 0.033333875, 0.033333875, 1)
+theme_override_fonts/font = ExtResource("6_484tg")
+theme_override_font_sizes/font_size = 63
+text = "You finished your work awesome
+ and 
+made your bosses coffee well!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tofixlabel" type="Label" parent="Textlabel"]
+layout_mode = 0
+offset_left = -62.0
+offset_top = 283.0
+offset_right = 1113.0
+offset_bottom = 636.0
+theme_override_colors/font_color = Color(0.33333334, 0.6039216, 0.7411765, 1)
+theme_override_fonts/font = ExtResource("6_484tg")
+theme_override_font_sizes/font_size = 55
+text = "Your Position :
+Contract Worker -> Junior Staff"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Nextlabel" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 202.0
+offset_right = 1569.0
+offset_bottom = 495.0
+texture = ExtResource("7_d5nsq")
+
+[node name="Label" type="Label" parent="Nextlabel"]
+layout_mode = 0
+offset_left = 161.0
+offset_top = -8.0
+offset_right = 1136.0
+offset_bottom = 236.0
+theme_override_colors/font_color = Color(0.09281119, 0.1264135, 0.1253865, 1)
+theme_override_fonts/font = ExtResource("6_484tg")
+theme_override_font_sizes/font_size = 105
+text = "Awesome!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Nextbutton" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 966.0
+offset_right = 914.0
+offset_bottom = 1116.0
+texture = ExtResource("8_cbtj6")
+
+[node name="Button" type="Button" parent="Nextbutton"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 19.0
+offset_right = 461.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0.16996163, 0.16486552, 0.19523877, 1)
+theme_override_fonts/font = ExtResource("6_484tg")
+theme_override_font_sizes/font_size = 84
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nw221")
+text = "Next"
+script = ExtResource("9_tslsm")
+
+[node name="Quitbutton" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 932.0
+offset_top = 966.0
+offset_right = 1462.0
+offset_bottom = 1116.0
+texture = ExtResource("8_cbtj6")
+
+[node name="Button" type="Button" parent="Quitbutton"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 19.0
+offset_right = 461.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0.16996163, 0.16486552, 0.19523877, 1)
+theme_override_fonts/font = ExtResource("6_484tg")
+theme_override_font_sizes/font_size = 84
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nw221")
+text = "Quit"
+script = ExtResource("10_xwypa")
+
+[connection signal="pressed" from="Nextbutton/Button" to="Nextbutton/Button" method="_on_pressed"]
+[connection signal="pressed" from="Quitbutton/Button" to="Quitbutton/Button" method="_on_pressed"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6vtks2myf3fg"]
+
+[ext_resource type="Script" uid="uid://crhxs2jbfpk12" path="res://Scene/MiniGames/FileGame/trash_can.gd" id="1_0uxti"]
+[ext_resource type="Texture2D" uid="uid://cxwp3c6p0q57d" path="res://Art/free-office-pixel-art/Trash.png" id="1_qqmct"]
+
+[node name="TrashCan" type="TextureRect"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_qqmct")
+script = ExtResource("1_0uxti")
