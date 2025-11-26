@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c5cqvpwpxwky7"
+path="res://.godot/imported/Boss.aseprite-53ee1bc3f281520d986a8fe41dd7ad54.res"
+
+[deps]
+
+source_file="res://Art/Aseprite/Boss.aseprite"
+dest_files=["res://.godot/imported/Boss.aseprite-53ee1bc3f281520d986a8fe41dd7ad54.res"]
+
+[params]
+

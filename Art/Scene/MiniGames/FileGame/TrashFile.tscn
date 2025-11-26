@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlmi8tkxwggp1"]
-
-[ext_resource type="Texture2D" uid="uid://e2dc485jip2h" path="res://Art/free-office-pixel-art/boss.png" id="1_eguqj"]
-
-[node name="TrashFile" type="TextureRect"]
-texture = ExtResource("1_eguqj")
