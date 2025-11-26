@@ -1,11 +1,13 @@
-extends Control
+#202322158 이준상
+
+extends MarginContainer
 
 @onready var label = $MarginContainer/Label
 @onready var timer = $Timer
-@onready var angryTimer = $AngryTimer
-@onready var progressbar = $HBoxContainer/ProgressBar
+@onready var angryTimer =$AngryTimer
+#@onready var progressbar = $"../TextureProgressBar"
 
-const MAX_WIDTH = 500 
+const MAX_WIDTH = 200
 
 var text_buffer = "" 
 var letter_index = 0 
@@ -15,10 +17,38 @@ var dialogueResource : Coffee
 
 var currentMethod : Type.StaffMethod
 
-var angryTime = 5.0
+var angryTime = 20.0
+
+var origin_pos : Vector2     
+var is_shaking : bool = false  
+var target_node : Node2D  # 따라다닐 대상
+var offset : Vector2 = Vector2(50, -100)  # 오른쪽 위 고정 offset
+
 func _ready():
 	label.text = ""
 
+func set_target(target: Node2D):
+	target_node = target
+
+func _process(delta):
+	# 타겟을 따라다니기
+	if target_node != null:
+		global_position = target_node.global_position + offset
+	
+	if not angryTimer.is_stopped():
+		var time_left = angryTimer.time_left
+		var ratio = 1.0 - (time_left / angryTime)
+		
+		modulate = Color.WHITE.lerp(Color.RED, ratio)
+		
+		var shake_intensity = ratio * 5.0
+		var offset = Vector2(randf_range(-shake_intensity, shake_intensity), randf_range(-shake_intensity, shake_intensity))
+		
+		label.position = origin_pos + offset
+
+	
+		
+		
 func textToDisPlay(type : Type.StaffMethod, coffee : int = 0, cream : int = 0, sugar : int = 0):
 	var string
 	currentMethod = type
@@ -48,7 +78,7 @@ func textToDisPlay(type : Type.StaffMethod, coffee : int = 0, cream : int = 0, s
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD
 		await get_tree().process_frame 
 		custom_minimum_size.y = size.y
-	
+	label.position = Vector2(40, -20)
 	label.text = "" 
 
 	displayLetter()
@@ -69,6 +99,7 @@ func displayLetter():
 		if(currentMethod == Type.StaffMethod.START0 or 
 		currentMethod == Type.StaffMethod.START1 or 
 		currentMethod == Type.StaffMethod.START2) : 
+			origin_pos = label.position
 			angryTimer.start(angryTime)
 		elif(currentMethod ==Type.StaffMethod.CHECK):
 			print("checking coffee..")
@@ -78,7 +109,25 @@ func displayLetter():
 
 func _on_timer_timeout() -> void:
 	displayLetter()
+	
 
 
 func _on_angry_timer_timeout() -> void:
 	print("timeout")
+	var waitTimer = get_tree().create_timer(0.3)
+	await waitTimer.timeout
+	hide_bubble()
+
+const HIDE_DURATION = 0.3
+
+func hide_bubble():
+	var tween = create_tween()
+	print("hideBubble")
+
+	tween.tween_property(self, "modulate", Color(1, 1, 1, 0), HIDE_DURATION)
+	
+	tween.tween_property(self, "scale", Vector2(0.5, 0.5), HIDE_DURATION)
+	
+	await tween.finished 
+	
+	queue_free()

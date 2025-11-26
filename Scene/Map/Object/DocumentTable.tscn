@@ -6,6 +6,8 @@
 size = Vector2(46, 26)
 
 [node name="DocumentTable" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_s0x03")

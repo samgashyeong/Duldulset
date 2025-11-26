@@ -28,7 +28,7 @@ func _ready() -> void:
 	total_frame.append(animated_sprite.sprite_frames.get_frame_count("up"))
 	total_frame.append(animated_sprite.sprite_frames.get_frame_count("down"))
 	
-	animated_sprite.play("down")
+	animated_sprite.play("sit")
 
 func check_running():
 	if Input.is_action_pressed("run"):
@@ -38,15 +38,25 @@ func check_running():
 
 func get_input():
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	velocity = direction * speed
+	
+	if direction.x != 0 and direction.y !=0:
+		direction.x = 0
+		direction.y = 0
+	
+	velocity = direction * speed 
 
 func _physics_process(delta: float) -> void:
+	if GameData.is_playing_minigame:
+		return
+		
 	check_running()
 	
 	if is_running:
 		if stamina > 0:
 			speed = run_speed
 			stamina = max(stamina - stamina_unit * delta, 0)
+		else:
+			speed = base_speed
 	else:
 		speed = base_speed
 		stamina = min(stamina + stamina_unit * delta, max_stamina)
@@ -59,6 +69,9 @@ func _physics_process(delta: float) -> void:
 		get_tree().paused = true
 
 func _process(delta: float) -> void:
+	if GameData.is_playing_minigame:
+		return
+		
 	if Input.is_action_just_pressed("ui_left"):
 		animated_sprite.frame = (animated_sprite.frame + 1) % total_frame[0]
 	elif Input.is_action_just_pressed("ui_right"):

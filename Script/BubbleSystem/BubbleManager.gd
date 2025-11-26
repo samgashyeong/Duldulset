@@ -1,17 +1,17 @@
-# BubbleManager.gd
+#202322158 이준상
 extends Node
 
 @onready var bubbleText = preload("res://Scene/BubbleText/BubbleText.tscn")
 
 
-func startDialog(position : Vector2, staff : Type.StaffName) -> Control:
+func startDialog(position : Vector2, staff : Type.StaffName, target_npc : Node2D = null) -> Control:
 	
 	var dialogue_resource = staffNameCheck(staff)
 	
 	var new_textBox = bubbleText.instantiate()
 	get_tree().root.add_child(new_textBox)
 	new_textBox.setDialogueSource(dialogue_resource)
-	new_textBox.global_position = position - Vector2(-90, 160) 
+	new_textBox.global_position = position + Vector2(40, -60) 
 	
 	return new_textBox
 	
@@ -41,7 +41,7 @@ func staffNameCheck(staff : Type.StaffName) -> Resource:
 			resource_path = "res://Script/Dialogue/Special/Coffee/Chunja/ChunjaCoffee.tres"
 			
 		_:
-			push_error("Error: 정의되지 않은 StaffName입니다.", Type.StaffName)
+			push_error("Error", Type.StaffName)
 			return null
 			
 	var loaded_resource = load(resource_path)

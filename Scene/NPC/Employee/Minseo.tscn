@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bctrbpmuibnt7"]
+[gd_scene load_steps=28 format=3 uid="uid://bctrbpmuibnt7"]
 
 [ext_resource type="Texture2D" uid="uid://cxu4cycnn7gc0" path="res://Art/Aseprite/Minseo.png" id="1_okouk"]
 
@@ -73,10 +73,6 @@ region = Rect2(544, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0sr5e"]
 atlas = ExtResource("1_okouk")
 region = Rect2(736, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dtojm"]
-atlas = ExtResource("1_okouk")
-region = Rect2(768, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wn81b"]
 atlas = ExtResource("1_okouk")
@@ -173,9 +169,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0sr5e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dtojm")
 }],
 "loop": true,
 "name": &"sit",
@@ -209,11 +202,13 @@ animations = [{
 size = Vector2(20, 32)
 
 [node name="Minseo" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 29
 motion_mode = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_j8lcb")
-animation = &"down"
+animation = &"sit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6l3be")

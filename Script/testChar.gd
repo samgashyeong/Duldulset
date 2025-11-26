@@ -16,7 +16,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("inter_action") and mouseEnter:
 		print("fffasdf")
-		newbox.textToDisPlay(Type.StaffMethod.START2)
+		newbox.textToDisPlay(Type.StaffMethod.START1)
 
 
 func _on_area_2d_mouse_entered() -> void:

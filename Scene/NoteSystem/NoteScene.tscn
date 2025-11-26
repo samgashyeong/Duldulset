@@ -1,0 +1,416 @@
+[gd_scene load_steps=24 format=3 uid="uid://b2qmpffqrabvr"]
+
+[ext_resource type="Script" uid="uid://01inwujd58cm" path="res://Scene/NoteSystem/NoteScene.gd" id="1_kupg5"]
+[ext_resource type="Texture2D" uid="uid://6a4ccm6qbolu" path="res://Art/Aseprite/Note.png" id="1_pdwqx"]
+[ext_resource type="Texture2D" uid="uid://d2hdkrmtaqxut" path="res://Art/Pixel Art Buttons.png" id="2_5cjyp"]
+[ext_resource type="ButtonGroup" uid="uid://cu5gv6nglwwdu" path="res://Scene/NoteSystem/new_button_group.tres" id="2_eci55"]
+[ext_resource type="FontFile" uid="uid://b5ck22eskijli" path="res://Font/neodgm (1).ttf" id="3_5cjyp"]
+[ext_resource type="PackedScene" uid="uid://ce16mf7d5u31j" path="res://Scene/NoteSystem/NoteElement.tscn" id="3_6cytj"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_5cjyp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cytj"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.4)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kupg5"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eci55"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.75, 0.75, 0.75, 0.75)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljue7"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkpei"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_n58ys"]
+VScrollBar/icons/decrement = SubResource("ImageTexture_5cjyp")
+VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_5cjyp")
+VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_5cjyp")
+VScrollBar/icons/increment = SubResource("ImageTexture_5cjyp")
+VScrollBar/icons/increment_highlight = SubResource("ImageTexture_5cjyp")
+VScrollBar/icons/increment_pressed = SubResource("ImageTexture_5cjyp")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_6cytj")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_kupg5")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_eci55")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_ljue7")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_lkpei")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cytj"]
+atlas = ExtResource("2_5cjyp")
+region = Rect2(256.108, 269.645, 63.216, 26.315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdwqx"]
+atlas = ExtResource("2_5cjyp")
+region = Rect2(448.145, 269.448, 63.216, 26.315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cjyp"]
+atlas = ExtResource("2_5cjyp")
+region = Rect2(383.785, 269.448, 63.216, 26.315)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eci55"]
+atlas = ExtResource("2_5cjyp")
+region = Rect2(6, 3, 54, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljue7"]
+atlas = ExtResource("2_5cjyp")
+region = Rect2(198, 3, 54, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkpei"]
+atlas = ExtResource("2_5cjyp")
+region = Rect2(134, 3, 54, 50)
+
+[sub_resource type="Animation" id="Animation_eci55"]
+resource_name = "pop up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(0.25000018, 1),
+"update": 0,
+"values": [Vector2(320, 535.045), Vector2(320, 180)]
+}
+
+[sub_resource type="Animation" id="Animation_ljue7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 180)]
+}
+
+[sub_resource type="Animation" id="Animation_lkpei"]
+resource_name = "pop_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(0.2588164, 0.17075498),
+"update": 0,
+"values": [Vector2(320, 180), Vector2(320, 600)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n58ys"]
+_data = {
+&"RESET": SubResource("Animation_ljue7"),
+&"pop up": SubResource("Animation_eci55"),
+&"pop_down": SubResource("Animation_lkpei")
+}
+
+[node name="NoteScene" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kupg5")
+buttonGroup = ExtResource("2_eci55")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 148.57
+offset_top = -105.97
+offset_right = 211.57004
+offset_bottom = 100.03
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer"]
+position = Vector2(0, 100)
+scale = Vector2(1.8554217, 1.8554217)
+texture = ExtResource("1_pdwqx")
+offset = Vector2(-82.47, 0)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Sprite2D"]
+offset_left = -146.90462
+offset_top = -53.912277
+offset_right = -17.015
+offset_bottom = 51.185135
+theme = SubResource("Theme_n58ys")
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Sprite2D/ScrollContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Sprite2D/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_5cjyp")
+text = "Junsang"
+
+[node name="Label2" type="Label" parent="HBoxContainer/Sprite2D/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(129.18, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.8901961, 0.8627451, 0, 1)
+theme_override_fonts/font = ExtResource("3_5cjyp")
+theme_override_font_sizes/font_size = 8
+text = "I always like to play tricks on people"
+autowrap_mode = 3
+
+[node name="NoteElement" parent="HBoxContainer/Sprite2D/ScrollContainer/VBoxContainer" instance=ExtResource("3_6cytj")]
+visible = false
+layout_mode = 2
+
+[node name="NoteElement2" parent="HBoxContainer/Sprite2D/ScrollContainer/VBoxContainer" instance=ExtResource("3_6cytj")]
+visible = false
+layout_mode = 2
+
+[node name="NoteElement3" parent="HBoxContainer/Sprite2D/ScrollContainer/VBoxContainer" instance=ExtResource("3_6cytj")]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Junsang" type="TextureButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_eci55")
+texture_normal = SubResource("AtlasTexture_6cytj")
+texture_pressed = SubResource("AtlasTexture_pdwqx")
+texture_hover = SubResource("AtlasTexture_5cjyp")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Junsang"]
+layout_mode = 0
+offset_left = 9.75
+offset_top = 5.0
+offset_right = 51.75
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.44705883, 0.8039216, 0.24705882)
+theme_override_fonts/font = ExtResource("3_5cjyp")
+theme_override_font_sizes/font_size = 12
+text = "Junsang"
+horizontal_alignment = 1
+
+[node name="Sangin" type="TextureButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_eci55")
+texture_normal = SubResource("AtlasTexture_6cytj")
+texture_pressed = SubResource("AtlasTexture_pdwqx")
+texture_hover = SubResource("AtlasTexture_5cjyp")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Sangin"]
+layout_mode = 0
+offset_left = 9.75
+offset_top = 5.0
+offset_right = 51.75
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.44705883, 0.8039216, 0.24705882)
+theme_override_fonts/font = ExtResource("3_5cjyp")
+theme_override_font_sizes/font_size = 12
+text = "Sangin"
+horizontal_alignment = 1
+
+[node name="Dongwoo" type="TextureButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_eci55")
+texture_normal = SubResource("AtlasTexture_6cytj")
+texture_pressed = SubResource("AtlasTexture_pdwqx")
+texture_hover = SubResource("AtlasTexture_5cjyp")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Dongwoo"]
+layout_mode = 0
+offset_left = 9.75
+offset_top = 5.0
+offset_right = 51.75
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.44705883, 0.8039216, 0.24705882)
+theme_override_fonts/font = ExtResource("3_5cjyp")
+theme_override_font_sizes/font_size = 12
+text = "Dongwoo"
+horizontal_alignment = 1
+
+[node name="Minseo" type="TextureButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_eci55")
+texture_normal = SubResource("AtlasTexture_6cytj")
+texture_pressed = SubResource("AtlasTexture_pdwqx")
+texture_hover = SubResource("AtlasTexture_5cjyp")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Minseo"]
+layout_mode = 0
+offset_left = 9.75
+offset_top = 5.0
+offset_right = 51.75
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.44705883, 0.8039216, 0.24705882)
+theme_override_fonts/font = ExtResource("3_5cjyp")
+theme_override_font_sizes/font_size = 12
+text = "Minseo"
+horizontal_alignment = 1
+
+[node name="Oksoon" type="TextureButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_eci55")
+texture_normal = SubResource("AtlasTexture_6cytj")
+texture_pressed = SubResource("AtlasTexture_pdwqx")
+texture_hover = SubResource("AtlasTexture_5cjyp")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Oksoon"]
+layout_mode = 0
+offset_left = 9.75
+offset_top = 5.0
+offset_right = 51.75
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.44705883, 0.8039216, 0.24705882)
+theme_override_fonts/font = ExtResource("3_5cjyp")
+theme_override_font_sizes/font_size = 12
+text = "Oksoon"
+horizontal_alignment = 1
+
+[node name="Younghee" type="TextureButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_eci55")
+texture_normal = SubResource("AtlasTexture_6cytj")
+texture_pressed = SubResource("AtlasTexture_pdwqx")
+texture_hover = SubResource("AtlasTexture_5cjyp")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Younghee"]
+layout_mode = 0
+offset_left = 6.75
+offset_top = 4.970001
+offset_right = 54.75
+offset_bottom = 27.970001
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.44705883, 0.8039216, 0.24705882)
+theme_override_fonts/font = ExtResource("3_5cjyp")
+theme_override_font_sizes/font_size = 12
+text = "Younghee"
+horizontal_alignment = 1
+
+[node name="Chunja" type="TextureButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_eci55")
+texture_normal = SubResource("AtlasTexture_6cytj")
+texture_pressed = SubResource("AtlasTexture_pdwqx")
+texture_hover = SubResource("AtlasTexture_5cjyp")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Chunja"]
+layout_mode = 0
+offset_left = 9.75
+offset_top = 5.0
+offset_right = 51.75
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.44705883, 0.8039216, 0.24705882)
+theme_override_fonts/font = ExtResource("3_5cjyp")
+theme_override_font_sizes/font_size = 12
+text = "Chunja"
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 155.0
+offset_top = -169.0
+offset_right = 209.0
+offset_bottom = -119.0
+texture_normal = SubResource("AtlasTexture_eci55")
+texture_pressed = SubResource("AtlasTexture_ljue7")
+texture_hover = SubResource("AtlasTexture_lkpei")
+
+[node name="Label" type="Label" parent="TextureButton"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 6.0
+offset_right = 38.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_5cjyp")
+theme_override_font_sizes/font_size = 40
+text = "X"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_n58ys")
+}
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_exit_button_pressed"]
