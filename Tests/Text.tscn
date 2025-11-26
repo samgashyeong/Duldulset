@@ -21,7 +21,7 @@ script = ExtResource("1_gd2vy")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(192.00002, 263)
-scale = Vector2(0.8949213, 0.8949226)
+scale = Vector2(0.435, 0.435)
 
 [node name="CofffeeFill" type="Sprite2D" parent="Area2D"]
 texture = ExtResource("1_aws6g")

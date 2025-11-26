@@ -36,11 +36,16 @@ directories/dch_directory={
 "Younghee": "res://Dialogue/Char/Younghee.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
-directories/dtl_directory={}
-layout/style_directory={}
+directories/dtl_directory={
+"timeline": "res://Dialogue/Special/Jensen/timeline.dtl"
+}
+layout/style_directory={
+"": "res://Dialogue/Special/Jensen/BubbleStyle.tres",
+"BubbleStyle": "res://Dialogue/Special/Jensen/BubbleStyle.tres"
+}
 glossary/default_case_sensitive=true
-layout/style_list=["res://Dialogue/Coffee/Junsang/New_File.tres"]
-layout/default_style="res://Dialogue/Coffee/Junsang/New_File.tres"
+layout/style_list=["res://Dialogue/Special/Jensen/BubbleStyle.tres"]
+layout/default_style="res://Dialogue/Special/Jensen/BubbleStyle.tres"
 
 [display]
 

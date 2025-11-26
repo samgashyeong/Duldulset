@@ -21,11 +21,20 @@ var angryTime = 20.0
 
 var origin_pos : Vector2     
 var is_shaking : bool = false  
+var target_node : Node2D  # 따라다닐 대상
+var offset : Vector2 = Vector2(50, -100)  # 오른쪽 위 고정 offset
 
 func _ready():
 	label.text = ""
 
+func set_target(target: Node2D):
+	target_node = target
+
 func _process(delta):
+	# 타겟을 따라다니기
+	if target_node != null:
+		global_position = target_node.global_position + offset
+	
 	if not angryTimer.is_stopped():
 		var time_left = angryTimer.time_left
 		var ratio = 1.0 - (time_left / angryTime)
@@ -69,7 +78,7 @@ func textToDisPlay(type : Type.StaffMethod, coffee : int = 0, cream : int = 0, s
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD
 		await get_tree().process_frame 
 		custom_minimum_size.y = size.y
-	
+	label.position = Vector2(40, -20)
 	label.text = "" 
 
 	displayLetter()
