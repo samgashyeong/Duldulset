@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c3itnyow77hq5"]
+[gd_scene load_steps=35 format=3 uid="uid://c3itnyow77hq5"]
 
 [ext_resource type="Texture2D" uid="uid://buqnmhc7iexfy" path="res://Art/Aseprite/Chunja.png" id="1_i3ewb"]
 
@@ -101,10 +101,6 @@ region = Rect2(672, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3ewb"]
 atlas = ExtResource("1_i3ewb")
 region = Rect2(960, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_21sop"]
-atlas = ExtResource("1_i3ewb")
-region = Rect2(992, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_373jy"]
 atlas = ExtResource("1_i3ewb")
@@ -222,9 +218,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i3ewb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_21sop")
 }],
 "loop": true,
 "name": &"sit",
@@ -258,12 +251,13 @@ animations = [{
 size = Vector2(20, 28)
 
 [node name="Chunja" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 29
 motion_mode = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_j8lcb")
-animation = &"left"
-frame_progress = 0.259247
+animation = &"sit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

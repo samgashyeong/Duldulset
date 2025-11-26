@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cq4uv1wkox30a"]
+[gd_scene load_steps=35 format=3 uid="uid://cq4uv1wkox30a"]
 
 [ext_resource type="Texture2D" uid="uid://ylqhxd8jsrqc" path="res://Art/Aseprite/Younghee.png" id="1_hh7ht"]
 
@@ -101,10 +101,6 @@ region = Rect2(672, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_kjh8u"]
 atlas = ExtResource("1_hh7ht")
 region = Rect2(960, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vfv0a"]
-atlas = ExtResource("1_hh7ht")
-region = Rect2(992, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3rrq6"]
 atlas = ExtResource("1_hh7ht")
@@ -222,9 +218,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kjh8u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vfv0a")
 }],
 "loop": true,
 "name": &"sit",
@@ -258,12 +251,13 @@ animations = [{
 size = Vector2(20, 29)
 
 [node name="Younghee" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 29
 motion_mode = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_j8lcb")
-animation = &"down"
-frame_progress = 0.18194118
+animation = &"sit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
