@@ -20,8 +20,8 @@ radius = 105.04285
 script = ExtResource("1_gd2vy")
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(119.40631, 370.4062)
-scale = Vector2(0.8949213, 0.8949226)
+position = Vector2(192.00002, 263)
+scale = Vector2(0.435, 0.435)
 
 [node name="CofffeeFill" type="Sprite2D" parent="Area2D"]
 texture = ExtResource("1_aws6g")
@@ -32,7 +32,7 @@ position = Vector2(-0.45401955, 12.955065)
 shape = SubResource("CircleShape2D_4n1g8")
 
 [node name="Area2D2" type="Area2D" parent="."]
-position = Vector2(123, 94)
+position = Vector2(-195, -7)
 
 [node name="CoffeeEmpty" type="Sprite2D" parent="Area2D2"]
 position = Vector2(640, 212)

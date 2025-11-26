@@ -10,6 +10,7 @@
 [node name="Map" parent="." instance=ExtResource("1_xbayr")]
 
 [node name="Giiyoung" parent="." instance=ExtResource("2_vqyqj")]
+position = Vector2(0, -1)
 
 [node name="GameSystem" parent="." instance=ExtResource("3_0pb3a")]
 script = ExtResource("4_2nj8a")

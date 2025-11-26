@@ -1,0 +1,136 @@
+[gd_scene load_steps=6 format=3 uid="uid://ce16mf7d5u31j"]
+
+[ext_resource type="Script" uid="uid://btnlxq3hkgs7v" path="res://Scene/NoteSystem/note_element.gd" id="1_t7l2k"]
+[ext_resource type="Texture2D" uid="uid://chxjpbdi7dvuv" path="res://Art/Aseprite/coffee.png" id="1_uru5l"]
+[ext_resource type="Texture2D" uid="uid://ba0i1qs2olerf" path="res://Art/Aseprite/creamer.png" id="2_26w13"]
+[ext_resource type="Texture2D" uid="uid://b8syvbgtrsc5d" path="res://Art/Aseprite/Sugar.png" id="3_t7l2k"]
+[ext_resource type="Texture2D" uid="uid://ukefn7itw87w" path="res://Art/Aseprite/line.png" id="4_26w13"]
+
+[node name="NoteElement" type="VBoxContainer"]
+offset_right = 130.0
+offset_bottom = 47.0
+script = ExtResource("1_t7l2k")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(130, 18)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.19528538, 0.40087855, 0.18567902, 0.43137255)
+theme_override_font_sizes/font_size = 11
+text = "I want 442"
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("1_uru5l")
+expand_mode = 1
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "",
+"source_uid": -1
+},
+"slice_section": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.19528538, 0.40087855, 0.18567902, 0.43137255)
+theme_override_font_sizes/font_size = 11
+text = "3"
+autowrap_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("2_26w13")
+expand_mode = 1
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "",
+"source_uid": -1
+},
+"slice_section": false
+}
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.19528538, 0.40087855, 0.18567902, 0.43137255)
+theme_override_font_sizes/font_size = 11
+text = "3"
+autowrap_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("3_t7l2k")
+expand_mode = 1
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "",
+"source_uid": -1
+},
+"slice_section": false
+}
+
+[node name="Label3" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.19528538, 0.40087855, 0.18567902, 0.43137255)
+theme_override_font_sizes/font_size = 11
+text = "3"
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("4_26w13")
