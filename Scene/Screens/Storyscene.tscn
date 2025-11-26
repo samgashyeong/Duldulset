@@ -9,11 +9,9 @@
 [node name="Storyscene" type="Node2D"]
 script = ExtResource("1_qvpm7")
 
-[node name="Bus" type="TextureRect" parent="."]
-offset_left = 16.0
-offset_top = 751.0
-offset_right = 397.0
-offset_bottom = 1068.0
+[node name="Bus" type="Sprite2D" parent="."]
+position = Vector2(240, 922)
+scale = Vector2(3.0754716, 2.1320755)
 texture = ExtResource("1_wajwy")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]

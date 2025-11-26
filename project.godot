@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Duldulset"
-run/main_scene="uid://vymo7le3sf6s"
+run/main_scene="uid://by73x0vr85esu"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -24,12 +24,23 @@ BubbleManager="*res://Script/BubbleSystem/BubbleManager.gd"
 [dialogic]
 
 directories/dch_directory={
+"Char/Chunja": "res://Art/Dialogue/Char/Chunja.dch",
+"Char/Dongwoo": "res://Art/Dialogue/Char/Dongwoo.dch",
+"Char/Jensen": "res://Art/Dialogue/Char/Jensen.dch",
+"Char/Junsang": "res://Art/Dialogue/Char/Junsang.dch",
+"Char/Minseo": "res://Art/Dialogue/Char/Minseo.dch",
+"Char/Oksoon": "res://Art/Dialogue/Char/Oksoon.dch",
+"Char/SangIn": "res://Art/Dialogue/Char/SangIn.dch",
+"Char/TASinyeong": "res://Art/Dialogue/Char/TASinyeong.dch",
+"Char/Teemu": "res://Art/Dialogue/Char/Teemu.dch",
+"Char/Younghee": "res://Art/Dialogue/Char/Younghee.dch",
 "Chunja": "res://Dialogue/Char/Chunja.dch",
 "Dongwoo": "res://Dialogue/Char/Dongwoo.dch",
 "Jensen": "res://Dialogue/Char/Jensen.dch",
 "Junsang": "res://Dialogue/Char/Junsang.dch",
 "Minseo": "res://Dialogue/Char/Minseo.dch",
 "Oksoon": "res://Dialogue/Char/Oksoon.dch",
+"Resources/unit_test_character": "res://Art/Tests/Resources/unit_test_character.dch",
 "SangIn": "res://Dialogue/Char/SangIn.dch",
 "TASinyeong": "res://Dialogue/Char/TASinyeong.dch",
 "Teemu": "res://Dialogue/Char/Teemu.dch",
