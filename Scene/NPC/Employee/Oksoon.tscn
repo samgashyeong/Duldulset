@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ygvot3w1blgr"]
+[gd_scene load_steps=36 format=3 uid="uid://ygvot3w1blgr"]
 
 [ext_resource type="Texture2D" uid="uid://bdriihpl10bhk" path="res://Art/Aseprite/Oksoon.png" id="1_iphwg"]
 
@@ -101,10 +101,6 @@ region = Rect2(640, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_spfdl"]
 atlas = ExtResource("1_iphwg")
 region = Rect2(672, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jkty8"]
-atlas = ExtResource("1_iphwg")
-region = Rect2(992, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ldql3"]
 atlas = ExtResource("1_iphwg")
@@ -228,9 +224,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jkty8")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_ldql3")
 }],
 "loop": true,
@@ -265,12 +258,13 @@ animations = [{
 size = Vector2(20, 29)
 
 [node name="Oksoon" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 29
 motion_mode = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_j8lcb")
-animation = &"up"
-frame_progress = 0.15188228
+animation = &"sit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)

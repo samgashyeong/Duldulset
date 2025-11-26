@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b0bwfer4l5wrc"]
+[gd_scene load_steps=28 format=3 uid="uid://b0bwfer4l5wrc"]
 
 [ext_resource type="Texture2D" uid="uid://dvk40wipu7jgn" path="res://Art/Aseprite/Dongwoo.png" id="1_tq1od"]
 
@@ -69,10 +69,6 @@ region = Rect2(512, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_tmtxh"]
 atlas = ExtResource("1_tq1od")
 region = Rect2(544, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1aqmy"]
-atlas = ExtResource("1_tq1od")
-region = Rect2(736, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fbh1x"]
 atlas = ExtResource("1_tq1od")
@@ -172,9 +168,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1aqmy")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_fbh1x")
 }],
 "loop": true,
@@ -209,11 +202,13 @@ animations = [{
 size = Vector2(20, 31)
 
 [node name="Dongwoo" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 29
 motion_mode = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_j8lcb")
-animation = &"up"
+animation = &"sit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
