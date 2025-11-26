@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn0vxex6xiamo"]
+
+[ext_resource type="Texture2D" uid="uid://si8686mjuub5" path="res://Art/free-office-pixel-art/desk-with-pc.png" id="1_hcwrb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovr25"]
+size = Vector2(38, 35)
+
+[node name="PlayerDesk" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hcwrb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_ovr25")

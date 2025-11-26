@@ -1,0 +1,162 @@
+[gd_scene load_steps=13 format=3 uid="uid://by73x0vr85esu"]
+
+[ext_resource type="Texture2D" uid="uid://crl1x7dabpueb" path="res://Art/Forscreens/background_duldulset.jpg" id="1_c2jll"]
+[ext_resource type="Texture2D" uid="uid://dvk40wipu7jgn" path="res://Art/Aseprite/Dongwoo.png" id="2_hn8t2"]
+[ext_resource type="Texture2D" uid="uid://c2tomfxd8tqav" path="res://Art/Aseprite/Junsang.png" id="3_xdg80"]
+[ext_resource type="Texture2D" uid="uid://cxu4cycnn7gc0" path="res://Art/Aseprite/Minseo.png" id="4_712cs"]
+[ext_resource type="Texture2D" uid="uid://cytsldtg16hl8" path="res://Art/Aseprite/SangIn.png" id="5_e8m57"]
+[ext_resource type="Texture2D" uid="uid://ccvp8hdql24pl" path="res://Art/Forscreens/Label.PNG" id="6_uy84b"]
+[ext_resource type="Texture2D" uid="uid://b77rbhil6lb3p" path="res://Art/Forscreens/Buttonlabel.PNG" id="7_712cs"]
+[ext_resource type="FontFile" uid="uid://b5ck22eskijli" path="res://Font/neodgm (1).ttf" id="7_e8m57"]
+[ext_resource type="Script" uid="uid://dhvk43yssoflb" path="res://Script/Screensc/Exitbutton.gd" id="9_uy84b"]
+[ext_resource type="Script" uid="uid://4fdih20vx0pk" path="res://Script/Screensc/Startbutton.gd" id="9_w5ni1"]
+[ext_resource type="Script" uid="uid://cs51koo6ckjlb" path="res://Script/Screensc/Storybutton.gd" id="10_8jup3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_712cs"]
+
+[node name="Startscene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1796.0
+offset_bottom = 1215.0
+texture = ExtResource("1_c2jll")
+
+[node name="Charact1" type="Sprite2D" parent="."]
+position = Vector2(498, 202)
+scale = Vector2(10.486, 9)
+texture = ExtResource("2_hn8t2")
+hframes = 26
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"layer_section": false,
+"pending_changes": {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "",
+"source_uid": -1
+},
+"slice_section": true
+}
+
+[node name="Charact2" type="Sprite2D" parent="."]
+position = Vector2(763, 219)
+texture = ExtResource("3_xdg80")
+hframes = 26
+
+[node name="Charact3" type="Sprite2D" parent="."]
+position = Vector2(1031, 201)
+scale = Vector2(11, 9)
+texture = ExtResource("4_712cs")
+hframes = 26
+
+[node name="Charact4" type="Sprite2D" parent="."]
+position = Vector2(1290, 204)
+scale = Vector2(11, 9)
+texture = ExtResource("5_e8m57")
+hframes = 26
+
+[node name="Gamelabel" type="Sprite2D" parent="."]
+position = Vector2(920, 344)
+scale = Vector2(16.054878, 8.90625)
+texture = ExtResource("6_uy84b")
+
+[node name="Gamename" type="Label" parent="Gamelabel"]
+modulate = Color(0.072842635, 0.072842635, 0.072842635, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.904
+offset_top = -9.0
+offset_right = -27.904
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+theme_override_fonts/font = ExtResource("7_e8m57")
+theme_override_font_sizes/font_size = 17
+text = "DulDulSet"
+horizontal_alignment = 1
+
+[node name="Startbutton" type="Sprite2D" parent="."]
+position = Vector2(899.9999, 589)
+scale = Vector2(19.325, 7.4050016)
+texture = ExtResource("7_712cs")
+
+[node name="Button" type="Button" parent="Startbutton"]
+anchors_preset = -1
+anchor_left = -0.193
+anchor_top = 0.73600006
+anchor_right = -0.193
+anchor_bottom = 0.73600006
+offset_left = -8.890599
+offset_top = -28.663334
+offset_right = 27.12492
+offset_bottom = -7.663334
+theme_override_colors/font_color = Color(0.21216318, 0.65129745, 0.78069, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxEmpty_712cs")
+text = "Start"
+script = ExtResource("9_w5ni1")
+
+[node name="Storybutton" type="Sprite2D" parent="."]
+position = Vector2(911, 836)
+scale = Vector2(19.325, 7.4050016)
+texture = ExtResource("7_712cs")
+
+[node name="Button" type="Button" parent="Storybutton"]
+anchors_preset = -1
+anchor_left = -0.193
+anchor_top = 0.73600006
+anchor_right = -0.193
+anchor_bottom = 0.73600006
+offset_left = -8.942351
+offset_top = -29.743687
+offset_right = 27.280151
+offset_bottom = -8.743686
+theme_override_colors/font_color = Color(0.36862746, 0.68235296, 0.74509805, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxEmpty_712cs")
+text = "Story
+"
+script = ExtResource("10_8jup3")
+
+[node name="Exitbutton" type="Sprite2D" parent="."]
+position = Vector2(913.00006, 1088)
+scale = Vector2(19.337496, 7.4050016)
+texture = ExtResource("7_712cs")
+
+[node name="Button" type="Button" parent="Exitbutton"]
+anchors_preset = -1
+anchor_left = -0.193
+anchor_top = 0.73600006
+anchor_right = -0.193
+anchor_bottom = 0.73600006
+offset_left = -7.5870495
+offset_top = -28.393248
+offset_right = 22.41295
+offset_bottom = -7.3932476
+theme_override_colors/font_color = Color(0.22745098, 0.654902, 0.7764706, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxEmpty_712cs")
+text = "Exit
+"
+script = ExtResource("9_uy84b")
+
+[connection signal="pressed" from="Startbutton/Button" to="Startbutton/Button" method="_on_pressed"]
+[connection signal="pressed" from="Storybutton/Button" to="Storybutton/Button" method="_on_pressed"]
+[connection signal="pressed" from="Exitbutton/Button" to="Exitbutton/Button" method="_on_pressed"]
