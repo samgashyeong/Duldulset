@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://n32258dx0l8b"]
-
-[ext_resource type="Script" uid="uid://ctdfa312wdjdt" path="res://Script/Dialogue/Special/Coffee/A_common/CoffeeOrder.gd" id="1_d6wwx"]
-
-[resource]
-script = ExtResource("1_d6wwx")
-dialog = "I lost my promotion match yesterday"
-coffee = 3
-sugar = 1
