@@ -34,7 +34,7 @@ position = Vector2(255, 57)
 script = ExtResource("3_0qfpp")
 
 [node name="Dongwoo" parent="NPC/Employee" groups=["employees"] instance=ExtResource("3_mqryj")]
-position = Vector2(255, 314)
+position = Vector2(255, 301)
 script = ExtResource("5_aamma")
 
 [node name="Junsang" parent="NPC/Employee" groups=["employees"] instance=ExtResource("4_lwlm8")]
@@ -46,11 +46,11 @@ position = Vector2(160, 57)
 script = ExtResource("9_0dtn4")
 
 [node name="Oksoon" parent="NPC/Employee" groups=["employees"] instance=ExtResource("6_0qfpp")]
-position = Vector2(255, 157)
+position = Vector2(255, 147)
 script = ExtResource("11_qqdt2")
 
 [node name="Sangin" parent="NPC/Employee" groups=["employees"] instance=ExtResource("7_gsu3l")]
-position = Vector2(159, 159)
+position = Vector2(159, 148)
 script = ExtResource("13_1eqe0")
 
 [node name="Younghee" parent="NPC/Employee" groups=["employees"] instance=ExtResource("8_2smfn")]
