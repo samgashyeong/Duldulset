@@ -3,6 +3,7 @@ extends CharacterBody2D
 class_name Employee
 
 @onready var tilemap = $"../../../Map/WalkableArea"
+@onready var player: Player = $"../../../Giiyoung"
 
 var working_position
 var is_returned = true
@@ -173,7 +174,13 @@ func check_coffee():
 	var coffee_diff = GameData.coffee_count - coffee_order.coffee
 	var cream_diff = GameData.prim_count - coffee_order.cream
 	var sugar_diff = GameData.sugar_count - coffee_order.sugar
+	var total_diff = coffee_diff + cream_diff + sugar_diff
 	
+	if total_diff <= 3:
+		player.update_point(100)
+	else:
+		player.update_health(-1)
+		
 	coffe_order_difference.emit(coffee_diff, cream_diff, sugar_diff)
 	
 	reset_to_normal_states()
