@@ -1,0 +1,49 @@
+join TASinyeong center
+[signal arg="start_intro_timer"]
+TASinyeong: Attendance Check!
+
+
+[signal arg="stop_intro_timer"]
+label junsang
+[signal arg="start_attendance_timer"]
+TASinyeong: Junsang?
+- Here!
+	[signal arg="stop_timer"]
+	TASinyeong: ? You are not Junsang..
+	[signal arg="attendance_finished"]
+
+label dongwoo
+[signal arg="start_attendance_timer"]
+TASinyeong: Dongwoo?
+- Here!
+	[signal arg="stop_timer"]
+	TASinyeong: ? You are not Dongwoo
+	[signal arg="attendance_finished"]
+
+
+label yeonghee
+[signal arg="start_attendance_timer"]
+TASinyeong: Younghee?
+- Here!
+	[signal arg="stop_timer"]
+	TASinyeong: ? You are not Younghee
+	[signal arg="attendance_finished"]
+
+label minseo
+[signal arg="start_attendance_timer"]
+TASinyeong: Minseo?
+- Here!
+	[signal arg="stop_timer"]
+	TASinyeong: ? You are not Minseo
+	[signal arg="attendance_finished"]
+
+label giyeong
+[signal arg="start_attendance_timer"]
+TASinyeong: Giyeong?
+- Here!
+	[signal arg="stop_timer"]
+	TASinyeong: Oh ok!
+	[signal arg="attendance_finished"]
+
+label end
+TASinyeong: ?? Why don't you say "here"?

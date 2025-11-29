@@ -1,0 +1,7 @@
+join Jensen center
+Jensen: Hello!
+Jensen: Come out to eat chicken and drink beer!!
+- Ok!!!!! Let's go!!
+	[signal arg_type="dict" arg="{"Name":"Jenson", "Effect":1}"]
+- No...I have a schedule
+	[signal arg_type="dict" arg="{"Name":"Jonson", "Effect":2}"]
