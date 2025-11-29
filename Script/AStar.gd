@@ -22,10 +22,10 @@ func _ready():
 			if !(tile_data and tile_data.get_custom_data("walkable")):
 				astar.set_point_solid(coords)
 	
-	
 
 func is_point_walkable(position):
 	var map_position = local_to_map(position)
+	print(map_position)
 	if astar.region.has_point(map_position) and !astar.is_point_solid(map_position):
 		return true
 	return false
