@@ -1,6 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://cq4uv1wkox30a"]
+[gd_scene load_steps=37 format=3 uid="uid://cq4uv1wkox30a"]
 
 [ext_resource type="Texture2D" uid="uid://ylqhxd8jsrqc" path="res://Art/Aseprite/Younghee.png" id="1_hh7ht"]
+[ext_resource type="Script" uid="uid://t10msbtalrhw" path="res://Script/NPC/Employee/Younghee.gd" id="1_ro5nl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ro5nl"]
 atlas = ExtResource("1_hh7ht")
@@ -248,17 +249,32 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l3be"]
-size = Vector2(20, 29)
+size = Vector2(20, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyo0m"]
+size = Vector2(23.333332, 28.333332)
 
 [node name="Younghee" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 29
 motion_mode = 1
+script = ExtResource("1_ro5nl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_j8lcb")
 animation = &"sit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1.5)
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_6l3be")
+
+[node name="Interactable Area" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable Area"]
+position = Vector2(0, 2)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_iyo0m")
+
+[connection signal="body_entered" from="Interactable Area" to="." method="_on_interactable_area_body_entered"]
+[connection signal="body_exited" from="Interactable Area" to="." method="_on_interactable_area_body_exited"]

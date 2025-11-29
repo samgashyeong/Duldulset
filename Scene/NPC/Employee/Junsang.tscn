@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://c2nq23cfwg3n7"]
+[gd_scene load_steps=32 format=3 uid="uid://c2nq23cfwg3n7"]
 
 [ext_resource type="Texture2D" uid="uid://cvnpo1d2r1mhx" path="res://Art/Aseprite/Junsang-Sheet.png" id="1_0c1vl"]
+[ext_resource type="Script" uid="uid://csmg65kevcs4s" path="res://Script/NPC/Employee/Junsang.gd" id="1_hxmya"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxmya"]
 atlas = ExtResource("1_0c1vl")
@@ -213,16 +214,30 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l3be"]
-size = Vector2(20, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0c1vl"]
+size = Vector2(23.333332, 30)
 
 [node name="Junsang" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 29
 motion_mode = 1
+script = ExtResource("1_hxmya")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_j8lcb")
 animation = &"down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_6l3be")
+
+[node name="Interactable Area" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable Area"]
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_0c1vl")
+
+[connection signal="body_entered" from="Interactable Area" to="." method="_on_interactable_area_body_entered"]
+[connection signal="body_exited" from="Interactable Area" to="." method="_on_interactable_area_body_exited"]

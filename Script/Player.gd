@@ -5,20 +5,23 @@ class_name Player
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 # if health <= 0 then game over (losing condition)
-var health = 5
+var health: int = 5
+signal health_changed(new_value)
 @export var max_health = 5
 
 @export var base_speed = 80
 @export var run_speed = base_speed * 1.5
-@export var speed = base_speed
+@export var speed: float = base_speed
 
-var stamina = 5
+var stamina: float = 5
+signal stamina_changed(new_value)
 @export var max_stamina = 5
 var stamina_unit = 1 # per second
 
 var is_running = false
 
-var point = 0
+var point: int = 0
+signal point_changed(new_value)
 
 var total_frame = []
 
@@ -55,18 +58,18 @@ func _physics_process(delta: float) -> void:
 		if stamina > 0:
 			speed = run_speed
 			stamina = max(stamina - stamina_unit * delta, 0)
+			stamina_changed.emit(stamina)
 		else:
 			speed = base_speed
 	else:
 		speed = base_speed
 		stamina = min(stamina + stamina_unit * delta, max_stamina)
+		stamina_changed.emit(stamina)
 	
 	get_input()
 	move_and_slide()
 	
-	if(health <= 0):
-		health = 0
-		get_tree().paused = true
+	
 
 func _process(delta: float) -> void:
 	if GameData.is_playing_minigame:
@@ -91,3 +94,14 @@ func _process(delta: float) -> void:
 		animated_sprite.play("down")
 	else:
 		animated_sprite.stop()
+
+func update_health(amount):
+	health += amount
+	if(health <= 0):
+		health = 0
+	health_changed.emit(health)
+	
+func update_point(amount):
+	point += amount
+	point_changed.emit(point)
+	

@@ -3,8 +3,8 @@ extends Employee
 func _ready():
 	super()
 	working_position = global_position
-	staff_name = Type.StaffName.CHUNJA
-	coffee_data = preload("res://Script/Dialogue/Special/Coffee/Chunja/ChunjaCoffee.tres")
+	staff_name = Type.StaffName.JUNSANG
+	coffee_data = preload("res://Script/Dialogue/Special/Coffee/Junsang/JunsangCoffee.tres")
 
 
 func _on_interactable_area_body_entered(body: Node2D) -> void:
