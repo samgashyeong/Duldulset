@@ -4,8 +4,6 @@ var wandering_probability = 0.1
 var coffee_order_probability = 0.0
 var employees
 
-@onready var map_start: Node2D = $"../../Map/WalkableArea/Point A"
-@onready var map_end: Node2D = $"../../Map/WalkableArea/Point B"
 @onready var map: TileMapLayer = $"../../Map/WalkableArea"
 
 func _ready():
