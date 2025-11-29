@@ -14,23 +14,14 @@ func _ready():
 	texture = clock_atlas.duplicate()
 	timeVar.scale = Vector2(0, 0)
 	setClockFrame(0)
-	await get_tree().create_timer(0.5).timeout
-	setClockFrame(0)
-	await get_tree().create_timer(3).timeout
-	setClockFrame(1)
-	await get_tree().create_timer(3).timeout
-	setClockFrame(2)
-	await get_tree().create_timer(3).timeout
-	setClockFrame(3)
-	await get_tree().create_timer(3).timeout
-	setClockFrame(4)
-	await get_tree().create_timer(3).timeout
-	setClockFrame(5)
-	await get_tree().create_timer(3).timeout
-	setClockFrame(9)
 		
 	
 		
+
+func changeClockUi(currentClock: int):
+	var curFrame = currentClock - 9
+	setClockFrame(curFrame)
+	textAnimation(curFrame)
 		
 
 func setClockFrame(frame_index: int):

@@ -108,6 +108,9 @@ buttonGroup = SubResource("ButtonGroup_60fvc")
 [node name="ClockSystem" parent="CanvasLayer" instance=ExtResource("10_60fvc")]
 mouse_filter = 2
 
+[node name="DialogueHandler" type="Node" parent="CanvasLayer/ClockSystem"]
+script = ExtResource("1_vcoyw")
+
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
 custom_minimum_size = Vector2(150, 0)
 anchors_preset = 2

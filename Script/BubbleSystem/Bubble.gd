@@ -69,7 +69,8 @@ func textToDisPlay(type : Type.StaffMethod, coffee : int = 0, cream : int = 0, s
 	letter_index = 0
 	
 	label.text = string 
-	
+	await get_tree().process_frame 
+	await get_tree().process_frame 
 	await get_tree().process_frame 
 	
 	custom_minimum_size.x = min(MAX_WIDTH, size.x)

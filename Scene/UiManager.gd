@@ -5,12 +5,27 @@ extends CanvasLayer
 @onready var health = $VBoxContainer/HP
 @onready var stamia = $VBoxContainer/Stamina
 @onready var point = $VBoxContainer/Point
+@onready var giiyoung = $"../Giiyoung"
 
+var currentTime = 9
 
+var gameTimer
+var clockUi
 func _ready() -> void:
+	clockUi = get_node("ClockSystem/HBoxContainer/TextureRect")
+	gameTimer = get_node("../GameSystem/GameTimer")
+	
+	clockUi.changeClockUi(currentTime)
 	dialogueHandlerNode.effectHealth.connect(calculateHealth)
 	dialogueHandlerNode.effectStamia.connect(calculateStamia)
 	dialogueHandlerNode.effectPoint.connect(calculatePoint)
+	
+	giiyoung.point_changed.connect(aniamtionPoint)
+	giiyoung.health_changed.connect(animationHealth)
+	giiyoung.stamina_changed.connect(animationStamia)
+	
+	gameTimer.timeout.connect(_timeout)
+	gameTimer.one_hour_passed.connect(changeClockUi)
 	
 
 func calculateHealth(_health : int):
@@ -49,4 +64,10 @@ func animationStamia(finalPoint : int):
 	
 func aniamtionPoint(_point : int):
 	point.text = str(_point) + " Point"
+
+func changeClockUi():
+	currentTime += 1
+	clockUi.changeClockUi(currentTime)
 	
+func _timeout():
+	print("타임아웃")
