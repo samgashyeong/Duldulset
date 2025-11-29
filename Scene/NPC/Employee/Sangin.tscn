@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://d3diybypdlxo6"]
+[gd_scene load_steps=30 format=3 uid="uid://d3diybypdlxo6"]
 
+[ext_resource type="Script" uid="uid://bg8ecov24rl85" path="res://Script/NPC/Employee/Sangin.gd" id="1_8c1pt"]
 [ext_resource type="Texture2D" uid="uid://cytsldtg16hl8" path="res://Art/Aseprite/SangIn.png" id="1_nko6x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8c1pt"]
@@ -201,10 +202,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l3be"]
 size = Vector2(20, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nko6x"]
+size = Vector2(23.333332, 29.999998)
+
 [node name="Sangin" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 29
 motion_mode = 1
+script = ExtResource("1_8c1pt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_j8lcb")
@@ -213,3 +218,14 @@ animation = &"sit"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_6l3be")
+
+[node name="Interactable Area" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable Area"]
+position = Vector2(0, 1)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_nko6x")
+
+[connection signal="body_entered" from="Interactable Area" to="." method="_on_interactable_area_body_entered"]
+[connection signal="body_exited" from="Interactable Area" to="." method="_on_interactable_area_body_exited"]

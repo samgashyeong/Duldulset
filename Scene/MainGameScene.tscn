@@ -1,10 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://ciffji1jteld0"]
+[gd_scene load_steps=20 format=3 uid="uid://ciffji1jteld0"]
 
 [ext_resource type="PackedScene" uid="uid://eyo8pltp05s2" path="res://Scene/Map/Map.tscn" id="1_xbayr"]
 [ext_resource type="PackedScene" uid="uid://c3itnyow77hq5" path="res://Scene/NPC/Employee/Chunja.tscn" id="2_rw1fg"]
 [ext_resource type="PackedScene" uid="uid://27onlytfom1e" path="res://Scene/Player.tscn" id="2_vqyqj"]
 [ext_resource type="PackedScene" uid="uid://cd1ivnpxv6vve" path="res://Scene/System/GameSystem.tscn" id="3_0pb3a"]
-[ext_resource type="Script" uid="uid://0ydicl7fxjx" path="res://Script/NPC/Employee/Chunja.gd" id="3_0qfpp"]
 [ext_resource type="PackedScene" uid="uid://b0bwfer4l5wrc" path="res://Scene/NPC/Employee/Dongwoo.tscn" id="3_mqryj"]
 [ext_resource type="Script" uid="uid://dt0trvr0xugoo" path="res://Script/GsmeSystem.gd" id="4_2nj8a"]
 [ext_resource type="PackedScene" uid="uid://c2nq23cfwg3n7" path="res://Scene/NPC/Employee/Junsang.tscn" id="4_lwlm8"]
@@ -31,7 +30,6 @@
 
 [node name="Chunja" parent="NPC/Employee" groups=["employees"] instance=ExtResource("2_rw1fg")]
 position = Vector2(255, 57)
-script = ExtResource("3_0qfpp")
 
 [node name="Dongwoo" parent="NPC/Employee" groups=["employees"] instance=ExtResource("3_mqryj")]
 position = Vector2(255, 301)

@@ -10,6 +10,10 @@ var current_path: Array[Vector2]
 var moving_direction: Vector2
 
 var state
+var staff_name: Type.StaffName
+var text_box = null
+var order_index
+var can_interact = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -136,7 +140,22 @@ func wander(target_position):
 func order_coffee():
 	print("coffee order")
 	state = States.WAITING
-	
+	text_box = BubbleManager.startDialog(global_position, staff_name)
+	text_box.textToDisPlay(Type.StaffMethod.ORDER)
+
+func _input(event):
+	if event.is_action_pressed("interact") and can_interact and state == States.WAITING and !GameData.is_playing_minigame:
+		print("talking")
+		if text_box != null:
+			order_index = randi_range(0,3)
+			match order_index:
+				0:
+					text_box.textToDisPlay(Type.StaffMethod.START0)
+				1:
+					text_box.textToDisPlay(Type.StaffMethod.START1)
+				2:
+					text_box.textToDisPlay(Type.StaffMethod.START2)
+					
 enum States{
 	SITTING,
 	WANDERING,

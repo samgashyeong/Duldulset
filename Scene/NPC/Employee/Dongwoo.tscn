@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://b0bwfer4l5wrc"]
+[gd_scene load_steps=30 format=3 uid="uid://b0bwfer4l5wrc"]
 
+[ext_resource type="Script" uid="uid://dtjkcyuy46slm" path="res://Script/NPC/Employee/Dongwoo.gd" id="1_sjrgk"]
 [ext_resource type="Texture2D" uid="uid://dvk40wipu7jgn" path="res://Art/Aseprite/Dongwoo.png" id="1_tq1od"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sjrgk"]
@@ -201,10 +202,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l3be"]
 size = Vector2(20, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tq1od"]
+size = Vector2(23.333332, 28.333332)
+
 [node name="Dongwoo" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 29
 motion_mode = 1
+script = ExtResource("1_sjrgk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_j8lcb")
@@ -213,3 +218,14 @@ animation = &"sit"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_6l3be")
+
+[node name="Interactable Area" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable Area"]
+position = Vector2(0, 2)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_tq1od")
+
+[connection signal="body_entered" from="Interactable Area" to="." method="_on_interactable_area_body_entered"]
+[connection signal="body_exited" from="Interactable Area" to="." method="_on_interactable_area_body_exited"]

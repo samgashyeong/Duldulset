@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://bctrbpmuibnt7"]
+[gd_scene load_steps=30 format=3 uid="uid://bctrbpmuibnt7"]
 
+[ext_resource type="Script" uid="uid://bk5vyxlox832a" path="res://Script/NPC/Employee/Minseo.gd" id="1_8hosf"]
 [ext_resource type="Texture2D" uid="uid://cxu4cycnn7gc0" path="res://Art/Aseprite/Minseo.png" id="1_okouk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8hosf"]
@@ -200,10 +201,14 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l3be"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okouk"]
+size = Vector2(23.333332, 30)
+
 [node name="Minseo" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 29
 motion_mode = 1
+script = ExtResource("1_8hosf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_j8lcb")
@@ -212,3 +217,13 @@ animation = &"sit"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_6l3be")
+
+[node name="Interactable Area" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable Area"]
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_okouk")
+
+[connection signal="body_entered" from="Interactable Area" to="." method="_on_interactable_area_body_entered"]
+[connection signal="body_exited" from="Interactable Area" to="." method="_on_interactable_area_body_exited"]
