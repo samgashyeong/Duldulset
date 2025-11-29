@@ -9,11 +9,16 @@ var is_returned = true
 var current_path: Array[Vector2]
 var moving_direction: Vector2
 
-var state
+var state: States
+var coffee_state: CoffeeStates
 var staff_name: Type.StaffName
 var text_box = null
 var order_index
 var can_interact = false
+
+var coffee_data: Coffee
+
+signal coffe_order_difference(coffee_diff: int, cream_diff: int, sugar_diff: int)
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -140,13 +145,14 @@ func wander(target_position):
 func order_coffee():
 	print("coffee order")
 	state = States.WAITING
+	coffee_state = CoffeeStates.CALLING
 	text_box = BubbleManager.startDialog(global_position, staff_name)
 	text_box.textToDisPlay(Type.StaffMethod.ORDER)
 
 func _input(event):
 	if event.is_action_pressed("interact") and can_interact and state == States.WAITING and !GameData.is_playing_minigame:
 		print("talking")
-		if text_box != null:
+		if coffee_state == CoffeeStates.CALLING:
 			order_index = randi_range(0,3)
 			match order_index:
 				0:
@@ -155,9 +161,41 @@ func _input(event):
 					text_box.textToDisPlay(Type.StaffMethod.START1)
 				2:
 					text_box.textToDisPlay(Type.StaffMethod.START2)
-					
+			coffee_state = CoffeeStates.ORDERING
+		elif coffee_state == CoffeeStates.ORDERING:
+			text_box.textToDisPlay(Type.StaffMethod.CHECK)
+			coffee_state = CoffeeStates.CHECKING
+			check_coffee()
+
+func check_coffee():
+	var coffee_order = coffee_data.orders[order_index]
+	
+	var coffee_diff = GameData.coffee_count - coffee_order.coffee
+	var cream_diff = GameData.prim_count - coffee_order.cream
+	var sugar_diff = GameData.sugar_count - coffee_order.sugar
+	
+	coffe_order_difference.emit(coffee_diff, cream_diff, sugar_diff)
+	
+	reset_to_normal_states()
+
+func reset_to_normal_states():
+	GameData.is_coffee_ready = false
+	
+	GameData.coffee_count = 0
+	GameData.prim_count = 0
+	GameData.sugar_count = 0
+	
+	coffee_state = CoffeeStates.CALLING
+	state = States.SITTING
+	
 enum States{
 	SITTING,
 	WANDERING,
 	WAITING
+}
+
+enum CoffeeStates{
+	CALLING,
+	ORDERING,
+	CHECKING
 }

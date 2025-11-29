@@ -1,7 +1,7 @@
 extends Node
 
-var wandering_probability = 0.1
-var coffee_order_probability = 0.3
+var wandering_probability = 0.05
+var coffee_order_probability = 0.1
 var employees
 
 @onready var map: TileMapLayer = $"../../Map/WalkableArea"

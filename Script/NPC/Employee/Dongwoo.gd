@@ -4,6 +4,7 @@ func _ready():
 	super()
 	working_position = global_position
 	staff_name = Type.StaffName.DONGWOO
+	coffee_data = preload("res://Script/Dialogue/Special/Coffee/Dongwoo/DongwooCoffee.tres")
 
 
 func _on_interactable_area_body_entered(body: Node2D) -> void:

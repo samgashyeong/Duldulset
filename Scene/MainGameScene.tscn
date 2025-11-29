@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ciffji1jteld0"]
+[gd_scene load_steps=14 format=3 uid="uid://ciffji1jteld0"]
 
 [ext_resource type="PackedScene" uid="uid://eyo8pltp05s2" path="res://Scene/Map/Map.tscn" id="1_xbayr"]
 [ext_resource type="PackedScene" uid="uid://c3itnyow77hq5" path="res://Scene/NPC/Employee/Chunja.tscn" id="2_rw1fg"]
@@ -7,18 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://b0bwfer4l5wrc" path="res://Scene/NPC/Employee/Dongwoo.tscn" id="3_mqryj"]
 [ext_resource type="Script" uid="uid://dt0trvr0xugoo" path="res://Script/GsmeSystem.gd" id="4_2nj8a"]
 [ext_resource type="PackedScene" uid="uid://c2nq23cfwg3n7" path="res://Scene/NPC/Employee/Junsang.tscn" id="4_lwlm8"]
-[ext_resource type="Script" uid="uid://dtjkcyuy46slm" path="res://Script/NPC/Employee/Dongwoo.gd" id="5_aamma"]
 [ext_resource type="PackedScene" uid="uid://bctrbpmuibnt7" path="res://Scene/NPC/Employee/Minseo.tscn" id="5_chle1"]
 [ext_resource type="PackedScene" uid="uid://ygvot3w1blgr" path="res://Scene/NPC/Employee/Oksoon.tscn" id="6_0qfpp"]
-[ext_resource type="Script" uid="uid://csmg65kevcs4s" path="res://Script/NPC/Employee/Junsang.gd" id="7_2p2nw"]
 [ext_resource type="PackedScene" uid="uid://d3diybypdlxo6" path="res://Scene/NPC/Employee/Sangin.tscn" id="7_gsu3l"]
 [ext_resource type="PackedScene" uid="uid://cq4uv1wkox30a" path="res://Scene/NPC/Employee/Younghee.tscn" id="8_2smfn"]
-[ext_resource type="Script" uid="uid://bk5vyxlox832a" path="res://Script/NPC/Employee/Minseo.gd" id="9_0dtn4"]
 [ext_resource type="Script" uid="uid://bx0hga6qj8pmo" path="res://Script/MinigameScreen.gd" id="11_mqryj"]
-[ext_resource type="Script" uid="uid://c4tc4ci3wbug7" path="res://Script/NPC/Employee/Oksoon.gd" id="11_qqdt2"]
 [ext_resource type="PackedScene" uid="uid://vymo7le3sf6s" path="res://Scene/coffee_dongwoo/CoffeeMainScene.tscn" id="12_chle1"]
-[ext_resource type="Script" uid="uid://bg8ecov24rl85" path="res://Script/NPC/Employee/Sangin.gd" id="13_1eqe0"]
-[ext_resource type="Script" uid="uid://t10msbtalrhw" path="res://Script/NPC/Employee/Younghee.gd" id="15_bojvj"]
 
 [node name="MainGameScene" type="Node2D"]
 
@@ -33,27 +27,21 @@ position = Vector2(255, 57)
 
 [node name="Dongwoo" parent="NPC/Employee" groups=["employees"] instance=ExtResource("3_mqryj")]
 position = Vector2(255, 301)
-script = ExtResource("5_aamma")
 
 [node name="Junsang" parent="NPC/Employee" groups=["employees"] instance=ExtResource("4_lwlm8")]
 position = Vector2(255, 212)
-script = ExtResource("7_2p2nw")
 
 [node name="Minseo" parent="NPC/Employee" groups=["employees"] instance=ExtResource("5_chle1")]
 position = Vector2(160, 57)
-script = ExtResource("9_0dtn4")
 
 [node name="Oksoon" parent="NPC/Employee" groups=["employees"] instance=ExtResource("6_0qfpp")]
 position = Vector2(255, 147)
-script = ExtResource("11_qqdt2")
 
 [node name="Sangin" parent="NPC/Employee" groups=["employees"] instance=ExtResource("7_gsu3l")]
 position = Vector2(159, 148)
-script = ExtResource("13_1eqe0")
 
 [node name="Younghee" parent="NPC/Employee" groups=["employees"] instance=ExtResource("8_2smfn")]
 position = Vector2(159, 213)
-script = ExtResource("15_bojvj")
 
 [node name="Giiyoung" parent="." instance=ExtResource("2_vqyqj")]
 z_index = 2
