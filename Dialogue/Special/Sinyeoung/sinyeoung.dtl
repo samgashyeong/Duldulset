@@ -10,6 +10,7 @@ TASinyeong: Junsang?
 - Here!
 	[signal arg="stop_timer"]
 	TASinyeong: ? You are not Junsang..
+	[signal arg_type="dict" arg="{"Name":"Sinyoung", "Effect":1}"]
 	[signal arg="attendance_finished"]
 
 label dongwoo
@@ -18,6 +19,7 @@ TASinyeong: Dongwoo?
 - Here!
 	[signal arg="stop_timer"]
 	TASinyeong: ? You are not Dongwoo
+	[signal arg_type="dict" arg="{"Name":"Sinyoung", "Effect":1}"]
 	[signal arg="attendance_finished"]
 
 
@@ -27,6 +29,7 @@ TASinyeong: Younghee?
 - Here!
 	[signal arg="stop_timer"]
 	TASinyeong: ? You are not Younghee
+	[signal arg_type="dict" arg="{"Name":"Sinyoung", "Effect":1}"]
 	[signal arg="attendance_finished"]
 
 label minseo
@@ -35,15 +38,18 @@ TASinyeong: Minseo?
 - Here!
 	[signal arg="stop_timer"]
 	TASinyeong: ? You are not Minseo
+	[signal arg_type="dict" arg="{"Name":"Sinyoung", "Effect":1}"]
 	[signal arg="attendance_finished"]
-
+	
 label giyeong
 [signal arg="start_attendance_timer"]
 TASinyeong: Giyeong?
 - Here!
 	[signal arg="stop_timer"]
 	TASinyeong: Oh ok!
+	[signal arg_type="dict" arg="{"Name":"Sinyoung", "Effect":2}"]
 	[signal arg="attendance_finished"]
 
 label end
 TASinyeong: ?? Why don't you say "here"?
+[signal arg_type="dict" arg="{"Name":"Sinyoung", "Effect":1}"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dllv1auirju8l"]
+[gd_scene load_steps=23 format=3 uid="uid://dllv1auirju8l"]
 
 [ext_resource type="PackedScene" uid="uid://eyo8pltp05s2" path="res://Scene/Map/Map.tscn" id="1_4r26o"]
 [ext_resource type="Script" uid="uid://catjbfagu7yiy" path="res://Script/DialogicSignalHandler.gd" id="1_vcoyw"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://b2qmpffqrabvr" path="res://Scene/NoteSystem/NoteScene.tscn" id="9_obk2e"]
 [ext_resource type="Texture2D" uid="uid://btdj2ogxguxhw" path="res://Art/Aseprite/Stamina_Full.png" id="9_v1gi4"]
 [ext_resource type="PackedScene" uid="uid://3ks6ev6b6or1" path="res://Scene/ClockSystem/ClockSystem.tscn" id="10_60fvc"]
+[ext_resource type="FontFile" uid="uid://dx4xlhsj467p8" path="res://Font/NotoSans_ExtraCondensed-Bold.ttf" id="14_0ddhj"]
+[ext_resource type="Script" uid="uid://csbdb62babya3" path="res://Scene/rich_text_label.gd" id="14_qjrkr"]
 [ext_resource type="PackedScene" uid="uid://dd5ca7un0fyio" path="res://Scene/NPC/Employee/TestNode.tscn" id="15_nbx4p"]
 [ext_resource type="Script" uid="uid://xd83l8hu281u" path="res://Tests/DialogueTest_Teemu.gd" id="16_nbx4p"]
 
@@ -106,8 +108,23 @@ buttonGroup = SubResource("ButtonGroup_60fvc")
 [node name="ClockSystem" parent="CanvasLayer" instance=ExtResource("10_60fvc")]
 mouse_filter = 2
 
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+custom_minimum_size = Vector2(150, 0)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -76.0
+offset_right = 150.0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8666667)
+theme_override_fonts/normal_font = ExtResource("14_0ddhj")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+scroll_following = true
+script = ExtResource("14_qjrkr")
+
 [node name="Giiyoung" parent="." instance=ExtResource("2_bf7hg")]
-position = Vector2(0, -1)
+position = Vector2(61, 106)
 
 [node name="Younghee" parent="." instance=ExtResource("15_nbx4p")]
 position = Vector2(103, 139)

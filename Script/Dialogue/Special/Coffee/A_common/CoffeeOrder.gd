@@ -8,4 +8,6 @@ class_name CoffeeOrder
 @export var cream : int
 @export var sugar : int
 @export var isAction : bool = true
-@export var isClear : bool = true
+@export var isCoffeeClear : bool = true
+@export var isCreamClear : bool = true
+@export var isSugarClear : bool = true

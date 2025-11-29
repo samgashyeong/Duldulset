@@ -1,3 +1,5 @@
+#202322158 이준상
+
 extends Node
 
 var attendance_timer: Timer
@@ -26,41 +28,43 @@ func _ready():
 	intro_timer.timeout.connect(_on_intro_timer_timeout)
 	add_child(intro_timer)
 
-signal effectHealth()
-signal effectStamia()
-signal effectPoint()
+signal effectHealth(health : int)
+signal effectStamia(stamia : int)
+signal effectPoint(point : int)
 
 enum SpeicalName{
 	Teemu,
-	Sinyeoung,
+	Sinyoung,
 	Jenson
 }
 
 func _on_dialogic_signal(argument: Variant):
 	print("Received signal with argument: ", argument)
 	
-	#attendance check signal manager
-	if argument == "start_intro_timer":
-		start_intro_timer()
-	elif argument == "start_attendance_timer":
-		start_attendance_timer()
-	elif argument == "attendance_finished":
-		attendance_finished()
-	elif argument == "stop_intro_timer":
-		stop_intro_timer()
-	elif argument == "stop_timer":
-		stop_timer()
-	
 	if argument is Dictionary:
 		var name = argument.get("Name")
 		print(name)
+		var effect = argument.get("Effect")
 		match name:
 			"Teemu":
-				teemuEvent()
-			"Sinyeoung":
-				sinyeoungEvent()
+				teemuEvent(effect)
+			"Sinyoung":
+				sinyoungEvent(effect)
 			"Jenson":
-				JensonEvent()
+				JensonEvent(effect)
+	elif argument is String:
+		#attendance check signal manager
+		if argument == "start_intro_timer":
+			start_intro_timer()
+		elif argument == "start_attendance_timer":
+			start_attendance_timer()
+		elif argument == "attendance_finished":
+			attendance_finished()
+		elif argument == "stop_intro_timer":
+			stop_intro_timer()
+		elif argument == "stop_timer":
+			stop_timer()
+
 
 #attendence
 func start_attendance_timer():
@@ -105,18 +109,43 @@ func _on_intro_timer_timeout():
 func stop_intro_timer():
 	is_waiting_for_choice = false
 	intro_timer.stop()
+
 func stop_timer():
 	is_waiting_for_choice = false
 	attendance_timer.stop()
 				
-func teemuEvent():
-	print("Ok")
-	print("Event")
+func teemuEvent(effect : int):
+	match effect:
+		1:
+			effectElement(5, 5, 5)
+		2:
+			effectElement(1, 1, 1)
+		3:
+			effectElement(1, 1, 1)
+		4:
+			effectElement(20, 20, 20)
 
-func sinyeoungEvent():
-	print("Ok")
-	print("Event")
+func sinyoungEvent(effect : int):
+	match effect:
+		1:
+			effectElement(-20, -20, 0)
+		2:
+			effectElement(20, 20, 100)
+			
 
-func JensonEvent():
-	print("Ok")
-	print("Event")
+func JensonEvent(effect : int):
+	match effect:
+		1:
+			effectElement(-10, -10, 0)
+		2:
+			effectElement(-50, -50, 0)
+			
+func effectElement(
+	health : int,
+	stamia : int,
+	point : int
+):
+	print(str(health) + str(stamia) + str(point))
+	effectHealth.emit(health)
+	effectStamia.emit(stamia)
+	effectPoint.emit(point)
