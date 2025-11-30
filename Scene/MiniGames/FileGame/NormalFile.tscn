@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b65m2ysybfbe"]
 
-[ext_resource type="Script" uid="uid://bycjriafsnvk2" path="res://Scene/MiniGames/FileGame/file_icon.gd" id="1_082f8"]
+[ext_resource type="Script" uid="uid://bycjriafsnvk2" path="res://Scene/MiniGames/FileGame/file.gd" id="1_082f8"]
 [ext_resource type="Texture2D" uid="uid://8d2rx2rrnxk5" path="res://Art/free-office-pixel-art/sink.png" id="1_pxf10"]
 
 [node name="NormalFile" type="TextureRect"]

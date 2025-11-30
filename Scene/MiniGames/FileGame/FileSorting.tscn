@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bejwj5ygd0th3" path="res://Scene/MiniGames/FileGame/file_sorting.gd" id="2_0loph"]
 [ext_resource type="PackedScene" uid="uid://b6vtks2myf3fg" path="res://Scene/MiniGames/FileGame/TrashCan.tscn" id="3_0loph"]
 [ext_resource type="PackedScene" uid="uid://dlmi8tkxwggp1" path="res://Scene/MiniGames/FileGame/TrashFile.tscn" id="4_aya38"]
-[ext_resource type="Script" uid="uid://bycjriafsnvk2" path="res://Scene/MiniGames/FileGame/file_icon.gd" id="6_aya38"]
+[ext_resource type="Script" uid="uid://bycjriafsnvk2" path="res://Scene/MiniGames/FileGame/file.gd" id="6_aya38"]
 
 [node name="FileSorting" type="Control"]
 layout_mode = 3
@@ -45,6 +45,7 @@ offset_right = 64.0
 offset_bottom = 192.0
 
 [node name="TrashCan" parent="Files" instance=ExtResource("3_0loph")]
+texture_filter = 1
 layout_mode = 0
 offset_left = 336.0
 offset_right = 352.0
