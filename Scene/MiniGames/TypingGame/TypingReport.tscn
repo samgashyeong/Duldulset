@@ -21,6 +21,7 @@ grow_vertical = 2
 color = Color(0, 0.4862745, 0.4862745, 1)
 
 [node name="LineEdit" type="LineEdit" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -31,19 +32,24 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Write your report !  ! !"
 alignment = 1
+keep_editing_on_text_submit = true
 caret_blink = true
 
 [node name="WordPanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 100.0
+offset_left = 2.0
+offset_top = -4.0
+offset_right = 2.0
+offset_bottom = 96.0
 grow_horizontal = 2
 
 [node name="GridContainer" type="GridContainer" parent="WordPanel"]
+texture_filter = 1
 layout_mode = 0
-offset_right = 478.0
-offset_bottom = 127.0
+offset_right = 399.0
+offset_bottom = 100.0
 columns = 6
 
 [node name="Word1" type="Label" parent="WordPanel/GridContainer"]

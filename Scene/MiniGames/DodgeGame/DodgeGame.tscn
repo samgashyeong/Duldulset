@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnj0wfhs5cyv4"]
+
+[ext_resource type="Script" uid="uid://cl8bjxp0tk6o6" path="res://Scene/MiniGames/DodgeGame/dodge_game.gd" id="1_dpa4a"]
+[ext_resource type="PackedScene" uid="uid://27onlytfom1e" path="res://Scene/Player.tscn" id="2_3mn8m"]
+[ext_resource type="PackedScene" uid="uid://eyo8pltp05s2" path="res://Scene/Map/Map.tscn" id="2_niv4k"]
+[ext_resource type="Texture2D" uid="uid://bctw1g07kwsn8" path="res://icon.svg" id="3_wpe7c"]
+
+[node name="DodgeGame" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_dpa4a")
+
+[node name="Map" parent="." instance=ExtResource("2_niv4k")]
+
+[node name="Giiyoung" parent="." instance=ExtResource("2_3mn8m")]
+position = Vector2(31, 178)
+
+[node name="Boss" type="Sprite2D" parent="."]
+position = Vector2(360, 125)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_wpe7c")
+
+[node name="Nags" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ShootInterval" type="Timer" parent="."]

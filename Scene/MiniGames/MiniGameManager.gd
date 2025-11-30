@@ -88,6 +88,10 @@ func _input(event: InputEvent) -> void:
 				open_minigame(1)     # 배열 1번
 			Key.KEY_3:
 				open_minigame(2)     # 배열 2번
+			Key.KEY_4:
+				open_minigame(3)     # 배열 3번
+			Key.KEY_5:
+				open_minigame(4)     # 배열 4번
 
 
 func _on_minigame_finished(success: bool) -> void:
