@@ -1,8 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c1k3d4sn6ormn"]
-
-[ext_resource type="Script" uid="uid://ctdfa312wdjdt" path="res://Script/Dialogue/Special/Coffee/A_common/CoffeeOrder.gd" id="1_h8k8c"]
-
-[resource]
-script = ExtResource("1_h8k8c")
-dialog = "SHIT"
-coffee = 6

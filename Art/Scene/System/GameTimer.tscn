@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://crsd7r3npmnah"]
-
-[ext_resource type="Script" uid="uid://db4s8tnl1tn0i" path="res://Script/GameTimer.gd" id="1_pxx6j"]
-
-[node name="GameTimer" type="Node"]
-script = ExtResource("1_pxx6j")
