@@ -318,14 +318,14 @@ animation = &"printer_idle"
 autoplay = "printer_idle"
 frame_progress = 0.16092344
 
-[node name="Smoke" type="AnimatedSprite2D" parent="Printer"]
+[node name="SmokeEffect" type="AnimatedSprite2D" parent="Printer"]
 position = Vector2(-12.46154, -13.846154)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ax2io")
 autoplay = "default"
 frame_progress = 0.7275427
 
-[node name="Smoke2" type="AnimatedSprite2D" parent="Printer"]
+[node name="SmokeEffect2" type="AnimatedSprite2D" parent="Printer"]
 position = Vector2(13.384613, -2.9230766)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ax2io")

@@ -1,9 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6vtks2myf3fg"]
+[gd_scene load_steps=5 format=3 uid="uid://b6vtks2myf3fg"]
 
 [ext_resource type="Script" uid="uid://crhxs2jbfpk12" path="res://Scene/MiniGames/FileGame/trash_can.gd" id="1_0uxti"]
-[ext_resource type="Texture2D" uid="uid://cxwp3c6p0q57d" path="res://Art/free-office-pixel-art/Trash.png" id="1_qqmct"]
+[ext_resource type="Texture2D" uid="uid://dl0avrvlbg4mv" path="res://Art/Window95 file icons/recycle_bin.png" id="1_48n8h"]
+[ext_resource type="Texture2D" uid="uid://bw0jip77xfbxq" path="res://Art/Window95 file icons/recycle_bin_full.png" id="3_48n8h"]
+[ext_resource type="FontFile" uid="uid://bh3gxib7ssd8w" path="res://Themes/microsoft_sans_serif.ttf" id="4_26gh8"]
 
 [node name="TrashCan" type="TextureRect"]
-scale = Vector2(4, 4)
-texture = ExtResource("1_qqmct")
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("1_48n8h")
 script = ExtResource("1_0uxti")
+correct_drop_texture = ExtResource("3_48n8h")
+normal_texture = ExtResource("1_48n8h")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_right = 27.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_26gh8")
+theme_override_font_sizes/font_size = 11
+text = "Recycle.bin"

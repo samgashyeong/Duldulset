@@ -10,7 +10,7 @@
 
 [node name="MiniGameManager" type="Node"]
 script = ExtResource("1_86aw1")
-minigame_scenes = Array[PackedScene]([ExtResource("2_qewjl"), ExtResource("4_cxkil"), ExtResource("4_6rllm"), ExtResource("5_1ubcr"), ExtResource("6_0fbg8")])
+minigame_scene_list = Array[PackedScene]([ExtResource("2_qewjl"), ExtResource("4_cxkil"), ExtResource("4_6rllm"), ExtResource("5_1ubcr"), ExtResource("6_0fbg8")])
 
 [node name="MiniGameWindow" type="Window" parent="."]
 oversampling_override = 1.0

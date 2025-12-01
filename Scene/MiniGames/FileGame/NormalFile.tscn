@@ -1,8 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://b65m2ysybfbe"]
+[gd_scene load_steps=4 format=3 uid="uid://b65m2ysybfbe"]
 
 [ext_resource type="Script" uid="uid://bycjriafsnvk2" path="res://Scene/MiniGames/FileGame/file.gd" id="1_082f8"]
-[ext_resource type="Texture2D" uid="uid://8d2rx2rrnxk5" path="res://Art/free-office-pixel-art/sink.png" id="1_pxf10"]
+[ext_resource type="Texture2D" uid="uid://b7xbv62643fk0" path="res://Art/Window95 file icons/text_file.png" id="1_twq44"]
+[ext_resource type="FontFile" uid="uid://bh3gxib7ssd8w" path="res://Themes/microsoft_sans_serif.ttf" id="3_twq44"]
 
 [node name="NormalFile" type="TextureRect"]
-texture = ExtResource("1_pxf10")
+texture_filter = 1
+texture = ExtResource("1_twq44")
 script = ExtResource("1_082f8")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -31.5
+offset_right = 31.5
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_twq44")
+theme_override_font_sizes/font_size = 11
+text = "Never_Delete"

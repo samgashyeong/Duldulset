@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnuj6n5mjhgar"]
+[gd_scene load_steps=4 format=3 uid="uid://cnuj6n5mjhgar"]
 
 [ext_resource type="Theme" uid="uid://bi54ign8ggomc" path="res://Themes/Classic95/Classic95.tres" id="1_aabss"]
 [ext_resource type="Script" uid="uid://c7gkc0lf66icf" path="res://Scene/MiniGames/TypingGame/typing_report.gd" id="2_aabss"]
+[ext_resource type="Texture2D" uid="uid://dn0j4r23srxn5" path="res://Themes/Classic95/2211.i309.047.P.m012.c33.old program windows set.jpg" id="3_v8tpi"]
 
 [node name="TypingReport" type="Control"]
 layout_mode = 3
@@ -20,6 +21,35 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.4862745, 0.4862745, 1)
 
+[node name="WordPanel" type="Panel" parent="."]
+layout_mode = 1
+offset_bottom = 100.0
+
+[node name="retro_notepad" type="Sprite2D" parent="WordPanel"]
+position = Vector2(200, 135.99998)
+scale = Vector2(0.3081664, 0.33746895)
+texture = ExtResource("3_v8tpi")
+region_enabled = true
+region_rect = Rect2(2575, 209, 1298, 806)
+
+[node name="SentenceContainer" type="GridContainer" parent="WordPanel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 24.0
+offset_right = 376.0
+offset_bottom = 248.0
+theme_override_constants/v_separation = 40
+
+[node name="ReportSentence" type="Label" parent="WordPanel/SentenceContainer"]
+layout_mode = 2
+
+[node name="ReportSentence2" type="Label" parent="WordPanel/SentenceContainer"]
+layout_mode = 2
+
+[node name="ReportSentence3" type="Label" parent="WordPanel/SentenceContainer"]
+layout_mode = 2
+
 [node name="LineEdit" type="LineEdit" parent="."]
 texture_filter = 1
 layout_mode = 1
@@ -27,45 +57,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -111.0
+offset_top = -28.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Write your report !  ! !"
 alignment = 1
 keep_editing_on_text_submit = true
 caret_blink = true
-
-[node name="WordPanel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 2.0
-offset_top = -4.0
-offset_right = 2.0
-offset_bottom = 96.0
-grow_horizontal = 2
-
-[node name="GridContainer" type="GridContainer" parent="WordPanel"]
-texture_filter = 1
-layout_mode = 0
-offset_right = 399.0
-offset_bottom = 100.0
-columns = 6
-
-[node name="Word1" type="Label" parent="WordPanel/GridContainer"]
-layout_mode = 2
-
-[node name="Word2" type="Label" parent="WordPanel/GridContainer"]
-layout_mode = 2
-
-[node name="Word3" type="Label" parent="WordPanel/GridContainer"]
-layout_mode = 2
-
-[node name="Word4" type="Label" parent="WordPanel/GridContainer"]
-layout_mode = 2
-
-[node name="Word5" type="Label" parent="WordPanel/GridContainer"]
-layout_mode = 2
-
-[node name="Word6" type="Label" parent="WordPanel/GridContainer"]
-layout_mode = 2
