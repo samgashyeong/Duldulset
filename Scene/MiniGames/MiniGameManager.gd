@@ -2,17 +2,10 @@
 extends Node
 class_name MiniGameManager
 
-# Emitted when main game should be paused or resumed
-signal pause_requested(should_pause: bool)
+signal minigame_shown(game_name: String)		# Emitted when a minigame is opened (with its name)
+signal minigame_closed(success: bool)		# Emitted when a minigame is closed with state
 
-# Emitted when a minigame window is opened (with its name)
-signal minigame_shown(game_name: String)
-
-# Emitted when a minigame is closed (with success / fail result)
-signal minigame_closed(success: bool)
-
-@export var should_auto_request_pause: bool = true   # If true, send pause_requested on open/close
-@export var default_minigame_index: int = 0          # Used when no index is passed to open_minigame()
+@export var default_minigame_index: int = 0
 
 @export var minigame_scene_list: Array[PackedScene] = []  # Minigame scenes to instantiate
 
@@ -20,21 +13,21 @@ signal minigame_closed(success: bool)
 @onready var minigame_host: Control   = $MiniGameWindow/MiniGameHost
 
 var active_minigame: Node = null          # Currently running minigame instance
-var active_minigame_index: int = -1       # Index in minigame_scene_list of the active minigame
-@export var is_window_open: bool = false          # True while the minigame window is visible
+var active_minigame_index: int = -1       # Index of the active minigame
+@export var is_window_open: bool = false  # True while the minigame window is visible
 
 
 func _ready() -> void:
-	# Prepare the window: start hidden and connect close signal
+	# Initiate minigame window
 	minigame_window.hide()
 	minigame_window.unresizable = true
 	minigame_window.close_requested.connect(_on_window_close_requested)
 
-	# Allow this node to receive input events (debug key shortcuts)
+	# Allow this node to receive input events
 	set_process_input(true)
 
 
-# Open a minigame by index (or use default_minigame_index when index < 0)
+# Open a minigame by index
 func open_minigame(index: int = -1) -> void:
 	if is_window_open:
 		return
@@ -53,16 +46,16 @@ func open_minigame(index: int = -1) -> void:
 		push_error("MiniGameManager: scene at index %d is null." % target_index)
 		return
 
-	# Clean up previous instance if it somehow still exists
+	# Remove previous instance
 	if active_minigame and is_instance_valid(active_minigame):
 		active_minigame.queue_free()
 		active_minigame = null
 
-	# Instantiate and store the new minigame
+	# Instantiate and store new minigame
 	active_minigame = packed_scene.instantiate()
 	active_minigame_index = target_index
 
-	# Connect common result signal if the minigame exposes it
+	# Connect common result signal
 	if active_minigame.has_signal("minigame_finished"):
 		active_minigame.minigame_finished.connect(_on_minigame_finished)
 
@@ -75,12 +68,8 @@ func open_minigame(index: int = -1) -> void:
 
 	emit_signal("minigame_shown", _get_game_name(target_index))
 
-	# Optionally ask the main game to pause itself
-	if should_auto_request_pause:
-		emit_signal("pause_requested", true)
 
-
-# Close the currently active minigame and emit result to listeners
+# Close the current active minigame and emit result signal
 func close_minigame(success: bool) -> void:
 	if not is_window_open:
 		return
@@ -95,10 +84,6 @@ func close_minigame(success: bool) -> void:
 	is_window_open = false
 
 	emit_signal("minigame_closed", success)
-
-	# Optionally ask the main game to resume
-	if should_auto_request_pause:
-		emit_signal("pause_requested", false)
 
 
 # Debug key shortcuts: press 1~5 to open each minigame by index
@@ -117,7 +102,7 @@ func _input(event: InputEvent) -> void:
 				open_minigame(4)
 
 
-# Called by minigame when it finishes via its minigame_finished signal
+# Called when minigame finishes by minigame_finished signal
 func _on_minigame_finished(success: bool) -> void:
 	close_minigame(success)
 

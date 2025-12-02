@@ -6,17 +6,17 @@ class_name DodgeGame
 signal minigame_finished(success: bool)
 
 @export var boss_move_speed: float = 120.0 # (pixels per second)
-var boss_move_top_y: float = 40.0
-var boss_move_bottom_y: float = 360.0
+var boss_move_top_y: float = 0.0
+var boss_move_bottom_y: float = 270.0
 
-var nag_shoot_interval: float = 0.8 # (seconds)
+var nag_shoot_interval_min: float = 0.1 # (seconds)
+var nag_shoot_interval_max: float = 1.0 # (seconds)
 var nag_move_speed: float = 400.0 # (pixels per second)
 
 var required_dodges_to_win: int = 6
 var max_hits_before_lose: int = 3
 
 var player_hitbox_shape: CollisionShape2D
-
 
 # Phrases used for nagging (chosen randomly)
 @export var nagging_texts: Array[String] = [
@@ -28,7 +28,6 @@ var player_hitbox_shape: CollisionShape2D
 	"Watch and learn."
 ]
 
-
 @onready var player_body: CharacterBody2D = $Giiyoung
 @onready var player_sprite: AnimatedSprite2D = $Giiyoung/AnimatedSprite2D
 @onready var default_player_hitbox_shape: CollisionShape2D = $Giiyoung/CollisionShape2D
@@ -37,6 +36,16 @@ var player_hitbox_shape: CollisionShape2D
 @onready var nag_label: Label = $Nags
 @onready var nag_timer: Timer = $ShootInterval
 
+@export var heart_full_texture: Texture2D
+@export var heart_empty_texture: Texture2D
+@onready var heart_sprites: Array[TextureRect] = [
+	$Mentals/PlayerMental,
+	$Mentals/PlayerMental2,
+	$Mentals/PlayerMental3
+]
+
+@onready var hit_sound: AudioStreamPlayer = $Sounds/HitSound
+@onready var success_sound: AudioStreamPlayer = $Sounds/SuccessSound
 
 # Runtime State
 var boss_move_direction: int = 1 # (1 = down, -1 = up)
@@ -62,8 +71,12 @@ func _ready() -> void:
 	nag_label.visible = false
 	is_nag_active = false
 
-	nag_timer.wait_time = nag_shoot_interval
+	_reset_nag_timer_interval()
 	nag_timer.start()
+
+
+	_update_hearts()
+
 
 # Update boss movement, nag projectile, and win/lose status every frame
 func _process(delta: float) -> void:
@@ -74,12 +87,16 @@ func _process(delta: float) -> void:
 	_update_nag_projectile(delta)
 	_check_win_or_lose()
 
+func _reset_nag_timer_interval() -> void:
+	var interval := randf_range(nag_shoot_interval_min, nag_shoot_interval_max)
+	nag_timer.wait_time = interval
+
 # Update Boss's position for each frame
 func _update_boss_position(delta: float) -> void:
 	var boss_pos: Vector2 = boss_node.position
 	boss_pos.y += boss_move_speed * boss_move_direction * delta
 
-# Limit the boss position & Make boss go up and down
+	# Limit the boss position & Make boss go up and down
 	if boss_pos.y <= boss_move_top_y:
 		boss_pos.y = boss_move_top_y
 		boss_move_direction = 1
@@ -106,8 +123,13 @@ func _update_nag_projectile(delta: float) -> void:
 	var nag_rect := Rect2(nag_label.global_position, nag_label.size)
 	if nag_rect.intersects(player_hitbox):
 		hit_nag_count += 1
+
+		# play hit sound
+		if hit_sound:
+			hit_sound.play()
+
+		_update_hearts()
 		_hide_nag_label()
-		print("[DodgeGame] HIT! hits = ", hit_nag_count)
 		return
 
 	# If the nag label leaves the left side, count as a dodge
@@ -116,11 +138,13 @@ func _update_nag_projectile(delta: float) -> void:
 		_hide_nag_label()
 		return
 
+
 # Handle the timer timeout event by spawning a new nag
 func _on_shoot_interval_timeout() -> void:
 	if is_game_over:
 		return
 	_spawn_nag_label()
+	_reset_nag_timer_interval()
 
 
 # Create (activate) a new nag label at the boss position
@@ -137,6 +161,7 @@ func _spawn_nag_label() -> void:
 	# Start slightly to the left of the boss position
 	var start_pos: Vector2 = boss_node.global_position - Vector2(40.0, 0.0)
 	nag_label.global_position = start_pos
+
 
 # Hide the nag label and mark it as inactive
 func _hide_nag_label() -> void:
@@ -156,6 +181,7 @@ func _check_win_or_lose() -> void:
 	elif dodged_nag_count >= required_dodges_to_win:
 		_finish_minigame(true)
 
+
 # Stop the game and emit the result to MiniGameManager
 func _finish_minigame(success: bool) -> void:
 	if is_game_over:
@@ -166,10 +192,15 @@ func _finish_minigame(success: bool) -> void:
 	nag_timer.stop()
 	_hide_nag_label()
 
-	print("[DodgeGame] Game Over. success = ", success,
-		" dodged = ", dodged_nag_count, " hits = ", hit_nag_count)
+	# play success sound and close after it finishes
+	if success and success_sound:
+		success_sound.play()
+	else:
+		minigame_finished.emit(success)
 
-	minigame_finished.emit(success)
+
+func _on_success_sound_finished() -> void:
+	minigame_finished.emit(true)
 
 
 # Build the player's hitbox as a Rect2 using CollisionShape2D
@@ -198,7 +229,28 @@ func _get_player_hitbox_rect() -> Rect2:
 
 # Return one random nag text from the list
 func _pick_random_nag_text() -> String:
-	if nagging_texts.is_empty():
-		return "Nagging_texts are empty."
+
 	var index: int = randi() % nagging_texts.size()
 	return nagging_texts[index]
+
+
+# Update heart sprites based on remaining life
+func _update_hearts() -> void:
+	if heart_sprites.is_empty():
+		return
+
+	var remaining_life: int = max_hits_before_lose - hit_nag_count
+	if remaining_life < 0:
+		remaining_life = 0
+
+	for i in heart_sprites.size():
+		var heart := heart_sprites[i]
+		if heart == null:
+			continue
+
+		if i < remaining_life:
+			if heart_full_texture:
+				heart.texture = heart_full_texture
+		else:
+			if heart_empty_texture:
+				heart.texture = heart_empty_texture

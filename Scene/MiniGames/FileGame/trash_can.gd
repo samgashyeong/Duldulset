@@ -1,14 +1,14 @@
 # 202126868 Minseo Choi
 extends TextureRect
 
-@export var correct_drop_texture: Texture2D    # Texture shown when a correct trash file is dropped
-@export var normal_texture: Texture2D          # Default trashcan texture
+@export var correct_drop_texture: Texture2D    # Trashcan texture shown when a trash file is dropped
+@export var normal_texture: Texture2D          # Normal trashcan texture
 
-var is_drag_over_trashcan: bool = false        # True while a valid file is being dragged over this trashcan
+var is_drag_over_trashcan: bool = false
 
 
 func _ready() -> void:
-	# Enable mouse interaction so this node can receive drop events
+	# Enable mouse interaction so this icon can start drag-and-drop
 	mouse_filter = Control.MOUSE_FILTER_STOP
 
 	# If normal_texture is not assigned, use the current texture as default
@@ -23,7 +23,7 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 		var is_valid_file: bool = drag_data.has("node_path") and drag_data.has("is_trash")
 		is_drag_over_trashcan = is_valid_file
 
-		# Highlight trashcan while a valid file is hovering over it
+		# Apply blue filter on trashcan while a valid file is hovering over it
 		if is_valid_file:
 			modulate = Color(0.0, 0.0, 1.0, 0.8)
 		return is_valid_file
@@ -35,7 +35,7 @@ func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 # Handle drop logic when a file icon is released over the trashcan
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	is_drag_over_trashcan = false
-	modulate = Color(1, 1, 1, 1) # Reset color tint
+	modulate = Color(1, 1, 1, 1) # Reset blue filter on trashcan
 
 	if not (data is Dictionary):
 		return
@@ -50,42 +50,25 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	var root_minigame := _find_root_minigame()
 
 	if is_trash_file:
-		# Correct trash file dropped into trashcan
 		# Change trashcan texture to indicate successful removal
 		if correct_drop_texture != null:
 			texture = correct_drop_texture
 
-		# Remove the icon node from the scene
+		# Remove the dragged icon node from the scene
 		dragged_icon_node.queue_free()
 
 		# Notify the file-sorting controller that one trash file was removed
 		if root_minigame:
 			root_minigame._on_trash_removed()
 	else:
-		# Wrong (normal) file dropped into trashcan → end minigame as failure
+		# If important(normal) file dropped into trashcan -> end minigame as failure
 		if root_minigame:
-			root_minigame._finish(false)
+			root_minigame._finish_minigame(false)
 
 
-# Reset highlight when drag ends but drop did not occur on this trashcan
-func _notification(what):
-	if what == NOTIFICATION_DRAG_END and is_drag_over_trashcan:
-		is_drag_over_trashcan = false
-		modulate = Color(1, 1, 1, 1)
-
-
-# Find the root minigame controller that implements _finish()
+# Find the root minigame controller that implements _finish_minigame()
 func _find_root_minigame() -> Node:
 	var node: Node = self
-	while node and not node.has_method("_finish"):
+	while node and not node.has_method("_finish_minigame"):
 		node = node.get_parent()
 	return node
-
-
-# Reset trashcan texture and state when restarting the minigame
-func reset_texture() -> void:
-	if normal_texture != null:
-		texture = normal_texture
-
-	modulate = Color(1, 1, 1, 1)
-	is_drag_over_trashcan = false

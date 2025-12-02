@@ -7,37 +7,29 @@ signal minigame_finished(success: bool)
 @onready var files_root: Control = $Files      # Parent node that contains all file icons
 @onready var trash_can: Control  = $TrashCan  # Trashcan control used as drop target
 
+@onready var click_sound: AudioStreamPlayer = $Sounds/ClickSound
+@onready var error_sound: AudioStreamPlayer = $Sounds/ErrorSound
+@onready var success_sound: AudioStreamPlayer = $Sounds/SuccessSound
 
+@onready var success_panel: Control = $SuccessPanel
+@onready var success_panel_timer: Timer = $SuccessPanel/SuccessPanelTimer
+
+@onready var error_panel: Control = $ErrorPanel
+@onready var error_panel_timer: Timer = $ErrorPanel/ErrorPanelTimer
 # Runtime state
-var total_trash_count: int = 0        # Total number of trash file icons in this minigame
-var removed_trash_count: int = 0      # How many trash files have been correctly removed so far
-var is_minigame_finished: bool = false  # True after the minigame has ended
-
-var last_result_success: bool = false  # Stores last game result (true = win, false = lose)
+var total_trash_count: int = 0
+var removed_trash_count: int = 0
 
 
 func _ready() -> void:
-	# Count how many trash files exist at the start of the minigame
 	_count_trash_files()
 	# Randomize file icon positions inside a 5x4 grid
 	_randomize_file_positions()
-	_debug_print_file_positions()   # ← 디버깅용 출력
 
-# Print all file icon positions for debugging
-func _debug_print_file_positions() -> void:
-	print("===== FileIconUI positions (local / global) =====")
-	for child in files_root.get_children():
-		if child is FileIconUI:
-			var icon := child as FileIconUI
-			var local_pos: Vector2 = icon.position
-			var global_pos: Vector2 = icon.global_position
-
-			print(
-				"[", icon.name, "]  ",
-				"local = ", local_pos,
-				"  global = ", global_pos
-			)
-	print("===============================================")
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("click"):
+		if click_sound:
+			click_sound.play()
 
 # Count all trash file icons under files_root
 func _count_trash_files() -> void:
@@ -45,7 +37,7 @@ func _count_trash_files() -> void:
 	removed_trash_count = 0
 
 	for child in files_root.get_children():
-		if child is FileIconUI and child.name.begins_with("TrashFile"):
+		if child is File and child.name.begins_with("TrashFile"):
 			total_trash_count += 1
 
 
@@ -61,12 +53,12 @@ func _randomize_file_positions() -> void:
 		for x in x_positions:
 			grid_slots.append(Vector2(x, y))
 
-	# Collect all file icons under files_root (exclude TrashCan and others)
-	var file_icons: Array[FileIconUI] = []
+	# Collect all file icons under files_root
+	var file_icons: Array[File] = []
 	for child in files_root.get_children():
 			file_icons.append(child)
 
-	# Safety check: more files than slots → 일부는 그대로 남게 됨
+	# Safety check: more files than slots
 	if file_icons.size() > grid_slots.size():
 		push_warning("FileSorting: more FileIconUI nodes than available grid slots.")
 
@@ -83,31 +75,31 @@ func _randomize_file_positions() -> void:
 		icon.position = slot
 
 
-
-# Called by TrashCan when one trash file has been correctly removed
+# Called when trash file has been correctly removed
 func _on_trash_removed() -> void:
-	if is_minigame_finished:
-		return
-
 	removed_trash_count += 1
 
 	# When all trash files are removed, the player wins
 	if removed_trash_count >= total_trash_count:
-		_finish(true)
+		_finish_minigame(true)
 
-
-# Finish the minigame and disable mouse interaction on all file controls
-func _finish(success: bool) -> void:
-	if is_minigame_finished:
-		return
-
-	is_minigame_finished = true
-	last_result_success = success
-
-	# Disable mouse input for all file-related controls after the game ends
-	for child in files_root.get_children():
-		if child is Control:
-			child.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
-	# Notify MiniGameManager (or parent controller) that this minigame ended
-	minigame_finished.emit(success)
+func _finish_minigame(success: bool) -> void:
+	if success:
+		if success_sound:
+			success_sound.play()
+		success_panel.visible = true
+		success_panel_timer.start()
+	else:
+		if error_sound:
+			error_sound.play(0.5)
+		error_panel.visible = true
+		error_panel_timer.start()
+		
+# Finish the minigame and emit the result to minigamemanager
+func _on_success_panel_timer_timeout() -> void:
+	success_panel.visible = false
+	minigame_finished.emit(true)
+	
+func _on_error_panel_timer_timeout() -> void:
+	error_panel.visible = false
+	minigame_finished.emit(false)

@@ -7,7 +7,7 @@ class_name TypingReportMinigame
 @export var should_trim_spaces: bool = true
 @export var should_normalize_hyphen: bool = true
 
-const SENTENCE_COUNT_PER_GAME: int = 3
+const SENTENCE_COUNT_PER_GAME: int = 2
 
 # Level 1: report-style sentences (we will use only 3 per game)
 @export var sentences_set_level_1: Array[String] = [
@@ -21,6 +21,10 @@ const SENTENCE_COUNT_PER_GAME: int = 3
 
 @onready var input_line_edit: LineEdit            = $LineEdit
 @onready var word_grid_container: GridContainer  = $WordPanel/SentenceContainer
+@onready var typing_sound: AudioStreamPlayer = $Sounds/TypingSound
+@onready var error_sound: AudioStreamPlayer = $Sounds/ErrorSound
+@onready var success_sound: AudioStreamPlayer = $Sounds/SuccessSound
+@onready var success_panel: Panel = $SuccessWindow
 
 signal minigame_finished(success: bool)
 
@@ -29,26 +33,11 @@ var remaining_label_count: int = 0       # How many labels are still “alive”
 
 
 func _ready() -> void:
-	# Validate required nodes
-	if word_grid_container == null:
-		push_error("TypingReport: $WordPanel/GridContainer 경로를 확인하세요.")
-		print_tree()
-		return
-
-	if input_line_edit == null:
-		push_error("TypingReport: $LineEdit 경로를 확인하세요.")
-		print_tree()
-		return
-
 	# Collect all Label nodes under the grid
 	word_labels.clear()
 	for child in word_grid_container.get_children():
 		if child is Label:
 			word_labels.append(child)
-
-	if word_labels.is_empty():
-		push_error("TypingReport: GridContainer 안에 Label 블록이 없습니다.")
-		return
 
 	# Source word list (all candidate sentences)
 	var source_words: Array[String] = _get_words_from_sentence_set()
@@ -108,16 +97,21 @@ func _check_user_input(user_input: String) -> void:
 		input_line_edit.clear()
 
 		if remaining_label_count <= 0:
-			_finish_minigame(true)
+			success_panel.visible = true
+			if success_sound:
+				success_sound.play()
+			else:
+				_finish_minigame(true)
+
 	else:
-		# Wrong answer
 		_on_wrong_answer()
 		input_line_edit.clear()
 		input_line_edit.select_all()
 
 
-# Called when the user types a wrong answer (extend for feedback effects)
+# Called when the user types a wrong answer
 func _on_wrong_answer() -> void:
+	error_sound.play(0.5)
 	pass
 
 
@@ -181,3 +175,11 @@ func _pick_words_for_labels(pool: Array[String], need: int) -> Array[String]:
 func _finish_minigame(success: bool) -> void:
 	input_line_edit.editable = false
 	minigame_finished.emit(success)
+
+# Play typing sound when the player types the string
+func _on_line_edit_text_changed(new_text: String) -> void:
+	typing_sound.play(0.05)
+
+# If success sound finished, minigame will be also finished with true(success)
+func _on_success_sound_finished() -> void:
+	_finish_minigame(true)

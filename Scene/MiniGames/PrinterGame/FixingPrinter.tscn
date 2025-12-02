@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://c7q5p5rkgcc5d"]
+[gd_scene load_steps=36 format=4 uid="uid://c7q5p5rkgcc5d"]
 
 [ext_resource type="Script" uid="uid://denlcvclvbl1o" path="res://Scene/MiniGames/PrinterGame/fixing_printer.gd" id="1_2yh6r"]
 [ext_resource type="TileSet" uid="uid://c1gtcncmoqlf0" path="res://Scene/Map/Tileset.tres" id="1_h6emu"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bx5e6lkimem12" path="res://Art/free-office-pixel-art/printer.png" id="4_fl15r"]
 [ext_resource type="Texture2D" uid="uid://cb16fopn653wo" path="res://Art/Smoke Effect 01/Smoke VFX 2.png" id="5_gps8t"]
 [ext_resource type="Texture2D" uid="uid://c5n1cilwqkfbn" path="res://Art/Smoke Effect 01/Smoke VFX3.png" id="5_whtsw"]
+[ext_resource type="AudioStream" uid="uid://bpn5f2igqr4ea" path="res://Scene/MiniGames/SoundEffect/thud-impact-sound-sfx-379990 (mp3cut.net).wav" id="7_djtm4"]
+[ext_resource type="AudioStream" uid="uid://oehntyeh27u5" path="res://Scene/MiniGames/SoundEffect/short-success-sound-glockenspiel-treasure-video-game-6346.mp3" id="8_aa1rv"]
+[ext_resource type="AudioStream" uid="uid://beua71101l1uo" path="res://Scene/MiniGames/SoundEffect/poof-of-smoke-87381.mp3" id="9_hl4g0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_we73u"]
 atlas = ExtResource("4_fl15r")
@@ -307,8 +310,6 @@ region_enabled = true
 region_rect = Rect2(288, 88, 4, 8)
 region_filter_clip_enabled = true
 
-[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
-
 [node name="Printer" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(200.00002, 184)
@@ -340,3 +341,17 @@ position = Vector2(200.00002, 184)
 scale = Vector2(6.5, 6.5)
 sprite_frames = SubResource("SpriteFrames_we73u")
 animation = &"Explosion"
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="HitSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("7_djtm4")
+
+[node name="SuccessSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("8_aa1rv")
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("9_hl4g0")
+
+[connection signal="finished" from="Sounds/SuccessSound" to="." method="_on_success_sound_finished"]
+[connection signal="finished" from="Sounds/ExplosionSound" to="." method="_on_explosion_sound_finished"]
