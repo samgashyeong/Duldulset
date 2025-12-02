@@ -169,7 +169,7 @@ func _input(event):
 			check_coffee()
 
 func check_coffee():
-	var coffee_order = coffee_data.orders[order_index]
+ 	var coffee_order = coffee_data.orders[order_index]
 	
 	var coffee_diff = GameData.coffee_count - coffee_order.coffee
 	var cream_diff = GameData.prim_count - coffee_order.cream

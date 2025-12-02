@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://by73x0vr85esu"]
+[gd_scene load_steps=14 format=3 uid="uid://by73x0vr85esu"]
 
 [ext_resource type="Texture2D" uid="uid://crl1x7dabpueb" path="res://Art/Forscreens/background_duldulset.jpg" id="1_c2jll"]
 [ext_resource type="Texture2D" uid="uid://dvk40wipu7jgn" path="res://Art/Aseprite/Dongwoo.png" id="2_hn8t2"]
+[ext_resource type="AudioStream" uid="uid://3ajhg0mwuyuo" path="res://Sound/Buttonclick.mp3" id="2_mgxxc"]
 [ext_resource type="Texture2D" uid="uid://c2tomfxd8tqav" path="res://Art/Aseprite/Junsang.png" id="3_xdg80"]
 [ext_resource type="Texture2D" uid="uid://cxu4cycnn7gc0" path="res://Art/Aseprite/Minseo.png" id="4_712cs"]
 [ext_resource type="Texture2D" uid="uid://cytsldtg16hl8" path="res://Art/Aseprite/SangIn.png" id="5_e8m57"]
@@ -17,16 +18,26 @@
 [node name="Startscene" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_left = 760.0
+offset_top = -88.0
+offset_right = 760.0
+offset_bottom = -88.0
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1796.0
-offset_bottom = 1215.0
+offset_left = -757.0
+offset_top = 90.0
+offset_right = 513.0
+offset_bottom = 1293.3334
+scale = Vector2(0.5, 0.3)
 texture = ExtResource("1_c2jll")
 
+[node name="ButtonClickSound" type="AudioStreamPlayer2D" parent="TextureRect"]
+stream = ExtResource("2_mgxxc")
+
 [node name="Charact1" type="Sprite2D" parent="."]
-position = Vector2(498, 202)
-scale = Vector2(10.486, 9)
+position = Vector2(-603, 145)
+scale = Vector2(3.7, 3)
 texture = ExtResource("2_hn8t2")
 hframes = 26
 metadata/_aseprite_wizard_interface_config_ = {
@@ -54,25 +65,26 @@ metadata/_aseprite_wizard_interface_config_ = {
 }
 
 [node name="Charact2" type="Sprite2D" parent="."]
-position = Vector2(763, 219)
+position = Vector2(-515, 143.00002)
+scale = Vector2(0.35703123, 0.29296875)
 texture = ExtResource("3_xdg80")
 hframes = 26
 
 [node name="Charact3" type="Sprite2D" parent="."]
-position = Vector2(1031, 201)
-scale = Vector2(11, 9)
+position = Vector2(-310.00003, 144)
+scale = Vector2(3.9833312, 3.1875)
 texture = ExtResource("4_712cs")
 hframes = 26
 
 [node name="Charact4" type="Sprite2D" parent="."]
-position = Vector2(1290, 204)
-scale = Vector2(11, 9)
+position = Vector2(-233, 146)
+scale = Vector2(3.7, 3)
 texture = ExtResource("5_e8m57")
 hframes = 26
 
 [node name="Gamelabel" type="Sprite2D" parent="."]
-position = Vector2(920, 344)
-scale = Vector2(16.054878, 8.90625)
+position = Vector2(-419.00012, 191.00003)
+scale = Vector2(7.039634, 3.4218745)
 texture = ExtResource("6_uy84b")
 
 [node name="Gamename" type="Label" parent="Gamelabel"]
@@ -93,8 +105,8 @@ text = "DulDulSet"
 horizontal_alignment = 1
 
 [node name="Startbutton" type="Sprite2D" parent="."]
-position = Vector2(899.9999, 589)
-scale = Vector2(19.325, 7.4050016)
+position = Vector2(-438, 273)
+scale = Vector2(6, 2)
 texture = ExtResource("7_712cs")
 
 [node name="Button" type="Button" parent="Startbutton"]
@@ -114,8 +126,8 @@ text = "Start"
 script = ExtResource("9_w5ni1")
 
 [node name="Storybutton" type="Sprite2D" parent="."]
-position = Vector2(911, 836)
-scale = Vector2(19.325, 7.4050016)
+position = Vector2(-434, 346)
+scale = Vector2(6, 2)
 texture = ExtResource("7_712cs")
 
 [node name="Button" type="Button" parent="Storybutton"]
@@ -136,8 +148,8 @@ text = "Story
 script = ExtResource("10_8jup3")
 
 [node name="Exitbutton" type="Sprite2D" parent="."]
-position = Vector2(913.00006, 1088)
-scale = Vector2(19.337496, 7.4050016)
+position = Vector2(-434, 414)
+scale = Vector2(6, 2)
 texture = ExtResource("7_712cs")
 
 [node name="Button" type="Button" parent="Exitbutton"]
@@ -156,6 +168,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_712cs")
 text = "Exit
 "
 script = ExtResource("9_uy84b")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Startbutton/Button" to="Startbutton/Button" method="_on_pressed"]
 [connection signal="pressed" from="Storybutton/Button" to="Storybutton/Button" method="_on_pressed"]
