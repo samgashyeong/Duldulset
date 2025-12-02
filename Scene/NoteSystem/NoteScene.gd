@@ -6,6 +6,8 @@ extends Control
 @export var type : Type.StaffName
 @onready var animation = $AnimationPlayer
 @onready var employee = $"../../NPC/Employee"
+@onready var dialogUp = false
+@onready var dialogDown = true
 var staff : String
 var staffScript : String
 const ITEM = preload("res://Scene/NoteSystem/NoteElement.tscn")
@@ -89,12 +91,18 @@ func makeListView(resoucre : Coffee):
 	
 func pop_up():
 	await get_tree().process_frame
-	animation.play("pop up")
+	if !dialogUp:
+		animation.play("pop up")
+		await animation.animation_finished
+		dialogUp = true
 
 
 func _on_exit_button_pressed() -> void:
 	await get_tree().process_frame
-	animation.play("pop_down")	
+	if dialogUp:
+		animation.play("pop_down")
+		await animation.animation_finished
+		dialogUp = false
 
 func connectMenu(type : Type.StaffMethod, name : Type.StaffName):
 	var resource : Coffee = BubbleManager.staffNameCheck(name)
