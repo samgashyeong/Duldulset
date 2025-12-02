@@ -23,7 +23,8 @@ signal coffe_order_difference(coffee_diff: int, cream_diff: int, sugar_diff: int
 
 ##set Ui signal
 signal menu(type:Type.StaffMethod, name : Type.StaffName)
-signal addLog(type : Type.LOG, staffName : String)
+signal addLog(type : Type.LOG, staffName : Type.StaffName)
+signal addBubble(textBox : Control)
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var speed = 80
@@ -152,6 +153,10 @@ func order_coffee():
 	coffee_state = CoffeeStates.CALLING
 	text_box = BubbleManager.startDialog(global_position, staff_name)
 	text_box.textToDisPlay(Type.StaffMethod.ORDER)
+	
+	#set signal
+	addBubble.emit(text_box)
+	addLog.emit(Type.LOG.ORDER, staff_name)
 
 func _input(event):
 	if event.is_action_pressed("interact") and can_interact and state == States.WAITING and !GameData.is_playing_minigame:

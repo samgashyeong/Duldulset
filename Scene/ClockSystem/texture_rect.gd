@@ -9,6 +9,9 @@ extends TextureRect
 const FRAME_WIDTH = 32
 const FRAME_HEIGHT = 32
 const START_TIME = 9
+
+
+signal changeClock(time : int)
 func _ready():
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	texture = clock_atlas.duplicate()
@@ -21,10 +24,11 @@ func _ready():
 func changeClockUi(currentClock: int):
 	var curFrame = currentClock - 9
 	setClockFrame(curFrame)
-	textAnimation(curFrame)
+	#textAnimation(curFrame)
 		
 
 func setClockFrame(frame_index: int):
+	changeClock.emit(START_TIME+frame_index)
 	if texture is AtlasTexture:
 		var new_region = Rect2(
 			frame_index * FRAME_WIDTH, 

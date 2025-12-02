@@ -3,51 +3,68 @@ extends RichTextLabel
 
 var max_lines = 10
 var log_history = []
-# Called when the node enters the scene tree for the first time.
+
+
+@onready var employee = $"../../NPC/Employee"
+
+@onready var bubbleText : Array[Control]
+
+@onready var player = $"../../Giiyoung"
+
+@onready var clock = $"../ClockSystem"
 func _ready() -> void:
-	await get_tree().create_timer(0.5).timeout
-	add_log("테스트")
-	await get_tree().create_timer(0.5).timeout
-	add_log("테스트")
-	await get_tree().create_timer(0.5).timeout
-	add_log("테스트")
-	await get_tree().create_timer(0.5).timeout
-	add_log("테스트1")
-	await get_tree().create_timer(0.5).timeout
-	add_log("테스트2")
-	await get_tree().create_timer(0.5).timeout
-	add_log("테스트3")
-	await get_tree().create_timer(0.5).timeout
-	add_log("테스트4")
-	await get_tree().create_timer(0.5).timeout
-	add_log("테스트")
-	await get_tree().create_timer(0.5).timeout
-	add_log("테스트")
-	await get_tree().create_timer(0.5).timeout
-	add_log("테스트")
-	await get_tree().create_timer(0.5).timeout
-	add_log("테스트")
-	await get_tree().create_timer(0.5).timeout
-	add_log("테스트")
-	await get_tree().create_timer(0.5).timeout
-	add_log("테스트")
-	await get_tree().create_timer(0.5).timeout
-	add_log("테스트")
-	add_log("테스트")
-	add_log("테스트")
 	
-	pass # Replace with function body.
+	for i in employee.get_children().size():
+		var _employ = employee.get_child(i)
+		_employ.addLog.connect(receiveLog)
+		_employ.addBubble.connect(connectBubble)
+		
+	player.point_changed.connect(receiveInformationLog)
+	player.stamina_changed.connect(receiveInformationLog)
+	player.health_changed.connect(receiveInformationLog)
+	
+	var targetnode = clock.get_child(1).get_child(0)
+	
+	targetnode.changeClock.connect(changeClockLog)
+	
 
+func connectBubble(bubble : Control):
+	bubbleText.append(bubble)
+	print("bubble connect")
+	bubble.addLog.connect(receiveLog)
 
+func receiveInformationLog(type : Type.LOG, changeInformation : int):
+	match type:
+		Type.LOG.POINT:
+			add_log("You get " + str(changeInformation) + " points!!")
+		Type.LOG.HEALTH:
+			if(changeInformation < 0):
+				add_log("You get " + str(changeInformation) + "health!!")
+			else:
+				add_log("You lose" +  str(changeInformation)+ "health...")
+		Type.LOG.STAMIA:
+			if(changeInformation < 0):
+				add_log("You get " + str(changeInformation) + "stamia!!")
+			else:
+				add_log("You lose" +  str(changeInformation)+ "stamia.")
+
+func changeClockLog(time : int):
+	add_log("The current time is " +str(time)+ " o'clock!")
+	
+				
+func receiveLog(type : Type.LOG, staff : Type.StaffName):
+	print("receiveLog : " + str(type))
+	match type:
+		Type.LOG.ORDER:
+			add_log(Type.StaffName.keys()[staff] + " ordered coffee from you!!")
+		Type.LOG.STAFF_ANGRY_NOT_ORDER:
+			add_log("One of the staff was angry because you didn't take orders for coffee...")
 
 #add log
 func add_log(message : String):
 	log_history.append(message)
 	
-	# 3. 최대 줄 수를 넘으면 가장 오래된 것(0번 인덱스) 삭제
 	if log_history.size() > max_lines:
 		log_history.pop_front()
 	
-	# 4. RichTextLabel에 내용 갱신
-	# 배열을 줄바꿈 문자(\n)로 합쳐서 한 번에 넣습니다.
 	text = "\n".join(log_history)

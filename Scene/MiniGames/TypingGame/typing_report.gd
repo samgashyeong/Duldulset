@@ -28,15 +28,6 @@ signal minigame_finished(success: bool)
 # 내부 상태
 var _labels: Array[Label] = []
 var _alive_count: int = 0
-var _force_focus: bool = true  # 강제 포커스 활성화
-
-func _input(event: InputEvent) -> void:
-	# 게임 진행 중이고 포커스가 없다면 강제로 포커스 설정
-	if _force_focus and _alive_count > 0 and input != null and input.editable:
-		if not input.has_focus() and (event is InputEventKey):
-			input.grab_focus()
-			# 입력 이벤트를 LineEdit로 전달
-			get_viewport().set_input_as_handled()
 
 func _ready() -> void:
 	if grid == null:
@@ -65,38 +56,14 @@ func _ready() -> void:
 
 	_alive_count = _labels.size()
 
-	# LineEdit 설정 강화
-	input.focus_mode = Control.FOCUS_ALL
-	input.mouse_filter = Control.MOUSE_FILTER_STOP
-	
-	# text_submitted 대신 _unhandled_key_input 사용
-	# if not input.text_submitted.is_connected(_on_line_edit_submitted):
-	# 	input.text_submitted.connect(_on_line_edit_submitted)
-	
-	# focus_exited 신호도 연결하여 포커스 잃을 때 다시 가져오기
-	if not input.focus_exited.is_connected(_on_focus_lost):
-		input.focus_exited.connect(_on_focus_lost)
+	if not input.text_submitted.is_connected(_on_line_edit_submitted):
+		input.text_submitted.connect(_on_line_edit_submitted)
 
 	input.clear()
 	input.grab_focus()
 
-func _unhandled_key_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER:
-			var current_text = input.text
-			input.clear()  # 즉시 텍스트 지우기
-			_check(current_text)
-			get_viewport().set_input_as_handled()  # 엔터 이벤트 소비
-
 func _on_line_edit_submitted(text: String) -> void:
 	_check(text)
-	# 여러 방법으로 포커스 유지 시도
-	call_deferred("_ensure_focus")
-
-func _on_focus_lost() -> void:
-	# 게임이 진행 중이면 포커스를 다시 가져옴
-	if _alive_count > 0 and input.editable:
-		call_deferred("_force_grab_focus")
 
 func _on_submit_pressed() -> void:
 	_check(input.text)
@@ -104,31 +71,19 @@ func _on_submit_pressed() -> void:
 func _check(user_input: String) -> void:
 	var typed := _normalize(user_input)
 	if typed == "":
-		# 빈 입력이어도 포커스 유지
-		call_deferred("_force_grab_focus")
 		return
 
 	var idx := _find_match_index(typed)
 	if idx >= 0:	#If word is correct
 		_labels[idx].visible = false
 		_alive_count -= 1
-		# input.clear()  # 이미 _unhandled_key_input에서 처리함
+		input.clear()
 		if _alive_count <= 0:
 			_finish(true)
-		else:
-			# 정답 후 즉시 포커스 재설정
-			call_deferred("_force_grab_focus")
 	else:	#If word is incorrect
 		_on_wrong_answer()
-		# input.clear()  # 이미 _unhandled_key_input에서 처리함
-		# 오답 후 즉시 포커스 재설정
-		call_deferred("_force_grab_focus")
-
-func _force_grab_focus() -> void:
-	# 매우 강력한 포커스 설정
-	if _alive_count > 0 and input.editable:
-		input.grab_focus()
-		input.caret_column = input.text.length()  # 커서를 끝으로
+		input.clear()
+		input.select_all()
 
 func _on_wrong_answer() -> void:
 	pass
@@ -178,5 +133,4 @@ func _pick_words_for_labels(pool: Array[String], need: int) -> Array[String]:
 
 func _finish(success: bool) -> void:
 	input.editable = false
-	_force_focus = false  # 강제 포커스 비활성화
 	minigame_finished.emit(success)

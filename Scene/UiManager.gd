@@ -1,3 +1,4 @@
+#202322158 이준상
 extends CanvasLayer
 
 
@@ -30,18 +31,18 @@ func _ready() -> void:
 
 func calculateHealth(_health : int):
 	var finalPoint = health.value + _health
-	animationHealth(finalPoint)
+	animationHealth(finalPoint, _health)
 
 func calculateStamia(_stamia : int):
 	var finalPoint = stamia.value + _stamia
-	animationStamia(finalPoint)
+	animationStamia(finalPoint, _stamia)
 
 func calculatePoint(_point : int):
 	var onlyPoint = point.text.split()[0]
 	var finalPoint = int(onlyPoint) + _point
-	aniamtionPoint(finalPoint) 
+	aniamtionPoint(finalPoint, _point) 
 	
-func animationHealth(finalPoint : int):
+func animationHealth(finalPoint : int, value : int):
 	var tween = create_tween()
 	
 	tween.tween_property(
@@ -51,7 +52,7 @@ func animationHealth(finalPoint : int):
 		0.5 
 	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 
-func animationStamia(finalPoint : int):
+func animationStamia(finalPoint : int, value : int):
 	var tween = create_tween()
 	
 	tween.tween_property(
@@ -61,7 +62,7 @@ func animationStamia(finalPoint : int):
 		0.5 
 	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	
-func aniamtionPoint(_point : int):
+func aniamtionPoint(_point : int, value : int):
 	point.text = str(_point) + " Point"
 
 func changeClockUi():

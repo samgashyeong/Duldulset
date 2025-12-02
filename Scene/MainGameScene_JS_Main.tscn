@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://b2qmpffqrabvr" path="res://Scene/NoteSystem/NoteScene.tscn" id="22_tylcw"]
 [ext_resource type="PackedScene" uid="uid://3ks6ev6b6or1" path="res://Scene/ClockSystem/ClockSystem.tscn" id="23_ilxdl"]
 [ext_resource type="FontFile" uid="uid://dx4xlhsj467p8" path="res://Font/NotoSans_ExtraCondensed-Bold.ttf" id="24_yuomu"]
-[ext_resource type="Script" path="res://Scene/rich_text_label.gd" id="25_7tffr"]
+[ext_resource type="Script" uid="uid://csbdb62babya3" path="res://Scene/rich_text_label.gd" id="25_7tffr"]
 [ext_resource type="PackedScene" path="res://Scene/NPC/Employee/TestNode.tscn" id="26_pk0j8"]
 [ext_resource type="Script" path="res://Tests/DialogueTest_Teemu.gd" id="27_14el5"]
 
@@ -178,7 +178,7 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -76.0
-offset_right = 150.0
+offset_right = 233.0
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8666667)
 theme_override_fonts/normal_font = ExtResource("24_yuomu")
