@@ -13,8 +13,7 @@ func startDialog(position : Vector2, staff : Type.StaffName, target_npc : Node2D
 	new_textBox.setDialogueSource(dialogue_resource)
 	new_textBox.global_position = position + Vector2(10, -55)
 	
-	# 버블이 캐릭터 뒤에 나타나지 않도록 z_index 설정
-	new_textBox.z_index = 100  # 높은 값으로 설정하여 최상위에 표시
+	new_textBox.z_index = 100 
 	
 	return new_textBox
 	

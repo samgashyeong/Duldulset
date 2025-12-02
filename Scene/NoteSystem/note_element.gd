@@ -15,9 +15,9 @@ func setData(coffeeOrder : CoffeeOrder):
 	if(coffeeOrder.isCoffeeClear):
 		coffee = str(coffeeOrder.coffee)
 	if(coffeeOrder.isCreamClear):
-		coffee = str(coffeeOrder.cream)
+		sugar = str(coffeeOrder.cream)
 	if(coffeeOrder.isSugarClear):
-		coffee = str(coffeeOrder.sugar)
+		cream = str(coffeeOrder.sugar)
 		
 	$Label.text = coffeeDialog
 	$HBoxContainer/Label.text = coffee

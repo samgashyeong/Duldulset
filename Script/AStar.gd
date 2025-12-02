@@ -25,7 +25,7 @@ func _ready():
 
 func is_point_walkable(position):
 	var map_position = local_to_map(position)
-	print(map_position)
+	#print(map_position)
 	if astar.region.has_point(map_position) and !astar.is_point_solid(map_position):
 		return true
 	return false

@@ -16,7 +16,8 @@ signal unit_time_passed() # one game minute passed
 signal one_hour_passed() # one game hour passed
 
 func _ready():
-	print(seconds_per_unit_time)
+	pass
+	# print(seconds_per_unit_time)  # 디버그용 출력 제거
 	
 func _process(delta: float) -> void:
 	current_time = min(current_time + 1 * delta * GameData.main_time_scale, max_time)

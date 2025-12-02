@@ -52,7 +52,6 @@ func animationHealth(finalPoint : int):
 	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 
 func animationStamia(finalPoint : int):
-	print(finalPoint)
 	var tween = create_tween()
 	
 	tween.tween_property(

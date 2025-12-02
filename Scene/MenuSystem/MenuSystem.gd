@@ -5,6 +5,8 @@ const ITEM = preload("res://Scene/MenuSystem/MenuElement.tscn")
 const CoffeeMenuClass = preload("res://Script/Dialogue/Special/Coffee/A_common/CoffeeMenu.gd")
 var orderList : Array[CoffeeMenu]
 
+@onready var employee = $"../../NPC/Employee"
+
 
 func addMenu(menu : CoffeeMenu) : 
 	
@@ -46,6 +48,30 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(1.5).timeout
 	removeMenu(2)
+	
+	for i in employee.get_children().size():
+		var _employ = employee.get_child(i)
+		_employ.menu.connect(connectMenu)
 	#
 	#await get_tree().create_timer(0.5).timeout
 	#removeMenu()
+
+func connectMenu(type : Type.StaffMethod, name : Type.StaffName):
+	var resource : Coffee = BubbleManager.staffNameCheck(name)
+	
+	var order = ""
+	match type:
+		Type.StaffMethod.START0:
+			order = resource.orders[0]
+		Type.StaffMethod.START1:
+			order = resource.orders[1]
+		Type.StaffMethod.START2:
+			order = resource.orders[2]
+			
+	var menu = CoffeeMenuClass.new()
+	
+	menu.staff = Type.StaffName.keys()[name]
+	menu.dialog = order.dialog
+	
+	addMenu(menu)	
+	

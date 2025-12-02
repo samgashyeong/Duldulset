@@ -5,6 +5,7 @@ extends Control
 
 @export var type : Type.StaffName
 @onready var animation = $AnimationPlayer
+@onready var employee = $"../../NPC/Employee"
 var staff : String
 var staffScript : String
 const ITEM = preload("res://Scene/NoteSystem/NoteElement.tscn")
@@ -23,6 +24,11 @@ func _ready() -> void:
 	_on_button_pressed($HBoxContainer/VBoxContainer/Junsang)
 	
 	position = Vector2(320, 600)
+	
+	for i in employee.get_children().size():
+		var _employ = employee.get_child(i)
+		_employ.menu.connect(connectMenu)
+		
 	
 
 func _on_button_pressed(button):
@@ -43,7 +49,6 @@ func _on_button_pressed(button):
 			staffScript = "I think a little less coffee is better for the customer." # 예시 스크립트
 	
 		"Dongwoo":
-			type = Type.StaffName.DONGWOO
 			type = Type.StaffName.DONGWOO
 			staff = "Dongwoo"
 			staffScript = "My latte art is the best in the area." # 예시 스크립트
@@ -85,9 +90,30 @@ func makeListView(resoucre : Coffee):
 func pop_up():
 	await get_tree().process_frame
 	animation.play("pop up")
-#
 
 
 func _on_exit_button_pressed() -> void:
 	await get_tree().process_frame
 	animation.play("pop_down")	
+
+func connectMenu(type : Type.StaffMethod, name : Type.StaffName):
+	var resource : Coffee = BubbleManager.staffNameCheck(name)
+	print("menu test")
+	match type:
+		Type.StaffMethod.START0:
+			resource.orders[0].isAction = true
+		Type.StaffMethod.START1:
+			resource.orders[1].isAction = true
+		Type.StaffMethod.START2:
+			resource.orders[2].isAction = true
+		
+	
+	#var resource_path = resource.resource_path
+	#if resource_path and resource_path.begins_with("res://"):
+		#var error = ResourceSaver.save(resource, resource_path)
+		#if error != OK:
+			#print("Error saving resource: ", error)
+		#else:
+			#print("Resource successfully saved to: ", resource_path)
+	
+	#makeListView(resource)

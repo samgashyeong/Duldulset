@@ -43,7 +43,7 @@ func _on_dialogic_signal(argument: Variant):
 	
 	if argument is Dictionary:
 		var name = argument.get("Name")
-		print(name)
+		#print(name)
 		var effect = argument.get("Effect")
 		match name:
 			"Teemu":
