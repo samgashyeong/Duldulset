@@ -80,7 +80,6 @@ z_index = 2
 position = Vector2(159, 301)
 
 [node name="CoffeeMinigameScreen" type="SubViewportContainer" parent="."]
-visible = false
 z_index = 10
 anchors_preset = 5
 anchor_left = 0.5
@@ -100,7 +99,7 @@ canvas_item_default_texture_filter = 0
 physics_object_picking = true
 size_2d_override = Vector2i(1280, 720)
 size_2d_override_stretch = true
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="CoffeeMainScene" parent="CoffeeMinigameScreen/SubViewport" instance=ExtResource("11_d1kfn")]
 

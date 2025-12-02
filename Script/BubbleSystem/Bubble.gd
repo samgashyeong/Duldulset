@@ -5,6 +5,7 @@ extends MarginContainer
 @onready var label = $MarginContainer/Label
 @onready var timer = $Timer
 @onready var angryTimer =$AngryTimer
+@onready var orderTimer = $OrderTimer
 #@onready var progressbar = $"../TextureProgressBar"
 
 const MAX_WIDTH = 200
@@ -18,6 +19,7 @@ var dialogueResource : Coffee
 var currentMethod : Type.StaffMethod
 
 var angryTime = 20.0
+var orderTime = 30.0
 
 var origin_pos : Vector2     
 var is_shaking : bool = false  
@@ -45,7 +47,17 @@ func _process(delta):
 		var offset = Vector2(randf_range(-shake_intensity, shake_intensity), randf_range(-shake_intensity, shake_intensity))
 		
 		label.position = origin_pos + offset
-
+		
+	if not orderTimer.is_stopped():
+		var time_left = orderTimer.time_left
+		var ratio = 1.0 - (time_left / orderTime)
+		
+		modulate = Color.WHITE.lerp(Color.YELLOW, ratio)
+		
+		var shake_intensity = ratio * 5.0
+		var offset2 = Vector2(randf_range(-shake_intensity, shake_intensity), randf_range(-shake_intensity, shake_intensity))
+		
+		label.position = origin_pos + offset2
 	
 		
 		
@@ -56,33 +68,58 @@ func textToDisPlay(type : Type.StaffMethod, coffee : int = 0, cream : int = 0, s
 		Type.StaffMethod.ORDER:
 			string = "!!"
 		Type.StaffMethod.START0:
+			orderTimer.stop()
+			modulate = Color.WHITE
 			string = dialogueResource.orders[0].dialog
 		Type.StaffMethod.START1:
+			orderTimer.stop()
+			modulate = Color.WHITE
 			string = dialogueResource.orders[1].dialog
 		Type.StaffMethod.START2:
+			orderTimer.stop()
+			modulate = Color.WHITE
 			string = dialogueResource.orders[2].dialog
 		Type.StaffMethod.CHECK:
 			string = "Drinking..."
 	
-	timer.stop()
+	
 	text_buffer = string
 	letter_index = 0
 	
+	# 이전 상태 초기화
+	label.autowrap_mode = TextServer.AUTOWRAP_OFF
+	custom_minimum_size = Vector2.ZERO
+	
 	label.text = string 
 	await get_tree().process_frame 
-	await get_tree().process_frame 
-	await get_tree().process_frame 
+	await get_tree().process_frame
+	await get_tree().process_frame  # 추가 프레임 대기
 	
+	# 크기 재계산
 	custom_minimum_size.x = min(MAX_WIDTH, size.x)
 	
 	if size.x > MAX_WIDTH:
 		label.autowrap_mode = TextServer.AUTOWRAP_WORD
 		await get_tree().process_frame 
+		await get_tree().process_frame  # 추가 프레임 대기
 		custom_minimum_size.y = size.y
-	label.position = Vector2(40, -20)
+	
+	#label.position = Vector2(40, -20)
 	label.text = "" 
 
 	displayLetter()
+	
+	
+	
+	if(currentMethod == Type.StaffMethod.ORDER):
+		origin_pos = label.position
+		orderTimer.start(orderTime)
+	
+	if(currentMethod == Type.StaffMethod.CHECK):
+		angryTimer.stop()
+		modulate = Color.WHITE
+		await get_tree().create_timer(1).timeout
+		hide_bubble()
 	
 
 func setDialogueSource(resource):

@@ -19,7 +19,7 @@ func _ready() -> void:
 		if not button.pressed.is_connected(_on_button_pressed):
 			button.pressed.connect(_on_button_pressed.bind(button))
 	
-	# 한 프레임 기다린 후 Junsang 버튼 선택
+	
 	await get_tree().process_frame
 	staff = "Junsang"
 	$HBoxContainer/VBoxContainer/Junsang.set_pressed(true)
