@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c04trdhjm8cpp" path="res://Script/SoundManager/SoundManager.gd" id="1_l4qrj"]
 [ext_resource type="AudioStream" uid="uid://3ajhg0mwuyuo" path="res://Sound/Buttonclick.mp3" id="2_p8rl7"]
-[ext_resource type="AudioStream" uid="uid://cxgq4i85jvxaa" path="res://Sound/Buttonclick2.mp3" id="3_p8rl7"]
+[ext_resource type="AudioStream" path="res://Sound/Buttonclick2.mp3" id="3_p8rl7"]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1_l4qrj")

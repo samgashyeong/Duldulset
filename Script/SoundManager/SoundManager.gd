@@ -1,4 +1,3 @@
-
 extends Node
 
 func play_startclick_sound():

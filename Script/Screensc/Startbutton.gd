@@ -1,6 +1,6 @@
-extends Button
+extends Button 
 
-const MAIN_SCENE_PATH = "res://Scene/Screens/Nextstagescene1.tscn"
+const MAIN_SCENE_PATH = "res://Scene/MainGameScene.tscn"
 
 
 func _on_pressed():
