@@ -153,6 +153,7 @@ func order_coffee():
 	coffee_state = CoffeeStates.CALLING
 	text_box = BubbleManager.startDialog(global_position, staff_name)
 	text_box.angryTimer.timeout.connect(_on_text_box_angry_timer_timeout)
+	text_box.orderTimer.timeout.connect(_on_text_box_order_timer_timeout)
 	text_box.textToDisPlay(Type.StaffMethod.ORDER)
 	
 	#set signal
@@ -209,6 +210,9 @@ func reset_to_normal_states():
 	state = States.SITTING
 	
 func _on_text_box_angry_timer_timeout():
+	reset_to_normal_states()
+	
+func _on_text_box_order_timer_timeout():
 	reset_to_normal_states()
 	
 enum States{
