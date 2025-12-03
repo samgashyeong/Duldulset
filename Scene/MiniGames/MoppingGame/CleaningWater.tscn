@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://lfukprmrjlv8"]
 
 [ext_resource type="Script" uid="uid://bkvu4u4osolos" path="res://Scene/MiniGames/MoppingGame/cleaning_water.gd" id="1_alngo"]
-[ext_resource type="Texture2D" uid="uid://chw4j1ttladdb" path="res://Art/coffeearts_dongwoo/water.png" id="1_fiyhe"]
+[ext_resource type="Texture2D" uid="uid://5w6mqqmixgtx" path="res://Art/coffeearts_dongwoo/water.png" id="1_fiyhe"]
 [ext_resource type="Texture2D" uid="uid://bctw1g07kwsn8" path="res://icon.svg" id="2_5xkxv"]
 [ext_resource type="TileSet" uid="uid://c1gtcncmoqlf0" path="res://Scene/Map/Tileset.tres" id="2_t2wne"]
 [ext_resource type="Script" uid="uid://ckg40wsd4ix4k" path="res://Scene/MiniGames/MoppingGame/mop.gd" id="3_g3q01"]
