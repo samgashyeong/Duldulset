@@ -1,136 +1,185 @@
-# TypingReport.gd
+# 202126868 Minseo Choi
 extends Control
+class_name TypingReportMinigame
 
-@export_range(1, 3, 1) var difficulty: int = 1           # 1/2/3
-@export var fill_random_order: bool = true               # 라벨에 채울 때 섞기
-@export var case_insensitive: bool = true                # 대소문자 무시
-@export var trim_spaces: bool = true                     # 앞뒤/중복 공백 정리
-@export var normalize_hyphen: bool = true                # –— → -
+@export var should_shuffle_fill_order: bool = true
+@export var is_case_insensitive: bool = true
+@export var should_trim_spaces: bool = true
+@export var should_normalize_hyphen: bool = true
 
-@export var words_set_1: Array[String] = [
-	"scope","owner","metric","budget","risk","trend","issue","draft","deploy","access"
+const SENTENCE_COUNT_PER_GAME: int = 2
+
+# Level 1: report-style sentences (we will use only 3 per game)
+@export var sentences_set_level_1: Array[String] = [
+	"I'm writing a report for money.",
+	"Just writing to look busy.",
+	"Filling it with useless word.",
+	"Copying old reports, pretending new.",
+	"qwertyasdfgzxcvb",
+	"1q2w3e4r5t6y7u8i9o0p"
 ]
-@export var words_set_2: Array[String] = [
-	"milestone","deliverable","throughput","baseline","rollback",
-	"playbook","benchmark","refactor","postmortem","retention"
-]
-@export var words_set_3: Array[String] = [
-	"executive summary","root cause analysis","risk mitigation","least privilege",
-	"service level objective","user onboarding","key management","data drift","audit log"
-]
 
-@onready var input: LineEdit        = $LineEdit
-@onready var grid: GridContainer    = $WordPanel/GridContainer
+@onready var input_line_edit: LineEdit            = $LineEdit
+@onready var word_grid_container: GridContainer  = $WordPanel/SentenceContainer
+@onready var typing_sound: AudioStreamPlayer = $Sounds/TypingSound
+@onready var error_sound: AudioStreamPlayer = $Sounds/ErrorSound
+@onready var success_sound: AudioStreamPlayer = $Sounds/SuccessSound
+@onready var success_panel: Panel = $SuccessWindow
 
-# 결과(미니게임 매니저가 읽을 수 있도록)
 signal minigame_finished(success: bool)
 
-# 내부 상태
-var _labels: Array[Label] = []
-var _alive_count: int = 0
+var word_labels: Array[Label] = []       # All label blocks used to display target texts
+var remaining_label_count: int = 0       # How many labels are still “alive” (not typed yet)
+
 
 func _ready() -> void:
-	if grid == null:
-		push_error("TypingReport: $WordPanel/GridContainer 경로를 확인하세요.")
-		print_tree()
-		return
-		
-	if input == null:
-		push_error("TypingReport: $LineEdit 경로를 확인하세요.")
-		print_tree()
-		return
+	# Collect all Label nodes under the grid
+	word_labels.clear()
+	for child in word_grid_container.get_children():
+		if child is Label:
+			word_labels.append(child)
 
-	_labels.clear()
-	for c in grid.get_children():
-		if c is Label:
-			_labels.append(c)
+	# Source word list (all candidate sentences)
+	var source_words: Array[String] = _get_words_from_sentence_set()
 
-	if _labels.is_empty():
-		push_error("TypingReport: GridContainer 안에 Label 블록이 없습니다.")
-		return
+	# Decide how many targets to use this game:
+	#  - up to SENTENCE_COUNT_PER_GAME sentences
+	#  - cannot exceed number of labels or number of available sentences
+	var target_label_count: int = min(
+		word_labels.size(),
+		source_words.size(),
+		SENTENCE_COUNT_PER_GAME
+	)
 
-	var picked := _pick_words_for_labels(_get_words_for_difficulty(difficulty), _labels.size())
-	for i in _labels.size():
-		_labels[i].text = picked[i]
-		_labels[i].visible = true
+	# Pick texts for those labels
+	var picked_words: Array[String] = _pick_words_for_labels(source_words, target_label_count)
 
-	_alive_count = _labels.size()
+	# Assign texts to first N labels, hide the rest
+	for i in word_labels.size():
+		if i < target_label_count:
+			word_labels[i].text = picked_words[i]
+			word_labels[i].visible = true
+		else:
+			word_labels[i].visible = false
 
-	if not input.text_submitted.is_connected(_on_line_edit_submitted):
-		input.text_submitted.connect(_on_line_edit_submitted)
+	remaining_label_count = target_label_count
 
-	input.clear()
-	input.grab_focus()
+	# Connect LineEdit submit signal once
+	if not input_line_edit.text_submitted.is_connected(_on_line_edit_submitted):
+		input_line_edit.text_submitted.connect(_on_line_edit_submitted)
 
+	input_line_edit.clear()
+	input_line_edit.grab_focus()
+
+
+# Handle Enter key from LineEdit
 func _on_line_edit_submitted(text: String) -> void:
-	_check(text)
+	_check_user_input(text)
 
+
+# Handle submit button (if connected from the scene)
 func _on_submit_pressed() -> void:
-	_check(input.text)
+	_check_user_input(input_line_edit.text)
 
-func _check(user_input: String) -> void:
-	var typed := _normalize(user_input)
-	if typed == "":
+
+# Compare user input with remaining labels and update game state
+func _check_user_input(user_input: String) -> void:
+	var typed_normalized: String = _normalize_input(user_input)
+	if typed_normalized == "":
 		return
 
-	var idx := _find_match_index(typed)
-	if idx >= 0:	#If word is correct
-		_labels[idx].visible = false
-		_alive_count -= 1
-		input.clear()
-		if _alive_count <= 0:
-			_finish(true)
-	else:	#If word is incorrect
-		_on_wrong_answer()
-		input.clear()
-		input.select_all()
+	var matched_index: int = _find_match_index(typed_normalized)
 
+	if matched_index >= 0:
+		# Correct answer
+		word_labels[matched_index].visible = false
+		remaining_label_count -= 1
+		input_line_edit.clear()
+
+		if remaining_label_count <= 0:
+			success_panel.visible = true
+			if success_sound:
+				success_sound.play()
+			else:
+				_finish_minigame(true)
+
+	else:
+		_on_wrong_answer()
+		input_line_edit.clear()
+		input_line_edit.select_all()
+
+
+# Called when the user types a wrong answer
 func _on_wrong_answer() -> void:
+	error_sound.play(0.5)
 	pass
 
-func _find_match_index(typed_norm: String) -> int:
-	for i in _labels.size():
-		var lbl := _labels[i]
-		if not lbl.visible:
+
+# Find the index of a label that matches the normalized input
+func _find_match_index(typed_normalized: String) -> int:
+	for i in word_labels.size():
+		var label: Label = word_labels[i]
+		if not label.visible:
 			continue
-		var target_norm := _normalize(lbl.text)
-		if typed_norm == target_norm:
+
+		var target_normalized: String = _normalize_input(label.text)
+		if typed_normalized == target_normalized:
 			return i
+
 	return -1
 
-func _normalize(s: String) -> String:
-	var t := s
-	if trim_spaces:
-		t = t.strip_edges()
-		var re := RegEx.new()
-		re.compile("\\s+")
-		t = re.sub(t, " ", true)  # 연속 공백 1칸으로
-	if normalize_hyphen:
-		t = t.replace("–","-").replace("—","-")
-	if case_insensitive:
-		t = t.to_lower()
-	return t
 
-func _get_words_for_difficulty(d: int) -> Array[String]:
-	match d:
-		1: return words_set_1.duplicate()
-		2: return words_set_2.duplicate()
-		3: return words_set_3.duplicate()
-		_: return words_set_1.duplicate()
+# Normalize user input and label text according to the options
+func _normalize_input(text: String) -> String:
+	var result: String = text
 
+	if should_trim_spaces:
+		result = result.strip_edges()
+		var regex := RegEx.new()
+		regex.compile("\\s+")
+		result = regex.sub(result, " ", true)  # collapse multiple spaces into one
+
+	if should_normalize_hyphen:
+		result = result.replace("–", "-").replace("—", "-")
+
+	if is_case_insensitive:
+		result = result.to_lower()
+
+	return result
+
+
+# Return a duplicated word list (current game uses only this set)
+func _get_words_from_sentence_set() -> Array[String]:
+	return sentences_set_level_1.duplicate()
+
+
+# Pick 'need' number of words from the pool (optionally shuffled)
 func _pick_words_for_labels(pool: Array[String], need: int) -> Array[String]:
-	var out := pool.duplicate()
-	if fill_random_order:
+	var out: Array[String] = pool.duplicate()
+
+	if should_shuffle_fill_order:
 		out.shuffle()
+
 	if out.size() < need:
-		var i := 0
+		var i: int = 0
 		while out.size() < need and pool.size() > 0:
 			out.append(pool[i % pool.size()])
 			i += 1
 	elif out.size() > need:
 		out.resize(need)
+
 	return out
 
-func _finish(success: bool) -> void:
-	input.editable = false
+
+# Stop editing and notify MiniGameManager that the minigame ended
+func _finish_minigame(success: bool) -> void:
+	input_line_edit.editable = false
 	minigame_finished.emit(success)
+
+# Play typing sound when the player types the string
+func _on_line_edit_text_changed(new_text: String) -> void:
+	typing_sound.play(0.05)
+
+# If success sound finished, minigame will be also finished with true(success)
+func _on_success_sound_finished() -> void:
+	_finish_minigame(true)

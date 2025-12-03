@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=70 format=3 uid="uid://bi54ign8ggomc"]
+[gd_resource type="Theme" load_steps=72 format=3 uid="uid://bi54ign8ggomc"]
 
 [ext_resource type="StyleBox" uid="uid://cvf3dsmakwphd" path="res://Themes/Classic95/Styles/Panel/Panel.tres" id="1"]
+[ext_resource type="FontFile" uid="uid://bh3gxib7ssd8w" path="res://Themes/microsoft_sans_serif.ttf" id="1_hue1e"]
 [ext_resource type="StyleBox" uid="uid://rv4c8lkv0hj6" path="res://Themes/Classic95/Styles/Panel/TabDisabled.tres" id="2"]
 [ext_resource type="StyleBox" uid="uid://ca8dgfkttda6q" path="res://Themes/Classic95/Styles/Panel/InlinePanel.tres" id="3"]
 [ext_resource type="StyleBox" uid="uid://ddvsyca2441hr" path="res://Themes/Classic95/Styles/Panel/TabFb.tres" id="4"]
@@ -29,6 +30,7 @@
 [ext_resource type="StyleBox" uid="uid://28updf5mmypm" path="res://Themes/Classic95/Styles/General/BoxDisabled.tres" id="27"]
 [ext_resource type="StyleBox" uid="uid://db4ww8rj8umd5" path="res://Themes/Classic95/Styles/General/Focused.tres" id="28"]
 [ext_resource type="StyleBox" uid="uid://csda28dw67eny" path="res://Themes/Classic95/Styles/Button/DropDown.tres" id="29"]
+[ext_resource type="FontFile" uid="uid://cxmgvk3el5fll" path="res://Themes/Classic95/microsoft_sans_serif.ttf" id="29_k61cn"]
 [ext_resource type="StyleBox" uid="uid://cxrx0733sua40" path="res://Themes/Classic95/Styles/Button/DropDownPressed.tres" id="30"]
 [ext_resource type="StyleBox" uid="uid://bkp2flljaqrs" path="res://Themes/Classic95/Styles/Button/DropDownDisabled.tres" id="31"]
 [ext_resource type="StyleBox" uid="uid://qnbgi86ake58" path="res://Themes/Classic95/Styles/Window/ToolWindow.tres" id="32"]
@@ -159,6 +161,7 @@ axis_stretch_vertical = 2
 region_rect = Rect2(0, 0, 7, 7)
 
 [resource]
+AcceptDialog/fonts/title_font = ExtResource("1_hue1e")
 AcceptDialog/styles/panel = SubResource("StyleBoxFlat_6nn6j")
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_color_pressed = Color(0, 0, 0, 1)
@@ -220,11 +223,13 @@ HSlider/styles/grabber_area = SubResource("7")
 HSlider/styles/grabber_area_highlight = SubResource("7")
 HSlider/styles/slider = SubResource("8")
 Label/colors/font_color = Color(0, 0, 0, 1)
+Label/fonts/font = ExtResource("1_hue1e")
 LineEdit/colors/caret_color = Color(0, 0, 0, 1)
 LineEdit/colors/font_color = Color(0, 0, 0, 1)
 LineEdit/colors/font_selected_color = Color(1, 1, 1, 1)
 LineEdit/colors/font_uneditable_color = Color(0.527344, 0.527344, 0.527344, 1)
 LineEdit/colors/selection_color = Color(0, 0, 0.501961, 1)
+LineEdit/fonts/font = ExtResource("29_k61cn")
 LineEdit/styles/focus = SubResource("3")
 LineEdit/styles/normal = ExtResource("26")
 LineEdit/styles/read_only = ExtResource("27")
