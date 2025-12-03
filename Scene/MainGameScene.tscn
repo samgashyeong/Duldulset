@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://ciffji1jteld0"]
+[gd_scene load_steps=34 format=3 uid="uid://ciffji1jteld0"]
 
+[ext_resource type="Script" uid="uid://catjbfagu7yiy" path="res://Script/DialogicSignalHandler.gd" id="1_bnq75"]
 [ext_resource type="PackedScene" uid="uid://eyo8pltp05s2" path="res://Scene/Map/Map.tscn" id="1_xbayr"]
 [ext_resource type="PackedScene" uid="uid://c3itnyow77hq5" path="res://Scene/NPC/Employee/Chunja.tscn" id="2_rw1fg"]
 [ext_resource type="PackedScene" uid="uid://27onlytfom1e" path="res://Scene/Player.tscn" id="2_vqyqj"]
@@ -13,9 +14,40 @@
 [ext_resource type="PackedScene" uid="uid://cq4uv1wkox30a" path="res://Scene/NPC/Employee/Younghee.tscn" id="8_2smfn"]
 [ext_resource type="PackedScene" uid="uid://oqi81dd7r3ld" path="res://Scene/MiniGames/MiniGameManager.tscn" id="10_lwlm8"]
 [ext_resource type="Script" uid="uid://b7303u25cvvci" path="res://Script/MinigameScreen.gd" id="11_mqryj"]
-[ext_resource type="Script" uid="uid://bx0hga6qj8pmo" path="res://Script/CoffeeMinigameScreen.gd" id="12_chle1"]
+[ext_resource type="Script" path="res://Script/CoffeeMinigameScreen.gd" id="12_chle1"]
+[ext_resource type="Script" uid="uid://dlviai14vay8p" path="res://Scene/UiManager.gd" id="15_38rig"]
+[ext_resource type="PackedScene" uid="uid://b1qujni1rhei" path="res://Scene/MenuSystem/MenuSystem.tscn" id="16_bnq75"]
+[ext_resource type="Texture2D" uid="uid://57q7bwhwesrj" path="res://Art/Aseprite/HP_Died2.png" id="17_0fgyg"]
+[ext_resource type="Texture2D" uid="uid://cjsuft28t0rt8" path="res://Art/Aseprite/HP1.png" id="18_12q2c"]
+[ext_resource type="Texture2D" uid="uid://76881n8w6hjb" path="res://Art/Aseprite/Stamina_Empty.png" id="19_es88a"]
+[ext_resource type="Texture2D" uid="uid://btdj2ogxguxhw" path="res://Art/Aseprite/Stamina_Full.png" id="20_eatav"]
+[ext_resource type="FontFile" uid="uid://b5ck22eskijli" path="res://Font/neodgm (1).ttf" id="21_pqatp"]
+[ext_resource type="Texture2D" uid="uid://yri2xcvo3ykk" path="res://Art/Pixel Art Buttons.png" id="22_3yhgr"]
+[ext_resource type="PackedScene" uid="uid://b2qmpffqrabvr" path="res://Scene/NoteSystem/NoteScene.tscn" id="23_15xd0"]
+[ext_resource type="PackedScene" uid="uid://3ks6ev6b6or1" path="res://Scene/ClockSystem/ClockSystem.tscn" id="24_ni14c"]
+[ext_resource type="FontFile" uid="uid://dx4xlhsj467p8" path="res://Font/NotoSans_ExtraCondensed-Bold.ttf" id="25_jwcat"]
+[ext_resource type="Script" uid="uid://csbdb62babya3" path="res://Scene/rich_text_label.gd" id="26_wsbe4"]
+[ext_resource type="PackedScene" uid="uid://dd5ca7un0fyio" path="res://Scene/NPC/Employee/TestNode.tscn" id="28_12q2c"]
+[ext_resource type="Script" path="res://Tests/DialogueTest_Teemu.gd" id="29_es88a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1m38"]
+atlas = ExtResource("22_3yhgr")
+region = Rect2(6, 3, 54, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6onde"]
+atlas = ExtResource("22_3yhgr")
+region = Rect2(198, 3, 54, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6imu"]
+atlas = ExtResource("22_3yhgr")
+region = Rect2(134, 3, 54, 50)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_x6xp7"]
 
 [node name="MainGameScene" type="Node2D"]
+
+[node name="DialogueHandler" type="Node" parent="."]
+script = ExtResource("1_bnq75")
 
 [node name="Map" parent="." instance=ExtResource("1_xbayr")]
 
@@ -78,3 +110,90 @@ render_target_update_mode = 0
 
 [node name="GameSystem" parent="." instance=ExtResource("3_0pb3a")]
 script = ExtResource("4_2nj8a")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("15_38rig")
+
+[node name="MenuSystem" parent="CanvasLayer" instance=ExtResource("16_bnq75")]
+offset_left = -76.40997
+offset_top = -25.820007
+offset_right = -4.409973
+offset_bottom = -2.8200073
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -171.81
+offset_top = 5.0
+offset_right = -5.8099976
+offset_bottom = 45.0
+grow_horizontal = 0
+
+[node name="HP" type="TextureProgressBar" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+value = 100.0
+fill_mode = 1
+texture_under = ExtResource("17_0fgyg")
+texture_progress = ExtResource("18_12q2c")
+
+[node name="Stamina" type="TextureProgressBar" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+value = 100.0
+fill_mode = 1
+texture_under = ExtResource("19_es88a")
+texture_progress = ExtResource("20_eatav")
+
+[node name="Point" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("21_pqatp")
+text = "0 Point"
+horizontal_alignment = 2
+
+[node name="NoteButton" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = SubResource("AtlasTexture_j1m38")
+texture_pressed = SubResource("AtlasTexture_6onde")
+texture_hover = SubResource("AtlasTexture_i6imu")
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/NoteButton"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 6.0
+offset_right = 38.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("21_pqatp")
+theme_override_font_sizes/font_size = 15
+text = "No
+te"
+
+[node name="NoteScene" parent="CanvasLayer" instance=ExtResource("23_15xd0")]
+buttonGroup = SubResource("ButtonGroup_x6xp7")
+
+[node name="ClockSystem" parent="CanvasLayer" instance=ExtResource("24_ni14c")]
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+custom_minimum_size = Vector2(150, 0)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -76.0
+offset_right = 233.0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8666667)
+theme_override_fonts/normal_font = ExtResource("25_jwcat")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+scroll_following = true
+script = ExtResource("26_wsbe4")
+
+[node name="Younghee" parent="." instance=ExtResource("28_12q2c")]
+position = Vector2(103, 139)
+script = ExtResource("29_es88a")
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/NoteButton" to="CanvasLayer/NoteScene" method="pop_up"]
