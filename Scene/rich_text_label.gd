@@ -51,7 +51,7 @@ func receiveInformationLog(type : Type.LOG, changeInformation : int):
 func changeClockLog(time : int):
 	add_log("The current time is " +str(time)+ " o'clock!")
 	
-				
+			
 func receiveLog(type : Type.LOG, staff : Type.StaffName):
 	print("receiveLog : " + str(type))
 	match type:
@@ -59,6 +59,8 @@ func receiveLog(type : Type.LOG, staff : Type.StaffName):
 			add_log(Type.StaffName.keys()[staff] + " ordered coffee from you!!")
 		Type.LOG.STAFF_ANGRY_NOT_ORDER:
 			add_log("One of the staff was angry because you didn't take orders for coffee...")
+		Type.LOG.STAFF_ANGRY_NOT_MAKE_COFFEE:
+			add_log("One of the staff was angry because you didn't make the coffee...")
 
 #add log
 func add_log(message : String):

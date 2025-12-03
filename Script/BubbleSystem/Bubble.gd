@@ -20,8 +20,8 @@ var dialogueResource : Coffee
 
 var currentMethod : Type.StaffMethod
 
-var angryTime = 20.0
-var orderTime = 5.0
+var angryTime = 100.0
+var orderTime = 45.0
 
 var origin_pos : Vector2     
 var is_shaking : bool = false  

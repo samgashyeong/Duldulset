@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://3ks6ev6b6or1" path="res://Scene/ClockSystem/ClockSystem.tscn" id="23_ilxdl"]
 [ext_resource type="FontFile" uid="uid://dx4xlhsj467p8" path="res://Font/NotoSans_ExtraCondensed-Bold.ttf" id="24_yuomu"]
 [ext_resource type="Script" uid="uid://csbdb62babya3" path="res://Scene/rich_text_label.gd" id="25_7tffr"]
-[ext_resource type="PackedScene" path="res://Scene/NPC/Employee/TestNode.tscn" id="26_pk0j8"]
+[ext_resource type="PackedScene" uid="uid://dd5ca7un0fyio" path="res://Scene/NPC/Employee/TestNode.tscn" id="26_pk0j8"]
 [ext_resource type="Script" path="res://Tests/DialogueTest_Teemu.gd" id="27_14el5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ot0n"]
