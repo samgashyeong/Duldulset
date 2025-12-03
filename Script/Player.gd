@@ -130,7 +130,7 @@ func update_health(amount):
 func update_point(amount):
 	point += amount
 	# 포인트업소리시작
-    SoundManager.play_PointUpCh_sound()
-    # 포인트업소리끝
+	SoundManager.play_PointUpCh_sound()
+	# 포인트업소리끝
 	point_changed.emit(point, amount)
 	
