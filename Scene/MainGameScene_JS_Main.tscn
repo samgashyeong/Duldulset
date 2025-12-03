@@ -1,0 +1,194 @@
+[gd_scene load_steps=33 format=3 uid="uid://ddavawm32wiu"]
+
+[ext_resource type="Script" uid="uid://catjbfagu7yiy" path="res://Script/DialogicSignalHandler.gd" id="1_14el5"]
+[ext_resource type="PackedScene" uid="uid://eyo8pltp05s2" path="res://Scene/Map/Map.tscn" id="1_lk2el"]
+[ext_resource type="PackedScene" uid="uid://c3itnyow77hq5" path="res://Scene/NPC/Employee/Chunja.tscn" id="2_brl6y"]
+[ext_resource type="PackedScene" uid="uid://b0bwfer4l5wrc" path="res://Scene/NPC/Employee/Dongwoo.tscn" id="3_ktrli"]
+[ext_resource type="PackedScene" uid="uid://c2nq23cfwg3n7" path="res://Scene/NPC/Employee/Junsang.tscn" id="4_0rjqj"]
+[ext_resource type="PackedScene" uid="uid://bctrbpmuibnt7" path="res://Scene/NPC/Employee/Minseo.tscn" id="5_wmmff"]
+[ext_resource type="PackedScene" uid="uid://ygvot3w1blgr" path="res://Scene/NPC/Employee/Oksoon.tscn" id="6_udvbv"]
+[ext_resource type="PackedScene" uid="uid://d3diybypdlxo6" path="res://Scene/NPC/Employee/Sangin.tscn" id="7_0wm3c"]
+[ext_resource type="PackedScene" uid="uid://cq4uv1wkox30a" path="res://Scene/NPC/Employee/Younghee.tscn" id="8_o71un"]
+[ext_resource type="PackedScene" uid="uid://27onlytfom1e" path="res://Scene/Player.tscn" id="9_w0t8p"]
+[ext_resource type="Script" uid="uid://bx0hga6qj8pmo" path="res://Script/MinigameScreen.gd" id="10_ihv5b"]
+[ext_resource type="PackedScene" uid="uid://vymo7le3sf6s" path="res://Scene/coffee_dongwoo/CoffeeMainScene.tscn" id="11_d1kfn"]
+[ext_resource type="PackedScene" uid="uid://cd1ivnpxv6vve" path="res://Scene/System/GameSystem.tscn" id="12_3b437"]
+[ext_resource type="Script" uid="uid://dt0trvr0xugoo" path="res://Script/GsmeSystem.gd" id="13_0yk1i"]
+[ext_resource type="Script" uid="uid://dlviai14vay8p" path="res://Scene/UiManager.gd" id="14_0yk1i"]
+[ext_resource type="PackedScene" uid="uid://b1qujni1rhei" path="res://Scene/MenuSystem/MenuSystem.tscn" id="15_nyign"]
+[ext_resource type="Texture2D" uid="uid://57q7bwhwesrj" path="res://Art/Aseprite/HP_Died2.png" id="16_pk0j8"]
+[ext_resource type="Texture2D" uid="uid://cjsuft28t0rt8" path="res://Art/Aseprite/HP1.png" id="17_14el5"]
+[ext_resource type="Texture2D" uid="uid://76881n8w6hjb" path="res://Art/Aseprite/Stamina_Empty.png" id="18_kmthv"]
+[ext_resource type="Texture2D" uid="uid://btdj2ogxguxhw" path="res://Art/Aseprite/Stamina_Full.png" id="19_ljt7p"]
+[ext_resource type="FontFile" uid="uid://b5ck22eskijli" path="res://Font/neodgm (1).ttf" id="20_6ram6"]
+[ext_resource type="Texture2D" uid="uid://yri2xcvo3ykk" path="res://Art/Pixel Art Buttons.png" id="21_di1q4"]
+[ext_resource type="PackedScene" uid="uid://b2qmpffqrabvr" path="res://Scene/NoteSystem/NoteScene.tscn" id="22_tylcw"]
+[ext_resource type="PackedScene" uid="uid://3ks6ev6b6or1" path="res://Scene/ClockSystem/ClockSystem.tscn" id="23_ilxdl"]
+[ext_resource type="FontFile" uid="uid://dx4xlhsj467p8" path="res://Font/NotoSans_ExtraCondensed-Bold.ttf" id="24_yuomu"]
+[ext_resource type="Script" uid="uid://csbdb62babya3" path="res://Scene/rich_text_label.gd" id="25_7tffr"]
+[ext_resource type="PackedScene" uid="uid://dd5ca7un0fyio" path="res://Scene/NPC/Employee/TestNode.tscn" id="26_pk0j8"]
+[ext_resource type="Script" path="res://Tests/DialogueTest_Teemu.gd" id="27_14el5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ot0n"]
+atlas = ExtResource("21_di1q4")
+region = Rect2(6, 3, 54, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5x61q"]
+atlas = ExtResource("21_di1q4")
+region = Rect2(198, 3, 54, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02spt"]
+atlas = ExtResource("21_di1q4")
+region = Rect2(134, 3, 54, 50)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_u2yx1"]
+
+[node name="MainGameScene" type="Node2D"]
+
+[node name="DialogueHandler" type="Node" parent="."]
+script = ExtResource("1_14el5")
+
+[node name="Map" parent="." instance=ExtResource("1_lk2el")]
+
+[node name="NPC" type="Node" parent="."]
+
+[node name="Employee" type="Node" parent="NPC"]
+
+[node name="Chunja" parent="NPC/Employee" groups=["employees"] instance=ExtResource("2_brl6y")]
+position = Vector2(255, 57)
+
+[node name="Dongwoo" parent="NPC/Employee" groups=["employees"] instance=ExtResource("3_ktrli")]
+position = Vector2(255, 301)
+
+[node name="Junsang" parent="NPC/Employee" groups=["employees"] instance=ExtResource("4_0rjqj")]
+position = Vector2(255, 212)
+
+[node name="Minseo" parent="NPC/Employee" groups=["employees"] instance=ExtResource("5_wmmff")]
+position = Vector2(160, 57)
+
+[node name="Oksoon" parent="NPC/Employee" groups=["employees"] instance=ExtResource("6_udvbv")]
+position = Vector2(255, 147)
+
+[node name="Sangin" parent="NPC/Employee" groups=["employees"] instance=ExtResource("7_0wm3c")]
+position = Vector2(159, 148)
+
+[node name="Younghee" parent="NPC/Employee" groups=["employees"] instance=ExtResource("8_o71un")]
+position = Vector2(159, 213)
+
+[node name="Giiyoung" parent="." instance=ExtResource("9_w0t8p")]
+z_index = 2
+position = Vector2(159, 301)
+
+[node name="CoffeeMinigameScreen" type="SubViewportContainer" parent="."]
+z_index = 10
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 66.0
+offset_top = 61.0
+offset_right = 578.0
+offset_bottom = 573.0
+grow_horizontal = 2
+scale = Vector2(0.8, 0.45)
+script = ExtResource("10_ihv5b")
+
+[node name="SubViewport" type="SubViewport" parent="CoffeeMinigameScreen"]
+disable_3d = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+physics_object_picking = true
+size_2d_override = Vector2i(1280, 720)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="CoffeeMainScene" parent="CoffeeMinigameScreen/SubViewport" instance=ExtResource("11_d1kfn")]
+
+[node name="GameSystem" parent="." instance=ExtResource("12_3b437")]
+script = ExtResource("13_0yk1i")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("14_0yk1i")
+
+[node name="MenuSystem" parent="CanvasLayer" instance=ExtResource("15_nyign")]
+offset_left = -76.40997
+offset_top = -25.820007
+offset_right = -4.409973
+offset_bottom = -2.8200073
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -171.81
+offset_top = 5.0
+offset_right = -5.8099976
+offset_bottom = 45.0
+grow_horizontal = 0
+
+[node name="HP" type="TextureProgressBar" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+value = 100.0
+fill_mode = 1
+texture_under = ExtResource("16_pk0j8")
+texture_progress = ExtResource("17_14el5")
+
+[node name="Stamina" type="TextureProgressBar" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+value = 100.0
+fill_mode = 1
+texture_under = ExtResource("18_kmthv")
+texture_progress = ExtResource("19_ljt7p")
+
+[node name="Point" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("20_6ram6")
+text = "0 Point"
+horizontal_alignment = 2
+
+[node name="NoteButton" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = SubResource("AtlasTexture_5ot0n")
+texture_pressed = SubResource("AtlasTexture_5x61q")
+texture_hover = SubResource("AtlasTexture_02spt")
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/NoteButton"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 6.0
+offset_right = 38.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("20_6ram6")
+theme_override_font_sizes/font_size = 15
+text = "No
+te"
+
+[node name="NoteScene" parent="CanvasLayer" instance=ExtResource("22_tylcw")]
+buttonGroup = SubResource("ButtonGroup_u2yx1")
+
+[node name="ClockSystem" parent="CanvasLayer" instance=ExtResource("23_ilxdl")]
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+custom_minimum_size = Vector2(150, 0)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -76.0
+offset_right = 233.0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8666667)
+theme_override_fonts/normal_font = ExtResource("24_yuomu")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+scroll_following = true
+script = ExtResource("25_7tffr")
+
+[node name="Younghee" parent="." instance=ExtResource("26_pk0j8")]
+position = Vector2(103, 139)
+script = ExtResource("27_14el5")
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/NoteButton" to="CanvasLayer/NoteScene" method="pop_up"]

@@ -8,5 +8,17 @@ Teemu: Do you have a nice Day?
 Teemu: Ok!!
 Teemu: I'm here to play because I'm curious about what you're up to!
 Teemu: I'm so happy to see you working hard at the company!
-Teemu: 
+Teemu: <Empty Text Event>
 Teemu: Saanko tarjota sinulle kupin teetä?
+- 2 coffee, 2 cream, 1 sugar
+	Teemu: Oh Ok... It's good! Maybe..?
+	[signal arg_type="dict" arg="{"Name":"Teemu", "Effect":1}"]
+- 6 coffee, 0 cream, 0 sugar | [=""]
+	Teemu: Oh Ok... It's good! Maybe..?
+	[signal arg_type="dict" arg="{"Name":"Teemu", "Effect":2}"]
+- 2 coffee, 2 cream, 3 sugar
+	Teemu: Oh Ok... It's good! Maybe..?
+	[signal arg_type="dict" arg="{"Name":"Teemu", "Effect":3}"]
+- Give tea
+	Teemu: Oh Ok... It's good! Maybe..?
+	[signal arg_type="dict" arg="{"Name":"Teemu", "Effect":4}"]ㅈ

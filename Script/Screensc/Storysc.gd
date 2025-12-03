@@ -52,3 +52,7 @@ func _on_next_button_pressed():
 
 func finish_story():
 	get_tree().change_scene_to_file(MAIN_SCENE_PATH)
+
+
+func _on_nextbutton_pressed():
+	SoundManager.play_Storynext_sound()

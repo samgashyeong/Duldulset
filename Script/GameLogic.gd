@@ -23,7 +23,7 @@ func _on_game_timer_timeout() -> void:
 
 
 func _on_game_timer_unit_time_passed() -> void:
-	print("one game minute passed!")
+	#print("one game minute passed!")
 	
 	if randf() < wandering_probability:
 		var candidates = []

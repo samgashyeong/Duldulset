@@ -1,142 +1,149 @@
-# cleaning_water.gd
+# 202126868 Minseo Choi
 extends Control
 
-@export var strokes_per_water: int = 10         # 각 물당 필요한 스와이프 수
-@export var min_switch_dx: float = 40.0         # 좌↔우 전환으로 인정할 최소 이동 거리(px)
-@export var fade_on_progress: bool = true
+var required_strokes_per_water: int = 10
+var min_direction_switch_dx: float = 40.0	# Minimum horizontal distance (pixels)
+var fade_water_on_progress: bool = true
+@export var water_nodes: Array[TextureRect] = []
+@export var mop_node_path: NodePath
 
-# 물 노드들을 인스펙터에서 지정 (비워두면 이름이 "Water"로 시작하는 자식들을 자동 검색)
-@export var water_paths: Array[NodePath] = []
+@onready var mop_texture: TextureRect = $Mop
+@onready var cleaning_sound: AudioStreamPlayer = $Sounds/CleaningSound
+@onready var success_sound: AudioStreamPlayer = $Sounds/SuccessSound
 
-@export var mop_path: NodePath
-
-@onready var waters: Array[TextureRect] = []    # 실제 물 노드들
-@onready var mop: TextureRect = get_node_or_null(mop_path)
-
+# Emitted when the minigame ends (success = true/false)
 signal minigame_finished(success: bool)
 
-# 물별 상태
-var _strokes_for: Array[int] = []
-var _prev_side_for: Array[int] = []             # -1 / 1 / 0
-var _last_cross_x_for: Array[float] = []
-var _cleaned_for: Array[bool] = []
 
-var _current_index: int = -1                    # 현재 문지르고 있는 물 인덱스
-var _cleaned_count: int = 0                     # 청소 완료된 물 개수
+# Per-water state
+var stroke_counts_for_water: Array[int] = []
+var previous_side_for_water: Array[int] = []
+var last_cross_x_for_water: Array[float] = []
+var is_water_cleaned_flags: Array[bool] = []
+
+var current_frame_water_index: int = -1
+var cleaned_water_count: int = 0
+
 
 func _ready() -> void:
-	_init_waters()
-	_init_mop()
+	# Initialize water nodes and mop reference
+	_init_water_nodes()
 
-	if waters.is_empty() or mop == null:
+	# If we have no water or no mop, return
+	if water_nodes.is_empty() or mop_texture == null:
 		return
 
-	var n: int = waters.size()
-	_strokes_for.resize(n)
-	_prev_side_for.resize(n)
-	_last_cross_x_for.resize(n)
-	_cleaned_for.resize(n)
+	# Initialize per-water arrays based on the number of waters
+	var water_count: int = water_nodes.size()
+	stroke_counts_for_water.resize(water_count)
+	previous_side_for_water.resize(water_count)
+	last_cross_x_for_water.resize(water_count)
+	is_water_cleaned_flags.resize(water_count)
 
-	for i in n:
-		_strokes_for[i] = 0
-		_prev_side_for[i] = 0
-		_last_cross_x_for[i] = 0.0
-		_cleaned_for[i] = false
+	for i in water_count:
+		stroke_counts_for_water[i] = 0
+		previous_side_for_water[i] = 0
+		last_cross_x_for_water[i] = 0.0
+		is_water_cleaned_flags[i] = false
 
-	_current_index = -1
-	_cleaned_count = 0
+	current_frame_water_index = -1
+	cleaned_water_count = 0
 
-func _init_waters() -> void:
-	waters.clear()
 
-	if water_paths.is_empty():
+# Find and store all water TextureRect nodes
+func _init_water_nodes() -> void:
+	water_nodes.clear()
+
+	# If no paths are given, search children whose names start with "Water"
+	if water_nodes.is_empty():
 		for child in get_children():
 			if child is TextureRect and child.name.begins_with("Water"):
-				waters.append(child)
-	else:
-		for p in water_paths:
-			var w: TextureRect = get_node_or_null(p) as TextureRect
-			if w != null:
-				waters.append(w)
+				water_nodes.append(child)
 
-	if waters.is_empty():
-		push_error("cleaning_water.gd: 물 TextureRect를 찾을 수 없습니다. water_paths를 설정하거나 노드 이름을 'Water1, Water2, ...' 형식으로 맞추세요.")
-		print_tree()
 
-func _init_mop() -> void:
-	if mop == null:
-		push_error("cleaning_water.gd: Mop TextureRect를 찾을 수 없습니다. mop_path를 설정하거나 노드 이름을 'Mop'으로 맞추세요.")
-		print_tree()
-
+# Detect which water the mop is over and count swipes per framge
 func _process(_delta: float) -> void:
-	if mop == null or waters.is_empty():
-		return
+	var mop_rect: Rect2 = mop_texture.get_global_rect()
 
-	var mr: Rect2 = mop.get_global_rect()
-
-	# 현재 mop이 어떤 물 위에 있는지 찾기 (이미 청소된 물은 제외)
-	var idx: int = -1
-	var n: int = waters.size()
-	for i in n:
-		if _cleaned_for[i]:
+	# Find which water the mop is currently cleaning
+	var previous_frame_water_index: int = -1
+	var water_count: int = water_nodes.size()
+	for i in water_count:
+		if is_water_cleaned_flags[i]:	# ignore cleaned water
 			continue
-		var wr: Rect2 = waters[i].get_global_rect()
-		if mr.intersects(wr):
-			idx = i
+
+		var water_rect: Rect2 = water_nodes[i].get_global_rect()
+		if mop_rect.intersects(water_rect):
+			previous_frame_water_index = i
 			break
 
-	if idx == -1:
-		# 물 위에 없으면 현재 타겟 해제
-		_current_index = -1
+	# If mop is not over any water rect, clear the current target and return
+	if previous_frame_water_index == -1:
+		current_frame_water_index = -1
 		return
 
-	# 다른 물로 이동했으면 방향/기준점 초기화
-	if idx != _current_index:
-		_current_index = idx
-		_prev_side_for[idx] = 0
-		_last_cross_x_for[idx] = mop.global_position.x
+	# When switching to a different water rect, reset side and reference X-position
+	if previous_frame_water_index != current_frame_water_index:
+		current_frame_water_index = previous_frame_water_index
+		previous_side_for_water[previous_frame_water_index] = 0
+		last_cross_x_for_water[previous_frame_water_index] = mop_texture.global_position.x
 
-	# 현재 타겟 물 기준으로 스와이프 판정
-	var wr_active: Rect2 = waters[idx].get_global_rect()
-	var center_x: float = wr_active.get_center().x
-	var x: float = mop.global_position.x
-	var side: int = 1 if x >= center_x else -1
+	# Swipe detection logic based on mop position relative to the water center
+	var active_water_rect: Rect2 = water_nodes[previous_frame_water_index].get_global_rect()
+	var center_x: float = active_water_rect.get_center().x
+	var mop_x: float = mop_texture.global_position.x
 
-	var prev_side: int = _prev_side_for[idx]
-	if side != prev_side and prev_side != 0:
-		if absf(x - _last_cross_x_for[idx]) >= min_switch_dx:
-			_strokes_for[idx] += 1
-			_last_cross_x_for[idx] = x
-			_update_water_progress(idx)
+	# side = 1 (right of center) / -1 (left of center)
+	var current_side: int = 1 if mop_x >= center_x else -1
+	var previous_side: int = previous_side_for_water[previous_frame_water_index]
 
-	_prev_side_for[idx] = side
+	# When side changes and previous side is valid, check if we moved far enough
+	if current_side != previous_side and previous_side != 0:
+		if absf(mop_x - last_cross_x_for_water[previous_frame_water_index]) >= min_direction_switch_dx:
+			stroke_counts_for_water[previous_frame_water_index] += 1
+			last_cross_x_for_water[previous_frame_water_index] = mop_x
+			SoundManager.play_Mopping_sound()
+			_update_water_clean_progress(previous_frame_water_index)
 
-func _update_water_progress(idx: int) -> void:
-	var strokes: int = _strokes_for[idx]
+	# Store the side for the next frame comparison
+	previous_side_for_water[previous_frame_water_index] = current_side
 
-	# 해당 물만 점점 투명하게
-	if fade_on_progress:
-		var t: float = clampf(float(strokes) / float(strokes_per_water), 0.0, 1.0)
-		var w: TextureRect = waters[idx]
-		var c: Color = w.modulate
-		c.a = 1.0 - 0.85 * t
-		w.modulate = c
 
-	# 청소 완료 판정
-	if strokes >= strokes_per_water and not _cleaned_for[idx]:
-		_cleaned_for[idx] = true
-		_cleaned_count += 1
+# Update a single water stain's visual alpha and check if it is fully cleaned
+func _update_water_clean_progress(water_index: int) -> void:
+	var strokes: int = stroke_counts_for_water[water_index]
 
-		# 완전히 안 보이게
-		var w2: TextureRect = waters[idx]
-		var c2: Color = w2.modulate
-		c2.a = 0.0
-		w2.modulate = c2
+	# Fade out the water stain depending on cleaning progress
+	if fade_water_on_progress:
+		var progress: float = clampf(float(strokes) / float(required_strokes_per_water), 0.0, 1.0)
+		var water_rect: TextureRect = water_nodes[water_index]
+		var color: Color = water_rect.modulate
+		color.a = 1.0 - 0.85 * progress
+		water_rect.modulate = color
 
-		if _cleaned_count >= waters.size():
-			_finish(true)
 
-func _finish(success: bool) -> void:
-	if mop != null:
-		mop.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	minigame_finished.emit(success)
+
+	# Check if this water stain is now fully cleaned
+	if strokes >= required_strokes_per_water and not is_water_cleaned_flags[water_index]:
+		is_water_cleaned_flags[water_index] = true
+		cleaned_water_count += 1
+
+		SoundManager.play_Waterclean_sound()
+
+		# Make this water completely invisible
+		var cleaned_water: TextureRect = water_nodes[water_index]
+		var cleaned_color: Color = cleaned_water.modulate
+		cleaned_color.a = 0.0
+		cleaned_water.modulate = cleaned_color
+
+		# If all water stains are cleaned, finish the minigame with success
+		if cleaned_water_count >= water_nodes.size():
+			if success_sound:
+				success_sound.play()
+			else:
+				_on_success_sound_finished()
+
+
+# Stop input on the mop and notify the parent that the minigame has finished
+func _on_success_sound_finished() -> void:
+	minigame_finished.emit(true)

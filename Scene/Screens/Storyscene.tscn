@@ -10,48 +10,68 @@
 script = ExtResource("1_qvpm7")
 
 [node name="Bus" type="Sprite2D" parent="."]
-position = Vector2(240, 922)
-scale = Vector2(3.0754716, 2.1320755)
+position = Vector2(72.750015, 269)
+scale = Vector2(1.3632072, 0.9811318)
 texture = ExtResource("1_wajwy")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("2_sku3c")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1800, 0)
+motion_mirroring = Vector2(640, 0)
 
 [node name="Background" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
-offset_right = 1800.0
-offset_bottom = 1200.0
+offset_top = 3.0
+offset_right = 640.0
+offset_bottom = 363.0
 texture = ExtResource("3_qvpm7")
+metadata/_edit_use_anchors_ = true
 
 [node name="UI_Layer" type="CanvasLayer" parent="."]
 
 [node name="DialogueBox" type="ColorRect" parent="UI_Layer"]
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = -1
+anchor_top = 0.8276667
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -223.0
+anchor_bottom = 1.0761112
+offset_top = 0.039978027
+offset_bottom = -23.400024
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.29411766, 0.29411766, 0.29411766, 0.5882353)
+metadata/_edit_use_anchors_ = true
 
 [node name="StoryText" type="Label" parent="UI_Layer/DialogueBox"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.696875
+anchor_top = 0.04411765
+anchor_right = -1.696875
+anchor_bottom = 0.117646836
+offset_left = 1086.0
 offset_right = 1726.0
-offset_bottom = 231.0
+offset_bottom = 66.000015
 theme_override_fonts/font = ExtResource("5_0cpj8")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 9
 vertical_alignment = 1
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Nextbutton" type="Button" parent="UI_Layer/DialogueBox"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.7859375
+anchor_top = -0.015151399
+anchor_right = -1.7859375
+anchor_bottom = -0.015151399
 offset_left = 1729.0
 offset_top = 2.0
 offset_right = 1799.0
 offset_bottom = 63.0
+scale = Vector2(0.4, 0.4)
 theme_override_fonts/font = ExtResource("5_0cpj8")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 18
 text = ">>"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="UI_Layer/DialogueBox/Nextbutton" to="." method="_on_nextbutton_pressed"]
