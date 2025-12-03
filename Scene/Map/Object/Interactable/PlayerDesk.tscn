@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bn0vxex6xiamo"]
+[gd_scene load_steps=4 format=3 uid="uid://d2fdqjmgwpbft"]
 
 [ext_resource type="Texture2D" uid="uid://si8686mjuub5" path="res://Art/free-office-pixel-art/desk-with-pc.png" id="1_hcwrb"]
 [ext_resource type="Script" uid="uid://d4mpjeuji6d6u" path="res://Script/Computer.gd" id="1_n2p8u"]

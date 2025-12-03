@@ -148,13 +148,14 @@ func order_coffee():
 	state = States.WAITING
 	coffee_state = CoffeeStates.CALLING
 	text_box = BubbleManager.startDialog(global_position, staff_name)
+	text_box.angryTimer.timeout.connect(_on_text_box_angry_timer_timeout)
 	text_box.textToDisPlay(Type.StaffMethod.ORDER)
 
 func _input(event):
 	if event.is_action_pressed("interact") and can_interact and state == States.WAITING and !GameData.is_playing_minigame:
 		print("talking")
 		if coffee_state == CoffeeStates.CALLING:
-			order_index = randi_range(0,3)
+			order_index = randi_range(0,2)
 			match order_index:
 				0:
 					text_box.textToDisPlay(Type.StaffMethod.START0)
@@ -194,6 +195,9 @@ func reset_to_normal_states():
 	
 	coffee_state = CoffeeStates.CALLING
 	state = States.SITTING
+	
+func _on_text_box_angry_timer_timeout():
+	reset_to_normal_states()
 	
 enum States{
 	SITTING,
