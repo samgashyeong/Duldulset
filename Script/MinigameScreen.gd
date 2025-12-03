@@ -5,7 +5,7 @@ var player_computer
 var copy_machine
 
 func _ready():
-	minigame_manager = $"MiniGameManager"
+	minigame_manager = $MiniGameManager
 	minigame_manager.minigame_closed.connect(_on_minigame_manager_minigame_closed)
 	
 	player_computer = $"../Map/Tables/Part/PlayerDesk"
