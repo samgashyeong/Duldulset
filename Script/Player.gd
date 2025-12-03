@@ -69,7 +69,28 @@ func _physics_process(delta: float) -> void:
 	get_input()
 	move_and_slide()
 	
-	
+
+	# 움직임소리시작
+	if velocity.length() > 0:
+		if is_running:
+			if SoundManager.get_node("WalkCh").playing:
+				SoundManager.get_node("WalkCh").stop()
+			if not SoundManager.get_node("RunningCh").playing:
+				SoundManager.play_RunningCh_sound()
+		else:
+			if SoundManager.get_node("RunningCh").playing:
+				SoundManager.get_node("RunningCh").stop()
+
+			if not SoundManager.get_node("WalkCh").playing:
+				SoundManager.play_WalkCh_sound()
+	else:
+		if SoundManager.get_node("WalkCh").playing:
+			SoundManager.get_node("WalkCh").stop()
+		if SoundManager.get_node("RunningCh").playing:
+			SoundManager.get_node("RunningCh").stop()
+	# 움직임소리끝
+
+
 
 func _process(delta: float) -> void:
 	if GameData.is_playing_minigame:
@@ -98,11 +119,18 @@ func _process(delta: float) -> void:
 
 func update_health(amount):
 	health += amount
+	# 데미지소리시작
+	if amount < 0:
+		SoundManager.play_DamageCh_sound()
+	# 데미지소리끝
 	if(health <= 0):
 		health = 0
 	health_changed.emit(health, amount)
 	
 func update_point(amount):
 	point += amount
+	# 포인트업소리시작
+    SoundManager.play_PointUpCh_sound()
+    # 포인트업소리끝
 	point_changed.emit(point, amount)
 	

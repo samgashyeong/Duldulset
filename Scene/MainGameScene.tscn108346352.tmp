@@ -1,0 +1,76 @@
+[gd_scene load_steps=14 format=3 uid="uid://ciffji1jteld0"]
+
+[ext_resource type="PackedScene" uid="uid://eyo8pltp05s2" path="res://Scene/Map/Map.tscn" id="1_xbayr"]
+[ext_resource type="PackedScene" uid="uid://c3itnyow77hq5" path="res://Scene/NPC/Employee/Chunja.tscn" id="2_rw1fg"]
+[ext_resource type="PackedScene" uid="uid://27onlytfom1e" path="res://Scene/Player.tscn" id="2_vqyqj"]
+[ext_resource type="PackedScene" uid="uid://cd1ivnpxv6vve" path="res://Scene/System/GameSystem.tscn" id="3_0pb3a"]
+[ext_resource type="PackedScene" uid="uid://b0bwfer4l5wrc" path="res://Scene/NPC/Employee/Dongwoo.tscn" id="3_mqryj"]
+[ext_resource type="Script" uid="uid://dt0trvr0xugoo" path="res://Script/GsmeSystem.gd" id="4_2nj8a"]
+[ext_resource type="PackedScene" uid="uid://c2nq23cfwg3n7" path="res://Scene/NPC/Employee/Junsang.tscn" id="4_lwlm8"]
+[ext_resource type="PackedScene" uid="uid://bctrbpmuibnt7" path="res://Scene/NPC/Employee/Minseo.tscn" id="5_chle1"]
+[ext_resource type="PackedScene" uid="uid://ygvot3w1blgr" path="res://Scene/NPC/Employee/Oksoon.tscn" id="6_0qfpp"]
+[ext_resource type="PackedScene" uid="uid://d3diybypdlxo6" path="res://Scene/NPC/Employee/Sangin.tscn" id="7_gsu3l"]
+[ext_resource type="PackedScene" uid="uid://cq4uv1wkox30a" path="res://Scene/NPC/Employee/Younghee.tscn" id="8_2smfn"]
+[ext_resource type="Script" uid="uid://bx0hga6qj8pmo" path="res://Script/MinigameScreen.gd" id="11_mqryj"]
+[ext_resource type="PackedScene" uid="uid://vymo7le3sf6s" path="res://Scene/coffee_dongwoo/CoffeeMainScene.tscn" id="12_chle1"]
+
+[node name="MainGameScene" type="Node2D"]
+
+[node name="Map" parent="." instance=ExtResource("1_xbayr")]
+
+[node name="NPC" type="Node" parent="."]
+
+[node name="Employee" type="Node" parent="NPC"]
+
+[node name="Chunja" parent="NPC/Employee" groups=["employees"] instance=ExtResource("2_rw1fg")]
+position = Vector2(255, 57)
+
+[node name="Dongwoo" parent="NPC/Employee" groups=["employees"] instance=ExtResource("3_mqryj")]
+position = Vector2(255, 301)
+
+[node name="Junsang" parent="NPC/Employee" groups=["employees"] instance=ExtResource("4_lwlm8")]
+position = Vector2(255, 212)
+
+[node name="Minseo" parent="NPC/Employee" groups=["employees"] instance=ExtResource("5_chle1")]
+position = Vector2(160, 57)
+
+[node name="Oksoon" parent="NPC/Employee" groups=["employees"] instance=ExtResource("6_0qfpp")]
+position = Vector2(255, 147)
+
+[node name="Sangin" parent="NPC/Employee" groups=["employees"] instance=ExtResource("7_gsu3l")]
+position = Vector2(159, 148)
+
+[node name="Younghee" parent="NPC/Employee" groups=["employees"] instance=ExtResource("8_2smfn")]
+position = Vector2(159, 213)
+
+[node name="Giiyoung" parent="." instance=ExtResource("2_vqyqj")]
+z_index = 2
+position = Vector2(159, 301)
+
+[node name="CoffeeMinigameScreen" type="SubViewportContainer" parent="."]
+visible = false
+z_index = 10
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 66.0
+offset_top = 61.0
+offset_right = 578.0
+offset_bottom = 573.0
+grow_horizontal = 2
+scale = Vector2(0.8, 0.45)
+script = ExtResource("11_mqryj")
+
+[node name="SubViewport" type="SubViewport" parent="CoffeeMinigameScreen"]
+disable_3d = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+physics_object_picking = true
+size_2d_override = Vector2i(1280, 720)
+size_2d_override_stretch = true
+render_target_update_mode = 0
+
+[node name="CoffeeMainScene" parent="CoffeeMinigameScreen/SubViewport" instance=ExtResource("12_chle1")]
+
+[node name="GameSystem" parent="." instance=ExtResource("3_0pb3a")]
+script = ExtResource("4_2nj8a")

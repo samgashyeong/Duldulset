@@ -23,4 +23,5 @@ func hide_on_desk():
 func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		picked_up.emit()
+		SoundManager.play_Closebutton_sound()
 		get_viewport().set_input_as_handled()

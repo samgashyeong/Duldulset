@@ -32,6 +32,7 @@ var word_labels: Array[Label] = []       # All label blocks used to display targ
 var remaining_label_count: int = 0       # How many labels are still “alive” (not typed yet)
 
 
+
 func _ready() -> void:
 	# Collect all Label nodes under the grid
 	word_labels.clear()
@@ -93,6 +94,9 @@ func _check_user_input(user_input: String) -> void:
 	if matched_index >= 0:
 		# Correct answer
 		word_labels[matched_index].visible = false
+
+		SoundManager.play_Waterclean_sound()
+
 		remaining_label_count -= 1
 		input_line_edit.clear()
 

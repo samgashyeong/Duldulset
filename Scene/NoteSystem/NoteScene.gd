@@ -14,6 +14,8 @@ var staff : String
 var staffScript : String
 const ITEM = preload("res://Scene/NoteSystem/NoteElement.tscn")
 
+#처음에소리안나게
+var is_initializing : bool = true
 
 func _ready() -> void:
 	var buttons = buttonGroup.get_buttons()
@@ -27,6 +29,8 @@ func _ready() -> void:
 	$HBoxContainer/VBoxContainer/Junsang.set_pressed(true)
 	_on_button_pressed($HBoxContainer/VBoxContainer/Junsang)
 	
+	is_initializing = false
+	
 	position = Vector2(320, 600)
 	
 	for i in employee.get_children().size():
@@ -36,6 +40,11 @@ func _ready() -> void:
 	
 
 func _on_button_pressed(button):
+	
+	#버튼소리시작
+	if not is_initializing:
+		SoundManager.play_Smallclick_sound()
+	#버튼소리끝
 	
 	var container = $HBoxContainer/Sprite2D/ScrollContainer/VBoxContainer
 	
@@ -92,6 +101,9 @@ func makeListView(resoucre : Coffee):
 	
 	
 func pop_up():
+	#노트소리시작
+	SoundManager.play_Noteflip_sound()
+	#노트소리끝
 	await get_tree().process_frame
 	if !dialogUp:
 		animation.play("pop up")
@@ -100,6 +112,9 @@ func pop_up():
 
 
 func _on_exit_button_pressed() -> void:
+	#닫기소리시작
+	SoundManager.play_Closebutton_sound()
+	#닫기소리끝
 	await get_tree().process_frame
 	if dialogUp:
 		animation.play("pop_down")

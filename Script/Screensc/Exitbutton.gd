@@ -1,4 +1,4 @@
 extends Button 
 
 func _on_pressed():
-	get_tree().quit()
+	SoundManager.play_quit_sound_and_exit()
