@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ciffji1jteld0"]
+[gd_scene load_steps=15 format=3 uid="uid://ciffji1jteld0"]
 
 [ext_resource type="PackedScene" uid="uid://eyo8pltp05s2" path="res://Scene/Map/Map.tscn" id="1_xbayr"]
 [ext_resource type="PackedScene" uid="uid://c3itnyow77hq5" path="res://Scene/NPC/Employee/Chunja.tscn" id="2_rw1fg"]
@@ -11,8 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://ygvot3w1blgr" path="res://Scene/NPC/Employee/Oksoon.tscn" id="6_0qfpp"]
 [ext_resource type="PackedScene" uid="uid://d3diybypdlxo6" path="res://Scene/NPC/Employee/Sangin.tscn" id="7_gsu3l"]
 [ext_resource type="PackedScene" uid="uid://cq4uv1wkox30a" path="res://Scene/NPC/Employee/Younghee.tscn" id="8_2smfn"]
-[ext_resource type="Script" uid="uid://bx0hga6qj8pmo" path="res://Script/MinigameScreen.gd" id="11_mqryj"]
-[ext_resource type="PackedScene" uid="uid://vymo7le3sf6s" path="res://Scene/coffee_dongwoo/CoffeeMainScene.tscn" id="12_chle1"]
+[ext_resource type="PackedScene" uid="uid://oqi81dd7r3ld" path="res://Scene/MiniGames/MiniGameManager.tscn" id="10_lwlm8"]
+[ext_resource type="Script" uid="uid://b7303u25cvvci" path="res://Script/MinigameScreen.gd" id="11_mqryj"]
+[ext_resource type="Script" uid="uid://bx0hga6qj8pmo" path="res://Script/CoffeeMinigameScreen.gd" id="12_chle1"]
 
 [node name="MainGameScene" type="Node2D"]
 
@@ -47,21 +48,26 @@ position = Vector2(159, 213)
 z_index = 2
 position = Vector2(159, 301)
 
-[node name="CoffeeMinigameScreen" type="SubViewportContainer" parent="."]
+[node name="MinigameScreen" type="Node" parent="."]
+script = ExtResource("11_mqryj")
+
+[node name="MiniGameManager" parent="MinigameScreen" instance=ExtResource("10_lwlm8")]
+
+[node name="CoffeeMinigameScreen" type="SubViewportContainer" parent="MinigameScreen"]
 visible = false
 z_index = 10
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 66.0
+offset_left = -254.0
 offset_top = 61.0
-offset_right = 578.0
+offset_right = 258.0
 offset_bottom = 573.0
 grow_horizontal = 2
 scale = Vector2(0.8, 0.45)
-script = ExtResource("11_mqryj")
+script = ExtResource("12_chle1")
 
-[node name="SubViewport" type="SubViewport" parent="CoffeeMinigameScreen"]
+[node name="SubViewport" type="SubViewport" parent="MinigameScreen/CoffeeMinigameScreen"]
 disable_3d = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
@@ -69,8 +75,6 @@ physics_object_picking = true
 size_2d_override = Vector2i(1280, 720)
 size_2d_override_stretch = true
 render_target_update_mode = 0
-
-[node name="CoffeeMainScene" parent="CoffeeMinigameScreen/SubViewport" instance=ExtResource("12_chle1")]
 
 [node name="GameSystem" parent="." instance=ExtResource("3_0pb3a")]
 script = ExtResource("4_2nj8a")

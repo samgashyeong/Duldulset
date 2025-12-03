@@ -14,7 +14,7 @@ const SUGAR_FOLLOWER_SCENE = preload("res://Scene/coffee_dongwoo/SugarFollower.t
 # 물병
 const WaterbottleClass: Script = preload("res://Script/CoffeeSc_dongwoo/Waterbottle.gd")
 const WATERBOTTLE_FOLLOWER_SCENE = preload("res://Scene/coffee_dongwoo/WaterbottleFollower.tscn") 
-const BACKTO_SCENE_PATH = "res://Scene/coffee_dongwoo/Backto.tscn" 
+#const BACKTO_SCENE_PATH = "res://Scene/coffee_dongwoo/Backto.tscn" 
 
 # 상태 추적 변수 
 var current_sugar_follower: Node = null
@@ -31,6 +31,8 @@ var is_waterbottle_unlocked = false
 @onready var fade_overlay: ColorRect = $FadeOverlay
 @onready var scene_transition_timer: Timer = $SceneTransitionTimer
 
+# 커피 미니게임이 끝났을 때 알려주는 시그널
+signal coffee_finished()
 
 func _ready():
 	#  원두 버튼 연결 
@@ -104,7 +106,9 @@ func _on_scene_transition_timer_timeout():
 		print("시작합")
 
 func _on_fade_animation_finished(_anim_name):
-	get_tree().change_scene_to_file(BACKTO_SCENE_PATH)
+	#get_tree().change_scene_to_file(BACKTO_SCENE_PATH)
+	coffee_finished.emit() # scene 전환 대신 시그널로 처리
+	queue_free() # 시그널 보내고 나서 노드 삭제
 
 # 설탕 생성 
 func _on_requested_sugar_spawn():

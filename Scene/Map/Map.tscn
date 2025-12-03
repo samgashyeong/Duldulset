@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=4 uid="uid://eyo8pltp05s2"]
+[gd_scene load_steps=11 format=4 uid="uid://eyo8pltp05s2"]
 
 [ext_resource type="TileSet" uid="uid://c1gtcncmoqlf0" path="res://Scene/Map/Tileset.tres" id="1_2vb5h"]
 [ext_resource type="Script" uid="uid://d1r2f47d56ko6" path="res://Script/AStar.gd" id="2_l2kg7"]
 [ext_resource type="PackedScene" uid="uid://bftrw0j7gxi1e" path="res://Scene/Map/Object/Partition.tscn" id="2_tsb8y"]
-[ext_resource type="PackedScene" uid="uid://bn0vxex6xiamo" path="res://Scene/Map/Object/Interactable/PlayerDesk.tscn" id="2_w8m0h"]
+[ext_resource type="PackedScene" uid="uid://bn0vxex6xiamo" path="res://Scene/Map/Object/Desk.tscn" id="2_w8m0h"]
 [ext_resource type="TileSet" uid="uid://b6w7mpifw3e3k" path="res://Scene/Map/WallTileset.tres" id="2_yknlo"]
 [ext_resource type="PackedScene" uid="uid://dos2l68aadxwy" path="res://Scene/Map/Object/Interactable/CoffeeMaker.tscn" id="3_20uqm"]
 [ext_resource type="TileSet" uid="uid://c4ywn4k3ihqxu" path="res://Scene/Map/ObjectTileset.tres" id="3_hx64c"]
 [ext_resource type="PackedScene" uid="uid://dfnbsxdriihc0" path="res://Scene/Map/Object/Interactable/Copy.tscn" id="4_20uqm"]
 [ext_resource type="PackedScene" uid="uid://b8s30oi7ylhs0" path="res://Scene/Map/Object/DocumentTable.tscn" id="5_kd8dt"]
+[ext_resource type="PackedScene" uid="uid://d2fdqjmgwpbft" path="res://Scene/Map/Object/Interactable/PlayerDesk.tscn" id="6_sw0hs"]
 
 [node name="Map" type="Node2D"]
 
@@ -25,7 +26,7 @@ tile_map_data = PackedByteArray("AAABAAAAAAAGAAkAAAACAAAAAAAGAAkAAAADAAAAAAAGAAk
 tile_set = ExtResource("1_2vb5h")
 
 [node name="Boundary" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAIAAAAAAA0AAAAAAAMAAAAAAA0AAAAAAAQAAAAAAA0AAAAAAAUAAAAAAA0AAAAAAAYAAAAAAA0AAAAAAAcAAAAAAA0AAAAAAAgAAAAAAA0AAAAQAAgAAAAEAA0AAAAQAAcAAAAEAA0AAAAQAAYAAAAEAA0AAAAQAAUAAAAEAA0AAAAQAAQAAAAEAA0AAAAQAAMAAAAEAA0AAAAQAAIAAAAEAA0AAAAQAAEAAAAEAA0AAAAQAAAAAAAEAA0AAAABAP//AAACAAsAAAACAP//AAACAAsAAAADAP//AAACAAsAAAAEAP//AAACAAsAAAAFAP//AAACAAsAAAAGAP//AAACAAsAAAAHAP//AAACAAsAAAAIAP//AAACAAsAAAAJAP//AAACAAsAAAAKAP//AAACAAsAAAALAP//AAACAAsAAAAMAP//AAACAAsAAAANAP//AAACAAsAAAAOAP//AAACAAsAAAAPAP//AAACAAsAAAAAAP//AAABAAsAAAAQAP//AAADAAsAAAAAAAkAAAAAAA0AAAAAAAoAAAAAAA0AAAAQAAkAAAAEAA0AAAAQAAoAAAAEAA0AAAAAAAsAAAAAAA4AAAAQAAsAAAAEAA4AAAABAAsAAAACAA8AAAACAAsAAAACAA8AAAADAAsAAAACAA8AAAAEAAsAAAACAA8AAAAFAAsAAAACAA8AAAAGAAsAAAACAA8AAAAHAAsAAAACAA8AAAAIAAsAAAACAA8AAAAJAAsAAAACAA8AAAAKAAsAAAACAA8AAAALAAsAAAACAA8AAAAMAAsAAAACAA8AAAANAAsAAAACAA8AAAAOAAsAAAACAA8AAAAPAAsAAAACAA8AAAAAAAAAAAAAAA0AAAAAAAEAAAAAAA0AAAA=")
+tile_map_data = PackedByteArray("AAAAAAIAAAAAAA0AAAAAAAMAAAAAAA0AAAAAAAQAAAAAAA0AAAAAAAUAAAAAAA0AAAAAAAYAAAAAAA0AAAAAAAcAAAAAAA0AAAAAAAgAAAAAAA0AAAAQAAgAAAAEAA0AAAAQAAcAAAAEAA0AAAAQAAYAAAAEAA0AAAAQAAUAAAAEAA0AAAAQAAQAAAAEAA0AAAAQAAMAAAAEAA0AAAAQAAIAAAAEAA0AAAAQAAEAAAAEAA0AAAAQAAAAAAAEAA0AAAABAP//AAACAAsAAAACAP//AAACAAsAAAADAP//AAACAAsAAAAEAP//AAACAAsAAAAFAP//AAACAAsAAAAGAP//AAACAAsAAAAHAP//AAACAAsAAAAIAP//AAACAAsAAAAJAP//AAACAAsAAAAKAP//AAACAAsAAAALAP//AAACAAsAAAAMAP//AAACAAsAAAANAP//AAACAAsAAAAOAP//AAACAAsAAAAPAP//AAACAAsAAAAAAP//AAABAAsAAAAQAP//AAADAAsAAAAAAAkAAAAAAA0AAAAAAAoAAAAAAA0AAAAQAAkAAAAEAA0AAAAQAAoAAAAEAA0AAAAAAAsAAAAAAA4AAAAQAAsAAAAEAA4AAAABAAsAAAACAA8AAAACAAsAAAACAA8AAAADAAsAAAACAA8AAAAEAAsAAAACAA8AAAAFAAsAAAACAA8AAAAGAAsAAAACAA8AAAAHAAsAAAACAA8AAAAIAAsAAAACAA8AAAAJAAsAAAACAA8AAAAKAAsAAAACAA8AAAALAAsAAAACAA8AAAAMAAsAAAACAA8AAAANAAsAAAACAA8AAAAOAAsAAAACAA8AAAAPAAsAAAACAA8AAAAAAAAAAAAAAA0AAAAAAAEAAAAAAA0AAAABAAAAAAACAAIAAAADAAAAAAACAAIAAAAEAAAAAAACAAIAAAAFAAAAAAACAAIAAAAGAAAAAAACAAIAAAAHAAAAAAACAAIAAAAIAAAAAAACAAIAAAAJAAAAAAACAAIAAAAKAAAAAAACAAIAAAACAAAAAAACAAIAAAALAAAAAAACAAIAAAAMAAAAAAACAAIAAAANAAAAAAACAAIAAAAOAAAAAAACAAIAAAAPAAAAAAACAAIAAAA=")
 tile_set = ExtResource("2_yknlo")
 
 [node name="Placed" type="TileMapLayer" parent="."]
@@ -41,13 +42,13 @@ position = Vector2(1, 32)
 [node name="Partition" parent="Tables/Part" instance=ExtResource("2_tsb8y")]
 position = Vector2(143, 192)
 
-[node name="PlayerDesk" parent="Tables/Part" instance=ExtResource("2_w8m0h")]
+[node name="PlayerDesk" parent="Tables/Part" instance=ExtResource("6_sw0hs")]
 position = Vector2(143, 206)
 
 [node name="Part2" type="Node2D" parent="Tables"]
 position = Vector2(0, -29)
 
-[node name="PlayerDesk" parent="Tables/Part2" instance=ExtResource("2_w8m0h")]
+[node name="Desk" parent="Tables/Part2" instance=ExtResource("2_w8m0h")]
 z_index = 1
 position = Vector2(143, 206)
 rotation = 3.1415927
@@ -61,13 +62,13 @@ position = Vector2(1, 32)
 [node name="Partition" parent="Tables2/Part" instance=ExtResource("2_tsb8y")]
 position = Vector2(143, 192)
 
-[node name="PlayerDesk" parent="Tables2/Part" instance=ExtResource("2_w8m0h")]
+[node name="Desk" parent="Tables2/Part" instance=ExtResource("2_w8m0h")]
 position = Vector2(143, 206)
 
 [node name="Part2" type="Node2D" parent="Tables2"]
 position = Vector2(0, -29)
 
-[node name="PlayerDesk" parent="Tables2/Part2" instance=ExtResource("2_w8m0h")]
+[node name="Desk" parent="Tables2/Part2" instance=ExtResource("2_w8m0h")]
 z_index = 1
 position = Vector2(143, 206)
 rotation = 3.1415927
@@ -81,13 +82,13 @@ position = Vector2(1, 32)
 [node name="Partition" parent="Tables3/Part" instance=ExtResource("2_tsb8y")]
 position = Vector2(143, 192)
 
-[node name="PlayerDesk" parent="Tables3/Part" instance=ExtResource("2_w8m0h")]
+[node name="Desk" parent="Tables3/Part" instance=ExtResource("2_w8m0h")]
 position = Vector2(143, 206)
 
 [node name="Part2" type="Node2D" parent="Tables3"]
 position = Vector2(0, -29)
 
-[node name="PlayerDesk" parent="Tables3/Part2" instance=ExtResource("2_w8m0h")]
+[node name="Desk" parent="Tables3/Part2" instance=ExtResource("2_w8m0h")]
 z_index = 1
 position = Vector2(143, 206)
 rotation = 3.1415927
@@ -101,13 +102,13 @@ position = Vector2(1, 32)
 [node name="Partition" parent="Tables4/Part" instance=ExtResource("2_tsb8y")]
 position = Vector2(143, 192)
 
-[node name="PlayerDesk" parent="Tables4/Part" instance=ExtResource("2_w8m0h")]
+[node name="Desk" parent="Tables4/Part" instance=ExtResource("2_w8m0h")]
 position = Vector2(143, 206)
 
 [node name="Part2" type="Node2D" parent="Tables4"]
 position = Vector2(0, -29)
 
-[node name="PlayerDesk" parent="Tables4/Part2" instance=ExtResource("2_w8m0h")]
+[node name="Desk" parent="Tables4/Part2" instance=ExtResource("2_w8m0h")]
 z_index = 1
 position = Vector2(143, 206)
 rotation = 3.1415927

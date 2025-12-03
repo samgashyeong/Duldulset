@@ -73,6 +73,7 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	if GameData.is_playing_minigame:
+		animated_sprite.stop()
 		return
 		
 	if Input.is_action_just_pressed("ui_left"):
