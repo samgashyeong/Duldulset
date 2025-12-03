@@ -17,6 +17,9 @@ func _gui_input(event: InputEvent) -> void:
 		if event.pressed:
 			# Start dragging: remember offset so the icon does not snap to cursor center
 			is_dragging = true
+
+			SoundManager.play_startclick_sound()
+
 			drag_offset_from_mouse = global_position - get_global_mouse_position()
 			z_index = 100  # Bring icon to front while dragging
 		else:

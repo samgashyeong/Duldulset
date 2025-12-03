@@ -78,6 +78,7 @@ func _randomize_file_positions() -> void:
 # Called when trash file has been correctly removed
 func _on_trash_removed() -> void:
 	removed_trash_count += 1
+	SoundManager.play_Erasefile_sound()
 
 	# When all trash files are removed, the player wins
 	if removed_trash_count >= total_trash_count:
@@ -94,12 +95,12 @@ func _finish_minigame(success: bool) -> void:
 			error_sound.play(0.5)
 		error_panel.visible = true
 		error_panel_timer.start()
-		
+
 # Finish the minigame and emit the result to minigamemanager
 func _on_success_panel_timer_timeout() -> void:
 	success_panel.visible = false
 	minigame_finished.emit(true)
-	
+
 func _on_error_panel_timer_timeout() -> void:
 	error_panel.visible = false
 	minigame_finished.emit(false)

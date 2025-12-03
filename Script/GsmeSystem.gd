@@ -24,7 +24,9 @@ const END_SCENE_PATH = "res://Scene/Screens/EndScene.tscn"
 var current_stage_index = 0
 
 func _process(_delta):
+	#nextlevelscene나오는 타이밍
 	if Input.is_action_just_pressed("Getnextscene"):
+		SoundManager.play_Tonext_sound()
 		go_to_next_scene()
 
 func go_to_next_scene():

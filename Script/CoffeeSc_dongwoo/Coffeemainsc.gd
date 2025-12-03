@@ -14,7 +14,7 @@ const SUGAR_FOLLOWER_SCENE = preload("res://Scene/coffee_dongwoo/SugarFollower.t
 # 물병
 const WaterbottleClass: Script = preload("res://Script/CoffeeSc_dongwoo/Waterbottle.gd")
 const WATERBOTTLE_FOLLOWER_SCENE = preload("res://Scene/coffee_dongwoo/WaterbottleFollower.tscn") 
-#const BACKTO_SCENE_PATH = "res://Scene/coffee_dongwoo/Backto.tscn" 
+#const BACKTO_SCENE_PATH = "res://Scene/coffee_dongwoo/Backto.tscn"
 
 # 상태 추적 변수 
 var current_sugar_follower: Node = null
@@ -97,6 +97,7 @@ func _on_waterbottle_picked_up():
 func _on_started_pouring():
 	if scene_transition_timer:
 		scene_transition_timer.start()
+		SoundManager.play_Waterfall_sound()
 
 func _on_scene_transition_timer_timeout():
 	if fade_player and fade_player.has_animation("FadeOut"):
@@ -125,6 +126,7 @@ func _on_requested_sugar_spawn():
 func _on_sugar_placed(spawn_position: Vector2):
 	current_sugar_follower = null
 	var sugar = SUGAR_SCENE.instantiate()
+	SoundManager.play_Sugarfall_sound()
 	add_child(sugar)
 	sugar.global_position = spawn_position
 
@@ -136,7 +138,8 @@ func _on_requested_coffeebean_spawn(button_position: Vector2):
 	# var num_to_spawn = randi_range(1, BEAN_COUNT)
 	var num_to_spawn = 10
 	print("현재 커피 개수: ", GameData.coffee_count)
-	
+	SoundManager.play_Coffeefall_sound()
+
 	for i in range(num_to_spawn):
 		var bean = COFFEEBEAN_SCENE.instantiate()
 		add_child(bean)
@@ -154,7 +157,8 @@ func _on_requested_prim_spawn(button_position: Vector2):
 	
 	var num_to_spawn = randi_range(1, PRIM_COUNT)
 	print("현재 프림 개수: ", GameData.prim_count)
-	
+	SoundManager.play_Primfall_sound()
+
 	for i in range(num_to_spawn):
 		var prim = PRIM_SCENE.instantiate() 
 		add_child(prim)

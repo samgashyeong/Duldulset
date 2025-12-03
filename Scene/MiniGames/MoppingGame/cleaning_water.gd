@@ -65,13 +65,13 @@ func _init_water_nodes() -> void:
 func _process(_delta: float) -> void:
 	var mop_rect: Rect2 = mop_texture.get_global_rect()
 
-	# Find which water the mop is currently cleaning 
+	# Find which water the mop is currently cleaning
 	var previous_frame_water_index: int = -1
 	var water_count: int = water_nodes.size()
 	for i in water_count:
 		if is_water_cleaned_flags[i]:	# ignore cleaned water
 			continue
-			
+
 		var water_rect: Rect2 = water_nodes[i].get_global_rect()
 		if mop_rect.intersects(water_rect):
 			previous_frame_water_index = i
@@ -102,7 +102,7 @@ func _process(_delta: float) -> void:
 		if absf(mop_x - last_cross_x_for_water[previous_frame_water_index]) >= min_direction_switch_dx:
 			stroke_counts_for_water[previous_frame_water_index] += 1
 			last_cross_x_for_water[previous_frame_water_index] = mop_x
-			cleaning_sound.play(0.7)
+			SoundManager.play_Mopping_sound()
 			_update_water_clean_progress(previous_frame_water_index)
 
 	# Store the side for the next frame comparison
@@ -121,10 +121,14 @@ func _update_water_clean_progress(water_index: int) -> void:
 		color.a = 1.0 - 0.85 * progress
 		water_rect.modulate = color
 
+
+
 	# Check if this water stain is now fully cleaned
 	if strokes >= required_strokes_per_water and not is_water_cleaned_flags[water_index]:
 		is_water_cleaned_flags[water_index] = true
 		cleaned_water_count += 1
+
+		SoundManager.play_Waterclean_sound()
 
 		# Make this water completely invisible
 		var cleaned_water: TextureRect = water_nodes[water_index]

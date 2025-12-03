@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Duldulset"
-run/main_scene="uid://vymo7le3sf6s"
+run/main_scene="uid://cnuj6n5mjhgar"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GameData="*res://Script/GameData.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 BubbleManager="*res://Script/BubbleSystem/BubbleManager.gd"
+SoundManager="*res://Scene/SoundManager/SoundManager.tscn"
 
 [dialogic]
 
