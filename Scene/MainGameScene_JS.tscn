@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cjsuft28t0rt8" path="res://Art/Aseprite/HP1.png" id="6_54jh8"]
 [ext_resource type="FontFile" uid="uid://b5ck22eskijli" path="res://Font/neodgm (1).ttf" id="7_54jh8"]
 [ext_resource type="Texture2D" uid="uid://76881n8w6hjb" path="res://Art/Aseprite/Stamina_Empty.png" id="8_66i0l"]
-[ext_resource type="Texture2D" uid="uid://d2hdkrmtaqxut" path="res://Art/Pixel Art Buttons.png" id="8_l6q8h"]
+[ext_resource type="Texture2D" uid="uid://yri2xcvo3ykk" path="res://Art/Pixel Art Buttons.png" id="8_l6q8h"]
 [ext_resource type="PackedScene" uid="uid://b2qmpffqrabvr" path="res://Scene/NoteSystem/NoteScene.tscn" id="9_obk2e"]
 [ext_resource type="Texture2D" uid="uid://btdj2ogxguxhw" path="res://Art/Aseprite/Stamina_Full.png" id="9_v1gi4"]
 [ext_resource type="PackedScene" uid="uid://3ks6ev6b6or1" path="res://Scene/ClockSystem/ClockSystem.tscn" id="10_60fvc"]

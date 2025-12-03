@@ -25,6 +25,11 @@ func _count_trash() -> void:
 func _on_trash_removed() -> void:
 	if finished: 
 		return
+	
+	#쓰레기소리시작
+	SoundManager.play_Erasefile_sound()
+	#쓰레기소리끝
+	
 	removed_trash += 1
 	if removed_trash >= total_trash:
 		_finish(true)

@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 GameData="*res://Script/GameData.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 BubbleManager="*res://Script/BubbleSystem/BubbleManager.gd"
-SoundManager="*res://Script/SoundManager/SoundManager.gd"
+SoundManager="*res://Scene/SoundManager/SoundManager.tscn"
 
 [dialogic]
 

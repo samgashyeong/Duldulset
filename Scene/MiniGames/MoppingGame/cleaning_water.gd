@@ -106,6 +106,11 @@ func _process(_delta: float) -> void:
 	if side != prev_side and prev_side != 0:
 		if absf(x - _last_cross_x_for[idx]) >= min_switch_dx:
 			_strokes_for[idx] += 1
+			
+			#쓱싹소리시작
+			SoundManager.play_Mopping_sound()
+			#쓱싹소리끝
+			
 			_last_cross_x_for[idx] = x
 			_update_water_progress(idx)
 
@@ -126,6 +131,10 @@ func _update_water_progress(idx: int) -> void:
 	if strokes >= strokes_per_water and not _cleaned_for[idx]:
 		_cleaned_for[idx] = true
 		_cleaned_count += 1
+		
+		#물지움소리시작
+		SoundManager.play_Waterclean_sound()
+		#물지움소리끝
 
 		# 완전히 안 보이게
 		var w2: TextureRect = waters[idx]

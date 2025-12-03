@@ -1,10 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://2f0vmh75c7ru"]
+[gd_scene load_steps=26 format=3 uid="uid://2f0vmh75c7ru"]
 
 [ext_resource type="Script" uid="uid://c04trdhjm8cpp" path="res://Script/SoundManager/SoundManager.gd" id="1_l4qrj"]
 [ext_resource type="AudioStream" uid="uid://3ajhg0mwuyuo" path="res://Sound/Buttonclick.mp3" id="2_p8rl7"]
-[ext_resource type="AudioStream" path="res://Sound/Buttonclick2.mp3" id="3_p8rl7"]
+[ext_resource type="AudioStream" uid="uid://cxgq4i85jvxaa" path="res://Sound/Buttonclick2.mp3" id="3_p8rl7"]
+[ext_resource type="AudioStream" uid="uid://dxe8s02ohf2r4" path="res://Sound/Buttonclick3.mp3" id="4_rmx84"]
+[ext_resource type="AudioStream" uid="uid://b57s7n4sbqmpr" path="res://Sound/ButtonClick4.mp3" id="5_gr1h7"]
+[ext_resource type="AudioStream" uid="uid://ds1c4dn11lhb5" path="res://Sound/Damage.wav" id="6_ehjl1"]
+[ext_resource type="AudioStream" uid="uid://cn5vegdb41duy" path="res://Sound/Walk.wav" id="7_nlshh"]
+[ext_resource type="AudioStream" uid="uid://b42h84jj3rywq" path="res://Sound/PointUp.wav" id="8_44hjp"]
+[ext_resource type="AudioStream" uid="uid://do3cld7g83v8c" path="res://Sound/Running.wav" id="8_nlshh"]
+[ext_resource type="AudioStream" uid="uid://b77vjfqniv66g" path="res://Sound/Tonext.wav" id="9_44hjp"]
+[ext_resource type="AudioStream" uid="uid://5nyrq2ben2u3" path="res://Sound/Background.mp3" id="10_w2ebl"]
+[ext_resource type="AudioStream" uid="uid://5b448dqbnu2i" path="res://Sound/Noteflip.wav" id="11_wf086"]
+[ext_resource type="AudioStream" uid="uid://br74xw7mo1dcq" path="res://Sound/CloseButton.wav" id="12_mtocv"]
+[ext_resource type="AudioStream" uid="uid://05dx0h18cvfo" path="res://Sound/Smallclick.wav" id="13_ycdnd"]
+[ext_resource type="AudioStream" uid="uid://cxjpiln6ubjgd" path="res://Sound/Erasefile.wav" id="14_y7jnp"]
+[ext_resource type="AudioStream" uid="uid://cafb20fd2koqm" path="res://Sound/Trashfileclick.wav" id="15_twfug"]
+[ext_resource type="AudioStream" uid="uid://dhba3hgd1cvu6" path="res://Sound/Notmalfileclick.wav" id="16_plwhw"]
+[ext_resource type="AudioStream" uid="uid://br2i5e86r7ua2" path="res://Sound/Mopping.ogg" id="17_plwhw"]
+[ext_resource type="AudioStream" uid="uid://ci11s1ew1sgv3" path="res://Sound/Waterclean.wav" id="18_a1ajc"]
+[ext_resource type="AudioStream" uid="uid://c1fm1yetk3qgu" path="res://Sound/Typing2.wav" id="19_uknw8"]
+[ext_resource type="AudioStream" uid="uid://cyp5radmnryvy" path="res://Sound/Worddelete.wav" id="20_q6mwj"]
+[ext_resource type="AudioStream" uid="uid://unhi8215noxy" path="res://Sound/Waterfall.wav" id="21_1h6o1"]
+[ext_resource type="AudioStream" uid="uid://dar0ph268x26l" path="res://Sound/Primfall.wav" id="22_5cdtq"]
+[ext_resource type="AudioStream" uid="uid://5bvbtu6oysbi" path="res://Sound/Coffeefall.wav" id="23_g7kgc"]
+[ext_resource type="AudioStream" uid="uid://dgatp5qfgqpqc" path="res://Sound/Sugarfall.wav" id="24_aauhl"]
 
 [node name="SoundManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_l4qrj")
 
 [node name="StartButton" type="AudioStreamPlayer2D" parent="."]
@@ -12,3 +35,71 @@ stream = ExtResource("2_p8rl7")
 
 [node name="QuitButton" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_p8rl7")
+
+[node name="SpecialButton" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rmx84")
+
+[node name="StorynextButton" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_gr1h7")
+
+[node name="DamageCh" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ehjl1")
+
+[node name="WalkCh" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_nlshh")
+
+[node name="RunningCh" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_nlshh")
+
+[node name="Tonext" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_44hjp")
+
+[node name="BGMPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_w2ebl")
+autoplay = true
+
+[node name="Noteflip" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_wf086")
+volume_db = 20.0
+
+[node name="CloseButton" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_mtocv")
+
+[node name="Smallclick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_ycdnd")
+
+[node name="Erasefile" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_y7jnp")
+
+[node name="Trashfileclick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_twfug")
+
+[node name="Normalfileclick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_plwhw")
+
+[node name="Mopping" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_plwhw")
+
+[node name="Waterclean" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_a1ajc")
+
+[node name="Typing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_uknw8")
+
+[node name="Worddelete" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_q6mwj")
+
+[node name="Waterfall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_1h6o1")
+
+[node name="Primfall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("22_5cdtq")
+
+[node name="Coffeefall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_g7kgc")
+
+[node name="Sugarfall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_aauhl")
+
+[node name="PointUpCh" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_44hjp")

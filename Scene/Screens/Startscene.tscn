@@ -25,13 +25,11 @@ offset_bottom = -88.0
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = -757.0
-offset_top = 90.0
+offset_top = 86.0
 offset_right = 513.0
-offset_bottom = 1293.3334
+offset_bottom = 1302.6666
 scale = Vector2(0.5, 0.3)
 texture = ExtResource("1_c2jll")
-
-[node name="ButtonClickSound" type="AudioStreamPlayer2D" parent="TextureRect"]
 
 [node name="Charact1" type="Sprite2D" parent="."]
 position = Vector2(-603, 145)

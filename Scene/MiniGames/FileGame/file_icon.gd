@@ -14,6 +14,13 @@ func _ready() -> void:
 
 # 드래그 시작: 마우스 다운 후 살짝 움직이면 호출됨
 func _get_drag_data(at_position: Vector2) -> Variant:
+	# 파일소리시작
+	if is_trash:
+		SoundManager.play_Trashfileclick_sound()
+	else:
+		SoundManager.play_Normalfileclick_sound()
+	#파일소리끝
+	
 	var preview := duplicate() as TextureRect    # 드래그 미리보기
 	preview.modulate.a = 0.7
 	set_drag_preview(preview)

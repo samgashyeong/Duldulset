@@ -29,6 +29,9 @@ signal minigame_finished(success: bool)
 var _labels: Array[Label] = []
 var _alive_count: int = 0
 
+# [사운드 제어용] 
+var _internal_change: bool = false
+
 func _ready() -> void:
 	if grid == null:
 		push_error("TypingReport: $WordPanel/GridContainer 경로를 확인하세요.")
@@ -58,9 +61,18 @@ func _ready() -> void:
 
 	if not input.text_submitted.is_connected(_on_line_edit_submitted):
 		input.text_submitted.connect(_on_line_edit_submitted)
-
+	
 	input.clear()
 	input.grab_focus()
+		
+	# [사운드 추가] 
+	if not input.text_changed.is_connected(_on_text_changed):
+		input.text_changed.connect(_on_text_changed)
+	
+# [사운드 추가] 글자가 바뀔 때 호출되는 함수
+func _on_text_changed(_new_text: String) -> void:
+	if not _internal_change:
+		SoundManager.play_Typing_sound()
 
 func _on_line_edit_submitted(text: String) -> void:
 	_check(text)
@@ -75,14 +87,26 @@ func _check(user_input: String) -> void:
 
 	var idx := _find_match_index(typed)
 	if idx >= 0:	#If word is correct
+		
+		# [사운드 추가]
+		SoundManager.play_Worddelete_sound()
+		
 		_labels[idx].visible = false
 		_alive_count -= 1
+		
+		# [사운드 제어] 
+		_internal_change = true
 		input.clear()
+		_internal_change = false
+		
 		if _alive_count <= 0:
 			_finish(true)
 	else:	#If word is incorrect
 		_on_wrong_answer()
+		# [사운드 제어] 지우고 선택할 때 타이핑 소리 방지
+		_internal_change = true
 		input.clear()
+		_internal_change = false
 		input.select_all()
 
 func _on_wrong_answer() -> void:
