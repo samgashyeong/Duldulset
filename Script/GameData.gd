@@ -14,4 +14,4 @@ func _ready() -> void:
 	stage_level = 1
 	main_time_scale = 1.0 # normal time scale for the main scene
 	is_playing_minigame = false
-	is_coffee_ready = true
+	is_coffee_ready = false

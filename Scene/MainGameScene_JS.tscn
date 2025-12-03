@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://dllv1auirju8l"]
+[gd_scene load_steps=23 format=3 uid="uid://dllv1auirju8l"]
 
 [ext_resource type="PackedScene" uid="uid://eyo8pltp05s2" path="res://Scene/Map/Map.tscn" id="1_4r26o"]
+[ext_resource type="Script" uid="uid://catjbfagu7yiy" path="res://Script/DialogicSignalHandler.gd" id="1_vcoyw"]
 [ext_resource type="PackedScene" uid="uid://27onlytfom1e" path="res://Scene/Player.tscn" id="2_bf7hg"]
 [ext_resource type="PackedScene" uid="uid://cd1ivnpxv6vve" path="res://Scene/System/GameSystem.tscn" id="3_iot3m"]
 [ext_resource type="PackedScene" uid="uid://b1qujni1rhei" path="res://Scene/MenuSystem/MenuSystem.tscn" id="4_bf7hg"]
@@ -13,6 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://b2qmpffqrabvr" path="res://Scene/NoteSystem/NoteScene.tscn" id="9_obk2e"]
 [ext_resource type="Texture2D" uid="uid://btdj2ogxguxhw" path="res://Art/Aseprite/Stamina_Full.png" id="9_v1gi4"]
 [ext_resource type="PackedScene" uid="uid://3ks6ev6b6or1" path="res://Scene/ClockSystem/ClockSystem.tscn" id="10_60fvc"]
+[ext_resource type="FontFile" uid="uid://dx4xlhsj467p8" path="res://Font/NotoSans_ExtraCondensed-Bold.ttf" id="14_0ddhj"]
+[ext_resource type="Script" path="res://Scene/rich_text_label.gd" id="14_qjrkr"]
+[ext_resource type="PackedScene" path="res://Scene/NPC/Employee/TestNode.tscn" id="15_nbx4p"]
+[ext_resource type="Script" path="res://Tests/DialogueTest_Teemu.gd" id="16_nbx4p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_obk2e"]
 atlas = ExtResource("8_l6q8h")
@@ -30,10 +35,10 @@ region = Rect2(134, 3, 54, 50)
 
 [node name="MainGameScene" type="Node2D"]
 
-[node name="Map" parent="." instance=ExtResource("1_4r26o")]
+[node name="DialogueHandler" type="Node" parent="."]
+script = ExtResource("1_vcoyw")
 
-[node name="Giiyoung" parent="." instance=ExtResource("2_bf7hg")]
-position = Vector2(0, -1)
+[node name="Map" parent="." instance=ExtResource("1_4r26o")]
 
 [node name="GameSystem" parent="." instance=ExtResource("3_iot3m")]
 
@@ -102,5 +107,30 @@ buttonGroup = SubResource("ButtonGroup_60fvc")
 
 [node name="ClockSystem" parent="CanvasLayer" instance=ExtResource("10_60fvc")]
 mouse_filter = 2
+
+[node name="DialogueHandler" type="Node" parent="CanvasLayer/ClockSystem"]
+script = ExtResource("1_vcoyw")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+custom_minimum_size = Vector2(150, 0)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -76.0
+offset_right = 150.0
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8666667)
+theme_override_fonts/normal_font = ExtResource("14_0ddhj")
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+scroll_following = true
+script = ExtResource("14_qjrkr")
+
+[node name="Giiyoung" parent="." instance=ExtResource("2_bf7hg")]
+position = Vector2(61, 106)
+
+[node name="Younghee" parent="." instance=ExtResource("15_nbx4p")]
+position = Vector2(103, 139)
+script = ExtResource("16_nbx4p")
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/NoteButton" to="CanvasLayer/NoteScene" method="pop_up"]

@@ -19,8 +19,12 @@ var can_interact = false
 
 var coffee_data: Coffee
 
-signal coffe_order_difference(coffee_diff: int, cream_diff: int, sugar_diff: int)
+signal coffe_order_difference(coffee_diff: int, cream_diff: int, sugar_diff: int, staffName : String)
 
+##set Ui signal
+signal menu(type:Type.StaffMethod, name : Type.StaffName)
+signal addLog(type : Type.LOG, staffName : Type.StaffName)
+signal addBubble(textBox : Control)
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var speed = 80
@@ -69,7 +73,7 @@ func return_to_desk():
 	var raw_path = get_path_to_target(working_position)
 	raw_path.append(working_position)
 	current_path = get_manhattan_path(raw_path)
-	print(current_path)
+	#print(current_path)
 	
 func _process(delta: float) -> void:
 	if state == States.SITTING:
@@ -134,35 +138,44 @@ func move_towards(target_position):
 	if tilemap.is_point_walkable(target_position):
 		var raw_path = get_path_to_target(target_position)
 		current_path = get_manhattan_path(raw_path)
-		print(current_path)
+		#print(current_path)
 
 func wander(target_position):
-	print("wander")
-	print(target_position)
+	#print("wander")
+	#print(target_position)
 	move_towards(target_position)
 	if !current_path.is_empty():
 		state = States.WANDERING
 	
 func order_coffee():
-	print("coffee order")
+	#print("coffee order")
 	state = States.WAITING
 	coffee_state = CoffeeStates.CALLING
 	text_box = BubbleManager.startDialog(global_position, staff_name)
+	text_box.angryTimer.timeout.connect(_on_text_box_angry_timer_timeout)
 	text_box.textToDisPlay(Type.StaffMethod.ORDER)
+	
+	#set signal
+	addBubble.emit(text_box)
+	addLog.emit(Type.LOG.ORDER, staff_name)
 
 func _input(event):
 	if event.is_action_pressed("interact") and can_interact and state == States.WAITING and !GameData.is_playing_minigame:
 		print("talking")
 		if coffee_state == CoffeeStates.CALLING:
-			order_index = randi_range(0,3)
+			order_index = randi_range(0,2)
 			match order_index:
 				0:
 					text_box.textToDisPlay(Type.StaffMethod.START0)
+					menu.emit(Type.StaffMethod.START0, staff_name)
 				1:
 					text_box.textToDisPlay(Type.StaffMethod.START1)
+					menu.emit(Type.StaffMethod.START1, staff_name)
 				2:
 					text_box.textToDisPlay(Type.StaffMethod.START2)
+					menu.emit(Type.StaffMethod.START2, staff_name)
 			coffee_state = CoffeeStates.ORDERING
+		
 		elif coffee_state == CoffeeStates.ORDERING:
 			text_box.textToDisPlay(Type.StaffMethod.CHECK)
 			coffee_state = CoffeeStates.CHECKING
@@ -181,7 +194,7 @@ func check_coffee():
 	else:
 		player.update_health(-1)
 		
-	coffe_order_difference.emit(coffee_diff, cream_diff, sugar_diff)
+	coffe_order_difference.emit(coffee_diff, cream_diff, sugar_diff, staff_name)
 	
 	reset_to_normal_states()
 
@@ -194,6 +207,9 @@ func reset_to_normal_states():
 	
 	coffee_state = CoffeeStates.CALLING
 	state = States.SITTING
+	
+func _on_text_box_angry_timer_timeout():
+	reset_to_normal_states()
 	
 enum States{
 	SITTING,

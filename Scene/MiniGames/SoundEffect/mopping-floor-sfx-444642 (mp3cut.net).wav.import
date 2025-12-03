@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cdbpojt34050s"
+path="res://.godot/imported/mopping-floor-sfx-444642 (mp3cut.net).wav-690be45193f83b973fae5d30a1ebc898.sample"
+
+[deps]
+
+source_file="res://Scene/MiniGames/SoundEffect/mopping-floor-sfx-444642 (mp3cut.net).wav"
+dest_files=["res://.godot/imported/mopping-floor-sfx-444642 (mp3cut.net).wav-690be45193f83b973fae5d30a1ebc898.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
