@@ -21,4 +21,4 @@ Teemu: Saanko tarjota sinulle kupin teetä?
 	[signal arg_type="dict" arg="{"Name":"Teemu", "Effect":3}"]
 - Give tea
 	Teemu: Oh Ok... It's good! Maybe..?
-	[signal arg_type="dict" arg="{"Name":"Teemu", "Effect":4}"]ㅈ
+	[signal arg_type="dict" arg="{"Name":"Teemu", "Effect":4}"]

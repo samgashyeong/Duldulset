@@ -9,31 +9,26 @@ extends TextureRect
 const FRAME_WIDTH = 32
 const FRAME_HEIGHT = 32
 const START_TIME = 9
+
+
+signal changeClock(time : int)
 func _ready():
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	texture = clock_atlas.duplicate()
 	timeVar.scale = Vector2(0, 0)
 	setClockFrame(0)
-	await get_tree().create_timer(0.5).timeout
-	setClockFrame(0)
-	await get_tree().create_timer(3).timeout
-	setClockFrame(1)
-	await get_tree().create_timer(3).timeout
-	setClockFrame(2)
-	await get_tree().create_timer(3).timeout
-	setClockFrame(3)
-	await get_tree().create_timer(3).timeout
-	setClockFrame(4)
-	await get_tree().create_timer(3).timeout
-	setClockFrame(5)
-	await get_tree().create_timer(3).timeout
-	setClockFrame(9)
 		
 	
 		
+
+func changeClockUi(currentClock: int):
+	var curFrame = currentClock - 9
+	setClockFrame(curFrame)
+	#textAnimation(curFrame)
 		
 
 func setClockFrame(frame_index: int):
+	changeClock.emit(START_TIME+frame_index)
 	if texture is AtlasTexture:
 		var new_region = Rect2(
 			frame_index * FRAME_WIDTH, 

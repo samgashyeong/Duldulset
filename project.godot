@@ -37,6 +37,9 @@ directories/dch_directory={
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
+"jensen": "res://Dialogue/Special/Jensen/jensen.dtl",
+"sinyeoung": "res://Dialogue/Special/Sinyeoung/sinyeoung.dtl",
+"teemu": "res://Dialogue/Special/Teemu/teemu.dtl",
 "timeline": "res://Dialogue/Special/Jensen/timeline.dtl"
 }
 layout/style_directory={
@@ -46,6 +49,7 @@ layout/style_directory={
 glossary/default_case_sensitive=true
 layout/style_list=["res://Dialogue/Special/Jensen/BubbleStyle.tres"]
 layout/default_style="res://Dialogue/Special/Jensen/BubbleStyle.tres"
+variables={}
 
 [display]
 
@@ -54,6 +58,10 @@ window/size/viewport_height=360
 window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
+
+[editor]
+
+version_control/plugin_name="dialog"
 
 [editor_plugins]
 

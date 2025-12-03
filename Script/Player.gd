@@ -6,7 +6,7 @@ class_name Player
 
 # if health <= 0 then game over (losing condition)
 var health: int = 5
-signal health_changed(new_value)
+signal health_changed(new_value, changeValue) # add change Value
 @export var max_health = 5
 
 @export var base_speed = 80
@@ -14,14 +14,14 @@ signal health_changed(new_value)
 @export var speed: float = base_speed
 
 var stamina: float = 5
-signal stamina_changed(new_value)
+signal stamina_changed(new_value, changeValue) # add change Value
 @export var max_stamina = 5
 var stamina_unit = 1 # per second
 
 var is_running = false
 
 var point: int = 0
-signal point_changed(new_value)
+signal point_changed(new_value, changeValue) # add change Value
 
 var total_frame = []
 
@@ -58,13 +58,13 @@ func _physics_process(delta: float) -> void:
 		if stamina > 0:
 			speed = run_speed
 			stamina = max(stamina - stamina_unit * delta, 0)
-			stamina_changed.emit(stamina)
+			stamina_changed.emit(stamina, -1)
 		else:
 			speed = base_speed
 	else:
 		speed = base_speed
 		stamina = min(stamina + stamina_unit * delta, max_stamina)
-		stamina_changed.emit(stamina)
+		stamina_changed.emit(stamina, 1)
 	
 	get_input()
 	move_and_slide()
@@ -100,9 +100,9 @@ func update_health(amount):
 	health += amount
 	if(health <= 0):
 		health = 0
-	health_changed.emit(health)
+	health_changed.emit(health, amount)
 	
 func update_point(amount):
 	point += amount
-	point_changed.emit(point)
+	point_changed.emit(point, amount)
 	

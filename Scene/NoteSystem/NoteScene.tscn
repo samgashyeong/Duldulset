@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://01inwujd58cm" path="res://Scene/NoteSystem/NoteScene.gd" id="1_kupg5"]
 [ext_resource type="Texture2D" uid="uid://6a4ccm6qbolu" path="res://Art/Aseprite/Note.png" id="1_pdwqx"]
-[ext_resource type="Texture2D" uid="uid://d2hdkrmtaqxut" path="res://Art/Pixel Art Buttons.png" id="2_5cjyp"]
+[ext_resource type="Texture2D" uid="uid://yri2xcvo3ykk" path="res://Art/Pixel Art Buttons.png" id="2_5cjyp"]
 [ext_resource type="ButtonGroup" uid="uid://cu5gv6nglwwdu" path="res://Scene/NoteSystem/new_button_group.tres" id="2_eci55"]
 [ext_resource type="FontFile" uid="uid://b5ck22eskijli" path="res://Font/neodgm (1).ttf" id="3_5cjyp"]
 [ext_resource type="PackedScene" uid="uid://ce16mf7d5u31j" path="res://Scene/NoteSystem/NoteElement.tscn" id="3_6cytj"]
@@ -115,21 +115,6 @@ region = Rect2(198, 3, 54, 50)
 atlas = ExtResource("2_5cjyp")
 region = Rect2(134, 3, 54, 50)
 
-[sub_resource type="Animation" id="Animation_eci55"]
-resource_name = "pop up"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.96666664),
-"transitions": PackedFloat32Array(0.25000018, 1),
-"update": 0,
-"values": [Vector2(320, 535.045), Vector2(320, 180)]
-}
-
 [sub_resource type="Animation" id="Animation_ljue7"]
 length = 0.001
 tracks/0/type = "value"
@@ -143,6 +128,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(320, 180)]
+}
+
+[sub_resource type="Animation" id="Animation_eci55"]
+resource_name = "pop up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(0.25000018, 1),
+"update": 0,
+"values": [Vector2(320, 535.045), Vector2(320, 180)]
 }
 
 [sub_resource type="Animation" id="Animation_lkpei"]
@@ -210,6 +210,7 @@ theme_override_fonts/font = ExtResource("3_5cjyp")
 text = "Junsang"
 
 [node name="Label2" type="Label" parent="HBoxContainer/Sprite2D/ScrollContainer/VBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(129.18, 20)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)

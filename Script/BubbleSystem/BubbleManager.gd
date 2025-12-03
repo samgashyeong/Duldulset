@@ -11,7 +11,9 @@ func startDialog(position : Vector2, staff : Type.StaffName, target_npc : Node2D
 	var new_textBox = bubbleText.instantiate()
 	get_tree().root.add_child(new_textBox)
 	new_textBox.setDialogueSource(dialogue_resource)
-	new_textBox.global_position = position + Vector2(40, -60) 
+	new_textBox.global_position = position + Vector2(10, -55)
+	
+	new_textBox.z_index = 100 
 	
 	return new_textBox
 	

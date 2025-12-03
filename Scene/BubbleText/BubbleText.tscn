@@ -46,5 +46,9 @@ one_shot = true
 [node name="AngryTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="OrderTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="AngryTimer" to="." method="_on_angry_timer_timeout"]
+[connection signal="timeout" from="OrderTimer" to="." method="_on_order_timer_timeout"]
