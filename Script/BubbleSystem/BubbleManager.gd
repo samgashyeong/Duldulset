@@ -3,6 +3,7 @@ extends Node
 
 @onready var bubbleText = preload("res://Scene/BubbleText/BubbleText.tscn")
 
+var bubbles : Array
 
 func startDialog(position : Vector2, staff : Type.StaffName, target_npc : Node2D = null) -> Control:
 	
@@ -13,9 +14,14 @@ func startDialog(position : Vector2, staff : Type.StaffName, target_npc : Node2D
 	new_textBox.setDialogueSource(dialogue_resource)
 	new_textBox.global_position = position + Vector2(10, -55)
 	
-	new_textBox.z_index = 100 
-	
+	new_textBox.z_index = 50 
+	bubbles.append(new_textBox)
 	return new_textBox
+
+
+func clearAllbubble():
+	for i in bubbles:
+		i.queue_free()
 	
 	
 func staffNameCheck(staff : Type.StaffName) -> Resource:

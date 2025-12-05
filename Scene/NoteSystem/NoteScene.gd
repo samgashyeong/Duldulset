@@ -121,6 +121,7 @@ func _on_exit_button_pressed() -> void:
 		await animation.animation_finished
 		dialogUp = false
 
+
 func connectMenu(type : Type.StaffMethod, name : Type.StaffName):
 	var resource : Coffee = BubbleManager.staffNameCheck(name)
 	print("menu test")

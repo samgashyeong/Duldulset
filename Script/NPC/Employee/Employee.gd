@@ -148,6 +148,8 @@ func wander(target_position):
 		state = States.WANDERING
 	
 func order_coffee():
+	#sound play
+	SoundManager.play_order_sound()
 	#print("coffee order")
 	state = States.WAITING
 	coffee_state = CoffeeStates.CALLING
@@ -163,6 +165,7 @@ func order_coffee():
 func _input(event):
 	if event.is_action_pressed("interact") and can_interact and state == States.WAITING and !GameData.is_playing_minigame:
 		print("talking")
+		SoundManager.play_menu_upload_sound()
 		if coffee_state == CoffeeStates.CALLING:
 			order_index = randi_range(0,2)
 			match order_index:

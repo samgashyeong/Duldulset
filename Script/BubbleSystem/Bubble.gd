@@ -1,5 +1,4 @@
 #202322158 이준상
-
 extends MarginContainer
 
 @onready var label = $MarginContainer/Label

@@ -12,6 +12,8 @@ var is_waiting_for_choice: bool = false
 var attendance_order = ["junsang", "dongwoo", "yeonghee", "minseo", "giyeong"]
 var current_student_index = 0
 
+@onready var dialoghandler = $"."
+
 func _ready():
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	
