@@ -1,15 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://dc2goivkw0wk5"]
+[gd_scene load_steps=13 format=3 uid="uid://8b5xqgwp2k2t"]
 
-[ext_resource type="Texture2D" uid="uid://crl1x7dabpueb" path="res://Art/Forscreens/background_duldulset.jpg" id="1_x8rbn"]
-[ext_resource type="Texture2D" uid="uid://dvk40wipu7jgn" path="res://Art/Aseprite/Dongwoo.png" id="2_rgymo"]
-[ext_resource type="Texture2D" uid="uid://c2tomfxd8tqav" path="res://Art/Aseprite/Junsang.png" id="3_cwhxj"]
-[ext_resource type="Texture2D" uid="uid://cxu4cycnn7gc0" path="res://Art/Aseprite/Minseo.png" id="4_q0cbu"]
-[ext_resource type="Texture2D" uid="uid://cytsldtg16hl8" path="res://Art/Aseprite/SangIn.png" id="5_s3rgy"]
-[ext_resource type="Texture2D" uid="uid://duexhnwsv7gf5" path="res://Art/Forscreens/endlabel3.PNG" id="6_1delf"]
-[ext_resource type="FontFile" uid="uid://b5ck22eskijli" path="res://Font/neodgm (1).ttf" id="7_02oab"]
-[ext_resource type="Texture2D" uid="uid://b77rbhil6lb3p" path="res://Art/Forscreens/Buttonlabel.PNG" id="8_kxfos"]
-[ext_resource type="Script" uid="uid://be5ke2emhujbr" path="res://Script/Screensc/Retrybutton.gd" id="9_dapls"]
-[ext_resource type="Script" uid="uid://dhvk43yssoflb" path="res://Script/Screensc/Exitbutton.gd" id="10_i4j4c"]
+[ext_resource type="Texture2D" uid="uid://crl1x7dabpueb" path="res://Art/Forscreens/background_duldulset.jpg" id="1_m8ulb"]
+[ext_resource type="Texture2D" uid="uid://dvk40wipu7jgn" path="res://Art/Aseprite/Dongwoo.png" id="2_mgvvo"]
+[ext_resource type="Texture2D" uid="uid://c2tomfxd8tqav" path="res://Art/Aseprite/Junsang.png" id="3_k87ka"]
+[ext_resource type="Texture2D" uid="uid://cxu4cycnn7gc0" path="res://Art/Aseprite/Minseo.png" id="4_5p5gs"]
+[ext_resource type="Texture2D" uid="uid://cytsldtg16hl8" path="res://Art/Aseprite/SangIn.png" id="5_ys0he"]
+[ext_resource type="Texture2D" uid="uid://ceqg44m11xmb5" path="res://Art/Forscreens/gameoverlavel.png" id="6_leijp"]
+[ext_resource type="FontFile" uid="uid://b5ck22eskijli" path="res://Font/neodgm (1).ttf" id="7_16myj"]
+[ext_resource type="Texture2D" uid="uid://b77rbhil6lb3p" path="res://Art/Forscreens/Buttonlabel.PNG" id="8_iwqpt"]
+[ext_resource type="Script" uid="uid://be5ke2emhujbr" path="res://Script/Screensc/Retrybutton.gd" id="9_klehh"]
+[ext_resource type="Script" uid="uid://dhvk43yssoflb" path="res://Script/Screensc/Exitbutton.gd" id="10_x5ol1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dapls"]
 
@@ -31,12 +31,13 @@ offset_top = -14.999992
 offset_right = 808.99976
 offset_bottom = 1794.9999
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_x8rbn")
+texture = ExtResource("1_m8ulb")
 
 [node name="Charact1" type="Sprite2D" parent="."]
-position = Vector2(-2236, 66.25001)
+position = Vector2(-2215.9998, 100)
+rotation = 3.1415927
 scale = Vector2(4.3999996, 3.828125)
-texture = ExtResource("2_rgymo")
+texture = ExtResource("2_mgvvo")
 hframes = 26
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": true,
@@ -63,49 +64,52 @@ metadata/_aseprite_wizard_interface_config_ = {
 }
 
 [node name="Charact2" type="Sprite2D" parent="."]
-position = Vector2(-2128, 62)
+position = Vector2(-2132, 78)
+rotation = 3.1415927
 scale = Vector2(0.4859375, 0.359375)
-texture = ExtResource("3_cwhxj")
+texture = ExtResource("3_k87ka")
 hframes = 26
 
 [node name="Charact3" type="Sprite2D" parent="."]
-position = Vector2(-1971.9998, 58.000004)
+position = Vector2(-1959.9998, 85.00001)
+rotation = 3.1415927
 scale = Vector2(4.450001, 3.625)
-texture = ExtResource("4_q0cbu")
+texture = ExtResource("4_5p5gs")
 hframes = 26
 
 [node name="Charact4" type="Sprite2D" parent="."]
-position = Vector2(-1874.0001, 64)
+position = Vector2(-1873.0001, 106.000015)
+rotation = 3.1415927
 scale = Vector2(3.908333, 3.9375)
-texture = ExtResource("5_s3rgy")
+texture = ExtResource("5_ys0he")
 hframes = 26
 
 [node name="Gamelabel" type="Sprite2D" parent="."]
-position = Vector2(-2048.0002, 95.99999)
+position = Vector2(-2047, 48.000004)
 scale = Vector2(5.4563084, 3.3354185)
-texture = ExtResource("6_1delf")
+texture = ExtResource("6_leijp")
 
 [node name="Gamename" type="Label" parent="Gamelabel"]
 modulate = Color(0.072842635, 0.072842635, 0.072842635, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -39.953697
-offset_top = -2.398497
-offset_right = -24.774681
-offset_bottom = 15.601501
+offset_left = -38.30429
+offset_top = -2.6983118
+offset_right = -23.125282
+offset_bottom = -15.85296
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.7, 0.7)
-theme_override_fonts/font = ExtResource("7_02oab")
+theme_override_fonts/font = ExtResource("7_16myj")
 theme_override_font_sizes/font_size = 16
-text = "You Survived!"
+text = "You Died!"
 horizontal_alignment = 1
 
 [node name="Startbutton" type="Sprite2D" parent="."]
 position = Vector2(-2050, 204.99998)
 scale = Vector2(5.5, 3)
-texture = ExtResource("8_kxfos")
+texture = ExtResource("8_iwqpt")
 
 [node name="Button" type="Button" parent="Startbutton"]
 anchors_preset = -1
@@ -117,17 +121,17 @@ offset_left = -8.890599
 offset_top = -28.663334
 offset_right = 27.12492
 offset_bottom = -7.663334
-theme_override_colors/font_color = Color(0.21216318, 0.65129745, 0.78069, 1)
+theme_override_colors/font_color = Color(0.99999994, 0.24299613, 0.5927818, 1)
 theme_override_font_sizes/font_size = 11
 theme_override_styles/normal = SubResource("StyleBoxEmpty_dapls")
 text = "Retry"
-script = ExtResource("9_dapls")
+script = ExtResource("9_klehh")
 metadata/_edit_use_anchors_ = true
 
 [node name="Exitbutton" type="Sprite2D" parent="."]
 position = Vector2(-2050, 299)
 scale = Vector2(5.5, 3)
-texture = ExtResource("8_kxfos")
+texture = ExtResource("8_iwqpt")
 
 [node name="Button" type="Button" parent="Exitbutton"]
 anchors_preset = -1
@@ -139,12 +143,12 @@ offset_left = -7.5870495
 offset_top = -28.393248
 offset_right = 22.41295
 offset_bottom = -7.3932476
-theme_override_colors/font_color = Color(0.22745098, 0.654902, 0.7764706, 1)
+theme_override_colors/font_color = Color(0.9882353, 0.34509805, 0.6, 1)
 theme_override_font_sizes/font_size = 11
 theme_override_styles/normal = SubResource("StyleBoxEmpty_i4j4c")
 text = "Exit
 "
-script = ExtResource("10_i4j4c")
+script = ExtResource("10_x5ol1")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Startbutton/Button" to="Startbutton/Button" method="_on_pressed"]

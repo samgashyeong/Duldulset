@@ -29,14 +29,11 @@ region = Rect2(0, 0, 320, 320)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nw221"]
 
-[node name="Nextstagescene1" type="Control"]
+[node name="Nextstagescene1" type="CanvasLayer"]
 process_mode = 3
-layout_mode = 3
-anchor_bottom = 0.20400001
-offset_bottom = -244.80002
+layer = 10
 
 [node name="Charaicon1" type="TextureRect" parent="."]
-layout_mode = 0
 offset_left = 178.0
 offset_top = -2.0
 offset_right = 328.0
@@ -44,7 +41,6 @@ offset_bottom = 150.0
 texture = SubResource("AtlasTexture_60sqx")
 
 [node name="Charaicon2" type="TextureRect" parent="."]
-layout_mode = 0
 offset_left = 86.0
 offset_top = 26.0
 offset_right = 251.0
@@ -52,7 +48,6 @@ offset_bottom = 169.0
 texture = SubResource("AtlasTexture_jjm6q")
 
 [node name="Charaicon3" type="TextureRect" parent="."]
-layout_mode = 0
 offset_left = 431.0
 offset_top = 24.0
 offset_right = 586.0
@@ -60,7 +55,6 @@ offset_bottom = 156.0
 texture = SubResource("AtlasTexture_ovtfa")
 
 [node name="Charaicon4" type="TextureRect" parent="."]
-layout_mode = 0
 offset_left = 336.0
 offset_top = 25.0
 offset_right = 656.0
@@ -69,7 +63,6 @@ scale = Vector2(0.5, 0.4)
 texture = SubResource("AtlasTexture_hi1q4")
 
 [node name="Textlabel" type="TextureRect" parent="."]
-layout_mode = 0
 offset_left = 127.0
 offset_top = 131.0
 offset_right = 529.0
@@ -107,7 +100,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Nextlabel" type="TextureRect" parent="."]
-layout_mode = 0
 offset_left = 67.0
 offset_top = 76.0
 offset_right = 603.0
@@ -128,7 +120,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Nextbutton" type="TextureRect" parent="."]
-layout_mode = 0
 offset_left = 133.0
 offset_top = 306.0
 offset_right = 302.0
@@ -149,7 +140,6 @@ text = "Next"
 script = ExtResource("9_orqq5")
 
 [node name="Nextbutton2" type="TextureRect" parent="."]
-layout_mode = 0
 offset_left = 349.0
 offset_top = 306.0
 offset_right = 518.0
