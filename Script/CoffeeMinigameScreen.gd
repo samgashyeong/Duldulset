@@ -1,6 +1,7 @@
 extends SubViewportContainer
 
-@onready var coffee_machine = $"../../Map/CoffeeMaker"
+#../추가
+@onready var coffee_machine = $"../../../Map/CoffeeMaker"
 @onready var coffee_scene_resource_location = preload("res://Scene/coffee_dongwoo/CoffeeMainScene.tscn")
 var coffee_scene = null
 

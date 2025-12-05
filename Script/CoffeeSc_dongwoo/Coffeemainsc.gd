@@ -1,4 +1,4 @@
-extends Node2D 
+extends Node2D
 
 # 커피, 프림, 설 
 const CoffeeButtonClass: Script = preload("res://Script/CoffeeSc_dongwoo/Coffee_button.gd")
