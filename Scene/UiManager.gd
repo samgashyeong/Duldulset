@@ -33,7 +33,7 @@ func calculateHealth(_health : int):
 	var finalPoint = health.value + _health
 	animationHealth(finalPoint, _health)
 
-func calculateStamia(_stamia : int):
+func calculateStamia(_stamia : float):
 	var finalPoint = stamia.value + _stamia
 	animationStamia(finalPoint, _stamia)
 
@@ -52,7 +52,7 @@ func animationHealth(finalPoint : int, value : int):
 		0.5 
 	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 
-func animationStamia(finalPoint : int, value : int):
+func animationStamia(finalPoint : float, value : float):
 	var tween = create_tween()
 	
 	tween.tween_property(

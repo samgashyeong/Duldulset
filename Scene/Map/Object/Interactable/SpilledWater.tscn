@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv2cvk4xanfwd"]
+
+[ext_resource type="Script" uid="uid://0wd14ne0wfqi" path="res://Script/SpilledWater.gd" id="1_3d5ui"]
+[ext_resource type="Texture2D" uid="uid://cj4xw6w0r1n1d" path="res://Art/Aseprite/water.png" id="1_cydgv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3d5ui"]
+size = Vector2(30, 30)
+
+[node name="Spilled Water" type="Area2D"]
+script = ExtResource("1_3d5ui")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cydgv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3d5ui")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
