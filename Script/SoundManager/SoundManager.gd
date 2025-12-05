@@ -1,10 +1,20 @@
 extends Node
 
 #처음부터 bgm들리게
-func _ready():
-	if has_node("BGMPlayer"):
-		$BGMPlayer.play()
-		
+func _process(delta):
+	if not has_node("BGMPlayer"):
+		return
+	if not get_tree().current_scene:
+		return
+	var current_scene_name = get_tree().current_scene.name
+
+	if current_scene_name == "GameoverScene" or current_scene_name == "EndScene":
+		if $BGMPlayer.playing:
+			$BGMPlayer.stop()
+	else:
+		if not $BGMPlayer.playing:
+			$BGMPlayer.play()
+
 func play_startclick_sound():
 	$StartButton.play()
 
@@ -75,3 +85,9 @@ func play_Primfall_sound():
 	
 func play_Waterfall_sound():
 	$Waterfall.play()
+		
+func play_Gameover_sound():
+	$Gameover.play()
+	
+func play_Gameclear_sound():
+	$Gameclear.play()

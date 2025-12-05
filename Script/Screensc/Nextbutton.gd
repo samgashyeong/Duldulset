@@ -1,5 +1,7 @@
 extends Button 
 
+const END_SCENE_PATH = "res://Scene/Screens/GameoverScene.tscn"
+
 func _on_pressed():
 	# 난이도 수정 코드(?)
 	SoundManager.play_specialclick_sound()
