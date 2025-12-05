@@ -18,6 +18,7 @@ func _process(delta: float) -> void:
 
 func _on_game_timer_timeout() -> void:
 	print("time out!")
+	await get_tree().create_timer(13).timeout
 	get_tree().paused = true
 	
 
