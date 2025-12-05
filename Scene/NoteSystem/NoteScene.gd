@@ -143,4 +143,14 @@ func connectMenu(type : Type.StaffMethod, name : Type.StaffName):
 	
 	#makeListView(resource)
 
-func checkCoffee()
+func checkCoffee(coffee_diff: int, cream_diff: int, sugar_diff: int, staffName : Type.StaffName, orderType: int):
+	var resource : Coffee = BubbleManager.staffNameCheck(staffName)
+
+	if(coffee_diff == 0):
+		resource.orders[orderType].isCoffeeClear = true
+		
+	if(cream_diff==0):
+		resource.orders[orderType].isCreamClear = true
+	
+	if(sugar_diff == 0):
+		resource.orders[orderType].isSugarClear = true

@@ -19,7 +19,7 @@ var can_interact = false
 
 var coffee_data: Coffee
 
-signal coffe_order_difference(coffee_diff: int, cream_diff: int, sugar_diff: int, staffName : String, orderType: int)
+signal coffe_order_difference(coffee_diff: int, cream_diff: int, sugar_diff: int, staffName : Type.StaffName, orderType: int)
 
 ##set Ui signal
 signal menu(type:Type.StaffMethod, name : Type.StaffName)
@@ -192,14 +192,13 @@ func check_coffee():
 	var cream_diff = GameData.prim_count - coffee_order.cream
 	var sugar_diff = GameData.sugar_count - coffee_order.sugar
 	var total_diff = coffee_diff + cream_diff + sugar_diff
-	
+	print("checking")
 	if total_diff <= 3:
 		player.update_point(100)
 	else:
 		player.update_health(-1)
 		
 	coffe_order_difference.emit(coffee_diff, cream_diff, sugar_diff, staff_name, order_index)
-	
 	reset_to_normal_states()
 
 func reset_to_normal_states():
