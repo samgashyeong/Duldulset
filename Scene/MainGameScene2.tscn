@@ -28,7 +28,7 @@
 [ext_resource type="FontFile" uid="uid://dx4xlhsj467p8" path="res://Font/NotoSans_ExtraCondensed-Bold.ttf" id="26_r1nky"]
 [ext_resource type="Script" uid="uid://csbdb62babya3" path="res://Scene/rich_text_label.gd" id="27_k5qhm"]
 [ext_resource type="PackedScene" uid="uid://dd5ca7un0fyio" path="res://Scene/NPC/Employee/TestNode.tscn" id="28_eu0ja"]
-[ext_resource type="Script" uid="uid://xd83l8hu281u" path="res://Tests/DialogueTest_Teemu.gd" id="29_x6wxj"]
+[ext_resource type="Script" path="res://Tests/DialogueTest_Teemu.gd" id="29_x6wxj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1m38"]
 atlas = ExtResource("23_rhqcu")
@@ -176,6 +176,8 @@ te"
 
 [node name="NoteScene" parent="CanvasLayer" instance=ExtResource("24_5kait")]
 buttonGroup = SubResource("ButtonGroup_x6xp7")
+a = null
+type = null
 
 [node name="ClockSystem" parent="CanvasLayer" instance=ExtResource("25_8b4qh")]
 mouse_filter = 2

@@ -3,25 +3,34 @@ extends Node
 
 @onready var bubbleText = preload("res://Scene/BubbleText/BubbleText.tscn")
 
-var bubbles : Array
+
+var bubbleContainer : Node
+
+
+
+
+func _ready() -> void:
+	bubbleContainer = Node.new()
+	bubbleContainer.name = "BubbleContainer"
+	get_tree().root.add_child(bubbleContainer)
 
 func startDialog(position : Vector2, staff : Type.StaffName, target_npc : Node2D = null) -> Control:
 	
 	var dialogue_resource = staffNameCheck(staff)
-	
 	var new_textBox = bubbleText.instantiate()
+	new_textBox.add_to_group("bubble")
 	get_tree().root.add_child(new_textBox)
 	new_textBox.setDialogueSource(dialogue_resource)
 	new_textBox.global_position = position + Vector2(10, -55)
 	
-	new_textBox.z_index = 50 
-	bubbles.append(new_textBox)
+	new_textBox.z_index = 1000
 	return new_textBox
 
 
 func clearAllbubble():
-	for i in bubbles:
-		i.queue_free()
+	var bubbles_to_clear = get_tree().get_nodes_in_group("bubble")
+	for bubble in bubbles_to_clear:
+		bubble.queue_free()
 	
 	
 func staffNameCheck(staff : Type.StaffName) -> Resource:

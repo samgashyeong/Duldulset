@@ -85,4 +85,5 @@ func play_menu_upload_sound():
 	$MenuUpload.play()
 	
 func play_count_down_sound():
+	print("play all count down")
 	$CountDown.play()
