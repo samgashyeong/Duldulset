@@ -26,13 +26,13 @@ var current_stage_index = 0
 func _process(_delta):
 	#nextlevelscene나오는 타이밍
 	if Input.is_action_just_pressed("Getnextscene"):
-		SoundManager.play_Tonext_sound()
 		go_to_next_scene()
 
 func go_to_next_scene():
 	#엔딩 호출
 	if current_stage_index >= level_sequence.size():
 		get_tree().paused = false
+		SoundManager.play_Gameclear_sound()
 		get_tree().change_scene_to_file(END_SCENE_PATH)
 		return
 
@@ -46,6 +46,7 @@ func go_to_next_scene():
 	var overlay_scene = load(scene_path)
 	
 	if overlay_scene:
+		SoundManager.play_Tonext_sound()
 		var next_stage_overlay = overlay_scene.instantiate()
 		var label_node = next_stage_overlay.get_node_or_null("Textlabel/Tofixlabel")
 		

@@ -42,17 +42,17 @@ color = Color(0.29411766, 0.29411766, 0.29411766, 0.5882353)
 metadata/_edit_use_anchors_ = true
 
 [node name="StoryText" type="Label" parent="UI_Layer/DialogueBox"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -1.696875
-anchor_top = 0.04411765
-anchor_right = -1.696875
-anchor_bottom = 0.117646836
+anchor_left = -1.4203125
+anchor_right = -1.6578125
+anchor_bottom = 0.0735291
 offset_left = 1086.0
 offset_right = 1726.0
 offset_bottom = 66.000015
 theme_override_fonts/font = ExtResource("5_0cpj8")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 11
 vertical_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true

@@ -27,7 +27,7 @@ var character_path
 
 
 func _ready() -> void:
-	spawn_position = Vector2(79, 46)
+	spawn_position = Vector2(80, 48)
 	
 	character = load(character_path)
 	
@@ -40,10 +40,10 @@ func _ready() -> void:
 	
 	moving_direction = Vector2.ZERO
 	
-	move_towards(spawn_position+Vector2(0, -4*32))
+	move_towards(spawn_position + Vector2(0, 4*32))
 	state = States.GOING
 	
-	dialogue_handler.effectHealth.connect("_on_dialogue_handler_dialogue_finished")
+	dialogue_handler.effectHealth.connect(_on_dialogue_handler_dialogue_finished)
 
 func do_dialogue():
 	# make sure character is loaded
@@ -56,6 +56,8 @@ func despawn():
 	
 
 func _physics_process(delta: float) -> void:
+	print(global_position)
+	
 	if state == States.FINISHED:
 		despawn()
 		return
@@ -76,7 +78,17 @@ func _physics_process(delta: float) -> void:
 	else:
 		is_returned = false
 		
+	if state == States.RETURNING and current_path.is_empty():
+		if global_position == spawn_position:
+			is_returned = true
+			state = States.FINISHED
+			return
+		else:
+			return_to_spawn()
+		
 	var next_to_move = current_path.front()
+	
+		
 	moving_direction = (next_to_move - global_position).normalized()
 	global_position = global_position.move_toward(next_to_move, delta * GameData.main_time_scale * speed)
 	
@@ -87,7 +99,6 @@ func return_to_spawn():
 	print("return to spawn point")
 	#current_path = get_path_to_target(spawn_position)
 	move_towards(spawn_position)
-	state = States.RETURNING
 	
 
 func _process(delta: float) -> void:
