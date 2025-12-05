@@ -1,15 +1,15 @@
 extends Node2D
 
 var dialogues = [
-	"    My name is Gilyoung, born in 1965, and this year I am 24 years old and a fully-fledged member of society.",
-	"    After years of effort, I finally got accepted into CMP, the company I had always dreamed of.",
-	"    A friend who joined the company earlier told me that the essential virtue for an intern is DulDulSet.",
-	"    DulDulSet. Coffee 2, Prim 2, Sugar 3.",
-	"    Okay, it's perfect. All preparations are complete. Come on, bring it on, company!"
+	"My name is Gilyoung, born in 1965, and this year I am 24 years old and a fully-fledged member of society.",
+	"After years of effort, I finally got accepted into CMP, the company I had always dreamed of.",
+	"A friend who joined the company earlier told me that the essential virtue for an intern is DulDulSet.",
+	"DulDulSet. Coffee 2, Prim 2, Sugar 3.",
+	"Okay, it's perfect. All preparations are complete. Come on, bring it on, company!"
 ]
 
 var current_line_index = 0 
-const MAIN_SCENE_PATH = "res://Scene/MainGameScene.tscn"
+const MAIN_SCENE_PATH = "res://Scene/MainGameScene2.tscn"
 
 var is_typing = false
 var current_tween: Tween

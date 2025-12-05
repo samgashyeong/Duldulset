@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://2f0vmh75c7ru"]
+[gd_scene load_steps=28 format=3 uid="uid://2f0vmh75c7ru"]
 
 [ext_resource type="Script" uid="uid://c04trdhjm8cpp" path="res://Script/SoundManager/SoundManager.gd" id="1_l4qrj"]
 [ext_resource type="AudioStream" uid="uid://3ajhg0mwuyuo" path="res://Sound/Buttonclick.mp3" id="2_p8rl7"]
@@ -25,6 +25,8 @@
 [ext_resource type="AudioStream" uid="uid://dar0ph268x26l" path="res://Sound/Primfall.wav" id="22_5cdtq"]
 [ext_resource type="AudioStream" uid="uid://5bvbtu6oysbi" path="res://Sound/Coffeefall.wav" id="23_g7kgc"]
 [ext_resource type="AudioStream" uid="uid://dgatp5qfgqpqc" path="res://Sound/Sugarfall.wav" id="24_aauhl"]
+[ext_resource type="AudioStream" uid="uid://dphu7bye3aqff" path="res://Sound/Gameover.wav" id="26_5cdtq"]
+[ext_resource type="AudioStream" uid="uid://g7qwwf0ncy0c" path="res://Sound/Gameclear.wav" id="26_g7kgc"]
 
 [node name="SoundManager" type="Node"]
 process_mode = 3
@@ -44,6 +46,7 @@ stream = ExtResource("5_gr1h7")
 
 [node name="DamageCh" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_ehjl1")
+volume_db = 24.0
 
 [node name="WalkCh" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_nlshh")
@@ -106,3 +109,9 @@ stream = ExtResource("24_aauhl")
 
 [node name="PointUpCh" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_44hjp")
+
+[node name="Gameclear" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_g7kgc")
+
+[node name="Gameover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_5cdtq")
