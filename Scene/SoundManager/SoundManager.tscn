@@ -92,9 +92,11 @@ stream = ExtResource("20_q6mwj")
 
 [node name="Waterfall" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("21_1h6o1")
+volume_db = 6.0
 
 [node name="Primfall" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_5cdtq")
+volume_db = 12.0
 
 [node name="Coffeefall" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("23_g7kgc")
