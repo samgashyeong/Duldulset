@@ -85,7 +85,10 @@ script = ExtResource("11_73gyg")
 
 [node name="MiniGameManager" parent="MinigameScreen" instance=ExtResource("12_wiik4")]
 
-[node name="CoffeeMinigameScreen" type="SubViewportContainer" parent="MinigameScreen"]
+[node name="Coffeelayer" type="CanvasLayer" parent="MinigameScreen"]
+layer = 10
+
+[node name="CoffeeMinigameScreen" type="SubViewportContainer" parent="MinigameScreen/Coffeelayer"]
 visible = false
 z_index = 10
 anchors_preset = 5
@@ -99,7 +102,7 @@ grow_horizontal = 2
 scale = Vector2(0.8, 0.45)
 script = ExtResource("13_f3se0")
 
-[node name="SubViewport" type="SubViewport" parent="MinigameScreen/CoffeeMinigameScreen"]
+[node name="SubViewport" type="SubViewport" parent="MinigameScreen/Coffeelayer/CoffeeMinigameScreen"]
 disable_3d = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
