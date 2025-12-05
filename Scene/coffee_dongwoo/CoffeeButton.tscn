@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://des4efgsrcthc"]
 
 [ext_resource type="Script" uid="uid://badfwd5kkestn" path="res://Script/CoffeeSc_dongwoo/Coffee_button.gd" id="1_llife"]
-[ext_resource type="Texture2D" uid="uid://he3j745i446l" path="res://Art/coffeearts_dongwoo/coffee_button.png" id="1_mkj0g"]
+[ext_resource type="Texture2D" uid="uid://588aeynnvwdr" path="res://Art/coffeearts_dongwoo/coffee_button.png" id="1_mkj0g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkj0g"]
 size = Vector2(179, 184)

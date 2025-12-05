@@ -21,6 +21,11 @@ func _on_coffee_machine_coffee_making():
 	GameData.coffee_count = 0
 	GameData.prim_count = 0
 	GameData.sugar_count = 0
+	
+	#emit signal : junsang
+	GameData.add_coffee.emit(0)
+	GameData.add_sugar.emit(0)
+	GameData.add_cream.emit(0)
 
 func _on_coffee_scene_coffee_finished():
 	hide()

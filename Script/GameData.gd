@@ -1,5 +1,11 @@
 extends Node
 
+#add signal : junsang
+signal add_coffee(cnt : int)
+signal add_cream(cnt : int)
+signal add_sugar(cnt : int)
+
+
 var stage_level: int
 var main_time_scale: float
 var is_playing_minigame: bool

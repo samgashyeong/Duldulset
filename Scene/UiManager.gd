@@ -28,6 +28,10 @@ func _ready() -> void:
 	gameTimer.timeout.connect(_timeout)
 	gameTimer.one_hour_passed.connect(changeClockUi)
 	
+	GameData.add_coffee.connect(changeCoffeeState)
+	GameData.add_cream.connect(changeCreamState)
+	GameData.add_sugar.connect(changeSugarState)
+	
 
 func calculateHealth(_health : int):
 	var finalPoint = health.value + _health
@@ -44,7 +48,8 @@ func calculatePoint(_point : int):
 	
 func animationHealth(finalPoint : int, value : int):
 	var tween = create_tween()
-	
+	if(value < 0):
+		SoundManager.play_DamageCh_sound()
 	tween.tween_property(
 		health, 
 		"value", 
@@ -64,6 +69,7 @@ func animationStamia(finalPoint : float, value : float):
 	
 func aniamtionPoint(_point : int, value : int):
 	point.text = str(_point) + " Point"
+	SoundManager.play_PointUpCh_sound()
 
 func changeClockUi():
 	currentTime += 1
@@ -71,3 +77,11 @@ func changeClockUi():
 	
 func _timeout():
 	print("타임아웃")
+	
+	
+func changeCoffeeState(coffee : int):
+	$VBoxContainer/HBoxContainer/CoffeeCount.text = str(coffee)
+func changeCreamState(cream : int):
+	$VBoxContainer/HBoxContainer/CreamCount.text = str(cream)
+func changeSugarState(sugar : int):
+	$VBoxContainer/HBoxContainer/SugarCount.text = str(sugar)
