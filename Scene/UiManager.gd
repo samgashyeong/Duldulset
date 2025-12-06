@@ -12,6 +12,10 @@ var currentTime = 9
 
 var gameTimer
 var clockUi
+
+var totalCom = 0
+var totalWater = 0
+var totalCopy = 0
 func _ready() -> void:
 	clockUi = get_node("ClockSystem/HBoxContainer/TextureRect")
 	gameTimer = get_node("../GameSystem/GameTimer")
@@ -31,6 +35,13 @@ func _ready() -> void:
 	GameData.add_coffee.connect(changeCoffeeState)
 	GameData.add_cream.connect(changeCreamState)
 	GameData.add_sugar.connect(changeSugarState)
+	var daily_task = DailyTask.new()
+
+	daily_task.copy_machine_task = 8
+	daily_task.water_clean_task = 7
+	$Label.text = "Today Work!
+   -Personal work (%d/%d)
+   -Copier's work (%d/%d)" % [0, daily_task.copy_machine_task, 0, daily_task.water_clean_task]
 	
 
 func calculateHealth(_health : int):
