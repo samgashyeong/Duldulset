@@ -8,6 +8,7 @@ class_name Employee
 var working_position
 var is_returned = true
 var current_path: Array[Vector2]
+var return_path: Array[Vector2]
 var moving_direction: Vector2
 
 var state: States
@@ -44,6 +45,11 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if global_position == working_position:
+		is_returned = true
+	else:
+		is_returned = false
+	
 	if state == States.SITTING or state == States.WAITING:
 		return
 		
@@ -55,11 +61,6 @@ func _physics_process(delta: float) -> void:
 			return
 		else:
 			return_to_desk()
-	
-	if global_position == working_position:
-		is_returned = true
-	else:
-		is_returned = false
 		
 	var next_to_move = current_path.front()
 	moving_direction = (next_to_move - global_position).normalized()
@@ -69,12 +70,29 @@ func _physics_process(delta: float) -> void:
 		current_path.pop_front()
 	
 func return_to_desk():
-	print("return to desk")
-	var raw_path = get_path_to_target(working_position)
+	print("return to desk")	
+	var near_position = get_possible_position_near(working_position)
+	var raw_path = get_path_to_target(near_position)
+	
+	if raw_path.is_empty():
+		# just use return path
+		current_path = return_path
+		return
+		
 	raw_path.append(working_position)
 	current_path = get_manhattan_path(raw_path)
 	#print(current_path)
-	
+
+func get_possible_position_near(target_position):
+	var waypoint: Vector2
+	for dx in range(-32, 32, 32):
+		for dy in range(-32, 32, 32):
+			waypoint = target_position + Vector2(dx, dy)
+			if tilemap.is_point_walkable(waypoint):
+				return waypoint
+	return null
+
+
 func _process(delta: float) -> void:
 	if state == States.SITTING:
 		animated_sprite.play("sit")
@@ -146,6 +164,8 @@ func wander(target_position):
 	move_towards(target_position)
 	if !current_path.is_empty():
 		state = States.WANDERING
+		return_path = current_path.duplicate()
+		return_path.reverse()
 	
 func order_coffee():
 	#print("coffee order")

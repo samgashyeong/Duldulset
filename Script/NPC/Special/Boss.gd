@@ -50,6 +50,7 @@ func _physics_process(delta: float) -> void:
 		
 	if state == States.CHASING and current_path.is_empty():
 		move_towards(player.global_position)
+		return
 	
 	if state == States.RETURNING and global_position == spawn_position:
 		is_returned = true
@@ -110,9 +111,20 @@ func get_path_to_target(target_position):
 	return world_path
 
 func move_towards(target_position):
-	if tilemap.is_point_walkable(target_position):
-		current_path = get_path_to_target(target_position)
-		
+	var near_position = get_possible_position_near(target_position)
+	current_path = get_path_to_target(near_position)
+	#if tilemap.is_point_walkable(target_position):
+	#	current_path = get_path_to_target(target_position)
+
+func get_possible_position_near(target_position):
+	var waypoint: Vector2
+	for dx in range(-32, 32, 32):
+		for dy in range(-32, 32, 32):
+			waypoint = target_position + Vector2(dx, dy)
+			if tilemap.is_point_walkable(waypoint):
+				return waypoint
+	return null
+
 func _on_interactable_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		if GameData.is_playing_minigame == false:
