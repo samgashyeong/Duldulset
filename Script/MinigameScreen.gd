@@ -25,12 +25,13 @@ func _ready():
 func _on_minigame_manager_minigame_closed(success: bool):
 	GameData.is_playing_minigame = false
 	
-	if current_minigame == "CleanWater":
+	if current_minigame == "CleaningWater":
 		if success == true:
-			get_tree().call_group("spilled_water", "cleanup", player.global_position)
+			get_tree().call_group("spilled_waters", "cleanup", player.global_position)
 
 func _on_minigame_manager_minigame_shown(game_name: String):
 	current_minigame = game_name
+	print(current_minigame)
 	
 func _on_player_computer_using_computer():
 	minigame_manager.open_minigame(0)
