@@ -3,7 +3,10 @@ extends Node
 var minigame_manager
 var player_computer
 var copy_machine
-var player
+
+@onready var player = $"../Giiyoung"
+
+@onready var task_list: DailyTask = $"../GameSystem/TaskList"
 
 var current_minigame: String
 
@@ -18,8 +21,6 @@ func _ready():
 	copy_machine = $"../Map/Copy"
 	copy_machine.using_copy_machine.connect(_on_copy_machine_using_copy_machine)
 	
-	player = $"../Giiyoung"
-	
 	current_minigame = ""
 
 func _on_minigame_manager_minigame_closed(success: bool):
@@ -28,6 +29,10 @@ func _on_minigame_manager_minigame_closed(success: bool):
 	if current_minigame == "CleaningWater":
 		if success == true:
 			get_tree().call_group("spilled_waters", "cleanup")
+			
+			var remaining = get_tree().get_node_count_in_group("spilled_waters")
+			task_list.water_clean_task = remaining
+			
 
 func _on_minigame_manager_minigame_shown(game_name: String):
 	current_minigame = game_name

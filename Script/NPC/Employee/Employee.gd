@@ -8,6 +8,7 @@ class_name Employee
 @onready var spilled_waters = $"../../../SpilledWater"
 var spilled_water_scene: PackedScene = preload("res://Scene/Map/Object/Interactable/SpilledWater.tscn")
 @onready var minigame_manager = $"../../../MinigameScreen/MiniGameManager"
+@onready var task_list: DailyTask = $"../../../GameSystem/TaskList"
 
 var working_position
 var is_returned = true
@@ -254,6 +255,7 @@ func spill_water():
 	spilled_water.add_to_group("spilled_waters")
 	spilled_water.water_cleaning.connect(_on_spilled_water_water_cleaning)
 	spilled_waters.add_child(spilled_water)
+	task_list.water_clean_task += 1
 	
 
 func is_near(point: Vector2, target_point: Vector2):
