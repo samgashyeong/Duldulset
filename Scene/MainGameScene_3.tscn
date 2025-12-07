@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ygvot3w1blgr" path="res://Scene/NPC/Employee/Oksoon.tscn" id="7_2on8n"]
 [ext_resource type="PackedScene" uid="uid://d3diybypdlxo6" path="res://Scene/NPC/Employee/Sangin.tscn" id="8_ukp5i"]
 [ext_resource type="PackedScene" uid="uid://cq4uv1wkox30a" path="res://Scene/NPC/Employee/Younghee.tscn" id="9_xpd1m"]
-[ext_resource type="PackedScene" uid="uid://bg41j05moc646" path="res://Scene/NPC/Special/Jensen.tscn" id="10_b7e2i"]
+[ext_resource type="PackedScene" uid="uid://dxdr27y1iyp6x" path="res://Scene/NPC/Special/TASinyeong.tscn" id="10_7al4c"]
 [ext_resource type="PackedScene" uid="uid://27onlytfom1e" path="res://Scene/Player.tscn" id="11_iqm1a"]
 [ext_resource type="Script" uid="uid://b7303u25cvvci" path="res://Script/MinigameScreen.gd" id="12_7fh4o"]
 [ext_resource type="PackedScene" uid="uid://oqi81dd7r3ld" path="res://Scene/MiniGames/MiniGameManager.tscn" id="13_a2ow4"]
@@ -82,7 +82,7 @@ position = Vector2(159, 213)
 
 [node name="Special" type="Node" parent="NPC"]
 
-[node name="Jensen" parent="NPC/Special" instance=ExtResource("10_b7e2i")]
+[node name="TASinyeong" parent="NPC/Special" instance=ExtResource("10_7al4c")]
 position = Vector2(80, 48)
 
 [node name="Giiyoung" parent="." instance=ExtResource("11_iqm1a")]
@@ -174,7 +174,7 @@ texture = ExtResource("24_n53ic")
 
 [node name="CoffeeCount" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "3"
+text = "0"
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -182,7 +182,7 @@ texture = ExtResource("25_7al4c")
 
 [node name="CreamCount" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "3"
+text = "0"
 
 [node name="TextureRect3" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -190,7 +190,7 @@ texture = ExtResource("26_kfrqr")
 
 [node name="SugarCount" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "3"
+text = "0"
 
 [node name="NoteButton" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
