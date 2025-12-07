@@ -27,7 +27,7 @@ func _on_minigame_manager_minigame_closed(success: bool):
 	
 	if current_minigame == "CleaningWater":
 		if success == true:
-			get_tree().call_group("spilled_waters", "cleanup", player.global_position)
+			get_tree().call_group("spilled_waters", "cleanup")
 
 func _on_minigame_manager_minigame_shown(game_name: String):
 	current_minigame = game_name

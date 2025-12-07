@@ -18,7 +18,7 @@ func _input(event):
 		GameData.is_playing_minigame = true
 		water_cleaning.emit()
 
-func cleanup(target_position):
-	if global_position.distance_squared_to(target_position) <= 32*32:
+func cleanup():
+	if can_cleanup:
 		print("cleanup spilled water")
 		queue_free()
