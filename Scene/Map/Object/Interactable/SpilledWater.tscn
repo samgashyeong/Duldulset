@@ -7,6 +7,7 @@
 size = Vector2(30, 30)
 
 [node name="Spilled Water" type="Area2D"]
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_3d5ui")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
