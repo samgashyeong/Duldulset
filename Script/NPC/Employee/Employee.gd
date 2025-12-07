@@ -76,11 +76,17 @@ func _physics_process(delta: float) -> void:
 func return_to_desk():
 	print("return to desk")	
 	var near_position = get_possible_position_near(working_position)
+	if near_position == null:
+		# just use return path
+		current_path = return_path
+		print("can't get near_position. use return path.")
+		return
+		
 	var raw_path = get_path_to_target(near_position)
-	
 	if raw_path.is_empty():
 		# just use return path
 		current_path = return_path
+		print("can't get proper path. use return path.")
 		return
 		
 	raw_path.append(working_position)
@@ -89,8 +95,8 @@ func return_to_desk():
 
 func get_possible_position_near(target_position):
 	var waypoint: Vector2
-	for dx in range(-32, 32, 32):
-		for dy in range(-32, 32, 32):
+	for dx in range(-24, 24, 24):
+		for dy in range(-64, 64, 32):
 			waypoint = target_position + Vector2(dx, dy)
 			if tilemap.is_point_walkable(waypoint):
 				return waypoint
