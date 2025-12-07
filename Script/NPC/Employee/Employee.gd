@@ -5,6 +5,10 @@ class_name Employee
 @onready var tilemap = $"../../../Map/WalkableArea"
 @onready var player: Player = $"../../../Giiyoung"
 
+@onready var spilled_waters = $"../../../SpilledWater"
+var spilled_water_scene: PackedScene = preload("res://Scene/Map/Object/Interactable/SpilledWater.tscn")
+@onready var minigame_manager = $"../../../MinigameScreen/MiniGameManager"
+
 var working_position
 var is_returned = true
 var current_path: Array[Vector2]
@@ -234,6 +238,28 @@ func _on_text_box_angry_timer_timeout():
 	
 func _on_text_box_order_timer_timeout():
 	reset_to_normal_states()
+	
+func spill_water():
+	if is_near(global_position, working_position):
+		return
+		
+	var spilled_water = spilled_water_scene.instantiate()
+	spilled_water.global_position = global_position
+	spilled_water.add_to_group("spilled_waters")
+	spilled_water.water_cleaning.connect(_on_spilled_water_water_cleaning)
+	spilled_waters.add_child(spilled_water)
+	
+
+func is_near(point: Vector2, target_point: Vector2):
+	var sqr_dist = target_point.distance_squared_to(point)
+	if sqr_dist <= 32*32:
+		return true
+	else:
+		return false
+
+
+func _on_spilled_water_water_cleaning():
+	minigame_manager.open_minigame(2)
 	
 enum States{
 	SITTING,
