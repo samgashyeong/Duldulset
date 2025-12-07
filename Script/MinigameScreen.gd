@@ -32,7 +32,10 @@ func _on_minigame_manager_minigame_closed(success: bool):
 			
 			var remaining = get_tree().get_node_count_in_group("spilled_waters")
 			task_list.water_clean_task = remaining
-			
+		
+	if current_minigame == "DodgeGame":
+		if success == true:
+			get_tree().call_group("boss", "return_to_spawn")
 
 func _on_minigame_manager_minigame_shown(game_name: String):
 	current_minigame = game_name

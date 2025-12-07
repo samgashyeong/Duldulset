@@ -10,17 +10,18 @@ var is_returned: bool
 var current_path: Array[Vector2]
 var moving_direction: Vector2
 var state: States
+var can_talk: bool
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var speed = 80
+@export var speed = 100
 
 var total_frame = []
 
 signal boss_talking()
 
 func _ready() -> void:
-	spawn_position = Vector2(79, 46)
+	spawn_position = Vector2(80, 48)
 	
 	total_frame.append(animated_sprite.sprite_frames.get_frame_count("left"))
 	total_frame.append(animated_sprite.sprite_frames.get_frame_count("right"))
@@ -34,6 +35,8 @@ func _ready() -> void:
 	
 	move_towards(player.global_position)
 	state = States.CHASING
+	
+	can_talk = true
 
 	
 func despawn():
@@ -70,6 +73,7 @@ func return_to_spawn():
 	print("return to spawn point")
 	#current_path = get_path_to_target(spawn_position)
 	move_towards(spawn_position)
+	can_talk = false
 	state = States.RETURNING
 	
 
@@ -118,8 +122,8 @@ func move_towards(target_position):
 
 func get_possible_position_near(target_position):
 	var waypoint: Vector2
-	for dx in range(-32, 32, 32):
-		for dy in range(-32, 32, 32):
+	for dx in range(-64, 64, 32):
+		for dy in range(-64, 64, 32):
 			waypoint = target_position + Vector2(dx, dy)
 			if tilemap.is_point_walkable(waypoint):
 				return waypoint
@@ -127,7 +131,7 @@ func get_possible_position_near(target_position):
 
 func _on_interactable_area_body_entered(body: Node2D) -> void:
 	if body is Player:
-		if GameData.is_playing_minigame == false:
+		if can_talk and GameData.is_playing_minigame == false:
 			state = States.WAITING
 			
 			current_path.clear()
@@ -136,6 +140,12 @@ func _on_interactable_area_body_entered(body: Node2D) -> void:
 			GameData.is_playing_minigame = true
 			print("boss wants to talk with you!")
 			boss_talking.emit()
+
+func _on_interactable_area_body_exited(body: Node2D) -> void:
+	if body is Player:
+		if can_talk:
+			state = States.CHASING
+			print("boss still chases you!")
 	
 
 enum States{
