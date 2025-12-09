@@ -36,13 +36,23 @@ func _on_minigame_manager_minigame_closed(success: bool):
 	if current_minigame == "DodgeGame":
 		if success == true:
 			get_tree().call_group("boss", "return_to_spawn")
+	
+	if current_minigame == "FileSorting" or "TypingGame":
+		if success == true:
+			task_list.pop_computer_task_queue()
 
 func _on_minigame_manager_minigame_shown(game_name: String):
 	current_minigame = game_name
 	print(current_minigame)
 	
 func _on_player_computer_using_computer():
-	minigame_manager.open_minigame(0)
+	var task_id = task_list.computer_task.front()
+	match task_id:
+		0:
+			minigame_manager.open_minigame(1)
+		1:
+			minigame_manager.open_minigame(0)
+	
 
 func _on_copy_machine_using_copy_machine():
 	minigame_manager.open_minigame(1)
