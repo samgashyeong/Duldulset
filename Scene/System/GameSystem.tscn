@@ -13,5 +13,6 @@
 [node name="TaskList" type="Node" parent="."]
 script = ExtResource("3_whaga")
 
+[connection signal="one_hour_passed" from="GameTimer" to="GameLogic" method="_on_game_timer_one_hour_passed"]
 [connection signal="timeout" from="GameTimer" to="GameLogic" method="_on_game_timer_timeout"]
 [connection signal="unit_time_passed" from="GameTimer" to="GameLogic" method="_on_game_timer_unit_time_passed"]
