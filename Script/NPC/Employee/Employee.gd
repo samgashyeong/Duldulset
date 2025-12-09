@@ -208,7 +208,7 @@ func _input(event):
 					menu.emit(Type.StaffMethod.START2, staff_name)
 			coffee_state = CoffeeStates.ORDERING
 		
-		elif coffee_state == CoffeeStates.ORDERING:
+		elif coffee_state == CoffeeStates.ORDERING and GameData.is_coffee_ready:
 			text_box.textToDisPlay(Type.StaffMethod.CHECK)
 			coffee_state = CoffeeStates.CHECKING
 			check_coffee()
