@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://by73x0vr85esu"]
+[gd_scene load_steps=20 format=3 uid="uid://by73x0vr85esu"]
 
 [ext_resource type="Texture2D" uid="uid://crl1x7dabpueb" path="res://Art/Forscreens/background_duldulset.jpg" id="1_c2jll"]
 [ext_resource type="Texture2D" uid="uid://dvk40wipu7jgn" path="res://Art/Aseprite/Dongwoo.png" id="2_hn8t2"]
@@ -9,10 +9,32 @@
 [ext_resource type="Texture2D" uid="uid://b77rbhil6lb3p" path="res://Art/Forscreens/Buttonlabel.PNG" id="7_712cs"]
 [ext_resource type="FontFile" uid="uid://b5ck22eskijli" path="res://Font/neodgm (1).ttf" id="7_e8m57"]
 [ext_resource type="Script" uid="uid://dhvk43yssoflb" path="res://Script/Screensc/Exitbutton.gd" id="9_uy84b"]
-[ext_resource type="Script" uid="uid://4fdih20vx0pk" path="res://Script/Screensc/Startbutton.gd" id="9_w5ni1"]
 [ext_resource type="Script" uid="uid://cs51koo6ckjlb" path="res://Script/Screensc/Storybutton.gd" id="10_8jup3"]
+[ext_resource type="Script" uid="uid://bufaadi8xn3ip" path="res://Script/Screensc/optisonbutton.gd" id="10_74jit"]
+[ext_resource type="Script" uid="uid://dxgj6bydxqs0n" path="res://Script/Screensc/Settings.gd" id="12_74jit"]
+[ext_resource type="Script" uid="uid://dkws4mm8a0ujx" path="res://Script/Screensc/Exitbuttonforsetting.gd" id="12_mgxxc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_712cs"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_mgxxc"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_74jit"]
+color = Color(0.31982023, 0.5272513, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ycbes"]
+color = Color(0.32156864, 0.5254902, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_qu6g2"]
+color = Color(0.8825208, 0.82864696, 0.33616194, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ox5da"]
+color = Color(0.88235295, 0.827451, 0.3372549, 1)
+thickness = 6
 
 [node name="Startscene" type="Control"]
 layout_mode = 3
@@ -119,29 +141,29 @@ theme_override_colors/font_color = Color(0.21216318, 0.65129745, 0.78069, 1)
 theme_override_font_sizes/font_size = 11
 theme_override_styles/normal = SubResource("StyleBoxEmpty_712cs")
 text = "Start"
-script = ExtResource("9_w5ni1")
+script = ExtResource("10_8jup3")
 
-[node name="Storybutton" type="Sprite2D" parent="."]
+[node name="Optionsbutton" type="Sprite2D" parent="."]
 position = Vector2(-434, 346)
 scale = Vector2(6, 2)
 texture = ExtResource("7_712cs")
 
-[node name="Button" type="Button" parent="Storybutton"]
+[node name="Button" type="Button" parent="Optionsbutton"]
 anchors_preset = -1
 anchor_left = -0.193
 anchor_top = 0.73600006
 anchor_right = -0.193
 anchor_bottom = 0.73600006
-offset_left = -8.942351
-offset_top = -29.743687
-offset_right = 27.280151
-offset_bottom = -8.743686
+offset_left = -12.446668
+offset_top = -28.399998
+offset_right = 27.553333
+offset_bottom = -7.3999977
 theme_override_colors/font_color = Color(0.36862746, 0.68235296, 0.74509805, 1)
-theme_override_font_sizes/font_size = 11
+theme_override_font_sizes/font_size = 9
 theme_override_styles/normal = SubResource("StyleBoxEmpty_712cs")
-text = "Story
+text = "Option
 "
-script = ExtResource("10_8jup3")
+script = ExtResource("10_74jit")
 
 [node name="Exitbutton" type="Sprite2D" parent="."]
 position = Vector2(-434, 414)
@@ -166,6 +188,82 @@ text = "Exit
 script = ExtResource("9_uy84b")
 metadata/_edit_use_anchors_ = true
 
+[node name="Options" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+offset_left = -619.0
+offset_top = 195.0
+offset_right = -249.0
+offset_bottom = 437.0
+script = ExtResource("12_74jit")
+
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 0
+offset_right = 371.0
+offset_bottom = 73.0
+theme_override_font_sizes/font_size = 25
+text = "Options
+"
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="Options"]
+layout_mode = 0
+offset_left = 329.0
+offset_top = 6.0
+offset_right = 364.0
+offset_bottom = 37.0
+theme_override_colors/font_color = Color(0.87038714, 1.4439225e-06, 1.2513996e-06, 1)
+text = "X"
+script = ExtResource("12_mgxxc")
+
+[node name="Label2" type="Label" parent="Options"]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 70.0
+offset_right = 223.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 19
+text = "Volume"
+vertical_alignment = 1
+
+[node name="Audiocontrol" type="HSlider" parent="Options"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 108.0
+offset_right = 355.0
+offset_bottom = 124.0
+theme_override_styles/slider = SubResource("StyleBoxLine_mgxxc")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_74jit")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_ycbes")
+step = 10.0
+value = 50.0
+ticks_position = 3
+
+[node name="Label3" type="Label" parent="Options"]
+layout_mode = 0
+offset_left = 143.0
+offset_top = 140.0
+offset_right = 241.0
+offset_bottom = 167.0
+theme_override_font_sizes/font_size = 19
+text = "Brightness"
+vertical_alignment = 1
+
+[node name="Brightcontrol" type="HSlider" parent="Options"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 198.0
+offset_right = 355.0
+offset_bottom = 214.0
+theme_override_styles/slider = SubResource("StyleBoxLine_mgxxc")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_qu6g2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_ox5da")
+step = 10.0
+value = 100.0
+
 [connection signal="pressed" from="Startbutton/Button" to="Startbutton/Button" method="_on_pressed"]
-[connection signal="pressed" from="Storybutton/Button" to="Storybutton/Button" method="_on_pressed"]
+[connection signal="pressed" from="Optionsbutton/Button" to="Optionsbutton/Button" method="_on_pressed"]
 [connection signal="pressed" from="Exitbutton/Button" to="Exitbutton/Button" method="_on_pressed"]
+[connection signal="pressed" from="Options/Back" to="Options/Back" method="_on_pressed"]
+[connection signal="value_changed" from="Options/Audiocontrol" to="Options" method="_on_audiocontrol_value_changed"]
+[connection signal="value_changed" from="Options/Brightcontrol" to="Options" method="_on_brightcontrol_value_changed"]
