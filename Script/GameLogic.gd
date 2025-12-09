@@ -1,10 +1,10 @@
 extends Node
 
 var wandering_probability = 0.1 #0.2 #0.1 #0.05
-var coffee_order_probability = 0.05 #0.0 #0.05 #0.1
+var coffee_order_probability = 0.03 #0.05 #0.0 #0.05 #0.1
 var employees
 
-var water_spill_probability = 0.05
+var water_spill_probability = 0.01
 
 var game_hour: int = 9
 
@@ -51,7 +51,7 @@ func _on_game_timer_unit_time_passed() -> void:
 func _on_game_timer_one_hour_passed() -> void:
 	game_hour += 1
 	
-	if game_hour == 10:
+	if game_hour == 12:
 		handle_special_event()
 
 

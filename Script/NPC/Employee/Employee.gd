@@ -255,7 +255,7 @@ func spill_water():
 	spilled_water.add_to_group("spilled_waters")
 	spilled_water.water_cleaning.connect(_on_spilled_water_water_cleaning)
 	spilled_waters.add_child(spilled_water)
-	task_list.water_clean_task += 1
+	task_list.update_water_clean_task(1)
 	
 
 func is_near(point: Vector2, target_point: Vector2):

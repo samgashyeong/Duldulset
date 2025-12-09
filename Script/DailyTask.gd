@@ -70,7 +70,6 @@ func update_copy_machine_task(amount: int):
 	var new_value = copy_machine_task
 	copy_machine_task_changed.emit(new_value)
 
-func update_water_clean_task(amount: int):
-	water_clean_task += amount
-	var new_value = water_clean_task
+func update_water_clean_task(new_value: int):
+	water_clean_task = new_value
 	water_clean_task_changed.emit(new_value)

@@ -31,15 +31,19 @@ func _on_minigame_manager_minigame_closed(success: bool):
 			get_tree().call_group("spilled_waters", "cleanup")
 			
 			var remaining = get_tree().get_node_count_in_group("spilled_waters")
-			task_list.water_clean_task = remaining
+			task_list.update_water_clean_task(remaining)
 		
 	if current_minigame == "DodgeGame":
 		if success == true:
 			get_tree().call_group("boss", "return_to_spawn")
 	
-	if current_minigame == "FileSorting" or "TypingGame":
+	if current_minigame == "FileSorting" or "TypingReport":
 		if success == true:
 			task_list.pop_computer_task_queue()
+			
+	if current_minigame == "FixingPrinter":
+		if success == true:
+			task_list.update_copy_machine_task(-1)
 
 func _on_minigame_manager_minigame_shown(game_name: String):
 	current_minigame = game_name
@@ -55,4 +59,4 @@ func _on_player_computer_using_computer():
 	
 
 func _on_copy_machine_using_copy_machine():
-	minigame_manager.open_minigame(1)
+	minigame_manager.open_minigame(3)
