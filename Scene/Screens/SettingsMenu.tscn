@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bbm7hqayjxray"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+offset_left = 57.0
+offset_top = 19.0
+offset_right = 600.0
+offset_bottom = 338.0
+color = Color(0.45490196, 0.45490196, 0.45490196, 0.5529412)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 38.0
+offset_right = 584.0
+offset_bottom = 321.0
+
+[node name="Brightness" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Brightness
+"
+horizontal_alignment = 1
+
+[node name="BrightnessSlider" type="HSlider" parent="VBoxContainer/Brightness"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 32.0
+offset_right = 246.0
+offset_bottom = 48.0
+max_value = 1.0
+step = 0.05
+value = 0.5
+
+[node name="MaasterVolume" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/MaasterVolume"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 4.7520003
+offset_left = 238.0
+offset_top = 31.0
+offset_right = -246.0
+offset_bottom = -62.296005
+max_value = 1.0
+step = 0.05
+value = 0.5
