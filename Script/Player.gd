@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name Player
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-const END_SCENE_PATH = "res://Scene/Screens/GameoverScene.tscn"
+const GAMEOVER_SCENE_PATH = "res://Scene/Screens/GameoverScene.tscn"
 
 # if health <= 0 then game over (losing condition)
 var health: int = 5
@@ -127,9 +127,7 @@ func update_health(amount):
 	# 데미지소리끝
 	if(health <= 0):
 		health = 0
-		SoundManager.play_Gameover_sound()
-		get_tree().paused = false
-		get_tree().change_scene_to_file(END_SCENE_PATH)
+		go_to_gameover_scene()
 	health_changed.emit(health, amount)
 	
 func update_point(amount):
@@ -138,4 +136,10 @@ func update_point(amount):
 	SoundManager.play_PointUpCh_sound()
 	# 포인트업소리끝
 	point_changed.emit(point, amount)
+	
+func go_to_gameover_scene():
+	GameData.reset_stage_to_start()
+	
+	SoundManager.play_Gameover_sound()
+	get_tree().change_scene_to_file(GAMEOVER_SCENE_PATH)
 	

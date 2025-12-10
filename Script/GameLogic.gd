@@ -23,6 +23,10 @@ var special_character: CharacterBody2D = null
 
 @onready var minigame_manager = $"../../MinigameScreen/MiniGameManager"
 
+@onready var task_list = $"../TaskList"
+
+signal stage_finished(success: bool)
+
 func _ready():
 	employees = get_tree().get_nodes_in_group("employees")
 	
@@ -103,3 +107,10 @@ func handle_special_event():
 
 func _on_special_character_boss_talking():
 	minigame_manager.open_minigame(4)
+
+func check_win_or_lose():
+	if task_list.computer_task.is_empty() and task_list.copy_machine_task == 0 and task_list.water_clean_task == 0:
+		stage_finished.emit(true)
+	else:
+		stage_finished.emit(false)
+	

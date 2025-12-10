@@ -1,6 +1,6 @@
 extends Button 
 
-const Retry_PATH = "res://Scene/Screens/Startscene.tscn"
+const Retry_PATH = "res://Scene/MainGameScene.tscn"
 
 
 func _on_pressed():
