@@ -1,10 +1,20 @@
 extends Node
 
 #처음부터 bgm들리게
-func _ready():
-	if has_node("BGMPlayer"):
-		$BGMPlayer.play()
-		
+func _process(delta):
+	if not has_node("BGMPlayer"):
+		return
+	if not get_tree().current_scene:
+		return
+	var current_scene_name = get_tree().current_scene.name
+
+	if current_scene_name == "GameoverScene" or current_scene_name == "EndScene":
+		if $BGMPlayer.playing:
+			$BGMPlayer.stop()
+	else:
+		if not $BGMPlayer.playing:
+			$BGMPlayer.play()
+
 func play_startclick_sound():
 	$StartButton.play()
 
@@ -75,3 +85,21 @@ func play_Primfall_sound():
 	
 func play_Waterfall_sound():
 	$Waterfall.play()
+	
+	
+#Junsang 추가 사운드 부분 함수
+func play_order_sound():
+	$Order.play()
+
+func play_menu_upload_sound():
+	$MenuUpload.play()
+	
+func play_count_down_sound():
+	print("play all count down")
+	$CountDown.play()
+		
+func play_Gameover_sound():
+	$Gameover.play()
+	
+func play_Gameclear_sound():
+	$Gameclear.play()

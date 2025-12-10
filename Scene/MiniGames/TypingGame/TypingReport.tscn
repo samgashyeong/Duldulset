@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://6125h344dhtq" path="res://Scene/MiniGames/SoundEffect/keyboard-typing-one-short-1-292590.mp3" id="5_lc4rp"]
 [ext_resource type="AudioStream" uid="uid://badvi67rgr88" path="res://Scene/MiniGames/SoundEffect/windows-error-sound-effect-35894.mp3" id="6_lc4rp"]
 [ext_resource type="StyleBox" uid="uid://cqigxpg3a2dwr" path="res://Themes/Classic95/Styles/Window/Window.tres" id="7_jj578"]
-[ext_resource type="AudioStream" uid="uid://oehntyeh27u5" path="res://Scene/MiniGames/SoundEffect/short-success-sound-glockenspiel-treasure-video-game-6346.mp3" id="8_wyko1"]
+[ext_resource type="AudioStream" uid="uid://c8qama2cjirxp" path="res://Scene/MiniGames/SoundEffect/short-success-sound-glockenspiel-treasure-video-game-6346.mp3" id="8_wyko1"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jj578"]
 streams_count = 2

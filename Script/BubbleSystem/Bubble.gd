@@ -1,5 +1,4 @@
 #202322158 이준상
-
 extends MarginContainer
 
 @onready var label = $MarginContainer/Label
@@ -92,6 +91,7 @@ func textToDisPlay(type : Type.StaffMethod, coffee : int = 0, cream : int = 0, s
 	letter_index = 0
 	
 	# 이전 상태 초기화
+
 	label.autowrap_mode = TextServer.AUTOWRAP_OFF
 	custom_minimum_size = Vector2.ZERO
 	

@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends TextureRect
 
 func set_sprite_alpha(alpha_value: float):
   

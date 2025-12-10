@@ -8,3 +8,6 @@ func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 		SoundManager.play_Closebutton_sound()
 		requested_prim_spawn.emit(global_position)
 		get_viewport().set_input_as_handled()
+		
+		#emit signal : junsang
+		GameData.add_cream.emit(GameData.prim_count)

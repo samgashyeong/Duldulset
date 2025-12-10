@@ -22,7 +22,7 @@ func addMenu(menu : CoffeeMenu) :
 
 func removeMenu(index: int) -> void:
 	menuList.remove_at(index)
-	
+	print("removeMenu : " + str(index))
 	
 	var target_node = get_child(index)
 	
@@ -66,7 +66,7 @@ func connectMenu(type : Type.StaffMethod, name : Type.StaffName):
 	addMenu(menu)
 	
 
-func checkMenu(coffeeDiff:int, creamDiff:int, sugarDiff:int, staffName : Type.StaffName):
+func checkMenu(coffeeDiff:int, creamDiff:int, sugarDiff:int, staffName : Type.StaffName, orderType : int):
 	
 	var resource : Coffee = BubbleManager.staffNameCheck(staffName)
 	for i in menuList.size():

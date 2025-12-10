@@ -8,3 +8,6 @@ func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 		SoundManager.play_Closebutton_sound()
 		requested_sugar_spawn.emit()
 		get_viewport().set_input_as_handled()
+		
+		#signal emit : junsang
+		GameData.add_sugar.emit(GameData.sugar_count)
