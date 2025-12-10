@@ -215,6 +215,11 @@ func _input(event):
 			text_box.textToDisPlay(Type.StaffMethod.CHECK)
 			coffee_state = CoffeeStates.CHECKING
 			check_coffee()
+			
+			#emit signal : junsang
+			GameData.add_coffee.emit(0)
+			GameData.add_sugar.emit(0)
+			GameData.add_cream.emit(0)
 
 func check_coffee():
 	var coffee_order = coffee_data.orders[order_index]

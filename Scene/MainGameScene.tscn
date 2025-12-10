@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ygvot3w1blgr" path="res://Scene/NPC/Employee/Oksoon.tscn" id="7_xfufi"]
 [ext_resource type="PackedScene" uid="uid://d3diybypdlxo6" path="res://Scene/NPC/Employee/Sangin.tscn" id="8_w1f7m"]
 [ext_resource type="PackedScene" uid="uid://cq4uv1wkox30a" path="res://Scene/NPC/Employee/Younghee.tscn" id="9_xfa3y"]
+[ext_resource type="PackedScene" uid="uid://bg41j05moc646" path="res://Scene/NPC/Special/Jensen.tscn" id="10_0fgyg"]
 [ext_resource type="PackedScene" uid="uid://27onlytfom1e" path="res://Scene/Player.tscn" id="10_5f8nt"]
 [ext_resource type="Script" uid="uid://b7303u25cvvci" path="res://Script/MinigameScreen.gd" id="11_73gyg"]
 [ext_resource type="PackedScene" uid="uid://oqi81dd7r3ld" path="res://Scene/MiniGames/MiniGameManager.tscn" id="12_wiik4"]
@@ -42,7 +43,7 @@ region = Rect2(134, 3, 54, 50)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_x6xp7"]
 
-[node name="MainGameScene" type="Node2D"]
+[node name="MainGameScene2" type="Node2D"]
 
 [node name="DialogueHandler" type="Node" parent="."]
 script = ExtResource("1_riasm")

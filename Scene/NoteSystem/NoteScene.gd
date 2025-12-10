@@ -58,32 +58,32 @@ func _on_button_pressed(button):
 		"Sangin":
 			type = Type.StaffName.SANGIN
 			staff = "Sangin"
-			staffScript = "I think a little less coffee is better for the customer." # 예시 스크립트
+			staffScript = "More Sugar!!"
 	
 		"Dongwoo":
 			type = Type.StaffName.DONGWOO
 			staff = "Dongwoo"
-			staffScript = "My latte art is the best in the area." # 예시 스크립트
+			staffScript = "Hi! I love game..I don't know what is Cream..."
 		
 		"Minseo":
 			type = Type.StaffName.MINSEO
 			staff = "Minseo"
-			staffScript = "I'm still learning the ropes, please bear with me." # 예시 스크립트
+			staffScript = "EXTREME."
 			
 		"Oksoon":
 			type = Type.StaffName.OKSOON
 			staff = "Oksoon"
-			staffScript = "A warm cup of tea is the best way to start the day." # 예시 스크립트
+			staffScript = "A warm cup of tea is the best way to start the day."
 			
 		"Younghee":
 			type = Type.StaffName.YOUNGHEE
 			staff = "Younghee"
-			staffScript = "I love the smell of freshly roasted beans." # 예시 스크립트
+			staffScript = "Hello! Thank you always!!"
 	
 		"Chunja":
 			type = Type.StaffName.CHUNJA
 			staff = "Chunja"
-			staffScript = "It's a beautiful day to have a delicious americano." # 예시 스크립트
+			staffScript = "I really don't like you" 
 	
 	makeListView(BubbleManager.staffNameCheck(type))
 	
