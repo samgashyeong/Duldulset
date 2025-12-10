@@ -45,3 +45,8 @@ func go_to_next_stage():
 	
 	if stage_level > MAX_STAGE:
 		stage_level = MAX_STAGE
+
+func reset_global_events():
+	BubbleManager.clearAllbubble()
+	#Dialogic.clear()
+	Dialogic.end_timeline()

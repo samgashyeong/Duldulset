@@ -139,7 +139,7 @@ func update_point(amount):
 	
 func go_to_gameover_scene():
 	GameData.reset_stage_to_start()
-	BubbleManager.clearAllbubble()
+	GameData.reset_global_events()
 	
 	SoundManager.play_Gameover_sound()
 	get_tree().change_scene_to_file(GAMEOVER_SCENE_PATH)

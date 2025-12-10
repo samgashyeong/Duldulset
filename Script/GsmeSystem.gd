@@ -49,7 +49,7 @@ func go_to_next_scene():
 	#엔딩 호출
 	if current_stage_index >= level_sequence.size():
 		GameData.reset_stage_to_start()
-		BubbleManager.clearAllbubble()
+		GameData.reset_global_events()
 		
 		get_tree().paused = false
 		SoundManager.play_Gameclear_sound()
@@ -76,11 +76,11 @@ func go_to_next_scene():
 		get_parent().add_child(next_stage_overlay)
 		
 		GameData.go_to_next_stage()
-		BubbleManager.clearAllbubble()
+		GameData.reset_global_events()
 
 func go_to_gameover_scene():
 	GameData.reset_stage_to_start()
-	BubbleManager.clearAllbubble()
+	GameData.reset_global_events()
 	
 	SoundManager.play_Gameover_sound()
 	get_tree().change_scene_to_file(GAMEOVER_SCENE_PATH)
