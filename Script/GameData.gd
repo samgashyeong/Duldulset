@@ -36,7 +36,7 @@ func reset_states():
 	sugar_count = 0
 
 func reset_stage_to_start():
-	stage_level = 0
+	stage_level = 1
 	reset_states()
 	
 func go_to_next_stage():
