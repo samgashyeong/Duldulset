@@ -29,7 +29,9 @@ var game_logic
 func _ready():
 	game_logic = $GameLogic
 	game_logic.stage_finished.connect(_on_game_logic_stage_finished)
+	print("====[Stage Info]====")
 	print("current stage: " + str(GameData.stage_level))
+	print("====================")
 
 func _process(_delta):
 	#nextlevelscene나오는 타이밍
