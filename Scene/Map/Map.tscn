@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://c1gtcncmoqlf0" path="res://Scene/Map/Tileset.tres" id="1_2vb5h"]
 [ext_resource type="Script" uid="uid://d1r2f47d56ko6" path="res://Script/AStar.gd" id="2_l2kg7"]
 [ext_resource type="PackedScene" uid="uid://bftrw0j7gxi1e" path="res://Scene/Map/Object/Partition.tscn" id="2_tsb8y"]
-[ext_resource type="PackedScene" uid="uid://bn0vxex6xiamo" path="res://Scene/Map/Object/Desk.tscn" id="2_w8m0h"]
+[ext_resource type="PackedScene" uid="uid://bp8ua3b1a0p1u" path="res://Scene/Map/Object/Desk.tscn" id="2_w8m0h"]
 [ext_resource type="TileSet" uid="uid://b6w7mpifw3e3k" path="res://Scene/Map/WallTileset.tres" id="2_yknlo"]
 [ext_resource type="PackedScene" uid="uid://dos2l68aadxwy" path="res://Scene/Map/Object/Interactable/CoffeeMaker.tscn" id="3_20uqm"]
 [ext_resource type="TileSet" uid="uid://c4ywn4k3ihqxu" path="res://Scene/Map/ObjectTileset.tres" id="3_hx64c"]

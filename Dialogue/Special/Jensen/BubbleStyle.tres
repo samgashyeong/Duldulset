@@ -25,6 +25,7 @@ overrides = {
 "choices_text_font": "\"res://Font/neodgm (1).ttf\"",
 "choices_text_size": "10.0",
 "italic_font": "\"res://Font/neodgm (1).ttf\"",
+"name_label_font": "\"res://Font/neodgm (1).ttf\"",
 "name_label_font_size": "10.0",
 "normal_font": "\"res://Font/neodgm (1).ttf\"",
 "text_max_width": "150.0",

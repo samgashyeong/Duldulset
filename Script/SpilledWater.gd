@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 var can_cleanup = false
 
@@ -17,3 +17,8 @@ func _input(event):
 		print("interaction")
 		GameData.is_playing_minigame = true
 		water_cleaning.emit()
+
+func cleanup():
+	if can_cleanup:
+		print("cleanup spilled water")
+		queue_free()

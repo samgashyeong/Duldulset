@@ -12,10 +12,7 @@ signal minigame_finished(success: bool)
 @onready var success_sound: AudioStreamPlayer = $Sounds/SuccessSound
 
 @onready var success_panel: Control = $SuccessPanel
-@onready var success_panel_timer: Timer = $SuccessPanel/SuccessPanelTimer
-
 @onready var error_panel: Control = $ErrorPanel
-@onready var error_panel_timer: Timer = $ErrorPanel/ErrorPanelTimer
 # Runtime state
 var total_trash_count: int = 0
 var removed_trash_count: int = 0
@@ -89,18 +86,14 @@ func _finish_minigame(success: bool) -> void:
 		if success_sound:
 			success_sound.play()
 		success_panel.visible = true
-		success_panel_timer.start()
 	else:
 		if error_sound:
 			error_sound.play(0.5)
 		error_panel.visible = true
-		error_panel_timer.start()
 
-# Finish the minigame and emit the result to minigamemanager
-func _on_success_panel_timer_timeout() -> void:
-	success_panel.visible = false
+
+func _on_success_sound_finished() -> void:
 	minigame_finished.emit(true)
-
-func _on_error_panel_timer_timeout() -> void:
-	error_panel.visible = false
+	
+func _on_error_sound_finished() -> void:
 	minigame_finished.emit(false)

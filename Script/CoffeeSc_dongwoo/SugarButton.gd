@@ -12,3 +12,6 @@ func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
 		requested_sugar_spawn.emit()
 		# 입력 이벤트 처리 완료,중복방지 (Mark input event as handled,prevent duplication)
 		get_viewport().set_input_as_handled()
+		
+		#signal emit : junsang
+		GameData.add_sugar.emit(GameData.sugar_count)

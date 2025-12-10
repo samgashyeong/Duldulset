@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ciffji1jteld0"]
+[gd_scene load_steps=35 format=3 uid="uid://ciffji1jteld0"]
 
 [ext_resource type="Script" uid="uid://catjbfagu7yiy" path="res://Script/DialogicSignalHandler.gd" id="1_riasm"]
 [ext_resource type="PackedScene" uid="uid://eyo8pltp05s2" path="res://Scene/Map/Map.tscn" id="2_78qv1"]
@@ -22,26 +22,28 @@
 [ext_resource type="Texture2D" uid="uid://76881n8w6hjb" path="res://Art/Aseprite/Stamina_Empty.png" id="20_gj8uc"]
 [ext_resource type="Texture2D" uid="uid://btdj2ogxguxhw" path="res://Art/Aseprite/Stamina_Full.png" id="21_m3g1u"]
 [ext_resource type="FontFile" uid="uid://b5ck22eskijli" path="res://Font/neodgm (1).ttf" id="22_u5kxt"]
+[ext_resource type="Texture2D" uid="uid://chxjpbdi7dvuv" path="res://Art/Aseprite/coffee.png" id="23_es88a"]
 [ext_resource type="Texture2D" uid="uid://yri2xcvo3ykk" path="res://Art/Pixel Art Buttons.png" id="23_rhqcu"]
 [ext_resource type="PackedScene" uid="uid://b2qmpffqrabvr" path="res://Scene/NoteSystem/NoteScene.tscn" id="24_5kait"]
+[ext_resource type="Texture2D" uid="uid://ba0i1qs2olerf" path="res://Art/Aseprite/creamer.png" id="24_eatav"]
 [ext_resource type="PackedScene" uid="uid://3ks6ev6b6or1" path="res://Scene/ClockSystem/ClockSystem.tscn" id="25_8b4qh"]
+[ext_resource type="Texture2D" uid="uid://b8syvbgtrsc5d" path="res://Art/Aseprite/Sugar.png" id="25_pqatp"]
 [ext_resource type="FontFile" uid="uid://dx4xlhsj467p8" path="res://Font/NotoSans_ExtraCondensed-Bold.ttf" id="26_r1nky"]
 [ext_resource type="Script" uid="uid://csbdb62babya3" path="res://Scene/rich_text_label.gd" id="27_k5qhm"]
-[ext_resource type="PackedScene" uid="uid://cg6dttsvg1ab8" path="res://Scene/NPC/Special/Boss.tscn" id="28_0fgyg"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j1m38"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yhgr"]
 atlas = ExtResource("23_rhqcu")
 region = Rect2(6, 3, 54, 50)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6onde"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_15xd0"]
 atlas = ExtResource("23_rhqcu")
 region = Rect2(198, 3, 54, 50)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i6imu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni14c"]
 atlas = ExtResource("23_rhqcu")
 region = Rect2(134, 3, 54, 50)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_x6xp7"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_jwcat"]
 
 [node name="MainGameScene" type="Node2D"]
 
@@ -78,9 +80,6 @@ position = Vector2(159, 148)
 position = Vector2(159, 213)
 
 [node name="Special" type="Node" parent="NPC"]
-
-[node name="Boss" parent="NPC/Special" instance=ExtResource("28_0fgyg")]
-position = Vector2(80, 48)
 
 [node name="Giiyoung" parent="." instance=ExtResource("10_5f8nt")]
 z_index = 2
@@ -161,12 +160,40 @@ theme_override_fonts/font = ExtResource("22_u5kxt")
 text = "0 Point"
 horizontal_alignment = 2
 
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("23_es88a")
+
+[node name="CoffeeCount" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("24_eatav")
+
+[node name="CreamCount" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("25_pqatp")
+
+[node name="SugarCount" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
 [node name="NoteButton" type="TextureButton" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
-texture_normal = SubResource("AtlasTexture_j1m38")
-texture_pressed = SubResource("AtlasTexture_6onde")
-texture_hover = SubResource("AtlasTexture_i6imu")
+texture_normal = SubResource("AtlasTexture_3yhgr")
+texture_pressed = SubResource("AtlasTexture_15xd0")
+texture_hover = SubResource("AtlasTexture_ni14c")
 
 [node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/NoteButton"]
 layout_mode = 0
@@ -181,7 +208,7 @@ text = "No
 te"
 
 [node name="NoteScene" parent="CanvasLayer" instance=ExtResource("24_5kait")]
-buttonGroup = SubResource("ButtonGroup_x6xp7")
+buttonGroup = SubResource("ButtonGroup_jwcat")
 
 [node name="ClockSystem" parent="CanvasLayer" instance=ExtResource("25_8b4qh")]
 mouse_filter = 2
@@ -200,5 +227,17 @@ theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
 scroll_following = true
 script = ExtResource("27_k5qhm")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 3.0
+offset_top = 57.0
+offset_right = 43.0
+offset_bottom = 80.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("22_u5kxt")
+theme_override_font_sizes/font_size = 10
+text = "Today Work!
+   -Personal work (0/2)
+   -Copier's work (0/1)"
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/NoteButton" to="CanvasLayer/NoteScene" method="pop_up"]

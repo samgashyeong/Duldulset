@@ -8,7 +8,7 @@
 [ext_resource type="StyleBox" uid="uid://cqigxpg3a2dwr" path="res://Themes/Classic95/Styles/Window/Window.tres" id="6_aya38"]
 [ext_resource type="AudioStream" uid="uid://bf4um8vaj10de" path="res://Scene/MiniGames/SoundEffect/mouse-click-290204.mp3" id="6_r5jd2"]
 [ext_resource type="AudioStream" uid="uid://badvi67rgr88" path="res://Scene/MiniGames/SoundEffect/windows-error-sound-effect-35894.mp3" id="6_t8ylo"]
-[ext_resource type="AudioStream" uid="uid://oehntyeh27u5" path="res://Scene/MiniGames/SoundEffect/short-success-sound-glockenspiel-treasure-video-game-6346.mp3" id="8_hub06"]
+[ext_resource type="AudioStream" uid="uid://c8qama2cjirxp" path="res://Scene/MiniGames/SoundEffect/short-success-sound-glockenspiel-treasure-video-game-6346.mp3" id="8_hub06"]
 
 [node name="FileSorting" type="Control"]
 layout_mode = 3
@@ -147,8 +147,6 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Good Job ! !"
 
-[node name="SuccessPanelTimer" type="Timer" parent="SuccessPanel"]
-
 [node name="ErrorPanel" type="Panel" parent="."]
 visible = false
 layout_mode = 1
@@ -182,7 +180,5 @@ text = "You deleted Important
 document ! !"
 horizontal_alignment = 1
 
-[node name="ErrorPanelTimer" type="Timer" parent="ErrorPanel"]
-
-[connection signal="timeout" from="SuccessPanel/SuccessPanelTimer" to="." method="_on_success_panel_timer_timeout"]
-[connection signal="timeout" from="ErrorPanel/ErrorPanelTimer" to="." method="_on_error_panel_timer_timeout"]
+[connection signal="finished" from="Sounds/ErrorSound" to="." method="_on_error_sound_finished"]
+[connection signal="finished" from="Sounds/SuccessSound" to="." method="_on_success_sound_finished"]
