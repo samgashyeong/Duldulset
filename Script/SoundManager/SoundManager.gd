@@ -89,6 +89,18 @@ func play_Primfall_sound():
 	
 func play_Waterfall_sound():
 	$Waterfall.play()
+	
+	
+#Junsang 추가 사운드 부분 함수
+func play_order_sound():
+	$Order.play()
+
+func play_menu_upload_sound():
+	$MenuUpload.play()
+	
+func play_count_down_sound():
+	print("play all count down")
+	$CountDown.play()
 		
 func play_Gameover_sound():
 	$Gameover.play()

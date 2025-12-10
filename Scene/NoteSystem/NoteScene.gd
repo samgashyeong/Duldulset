@@ -14,7 +14,7 @@ var staff : String
 var staffScript : String
 const ITEM = preload("res://Scene/NoteSystem/NoteElement.tscn")
 
-#처음에소리안나게
+
 var is_initializing : bool = true
 
 func _ready() -> void:
@@ -36,15 +36,14 @@ func _ready() -> void:
 	for i in employee.get_children().size():
 		var _employ = employee.get_child(i)
 		_employ.menu.connect(connectMenu)
+		_employ.coffe_order_difference.connect(checkCoffee)
 		
 	
 
 func _on_button_pressed(button):
 	
-	#버튼소리시작
 	if not is_initializing:
 		SoundManager.play_Smallclick_sound()
-	#버튼소리끝
 	
 	var container = $HBoxContainer/Sprite2D/ScrollContainer/VBoxContainer
 	
@@ -121,6 +120,7 @@ func _on_exit_button_pressed() -> void:
 		await animation.animation_finished
 		dialogUp = false
 
+
 func connectMenu(type : Type.StaffMethod, name : Type.StaffName):
 	var resource : Coffee = BubbleManager.staffNameCheck(name)
 	print("menu test")
@@ -142,3 +142,15 @@ func connectMenu(type : Type.StaffMethod, name : Type.StaffName):
 			#print("Resource successfully saved to: ", resource_path)
 	
 	#makeListView(resource)
+
+func checkCoffee(coffee_diff: int, cream_diff: int, sugar_diff: int, staffName : Type.StaffName, orderType: int):
+	var resource : Coffee = BubbleManager.staffNameCheck(staffName)
+
+	if(coffee_diff == 0):
+		resource.orders[orderType].isCoffeeClear = true
+		
+	if(cream_diff==0):
+		resource.orders[orderType].isCreamClear = true
+	
+	if(sugar_diff == 0):
+		resource.orders[orderType].isSugarClear = true

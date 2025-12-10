@@ -19,7 +19,7 @@ var can_interact = false
 
 var coffee_data: Coffee
 
-signal coffe_order_difference(coffee_diff: int, cream_diff: int, sugar_diff: int, staffName : String)
+signal coffe_order_difference(coffee_diff: int, cream_diff: int, sugar_diff: int, staffName : Type.StaffName, orderType: int)
 
 ##set Ui signal
 signal menu(type:Type.StaffMethod, name : Type.StaffName)
@@ -148,6 +148,8 @@ func wander(target_position):
 		state = States.WANDERING
 	
 func order_coffee():
+	#sound play
+	SoundManager.play_order_sound()
 	#print("coffee order")
 	state = States.WAITING
 	coffee_state = CoffeeStates.CALLING
@@ -163,6 +165,7 @@ func order_coffee():
 func _input(event):
 	if event.is_action_pressed("interact") and can_interact and state == States.WAITING and !GameData.is_playing_minigame:
 		print("talking")
+		SoundManager.play_menu_upload_sound()
 		if coffee_state == CoffeeStates.CALLING:
 			order_index = randi_range(0,2)
 			match order_index:
@@ -189,14 +192,13 @@ func check_coffee():
 	var cream_diff = GameData.prim_count - coffee_order.cream
 	var sugar_diff = GameData.sugar_count - coffee_order.sugar
 	var total_diff = coffee_diff + cream_diff + sugar_diff
-	
+	print("checking")
 	if total_diff <= 3:
 		player.update_point(100)
 	else:
 		player.update_health(-1)
 		
-	coffe_order_difference.emit(coffee_diff, cream_diff, sugar_diff, staff_name)
-	
+	coffe_order_difference.emit(coffee_diff, cream_diff, sugar_diff, staff_name, order_index)
 	reset_to_normal_states()
 
 func reset_to_normal_states():

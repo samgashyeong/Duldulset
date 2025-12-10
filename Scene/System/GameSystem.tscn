@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cd1ivnpxv6vve"]
+[gd_scene load_steps=4 format=3 uid="uid://cd1ivnpxv6vve"]
 
 [ext_resource type="PackedScene" uid="uid://crsd7r3npmnah" path="res://Scene/System/GameTimer.tscn" id="1_w5qej"]
 [ext_resource type="PackedScene" uid="uid://66qn8ctsra7s" path="res://Scene/System/GameLogic.tscn" id="2_whaga"]
+[ext_resource type="Script" uid="uid://dfn8uexsenkmb" path="res://Script/DailyTask.gd" id="3_whaga"]
 
 [node name="GameSystem" type="Node"]
 
 [node name="GameTimer" parent="." instance=ExtResource("1_w5qej")]
 
 [node name="GameLogic" parent="." instance=ExtResource("2_whaga")]
+
+[node name="TaskList" type="Node" parent="."]
+script = ExtResource("3_whaga")
 
 [connection signal="timeout" from="GameTimer" to="GameLogic" method="_on_game_timer_timeout"]
 [connection signal="unit_time_passed" from="GameTimer" to="GameLogic" method="_on_game_timer_unit_time_passed"]

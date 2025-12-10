@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://2f0vmh75c7ru"]
+[gd_scene load_steps=29 format=3 uid="uid://2f0vmh75c7ru"]
 
 [ext_resource type="Script" uid="uid://c04trdhjm8cpp" path="res://Script/SoundManager/SoundManager.gd" id="1_l4qrj"]
 [ext_resource type="AudioStream" uid="uid://3ajhg0mwuyuo" path="res://Sound/Buttonclick.mp3" id="2_p8rl7"]
@@ -22,8 +22,11 @@
 [ext_resource type="AudioStream" uid="uid://c1fm1yetk3qgu" path="res://Sound/Typing2.wav" id="19_uknw8"]
 [ext_resource type="AudioStream" uid="uid://cyp5radmnryvy" path="res://Sound/Worddelete.wav" id="20_q6mwj"]
 [ext_resource type="AudioStream" uid="uid://unhi8215noxy" path="res://Sound/Waterfall.wav" id="21_1h6o1"]
+[ext_resource type="AudioStream" uid="uid://cwmyby7j4jvdx" path="res://Sound/Order.mp3" id="21_aauhl"]
 [ext_resource type="AudioStream" uid="uid://dar0ph268x26l" path="res://Sound/Primfall.wav" id="22_5cdtq"]
+[ext_resource type="AudioStream" uid="uid://dmnurbu1gt534" path="res://Sound/CountDown.mp3" id="22_xaxpt"]
 [ext_resource type="AudioStream" uid="uid://5bvbtu6oysbi" path="res://Sound/Coffeefall.wav" id="23_g7kgc"]
+[ext_resource type="AudioStream" uid="uid://babpbol4esd02" path="res://Sound/MenuUpload.mp3" id="23_nic22"]
 [ext_resource type="AudioStream" uid="uid://dgatp5qfgqpqc" path="res://Sound/Sugarfall.wav" id="24_aauhl"]
 [ext_resource type="AudioStream" uid="uid://dphu7bye3aqff" path="res://Sound/Gameover.wav" id="26_5cdtq"]
 [ext_resource type="AudioStream" uid="uid://g7qwwf0ncy0c" path="res://Sound/Gameclear.wav" id="26_g7kgc"]
@@ -53,7 +56,7 @@ stream = ExtResource("7_nlshh")
 
 [node name="RunningCh" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_nlshh")
-volume_db = -6.0
+bus = &"SoundEffect"
 
 [node name="Tonext" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_44hjp")
@@ -92,6 +95,17 @@ stream = ExtResource("19_uknw8")
 
 [node name="Worddelete" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("20_q6mwj")
+
+[node name="Order" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_aauhl")
+bus = &"SoundEffect"
+
+[node name="CountDown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_xaxpt")
+
+[node name="MenuUpload" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_nic22")
+mix_target = 2
 
 [node name="Waterfall" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("21_1h6o1")

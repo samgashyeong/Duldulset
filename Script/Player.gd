@@ -14,10 +14,11 @@ signal health_changed(new_value, changeValue) # add change Value
 @export var run_speed = base_speed * 1.5
 @export var speed: float = base_speed
 
-var stamina: float = 5
+var stamina: float = 0 # stamina value is 0-100
+var stamina_coefficient: float = 20
 signal stamina_changed(new_value, changeValue) # add change Value
-@export var max_stamina = 5
-var stamina_unit = 1 # per second
+@export var max_stamina = 5 * stamina_coefficient
+var stamina_unit = 1 * stamina_coefficient # per second (without stamina_coefficient)
 
 var is_running = false
 
@@ -59,13 +60,13 @@ func _physics_process(delta: float) -> void:
 		if stamina > 0:
 			speed = run_speed
 			stamina = max(stamina - stamina_unit * delta, 0)
-			stamina_changed.emit(stamina, -1)
+			stamina_changed.emit(stamina, -stamina_unit)
 		else:
 			speed = base_speed
 	else:
 		speed = base_speed
 		stamina = min(stamina + stamina_unit * delta, max_stamina)
-		stamina_changed.emit(stamina, 1)
+		stamina_changed.emit(stamina, stamina_unit)
 	
 	get_input()
 	move_and_slide()

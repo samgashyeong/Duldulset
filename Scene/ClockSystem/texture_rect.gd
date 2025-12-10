@@ -53,6 +53,7 @@ func textAnimation(frame : int):
 	
 	if(frame+9 == 18):
 		await animation.animation_finished
+		SoundManager.play_count_down_sound()
 		animation.play("timeWillGone")
 	
 	
