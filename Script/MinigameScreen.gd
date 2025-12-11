@@ -29,7 +29,6 @@ func _on_minigame_manager_minigame_closed(success: bool):
 	if current_minigame == "CleaningWater":
 		if success == true:
 			get_tree().call_group("spilled_waters", "cleanup")
-			
 			var remaining = get_tree().get_node_count_in_group("spilled_waters")
 			task_list.update_water_clean_task(remaining)
 		
