@@ -73,6 +73,6 @@ func update_copy_machine_task(amount: int):
 func update_water_clean_task(new_value: int):
 	water_clean_task = new_value
 	water_clean_task_changed.emit(new_value)
-	print("*******[Debug: water_clean_task variable value]*******")
-	print(new_value)
-	print("*********************")
+	#print("*******[Debug: water_clean_task variable value]*******")
+	#print(new_value)
+	#print("*********************")

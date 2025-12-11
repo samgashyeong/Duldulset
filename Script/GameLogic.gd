@@ -4,7 +4,7 @@ var wandering_probability = 0.1 #0.2 #0.1 #0.05
 var coffee_order_probability = 0.03 #0.05 #0.0 #0.05 #0.1
 var employees
 
-var water_spill_probability = 0.03 #0.01
+var water_spill_probability = 0.01
 
 var game_hour: int = 9
 
