@@ -57,7 +57,7 @@ func go_to_next_scene():
 		return
 
 	# 다음레벨
-	# get_tree().paused = true
+	get_tree().paused = true
 	
 	var current_data = level_sequence[current_stage_index]
 	var scene_path = current_data["scene"]
