@@ -235,18 +235,21 @@ func check_coffee():
 		player.update_health(-1)
 		
 	coffe_order_difference.emit(coffee_diff, cream_diff, sugar_diff, staff_name, order_index)
+	
+	consume_coffee()
 	reset_to_normal_states()
 
 func reset_to_normal_states():
+	coffee_state = CoffeeStates.CALLING
+	state = States.SITTING
+
+func consume_coffee():
 	GameData.is_coffee_ready = false
 	
 	GameData.coffee_count = 0
 	GameData.prim_count = 0
 	GameData.sugar_count = 0
-	
-	coffee_state = CoffeeStates.CALLING
-	state = States.SITTING
-	
+
 func _on_text_box_angry_timer_timeout():
 	reset_to_normal_states()
 	
