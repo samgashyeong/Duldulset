@@ -252,9 +252,11 @@ func consume_coffee():
 
 func _on_text_box_angry_timer_timeout():
 	reset_to_normal_states()
+	player.update_health(-1)
 	
 func _on_text_box_order_timer_timeout():
 	reset_to_normal_states()
+	player.update_health(-1)
 	
 func spill_water():
 	if is_near(global_position, working_position):
