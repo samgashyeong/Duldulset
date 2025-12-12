@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://duopn5oi6cr2u"]
+[gd_resource type="Resource" script_class="Coffee" load_steps=6 format=3 uid="uid://duopn5oi6cr2u"]
 
 [ext_resource type="Script" uid="uid://ctdfa312wdjdt" path="res://Script/Dialogue/Special/Coffee/A_common/CoffeeOrder.gd" id="1_k6ttt"]
 [ext_resource type="Resource" uid="uid://bq647mmb0j2yc" path="res://Script/Dialogue/Special/Coffee/Junsang/JsOrder1.tres" id="2_mba8v"]
