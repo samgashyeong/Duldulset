@@ -10,7 +10,7 @@ var spilled_water_scene: PackedScene = preload("res://Scene/Map/Object/Interacta
 @onready var minigame_manager = $"../../../MinigameScreen/MiniGameManager"
 @onready var task_list: DailyTask = $"../../../GameSystem/TaskList"
 
-var working_position
+var working_position: Vector2
 var is_returned = true
 var current_path: Array[Vector2]
 var return_path: Array[Vector2]
@@ -177,6 +177,8 @@ func wander(target_position):
 		state = States.WANDERING
 		return_path = current_path.duplicate()
 		return_path.reverse()
+		return_path.pop_front()
+		return_path.push_back(working_position)
 	
 func order_coffee():
 	#sound play
