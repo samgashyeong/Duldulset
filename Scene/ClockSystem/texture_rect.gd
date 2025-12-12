@@ -44,12 +44,13 @@ func setClockFrame(frame_index: int):
 func textAnimation(frame : int):
 	var timeString = str(9+frame)+":00"
 	
+	SoundManager.play_clock_sound()
+	
 	animation.play("change_clock")
 	await animation.animation_finished
 	timeText.text = timeString
 	await get_tree().process_frame
 	animation.play("change_clock_2")
-	
 	
 	if(frame+9 == 18):
 		await animation.animation_finished

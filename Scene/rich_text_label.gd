@@ -19,9 +19,9 @@ func _ready() -> void:
 		_employ.addLog.connect(receiveLog)
 		_employ.addBubble.connect(connectBubble)
 		
-	player.point_changed.connect(receiveInformationLog)
-	player.stamina_changed.connect(receiveInformationLog)
-	player.health_changed.connect(receiveInformationLog)
+	player.point_changed.connect(func(new_value, change): receiveInformationLog(Type.LOG.POINT, change))
+	player.stamina_changed.connect(func(new_value, change): receiveInformationLog(Type.LOG.STAMIA, change))
+	player.health_changed.connect(func(new_value, change): receiveInformationLog(Type.LOG.HEALTH, change))
 	
 	var targetnode = clock.get_child(1).get_child(0)
 	
@@ -43,10 +43,9 @@ func receiveInformationLog(type : Type.LOG, changeInformation : int):
 			else:
 				add_log("You lose" +  str(changeInformation)+ "health...")
 		Type.LOG.STAMIA:
-			if(changeInformation < 0):
-				add_log("You get " + str(changeInformation) + "stamia!!")
-			else:
-				add_log("You lose" +  str(changeInformation)+ "stamia.")
+			pass
+			#else:
+				#add_log("You lose" +  str(changeInformation)+ "stamia.")
 
 func changeClockLog(time : int):
 	add_log("The current time is " +str(time)+ " o'clock!")
@@ -69,4 +68,4 @@ func add_log(message : String):
 	if log_history.size() > max_lines:
 		log_history.pop_front()
 	
-	text = "\n".join(log_history)
+	text = "\n-----\n".join(log_history)

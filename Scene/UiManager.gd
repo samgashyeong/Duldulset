@@ -35,6 +35,10 @@ func _ready() -> void:
 	clockUi = get_node("ClockSystem/HBoxContainer/TextureRect")
 	gameTimer = get_node("../GameSystem/GameTimer")
 	
+	# Set stamina bar max_value to match player's max_stamina
+	stamia.max_value = giiyoung.max_stamina
+	print("Stamina bar max_value set to: ", stamia.max_value)
+	
 	clockUi.changeClockUi(currentTime)
 	dialogueHandlerNode.effectHealth.connect(calculateHealth)
 	dialogueHandlerNode.effectStamia.connect(calculateStamia)
@@ -177,25 +181,16 @@ func calculatePoint(_point : int):
 	aniamtionPoint(finalPoint, _point) 
 	
 func animationHealth(finalPoint : int, value : int):
-	var tween = create_tween()
 	if(value < 0):
 		SoundManager.play_DamageCh_sound()
-	tween.tween_property(
-		health, 
-		"value", 
-		finalPoint,
-		0.5 
-	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	
+	health.value = finalPoint
 
 func animationStamia(finalPoint : float, value : float):
-	var tween = create_tween()
+	# Debug prints to check values
+	#print("Stamina Debug - finalPoi
 	
-	tween.tween_property(
-		stamia, 
-		"value", 
-		finalPoint, 
-		0.5 
-	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	stamia.value = finalPoint
 	
 func aniamtionPoint(_point : int, value : int):
 	point.text = str(_point) + " Point"

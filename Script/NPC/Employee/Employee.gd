@@ -230,7 +230,8 @@ func check_coffee():
 	var cream_diff = GameData.prim_count - coffee_order.cream
 	var sugar_diff = GameData.sugar_count - coffee_order.sugar
 	var total_diff = absi(coffee_diff) + absi(cream_diff) + absi(sugar_diff)
-	print("checking")
+	
+	print("coffee diff " + str(coffee_diff) + str(cream_diff) + str(sugar_diff))
 	if total_diff <= 3:
 		player.update_point(100)
 	else:
