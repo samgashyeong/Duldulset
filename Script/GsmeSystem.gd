@@ -20,17 +20,37 @@ var level_sequence = [
 ]
 
 const END_SCENE_PATH = "res://Scene/Screens/EndScene.tscn"
+const GAMEOVER_SCENE_PATH = "res://Scene/Screens/GameoverScene.tscn"
 
-var current_stage_index = 0
+var current_stage_index = GameData.stage_level - 1
+
+var game_logic
+
+func _ready():
+	game_logic = $GameLogic
+	game_logic.stage_finished.connect(_on_game_logic_stage_finished)
+	print("====[Stage Info]====")
+	print("current stage: " + str(GameData.stage_level))
+	print("====================")
 
 func _process(_delta):
 	#nextlevelscene나오는 타이밍
 	if Input.is_action_just_pressed("Getnextscene"):
 		go_to_next_scene()
 
+func _on_game_logic_stage_finished(success: bool):
+	if success:
+		go_to_next_scene()
+	else:
+		go_to_gameover_scene()
+		
+
 func go_to_next_scene():
 	#엔딩 호출
 	if current_stage_index >= level_sequence.size():
+		GameData.reset_stage_to_start()
+		GameData.reset_global_events()
+		
 		get_tree().paused = false
 		SoundManager.play_Gameclear_sound()
 		get_tree().change_scene_to_file(END_SCENE_PATH)
@@ -55,5 +75,13 @@ func go_to_next_scene():
 			
 		get_parent().add_child(next_stage_overlay)
 		
-		current_stage_index += 1
-		
+		GameData.go_to_next_stage()
+		GameData.reset_global_events()
+
+func go_to_gameover_scene():
+	GameData.reset_stage_to_start()
+	GameData.reset_global_events()
+	
+	SoundManager.play_Gameover_sound()
+	get_tree().change_scene_to_file(GAMEOVER_SCENE_PATH)
+	

@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://bh3gxib7ssd8w" path="res://Themes/microsoft_sans_serif.ttf" id="2_vsdk2"]
 
 [node name="TrashFile" type="TextureRect"]
+texture_filter = 1
 offset_right = 32.0
 offset_bottom = 32.0
 texture = ExtResource("1_vsdk2")

@@ -10,7 +10,7 @@ var spilled_water_scene: PackedScene = preload("res://Scene/Map/Object/Interacta
 @onready var minigame_manager = $"../../../MinigameScreen/MiniGameManager"
 @onready var task_list: DailyTask = $"../../../GameSystem/TaskList"
 
-var working_position
+var working_position: Vector2
 var is_returned = true
 var current_path: Array[Vector2]
 var return_path: Array[Vector2]
@@ -177,6 +177,8 @@ func wander(target_position):
 		state = States.WANDERING
 		return_path = current_path.duplicate()
 		return_path.reverse()
+		return_path.pop_front()
+		return_path.push_back(working_position)
 	
 func order_coffee():
 	#sound play
@@ -227,31 +229,36 @@ func check_coffee():
 	var coffee_diff = GameData.coffee_count - coffee_order.coffee
 	var cream_diff = GameData.prim_count - coffee_order.cream
 	var sugar_diff = GameData.sugar_count - coffee_order.sugar
-	var total_diff = coffee_diff + cream_diff + sugar_diff
+	var total_diff = absi(coffee_diff) + absi(cream_diff) + absi(sugar_diff)
 	print("checking")
 	if total_diff <= 3:
 		player.update_point(100)
 	else:
-		player.update_health(-1)
+		player.update_health(-15)
 		
 	coffe_order_difference.emit(coffee_diff, cream_diff, sugar_diff, staff_name, order_index)
+	
+	consume_coffee()
 	reset_to_normal_states()
 
 func reset_to_normal_states():
+	coffee_state = CoffeeStates.CALLING
+	state = States.SITTING
+
+func consume_coffee():
 	GameData.is_coffee_ready = false
 	
 	GameData.coffee_count = 0
 	GameData.prim_count = 0
 	GameData.sugar_count = 0
-	
-	coffee_state = CoffeeStates.CALLING
-	state = States.SITTING
-	
+
 func _on_text_box_angry_timer_timeout():
 	reset_to_normal_states()
+	player.update_health(-30)
 	
 func _on_text_box_order_timer_timeout():
 	reset_to_normal_states()
+	player.update_health(-10)
 	
 func spill_water():
 	if is_near(global_position, working_position):
@@ -262,7 +269,8 @@ func spill_water():
 	spilled_water.add_to_group("spilled_waters")
 	spilled_water.water_cleaning.connect(_on_spilled_water_water_cleaning)
 	spilled_waters.add_child(spilled_water)
-	task_list.update_water_clean_task(1)
+	var new_counts = get_tree().get_node_count_in_group("spilled_waters")
+	task_list.update_water_clean_task(new_counts)
 	
 
 func is_near(point: Vector2, target_point: Vector2):

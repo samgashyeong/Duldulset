@@ -1,5 +1,6 @@
 [gd_scene load_steps=38 format=3 uid="uid://ciffji1jteld0"]
 
+
 [ext_resource type="Script" uid="uid://catjbfagu7yiy" path="res://Script/DialogicSignalHandler.gd" id="1_riasm"]
 [ext_resource type="PackedScene" uid="uid://eyo8pltp05s2" path="res://Scene/Map/Map.tscn" id="2_78qv1"]
 [ext_resource type="PackedScene" uid="uid://c3itnyow77hq5" path="res://Scene/NPC/Employee/Chunja.tscn" id="3_k1uf0"]
@@ -51,7 +52,7 @@ region = Rect2(134, 3, 54, 50)
 atlas = ExtResource("31_pqatp")
 region = Rect2(101, 3, 22, 27)
 
-[node name="MainGameScene2" type="Node2D"]
+[node name="MainGameScene" type="Node2D"]
 
 [node name="DialogueHandler" type="Node" parent="."]
 script = ExtResource("1_riasm")
