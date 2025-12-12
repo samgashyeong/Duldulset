@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi82d4tew6veg"]
+
+[ext_resource type="Texture2D" uid="uid://6cmci8bnxmaw" path="res://Art/Aseprite/desk_side.png" id="1_yqq0k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pf6ea"]
+size = Vector2(12, 25)
+
+[node name="BossDesk" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yqq0k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_pf6ea")

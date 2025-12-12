@@ -6,9 +6,9 @@ class_name Player
 const GAMEOVER_SCENE_PATH = "res://Scene/Screens/GameoverScene.tscn"
 
 # if health <= 0 then game over (losing condition)
-var health: int = 5
+var health: int = 100
 signal health_changed(new_value, changeValue) # add change Value
-@export var max_health = 5
+@export var max_health = 100
 
 @export var base_speed = 80
 @export var run_speed = base_speed * 1.5

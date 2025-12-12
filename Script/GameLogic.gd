@@ -43,7 +43,8 @@ func _process(delta: float) -> void:
 func _on_game_timer_timeout() -> void:
 	print("time out!")
 	await get_tree().create_timer(13).timeout
-	get_tree().paused = true
+	check_win_or_lose()
+	#get_tree().paused = true
 	
 
 func _on_game_timer_unit_time_passed() -> void:
