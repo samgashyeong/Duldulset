@@ -234,7 +234,7 @@ func check_coffee():
 	if total_diff <= 3:
 		player.update_point(100)
 	else:
-		player.update_health(-1)
+		player.update_health(-15)
 		
 	coffe_order_difference.emit(coffee_diff, cream_diff, sugar_diff, staff_name, order_index)
 	
@@ -254,11 +254,11 @@ func consume_coffee():
 
 func _on_text_box_angry_timer_timeout():
 	reset_to_normal_states()
-	player.update_health(-1)
+	player.update_health(-30)
 	
 func _on_text_box_order_timer_timeout():
 	reset_to_normal_states()
-	player.update_health(-1)
+	player.update_health(-10)
 	
 func spill_water():
 	if is_near(global_position, working_position):
