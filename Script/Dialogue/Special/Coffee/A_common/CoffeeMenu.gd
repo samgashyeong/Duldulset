@@ -1,4 +1,5 @@
 #202322158 이준상
+#Define Menu Element. Using Menu Element
 extends Node
 class_name CoffeeMenu
 

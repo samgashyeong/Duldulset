@@ -1,5 +1,5 @@
 #202322158 이준상
-#following Player
+#This node script Following Player(Giiyoung)
 extends TextureRect
 
 @onready var giiyoung = $"../../Giiyoung"

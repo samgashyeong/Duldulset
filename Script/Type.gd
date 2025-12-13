@@ -4,6 +4,7 @@ extends Node
 class_name Type
 
 
+#Define StaffName Method
 enum StaffName{
 	JUNSANG,
 	SANGIN,
@@ -14,6 +15,8 @@ enum StaffName{
 	CHUNJA
 }
 
+
+#Define StaffMethod Method
 enum StaffMethod{
 	ORDER,
 	START0,
@@ -22,6 +25,8 @@ enum StaffMethod{
 	CHECK
 }
 
+
+#Define LOG Method
 enum LOG{
 	SPECIAL,
 	ORDER,
