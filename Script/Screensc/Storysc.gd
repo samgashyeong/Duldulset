@@ -11,7 +11,7 @@ var dialogues = [
 ]
 
 var current_line_index = 0 
-const MAIN_SCENE_PATH = "res://Scene/MainGameScene2.tscn"
+const MAIN_SCENE_PATH = "res://Scene/MainGameScene.tscn"
 
 var is_typing = false
 var current_tween: Tween

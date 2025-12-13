@@ -22,18 +22,41 @@ var level_sequence = [
 ]
 
 const END_SCENE_PATH = "res://Scene/Screens/EndScene.tscn"
+const GAMEOVER_SCENE_PATH = "res://Scene/Screens/GameoverScene.tscn"
 
-var current_stage_index = 0
+var current_stage_index = GameData.stage_level - 1
+
+var game_logic
+
+func _ready():
+	game_logic = $GameLogic
+	game_logic.stage_finished.connect(_on_game_logic_stage_finished)
+	print("====[Stage Info]====")
+	print("current stage: " + str(GameData.stage_level))
+	print("====================")
 
 # 특정 입력 시 다음 씬으로 전환 (Transition to next scene on specific input)
 func _process(_delta):
 	if Input.is_action_just_pressed("Getnextscene"):
 		go_to_next_scene()
 
+<<<<<<< HEAD
 # 다음 레벨 오버레이를 띄우거나 최종 엔딩으로 전환 (Display next level overlay or transition to final ending)
+=======
+func _on_game_logic_stage_finished(success: bool):
+	if success:
+		go_to_next_scene()
+	else:
+		go_to_gameover_scene()
+		
+
+>>>>>>> main
 func go_to_next_scene():
 	# 모든 스테이지 완료 시 엔딩 씬 로드 (Load End Scene if all stages are complete)
 	if current_stage_index >= level_sequence.size():
+		GameData.reset_stage_to_start()
+		GameData.reset_global_events()
+		
 		get_tree().paused = false
 		SoundManager.play_Gameclear_sound()
 		get_tree().change_scene_to_file(END_SCENE_PATH)
@@ -59,5 +82,13 @@ func go_to_next_scene():
 			
 		get_parent().add_child(next_stage_overlay)
 		
-		current_stage_index += 1
-		
+		GameData.go_to_next_stage()
+		GameData.reset_global_events()
+
+func go_to_gameover_scene():
+	GameData.reset_stage_to_start()
+	GameData.reset_global_events()
+	
+	SoundManager.play_Gameover_sound()
+	get_tree().change_scene_to_file(GAMEOVER_SCENE_PATH)
+	

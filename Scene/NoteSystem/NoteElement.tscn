@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ce16mf7d5u31j"]
+[gd_scene load_steps=7 format=3 uid="uid://ce16mf7d5u31j"]
 
 [ext_resource type="Script" uid="uid://btnlxq3hkgs7v" path="res://Scene/NoteSystem/note_element.gd" id="1_t7l2k"]
 [ext_resource type="Texture2D" uid="uid://chxjpbdi7dvuv" path="res://Art/Aseprite/coffee.png" id="1_uru5l"]
 [ext_resource type="Texture2D" uid="uid://ba0i1qs2olerf" path="res://Art/Aseprite/creamer.png" id="2_26w13"]
+[ext_resource type="FontFile" uid="uid://b5ck22eskijli" path="res://Font/neodgm (1).ttf" id="2_jdq8g"]
 [ext_resource type="Texture2D" uid="uid://b8syvbgtrsc5d" path="res://Art/Aseprite/Sugar.png" id="3_t7l2k"]
 [ext_resource type="Texture2D" uid="uid://ukefn7itw87w" path="res://Art/Aseprite/line.png" id="4_26w13"]
 
@@ -16,6 +17,7 @@ custom_minimum_size = Vector2(130, 18)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.19528538, 0.40087855, 0.18567902, 0.43137255)
+theme_override_fonts/font = ExtResource("2_jdq8g")
 theme_override_font_sizes/font_size = 11
 text = "I want 442"
 autowrap_mode = 3
@@ -55,6 +57,7 @@ custom_minimum_size = Vector2(20, 10)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.19528538, 0.40087855, 0.18567902, 0.43137255)
+theme_override_fonts/font = ExtResource("2_jdq8g")
 theme_override_font_sizes/font_size = 11
 text = "3"
 autowrap_mode = 3
@@ -91,6 +94,7 @@ custom_minimum_size = Vector2(20, 10)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.19528538, 0.40087855, 0.18567902, 0.43137255)
+theme_override_fonts/font = ExtResource("2_jdq8g")
 theme_override_font_sizes/font_size = 11
 text = "3"
 autowrap_mode = 3
@@ -127,6 +131,7 @@ custom_minimum_size = Vector2(20, 10)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.19528538, 0.40087855, 0.18567902, 0.43137255)
+theme_override_fonts/font = ExtResource("2_jdq8g")
 theme_override_font_sizes/font_size = 11
 text = "3"
 autowrap_mode = 3

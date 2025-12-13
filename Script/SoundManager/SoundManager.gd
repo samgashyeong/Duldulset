@@ -107,3 +107,6 @@ func play_Gameover_sound():
 	
 func play_Gameclear_sound():
 	$Gameclear.play()
+	
+func play_clock_sound():
+	$TicktokAudio.play()

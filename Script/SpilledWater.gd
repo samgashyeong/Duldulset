@@ -21,4 +21,5 @@ func _input(event):
 func cleanup():
 	if can_cleanup:
 		print("cleanup spilled water")
+		remove_from_group("spilled_waters")
 		queue_free()
