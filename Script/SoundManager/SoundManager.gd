@@ -1,16 +1,19 @@
+#202221035현동우
 extends Node
 
-#처음부터 bgm들리게
+# 매 프레임마다 BGM 재생 상태를 제어 (Control BGM playback state every frame)
 func _process(delta):
 	if not has_node("BGMPlayer"):
 		return
 	if not get_tree().current_scene:
 		return
 	var current_scene_name = get_tree().current_scene.name
-
+	
+	# 게임 오버/엔딩 씬에서 BGM 중지 (Stop BGM in Game Over/End scenes)
 	if current_scene_name == "GameoverScene" or current_scene_name == "EndScene":
 		if $BGMPlayer.playing:
 			$BGMPlayer.stop()
+	# 그 외 씬에서 BGM 재생 시작 (Start BGM in all other scenes)
 	else:
 		if not $BGMPlayer.playing:
 			$BGMPlayer.play()
@@ -18,6 +21,7 @@ func _process(delta):
 func play_startclick_sound():
 	$StartButton.play()
 
+#사운드끝날때까지기다린후씬종료(Wait until the sound ends and then end the scene.)
 func play_quit_sound_and_exit():
 	$QuitButton.play()
 	await $QuitButton.finished
@@ -37,6 +41,9 @@ func play_DamageCh_sound():
 	
 func play_PointUpCh_sound():
 	$PointUpCh.play()
+	
+func play_PointUpUpCh_sound():
+	$PointUpUpCh.play()
 
 func play_RunningCh_sound():
 	$RunningCh.play()
@@ -106,3 +113,4 @@ func play_Gameclear_sound():
 	
 func play_clock_sound():
 	$TicktokAudio.play()
+	

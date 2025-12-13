@@ -1,6 +1,7 @@
+#202221035 현동우
 extends Node2D
 
-# 커피, 프림, 설 
+# 커피, 프림, 설탕 (coffee prim sugar)
 const CoffeeButtonClass: Script = preload("res://Script/CoffeeSc_dongwoo/Coffee_button.gd")
 const COFFEEBEAN_SCENE = preload("res://Scene/coffee_dongwoo/Coffeebean.tscn")
 const BEAN_COUNT = 3 
@@ -11,17 +12,17 @@ const SugarButtonClass: Script = preload("res://Script/CoffeeSc_dongwoo/SugarBut
 const SUGAR_SCENE = preload("res://Scene/coffee_dongwoo/Sugar.tscn")
 const SUGAR_FOLLOWER_SCENE = preload("res://Scene/coffee_dongwoo/SugarFollower.tscn")
 
-# 물병
+# 물병(waterbottle)
 const WaterbottleClass: Script = preload("res://Script/CoffeeSc_dongwoo/Waterbottle.gd")
 const WATERBOTTLE_FOLLOWER_SCENE = preload("res://Scene/coffee_dongwoo/WaterbottleFollower.tscn") 
 #const BACKTO_SCENE_PATH = "res://Scene/coffee_dongwoo/Backto.tscn"
 
-# 상태 추적 변수 
+# 상태 추적 변수 (state tracking variable)
 var current_sugar_follower: Node = null
 var current_water_follower: Node = null
 var is_waterbottle_unlocked = false 
 
-# 씬 노드 
+# 씬 노드 (scene node)
 @onready var cup1: Node2D = $Cup3
 @onready var cup2: Node2D = $Cup4
 #@onready var cup3: Node2D = $Cup3
@@ -31,40 +32,40 @@ var is_waterbottle_unlocked = false
 @onready var fade_overlay: ColorRect = $FadeOverlay
 @onready var scene_transition_timer: Timer = $SceneTransitionTimer
 
-# 커피 미니게임이 끝났을 때 알려주는 시그널
+# 커피 미니게임이 끝났을 때 알려주는 시그널 (A signal that notifies you when the coffee minigame is over.)
 signal coffee_finished()
 
 func _ready():
-	#  원두 버튼 연결 
+	#  원두 버튼 연결 (Coffee bean button connection)
 	var coffee_button = $CoffeeButton 
 	if coffee_button and coffee_button is CoffeeButtonClass:
 		coffee_button.requested_coffeebean_spawn.connect(_on_requested_coffeebean_spawn)
 	
-	#  프림 버튼 연결 
+	#  프림 버튼 연결 (prim button connection)
 	var prim_button = $PrimButton 
 	if prim_button and prim_button is PrimButtonClass:
 		prim_button.requested_prim_spawn.connect(_on_requested_prim_spawn)
 	
-	#  설탕 버튼 연결 
+	#  설탕 버튼 연결 (sugar button connection)
 	var sugar_button = $SugarButton
 	if sugar_button and sugar_button is SugarButtonClass:
 		sugar_button.requested_sugar_spawn.connect(_on_requested_sugar_spawn)
 
-	#  물병 버튼 연결 
+	#  물병 연결 (waterbottle coneection)
 	if water_bottle_node and water_bottle_node is WaterbottleClass:
 		water_bottle_node.picked_up.connect(_on_waterbottle_picked_up)
 	
-	#  씬 전환 타이머 연결 
+	#  씬 전환 타이머 연결 (scene change timer coneection)
 	if scene_transition_timer:
 		scene_transition_timer.timeout.connect(_on_scene_transition_timer_timeout)
 
-	#  초기 상태 설정 
+	#  초기 상태 설정 (initial state settings)
 	if cup2:
 		cup2.visible = false
 	if water_bottle_node:
 		water_bottle_node.lock()
 
-# 물병 잠금 해제
+# 물병 잠금 해제(unlock waterbottle)
 func _unlock_waterbottle():
 	if is_waterbottle_unlocked:
 		return
@@ -73,7 +74,7 @@ func _unlock_waterbottle():
 	if water_bottle_node:
 		water_bottle_node.unlock()
 
-# 물병 집기
+# 물병 집기(grab waterbottle)
 func _on_waterbottle_picked_up():
 	if is_instance_valid(current_sugar_follower) or is_instance_valid(current_water_follower):
 		return
@@ -81,6 +82,7 @@ func _on_waterbottle_picked_up():
 	if cup1: cup1.visible = false
 	if cup2: cup2.visible = true
 	
+	#물병숨김,이제부터 waterbottlefollower가 나타남(Hide the water bottle, now waterbottlefollower appears)
 	water_bottle_node.hide_on_desk()
 	
 	var follower = WATERBOTTLE_FOLLOWER_SCENE.instantiate()
@@ -93,7 +95,7 @@ func _on_waterbottle_picked_up():
 	
 	follower.started_pouring.connect(_on_started_pouring)
 
-# 물 붓기 시작
+# 물 붓기 시작(start pouring)
 func _on_started_pouring():
 	if scene_transition_timer:
 		scene_transition_timer.start()
@@ -108,10 +110,10 @@ func _on_scene_transition_timer_timeout():
 
 func _on_fade_animation_finished(_anim_name):
 	#get_tree().change_scene_to_file(BACKTO_SCENE_PATH)
-	coffee_finished.emit() # scene 전환 대신 시그널로 처리
-	queue_free() # 시그널 보내고 나서 노드 삭제
+	coffee_finished.emit() # scene 전환 대신 시그널로 처리(Processing with signals instead of scene switching)
+	queue_free() # 시그널 보내고 나서 노드 삭제 (Delete the node after sending the signal)
 
-# 설탕 생성 
+# 설탕 생성(generate sugar)
 func _on_requested_sugar_spawn():
 	_unlock_waterbottle() 
 	print("현재 설탕 개수: ", GameData.sugar_count)
@@ -122,7 +124,7 @@ func _on_requested_sugar_spawn():
 	add_child(follower)
 	follower.placed.connect(_on_sugar_placed)
 
-# 설탕 배치
+# 설탕 배치(arrage sugar)
 func _on_sugar_placed(spawn_position: Vector2):
 	current_sugar_follower = null
 	var sugar = SUGAR_SCENE.instantiate()
@@ -130,7 +132,7 @@ func _on_sugar_placed(spawn_position: Vector2):
 	add_child(sugar)
 	sugar.global_position = spawn_position
 
-# 원두 생성 
+# 원두 생성 (generate coffee bean)
 func _on_requested_coffeebean_spawn(button_position: Vector2):
 	_unlock_waterbottle() 
 	
@@ -148,10 +150,10 @@ func _on_requested_coffeebean_spawn(button_position: Vector2):
 		bean.global_position = Vector2(spawn_x, spawn_y)
 		if bean is RigidBody2D:
 			bean.rotation = randf_range(0, TAU) 
-			#흩날리는 느낌
+			#흩날리는 느낌(feeling of scattering)
 			bean.apply_central_impulse(Vector2(randf_range(-100, 100), randf_range(-50, 50)))
 
-# 프림 생성 
+# 프림 생성 (generate prim)
 func _on_requested_prim_spawn(button_position: Vector2):
 	_unlock_waterbottle() 
 	

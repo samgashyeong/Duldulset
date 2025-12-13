@@ -121,6 +121,8 @@ func _process(delta: float) -> void:
 
 func update_health(amount):
 	health += amount
+	if amount > 0:
+		SoundManager.play_PointUpUpCh_sound()
 	# 데미지소리시작
 	if amount < 0:
 		SoundManager.play_DamageCh_sound()
