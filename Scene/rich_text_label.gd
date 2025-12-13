@@ -1,4 +1,6 @@
 #202322158 이준상
+
+#
 extends RichTextLabel
 
 var max_lines = 10
@@ -38,7 +40,7 @@ func receiveInformationLog(type : Type.LOG, changeInformation : int):
 		Type.LOG.POINT:
 			add_log("You get " + str(changeInformation) + " points!!")
 		Type.LOG.HEALTH:
-			if(changeInformation < 0):
+			if(changeInformation > 0):
 				add_log("You get " + str(changeInformation) + "health!!")
 			else:
 				add_log("You lose" +  str(changeInformation)+ "health...")
