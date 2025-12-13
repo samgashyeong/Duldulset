@@ -1,7 +1,7 @@
 extends Node
 
-var wandering_probability = 0.1 #0.2 #0.1 #0.05
-var coffee_order_probability = 0.03 #0.05 #0.0 #0.05 #0.1
+var wandering_probability = 0.1
+var coffee_order_probability: float
 var employees
 
 var water_spill_probability = 0.01
@@ -30,6 +30,8 @@ signal stage_finished(success: bool)
 func _ready():
 	employees = get_tree().get_nodes_in_group("employees")
 	
+	set_coffee_order_probability()
+	
 	if GameData.stage_level >= 2:
 		special_character_scene = load(special_event_resource_paths[GameData.stage_level - 2])
 	
@@ -39,6 +41,12 @@ func _process(delta: float) -> void:
 	else:
 		GameData.main_time_scale = 1.0
 
+func set_coffee_order_probability():
+	if GameData.stage_level == 5:
+		coffee_order_probability = 0.0315
+	else:
+		coffee_order_probability = 0.005 + 0.00625 * GameData.stage_level # 0.03 for stage 4.
+	
 
 func _on_game_timer_timeout() -> void:
 	print("time out!")
