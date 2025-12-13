@@ -36,7 +36,7 @@ func _on_minigame_manager_minigame_closed(success: bool):
 		if success == true:
 			get_tree().call_group("boss", "return_to_spawn")
 	
-	if current_minigame == "FileSorting" or "TypingReport":
+	if current_minigame == "FileSorting" or current_minigame == "TypingReport":
 		if success == true:
 			task_list.pop_computer_task_queue()
 			

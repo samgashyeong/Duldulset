@@ -9,5 +9,5 @@ class_name CoffeeOrder
 @export var sugar : int
 @export var isAction : bool = false
 @export var isCoffeeClear : bool = true
-@export var isCreamClear : bool = true
-@export var isSugarClear : bool = true
+@export var isCreamClear : bool = false
+@export var isSugarClear : bool = false

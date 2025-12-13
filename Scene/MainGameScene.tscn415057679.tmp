@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ciffji1jteld0"]
+[gd_scene load_steps=38 format=3 uid="uid://ciffji1jteld0"]
 
 [ext_resource type="Script" uid="uid://catjbfagu7yiy" path="res://Script/DialogicSignalHandler.gd" id="1_riasm"]
 [ext_resource type="PackedScene" uid="uid://eyo8pltp05s2" path="res://Scene/Map/Map.tscn" id="2_78qv1"]
@@ -28,13 +28,10 @@
 [ext_resource type="Texture2D" uid="uid://ba0i1qs2olerf" path="res://Art/Aseprite/creamer.png" id="24_eatav"]
 [ext_resource type="PackedScene" uid="uid://3ks6ev6b6or1" path="res://Scene/ClockSystem/ClockSystem.tscn" id="25_8b4qh"]
 [ext_resource type="Texture2D" uid="uid://b8syvbgtrsc5d" path="res://Art/Aseprite/Sugar.png" id="25_pqatp"]
+[ext_resource type="FontFile" uid="uid://dx4xlhsj467p8" path="res://Font/NotoSans_ExtraCondensed-Bold.ttf" id="26_r1nky"]
 [ext_resource type="Script" uid="uid://csbdb62babya3" path="res://Scene/rich_text_label.gd" id="27_k5qhm"]
 [ext_resource type="Texture2D" uid="uid://cjun2ubndf8lf" path="res://Art/arrow_isometric_outlined.png" id="31_pqatp"]
 [ext_resource type="Script" uid="uid://y31sdiruwy88" path="res://Scene/texture_rect.gd" id="32_3yhgr"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jwcat"]
-atlas = ExtResource("31_pqatp")
-region = Rect2(101, 3, 22, 27)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3yhgr"]
 atlas = ExtResource("23_rhqcu")
@@ -49,6 +46,10 @@ atlas = ExtResource("23_rhqcu")
 region = Rect2(134, 3, 54, 50)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_jwcat"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwcat"]
+atlas = ExtResource("31_pqatp")
+region = Rect2(101, 3, 22, 27)
 
 [node name="MainGameScene" type="Node2D"]
 
@@ -126,13 +127,6 @@ script = ExtResource("15_5lt73")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("16_oihie")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.25, 0.25)
-texture = SubResource("AtlasTexture_jwcat")
-script = ExtResource("32_3yhgr")
 
 [node name="MenuSystem" parent="CanvasLayer" instance=ExtResource("17_mhcfp")]
 offset_left = -76.40997
@@ -234,7 +228,7 @@ offset_top = -76.0
 offset_right = 233.0
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8666667)
-theme_override_fonts/normal_font = ExtResource("22_u5kxt")
+theme_override_fonts/normal_font = ExtResource("26_r1nky")
 theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
 scroll_following = true
@@ -248,5 +242,12 @@ offset_bottom = 80.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("22_u5kxt")
 theme_override_font_sizes/font_size = 10
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_jwcat")
+script = ExtResource("32_3yhgr")
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/NoteButton" to="CanvasLayer/NoteScene" method="pop_up"]
