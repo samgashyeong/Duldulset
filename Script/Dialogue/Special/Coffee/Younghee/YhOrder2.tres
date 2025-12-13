@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ca51fx3obco2m"]
+[gd_resource type="Resource" script_class="CoffeeOrder" load_steps=2 format=3 uid="uid://ca51fx3obco2m"]
 
 [ext_resource type="Script" uid="uid://ctdfa312wdjdt" path="res://Script/Dialogue/Special/Coffee/A_common/CoffeeOrder.gd" id="1_og5ov"]
 
 [resource]
 script = ExtResource("1_og5ov")
 dialog = "hey, coffee"
-coffee = 4
-cream = 2
-sugar = 2
+coffee = 2
+cream = 5
+sugar = 1
