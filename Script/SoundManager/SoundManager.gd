@@ -41,6 +41,9 @@ func play_DamageCh_sound():
 	
 func play_PointUpCh_sound():
 	$PointUpCh.play()
+	
+func play_PointUpUpCh_sound():
+	$PointUpUpCh.play()
 
 func play_RunningCh_sound():
 	$RunningCh.play()
@@ -110,3 +113,4 @@ func play_Gameclear_sound():
 	
 func play_clock_sound():
 	$TicktokAudio.play()
+	

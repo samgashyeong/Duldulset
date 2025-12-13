@@ -40,9 +40,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("Getnextscene"):
 		go_to_next_scene()
 
-<<<<<<< HEAD
 # 다음 레벨 오버레이를 띄우거나 최종 엔딩으로 전환 (Display next level overlay or transition to final ending)
-=======
 func _on_game_logic_stage_finished(success: bool):
 	if success:
 		go_to_next_scene()
@@ -50,7 +48,6 @@ func _on_game_logic_stage_finished(success: bool):
 		go_to_gameover_scene()
 		
 
->>>>>>> main
 func go_to_next_scene():
 	# 모든 스테이지 완료 시 엔딩 씬 로드 (Load End Scene if all stages are complete)
 	if current_stage_index >= level_sequence.size():
