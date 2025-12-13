@@ -73,17 +73,16 @@ func _on_button_pressed(button):
 		"Oksoon":
 			type = Type.StaffName.OKSOON
 			staff = "Oksoon"
-			staffScript = "A warm cup of tea is the best way to start the day."
+			staffScript = "Hello, I hate coffee...."
 			
 		"Younghee":
 			type = Type.StaffName.YOUNGHEE
 			staff = "Younghee"
-			staffScript = "Hello! Thank you always!!"
-	
+			staffScript = "Hello! I love cream!!"
 		"Chunja":
 			type = Type.StaffName.CHUNJA
 			staff = "Chunja"
-			staffScript = "I really don't like you" 
+			staffScript = "I really don't like you and I hate sugar..." 
 	
 	makeListView(BubbleManager.staffNameCheck(type))
 	
@@ -100,9 +99,7 @@ func makeListView(resoucre : Coffee):
 	
 	
 func pop_up():
-	#노트소리시작
 	SoundManager.play_Noteflip_sound()
-	#노트소리끝
 	await get_tree().process_frame
 	if !dialogUp:
 		animation.play("pop up")
@@ -111,9 +108,7 @@ func pop_up():
 
 
 func _on_exit_button_pressed() -> void:
-	#닫기소리시작
 	SoundManager.play_Closebutton_sound()
-	#닫기소리끝
 	await get_tree().process_frame
 	if dialogUp:
 		animation.play("pop_down")
