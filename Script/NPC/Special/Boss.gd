@@ -122,11 +122,29 @@ func move_towards(target_position):
 
 func get_possible_position_near(target_position):
 	var waypoint: Vector2
-	for dx in range(-64, 64, 32):
-		for dy in range(-64, 64, 32):
+	
+	waypoint = target_position
+	if tilemap.is_point_walkable(waypoint):
+		return waypoint
+	
+	for dx in range(-32, 32, 32):
+		for dy in range(-32, 32, 32):
+			if dx == 0 and dy == 0:
+				continue
+				
 			waypoint = target_position + Vector2(dx, dy)
 			if tilemap.is_point_walkable(waypoint):
 				return waypoint
+	
+	for dx in range(-64, 64, 32):
+		for dy in range(-64, 64, 32):
+			if not (dx == -64 or dx == 64 or dy == -64 or dy == 64):
+				continue
+			
+			waypoint = target_position + Vector2(dx, dy)
+			if tilemap.is_point_walkable(waypoint):
+				return waypoint
+	
 	return null
 
 func _on_interactable_area_body_entered(body: Node2D) -> void:
