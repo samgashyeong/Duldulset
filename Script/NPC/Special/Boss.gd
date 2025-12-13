@@ -138,6 +138,9 @@ func get_manhattan_path(raw_world_path: Array[Vector2]):
 
 func move_towards(target_position):
 	var near_position = get_possible_position_near(target_position)
+	if near_position == null:
+		print("can't get near_position!")
+		return
 	var raw_path = get_path_to_target(near_position)
 	current_path = get_manhattan_path(raw_path)
 
