@@ -113,20 +113,59 @@ func get_path_to_target(target_position):
 		world_path.append(world_position)
 		
 	return world_path
+	
+
+func get_manhattan_path(raw_world_path: Array[Vector2]):
+	if raw_world_path.is_empty():
+		return raw_world_path
+	
+	var manhattan_path: Array[Vector2]
+	
+	var start = raw_world_path[0]
+	if !is_equal_approx(global_position.x, start.x) and !is_equal_approx(global_position.y, start.y):
+		var waypoint = Vector2(start.x, global_position.y)
+		manhattan_path.append(waypoint)
+	manhattan_path.append_array(raw_world_path)
+	
+	if manhattan_path.size() >= 2:
+		var last_grid_point = manhattan_path[-2]
+		var dest_point = manhattan_path[-1]
+		if !is_equal_approx(last_grid_point.x, dest_point.x) and !is_equal_approx(last_grid_point.y, dest_point.y):
+			var waypoint = Vector2(dest_point.x, last_grid_point.y)
+			manhattan_path.insert(-1, waypoint)
+			
+	return manhattan_path
 
 func move_towards(target_position):
 	var near_position = get_possible_position_near(target_position)
-	current_path = get_path_to_target(near_position)
-	#if tilemap.is_point_walkable(target_position):
-	#	current_path = get_path_to_target(target_position)
+	var raw_path = get_path_to_target(near_position)
+	current_path = get_manhattan_path(raw_path)
 
 func get_possible_position_near(target_position):
 	var waypoint: Vector2
-	for dx in range(-64, 64, 32):
-		for dy in range(-64, 64, 32):
+	
+	waypoint = target_position
+	if tilemap.is_point_walkable(waypoint):
+		return waypoint
+	
+	for dx in range(-32, 32, 32):
+		for dy in range(-32, 32, 32):
+			if dx == 0 and dy == 0:
+				continue
+				
 			waypoint = target_position + Vector2(dx, dy)
 			if tilemap.is_point_walkable(waypoint):
 				return waypoint
+	
+	for dx in range(-64, 64, 32):
+		for dy in range(-64, 64, 32):
+			if not (dx == -64 or dx == 64 or dy == -64 or dy == 64):
+				continue
+			
+			waypoint = target_position + Vector2(dx, dy)
+			if tilemap.is_point_walkable(waypoint):
+				return waypoint
+	
 	return null
 
 func _on_interactable_area_body_entered(body: Node2D) -> void:
