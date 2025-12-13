@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d3diybypdlxo6" path="res://Scene/NPC/Employee/Sangin.tscn" id="7_0wm3c"]
 [ext_resource type="PackedScene" uid="uid://cq4uv1wkox30a" path="res://Scene/NPC/Employee/Younghee.tscn" id="8_o71un"]
 [ext_resource type="PackedScene" uid="uid://27onlytfom1e" path="res://Scene/Player.tscn" id="9_w0t8p"]
-[ext_resource type="Script" uid="uid://bx0hga6qj8pmo" path="res://Script/MinigameScreen.gd" id="10_ihv5b"]
+[ext_resource type="Script" uid="uid://bx0hga6qj8pmo" path="res://Script/CoffeeMinigameScreen.gd" id="10_ihv5b"]
 [ext_resource type="PackedScene" uid="uid://vymo7le3sf6s" path="res://Scene/coffee_dongwoo/CoffeeMainScene.tscn" id="11_d1kfn"]
 [ext_resource type="PackedScene" uid="uid://cd1ivnpxv6vve" path="res://Scene/System/GameSystem.tscn" id="12_3b437"]
 [ext_resource type="Script" uid="uid://dt0trvr0xugoo" path="res://Script/GsmeSystem.gd" id="13_0yk1i"]
@@ -27,7 +27,7 @@
 [ext_resource type="FontFile" uid="uid://dx4xlhsj467p8" path="res://Font/NotoSans_ExtraCondensed-Bold.ttf" id="24_yuomu"]
 [ext_resource type="Script" uid="uid://csbdb62babya3" path="res://Scene/rich_text_label.gd" id="25_7tffr"]
 [ext_resource type="PackedScene" uid="uid://dd5ca7un0fyio" path="res://Scene/NPC/Employee/TestNode.tscn" id="26_pk0j8"]
-[ext_resource type="Script" path="res://Tests/DialogueTest_Teemu.gd" id="27_14el5"]
+[ext_resource type="Script" uid="uid://xd83l8hu281u" path="res://Tests/DialogueTest_Teemu.gd" id="27_14el5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ot0n"]
 atlas = ExtResource("21_di1q4")
