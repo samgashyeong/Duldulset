@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://by73x0vr85esu"]
+[gd_scene load_steps=22 format=3 uid="uid://by73x0vr85esu"]
 
 [ext_resource type="Texture2D" uid="uid://crl1x7dabpueb" path="res://Art/Forscreens/background_duldulset.jpg" id="1_c2jll"]
 [ext_resource type="Texture2D" uid="uid://dvk40wipu7jgn" path="res://Art/Aseprite/Dongwoo.png" id="2_hn8t2"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bufaadi8xn3ip" path="res://Script/Screensc/optisonbutton.gd" id="10_74jit"]
 [ext_resource type="Script" uid="uid://dxgj6bydxqs0n" path="res://Script/Screensc/Settings.gd" id="12_74jit"]
 [ext_resource type="Script" uid="uid://dkws4mm8a0ujx" path="res://Script/Screensc/Exitbuttonforsetting.gd" id="12_mgxxc"]
+[ext_resource type="Texture2D" uid="uid://dxjaprevhysx2" path="res://Art/Aseprite/Boss.png" id="14_ycbes"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_712cs"]
 
@@ -35,6 +36,10 @@ thickness = 6
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ox5da"]
 color = Color(0.88235295, 0.827451, 0.3372549, 1)
 thickness = 6
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu6g2"]
+atlas = ExtResource("14_ycbes")
+region = Rect2(199, 2, 18, 30)
 
 [node name="Startscene" type="Control"]
 layout_mode = 3
@@ -260,6 +265,12 @@ theme_override_styles/grabber_area = SubResource("StyleBoxLine_qu6g2")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_ox5da")
 step = 10.0
 value = 100.0
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_qu6g2")
 
 [connection signal="pressed" from="Startbutton/Button" to="Startbutton/Button" method="_on_pressed"]
 [connection signal="pressed" from="Optionsbutton/Button" to="Optionsbutton/Button" method="_on_pressed"]

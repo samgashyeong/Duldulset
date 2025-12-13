@@ -1,5 +1,5 @@
 #202322158 이준상
-
+#Define Use CoffeeOrder Data Element
 extends Resource
 class_name CoffeeOrder
 
