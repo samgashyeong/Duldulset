@@ -154,8 +154,8 @@ func changeTaskText():
 	
 	if(totalCopy > 0):
 		var copy = withCopy.format([
-			leftCopy,
-			totalCom
+			totalCopy-leftCopy,
+			totalCopy
 		])
 		finaltaskText += copy
 	if(leftWater > 0):
