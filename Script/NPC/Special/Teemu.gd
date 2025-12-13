@@ -1,3 +1,5 @@
+#202322158 이준상
+#Define Professor.Teemu
 extends Special
 
 func _ready():

@@ -1,4 +1,5 @@
-#202322158 이준
+#202322158 이준상
+#following Player
 extends TextureRect
 
 @onready var giiyoung = $"../../Giiyoung"

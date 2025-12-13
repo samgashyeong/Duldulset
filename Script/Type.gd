@@ -1,5 +1,5 @@
 #202322158 이준상
-
+#Define StaffName, StaffMethod, LOG Window Method
 extends Node
 class_name Type
 
