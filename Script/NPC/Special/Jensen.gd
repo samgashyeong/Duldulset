@@ -1,3 +1,5 @@
+# 202322111 임상인
+# Define 'Jensen' special character for the special event.
 extends Special
 
 func _ready():

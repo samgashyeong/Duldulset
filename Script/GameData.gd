@@ -1,3 +1,6 @@
+# 202322111 임상인
+# This script is for managing game data (autoload).
+
 extends Node
 
 #add signal : junsang
@@ -6,18 +9,24 @@ signal add_cream(cnt : int)
 signal add_sugar(cnt : int)
 
 
+# stage information
 var stage_level: int
 const MAX_STAGE: int = 5
 
+# main game scene related things
 var main_time_scale: float
 var is_playing_minigame: bool
 
+
+# for coffee informations of the Player in the stage
 var is_coffee_ready: bool
 
 var coffee_count: int = 0
 var prim_count: int = 0
 var sugar_count: int = 0
 
+
+# It initializes.
 func _ready() -> void:
 	stage_level = 1
 	main_time_scale = 1.0 # normal time scale for the main scene
@@ -46,7 +55,8 @@ func go_to_next_stage():
 	if stage_level > MAX_STAGE:
 		stage_level = MAX_STAGE
 
+
+# This function resets other autoload scripts related things.
 func reset_global_events():
 	BubbleManager.clearAllbubble()
-	#Dialogic.clear()
 	Dialogic.end_timeline()

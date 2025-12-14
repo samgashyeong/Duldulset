@@ -1,3 +1,6 @@
+# 202322111 임상인
+# This script is for managing daily task list for the game logic and UI.
+
 extends Node
 
 class_name DailyTask
@@ -18,21 +21,25 @@ max_file_sorting_task : int,
 max_copy_machine_task : int,
 max_water_clean_task : int)
 
+# It initializes.
 func _ready():
+	# basic init
 	_init()
 	
+	# update task list for the current stage
 	var current_stage = GameData.stage_level
 	task_init(current_stage)
 	
+	# shuffle computer task queue for natural gameplay
 	shuffle_computer_task_queue()
 	
-	
-	print("test emit " + str(computer_task.size()))
+	# emit signal of max values for the UI
 	call_deferred("emit_max_value")
-	
+
 
 func emit_max_value():
 	max_value.emit(computer_task.size(), typing_task, file_sorting_task, copy_machine_task, water_clean_task)
+
 
 func _init():
 	computer_task = []
@@ -42,6 +49,7 @@ func _init():
 	typing_task = 0
 	file_sorting_task = 0
 
+# This function updates the task list for the current stage recursively.
 func task_init(current_stage: int):
 	match current_stage:
 		1:
@@ -67,13 +75,13 @@ func task_init(current_stage: int):
 			add_to_computer_task_queue(1)
 			return
 
+
 func shuffle_computer_task_queue():
 	computer_task.shuffle()
 
 func add_to_computer_task_queue(task_id: int):
 	computer_task.push_back(task_id)
 	computer_task_changed.emit(computer_task)
-	
 	
 	#file add number
 	if task_id == 0:
@@ -87,16 +95,14 @@ func pop_computer_task_queue():
 	
 	computer_task.pop_front()
 	computer_task_changed.emit(computer_task)
-	
+
 
 func update_copy_machine_task(amount: int):
 	copy_machine_task += amount
 	var new_value = copy_machine_task
 	copy_machine_task_changed.emit(new_value)
 
+
 func update_water_clean_task(new_value: int):
 	water_clean_task = new_value
 	water_clean_task_changed.emit(new_value)
-	#print("*******[Debug: water_clean_task variable value]*******")
-	#print(new_value)
-	#print("*********************")
