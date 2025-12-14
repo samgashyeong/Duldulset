@@ -26,23 +26,14 @@ GlobalLight="*res://Scene/Screens/GlobalLight.tscn"
 [dialogic]
 
 directories/dch_directory={
-"Chunja": "res://Dialogue/Char/Chunja.dch",
-"Dongwoo": "res://Dialogue/Char/Dongwoo.dch",
 "Jensen": "res://Dialogue/Char/Jensen.dch",
-"Junsang": "res://Dialogue/Char/Junsang.dch",
-"Minseo": "res://Dialogue/Char/Minseo.dch",
-"Oksoon": "res://Dialogue/Char/Oksoon.dch",
-"SangIn": "res://Dialogue/Char/SangIn.dch",
 "TASinyeong": "res://Dialogue/Char/TASinyeong.dch",
-"Teemu": "res://Dialogue/Char/Teemu.dch",
-"Younghee": "res://Dialogue/Char/Younghee.dch",
-"unit_test_character": "res://Tests/Resources/unit_test_character.dch"
+"Teemu": "res://Dialogue/Char/Teemu.dch"
 }
 directories/dtl_directory={
 "jensen": "res://Dialogue/Special/Jensen/jensen.dtl",
 "sinyeoung": "res://Dialogue/Special/Sinyeoung/sinyeoung.dtl",
-"teemu": "res://Dialogue/Special/Teemu/teemu.dtl",
-"timeline": "res://Dialogue/Special/Jensen/timeline.dtl"
+"teemu": "res://Dialogue/Special/Teemu/teemu.dtl"
 }
 layout/style_directory={
 "": "res://Dialogue/Special/Jensen/BubbleStyle.tres",
@@ -67,7 +58,7 @@ version_control/plugin_name="dialog"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/dialogic/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 
 [input]
 
