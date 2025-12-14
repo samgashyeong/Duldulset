@@ -1,5 +1,5 @@
-# Student ID and Name (for context, not code functionality)
 #202322158 이준상
+#Manage Dialog Singal and Event
 extends Node
 
 # Timer for managing attendance choice timeout
