@@ -88,7 +88,8 @@ func _process(delta: float) -> void:
 	_check_win_or_lose()
 
 func _reset_nag_timer_interval() -> void:
-	var interval := randf_range(nag_shoot_interval_min, nag_shoot_interval_max)
+	# Make Boss shoot nags random between min~max interval
+	var interval = randf_range(nag_shoot_interval_min, nag_shoot_interval_max)
 	nag_timer.wait_time = interval
 
 # Update Boss's position for each frame

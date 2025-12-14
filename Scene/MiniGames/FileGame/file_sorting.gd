@@ -23,6 +23,7 @@ func _ready() -> void:
 	# Randomize file icon positions inside a 5x4 grid
 	_randomize_file_positions()
 
+# Handle input to make sound when click
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("click"):
 		if click_sound:
